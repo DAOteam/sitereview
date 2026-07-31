@@ -6,6 +6,11 @@ Only decisions explicitly confirmed by the user belong here.
 
 - The product removes video backgrounds, exports transparent WebM, and can replace the background with a custom image.
 
+## Credits
+
+- Confirmed 2026-07-31: Purchased one-time credits never expire and remain available until used.
+- Confirmed 2026-07-31: The 5 credits granted once at registration never expire and remain available until used.
+
 ## Markets and languages
 
 - Current languages: English, Spanish, Portuguese, French, and German.

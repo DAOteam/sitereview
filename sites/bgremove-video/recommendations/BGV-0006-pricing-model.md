@@ -7,7 +7,7 @@ priority: "P1"
 source: "user+ai"
 created_at: "2026-07-31"
 updated_at: "2026-07-31"
-prompt_version: 1
+prompt_version: 2
 ---
 
 # BGV-0006 — Replace pricing with free credits, subscriptions, and packs
@@ -44,17 +44,21 @@ On 2026-07-31, the public pricing page still advertised recurring daily free usa
 
 ## Open decisions
 
-1. Do one-time credits expire?
-2. Can credit sources stack, and what is the consumption order?
-3. Does an annual subscription grant credits monthly or grant the full year upfront? AI recommends monthly grants.
-4. Do subscription credits roll over?
-5. Do legacy Creator/Studio subscribers keep their existing plan or migrate?
-6. Do the free credits cover both background removal and background replacement across all supported output modes?
-7. How do resolution, retention, batch upload, ProRes, and API access map to Plus and Pro?
+1. Can credit sources stack, and what is the consumption order?
+2. Does an annual subscription grant credits monthly or grant the full year upfront? AI recommends monthly grants.
+3. Do subscription credits roll over?
+4. Do legacy Creator/Studio subscribers keep their existing plan or migrate?
+5. Do the free credits cover both background removal and background replacement across all supported output modes?
+6. How do resolution, retention, batch upload, ProRes, and API access map to Plus and Pro?
 
 ## Final decision
 
-Pending user confirmation. This task must not be executed yet.
+Confirmed on 2026-07-31:
+
+- Purchased one-time credits never expire and remain available until used.
+- The 5 registration credits never expire and remain available until used.
+
+The remaining open decisions still require user confirmation. This task must not be executed yet.
 
 ## Implementation prompt
 
@@ -66,6 +70,7 @@ Inspect the existing BGRemove pricing configuration, credit ledger, account UI, 
 Confirmed proposed values:
 - 1 credit = 1 second of processed source video.
 - New users receive 5 credits once; the free allowance never renews.
+- Registration credits and purchased one-time credits never expire; they remain available until used.
 - Starter pack: $8 / 150 credits / 2m30s / $3.20 per minute.
 - Creator pack: $25 / 600 credits / 10m / $2.50 per minute / Most popular.
 - Pro pack: $59 / 1,800 credits / 30m / $1.97 per minute.
@@ -89,6 +94,7 @@ After implementation, report the old implementation locations, changed files, pl
 
 - Prices, credits, time conversions, checkout parameters, and displayed copy agree.
 - Free credits are granted once and never refresh.
+- Registration credits and purchased one-time credits do not expire.
 - Public copy, metadata, structured data, billing UI, and backend use the same rules.
 - Webhook retries cannot duplicate credits and failed jobs do not permanently charge credits.
 - Existing customers keep access and balances until an approved migration handles them.
