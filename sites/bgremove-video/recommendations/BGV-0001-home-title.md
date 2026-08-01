@@ -2,15 +2,18 @@
 task_id: "BGV-0001"
 site_id: "bgremove-video"
 title: "Fix duplicated English homepage title"
-status: "needs_decision"
+status: "superseded"
 priority: "P1"
 source: "ai"
 created_at: "2026-07-31"
-updated_at: "2026-07-31"
+updated_at: "2026-08-01"
 prompt_version: 1
+superseded_by: "BGV-0007"
 ---
 
 # BGV-0001 — Fix duplicated English homepage title
+
+Superseded by [BGV-0007](BGV-0007-metadata-quality.md). Do not execute this file.
 
 ## Scope
 
