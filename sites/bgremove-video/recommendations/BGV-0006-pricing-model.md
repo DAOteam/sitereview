@@ -7,7 +7,7 @@ priority: "P1"
 source: "user+ai"
 created_at: "2026-07-31"
 updated_at: "2026-08-01"
-prompt_version: 4
+prompt_version: 5
 ---
 
 # BGV-0006 — Replace pricing with free credits, subscriptions, and packs
@@ -19,6 +19,8 @@ Pricing, free-credit copy, FAQ, account and billing UI, checkout, payment webhoo
 ## Current facts and evidence
 
 On 2026-07-31, the public pricing page still advertised recurring daily free usage, Creator at $19/month, Studio at $49/month, and “No export credits to top up.” These conflict with the proposed model.
+
+The user confirmed on 2026-08-01 that there are no active paid Creator or Studio subscribers.
 
 ## User proposal
 
@@ -49,9 +51,8 @@ On 2026-07-31, the public pricing page still advertised recurring daily free usa
 
 ## Open decisions
 
-1. Do legacy Creator/Studio subscribers keep their existing plan or migrate?
-2. Do the free credits cover both background removal and background replacement across all supported output modes?
-3. How do resolution, retention, batch upload, ProRes, and API access map to Plus and Pro?
+1. Do the free credits cover both background removal and background replacement across all supported output modes?
+2. How do resolution, retention, batch upload, ProRes, and API access map to Plus and Pro?
 
 ## Final decision
 
@@ -73,6 +74,7 @@ Confirmed on 2026-08-01:
 - Registration and purchased one-time credits remain usable when subscription-derived credits are frozen.
 - If a renewal payment fails, do not issue a new period's credits. Existing credits remain usable only through the already-paid entitlement period.
 - At the paid-through timestamp, freeze unused subscription-derived credits if renewal has not succeeded. A later successful payment or new subscription unfreezes them without duplicating the period's credit grant.
+- There are no active paid Creator or Studio subscribers, so no legacy-plan migration or grandfathering is required. Preserve historical orders and billing records.
 
 The remaining open decisions still require user confirmation. This task must not be executed yet.
 
@@ -96,6 +98,7 @@ Confirmed proposed values:
 - Registration and one-time purchased credits remain usable even when subscription credits are frozen.
 - A failed renewal never grants new credits. Continue access only until the existing paid-through timestamp, then freeze unused subscription-derived credits if payment is still unsuccessful.
 - A later successful retry or new subscription unfreezes the frozen subscription balance and resumes grants without issuing the same period twice.
+- The user confirmed there are no active paid Creator or Studio subscribers. Replace the old purchase paths without building a legacy-plan migration flow, but preserve all historical orders, invoices, and audit records. If implementation evidence reveals an active legacy subscription, stop and report the conflict instead of changing it.
 - Starter pack: $8 / 150 credits / 2m30s / $3.20 per minute.
 - Creator pack: $25 / 600 credits / 10m / $2.50 per minute / Most popular.
 - Pro pack: $59 / 1,800 credits / 30m / $1.97 per minute.
@@ -110,7 +113,7 @@ Remove every contradictory reference to daily free clips, 24-hour free resets, C
 
 Before implementation, replace every pending rule in this prompt with the final approved decision. If any pending rule remains, stop and report the blocker.
 
-Do not migrate or cancel legacy subscribers without an approved migration policy. Make payment webhook handling idempotent. Failed processing must not permanently consume credits. Do not deploy or create live payment products unless separately authorized.
+Make payment webhook handling idempotent. Failed processing must not permanently consume credits. Do not delete historical billing records. Do not deploy or create live payment products unless separately authorized.
 
 After implementation, report the old implementation locations, changed files, plan mapping, manual payment configuration, legacy-user risks, checks run, and any remaining old-pricing search matches.
 ```
@@ -127,7 +130,8 @@ After implementation, report the old implementation locations, changed files, pl
 - Failed renewals grant no new credits; freeze occurs at the existing paid-through timestamp, and later recovery must not duplicate grants.
 - Public copy, metadata, structured data, billing UI, and backend use the same rules.
 - Webhook retries cannot duplicate credits and failed jobs do not permanently charge credits.
-- Existing customers keep access and balances until an approved migration handles them.
+- Old Creator and Studio purchase paths are removed or disabled without deleting historical billing records.
+- If any active legacy subscription is discovered, implementation stops without modifying that subscription.
 - Five current locales remain consistent; Japanese and Korean are not added.
 - Relevant tests, type checks, and build checks pass.
 

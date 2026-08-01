@@ -20,6 +20,11 @@ Only decisions explicitly confirmed by the user belong here.
 - Confirmed 2026-08-01: A failed renewal grants no new credits; existing balances remain usable only through the current paid-through timestamp.
 - Confirmed 2026-08-01: If payment is still unsuccessful at the paid-through timestamp, freeze unused subscription-derived credits. A later successful retry or new subscription unfreezes them without duplicating a period grant.
 
+## Legacy pricing
+
+- Confirmed 2026-08-01: There are no active paid Creator or Studio subscribers.
+- No legacy-plan migration or grandfathering is required when replacing the old pricing, but historical orders, invoices, and billing records must be preserved.
+
 ## Markets and languages
 
 - Current languages: English, Spanish, Portuguese, French, and German.
