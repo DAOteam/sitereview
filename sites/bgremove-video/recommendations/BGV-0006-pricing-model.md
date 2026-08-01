@@ -2,12 +2,12 @@
 task_id: "BGV-0006"
 site_id: "bgremove-video"
 title: "Replace pricing with free credits, subscriptions, and packs"
-status: "needs_decision"
+status: "approved"
 priority: "P1"
 source: "user+ai"
 created_at: "2026-07-31"
 updated_at: "2026-08-01"
-prompt_version: 9
+prompt_version: 10
 ---
 
 # BGV-0006 — Replace pricing with free credits, subscriptions, and packs
@@ -57,7 +57,7 @@ The user confirmed on 2026-08-01 that there are no active paid Creator or Studio
 
 ## Open decisions
 
-None. The complete prompt is awaiting final user approval.
+None. The user approved this recommendation on 2026-08-01.
 
 ## Final decision
 
@@ -92,16 +92,16 @@ Confirmed on 2026-08-01:
 - Cancellation does not shorten an existing paid task's 7-day retention. Re-exporting, changing backgrounds, or paying after a free task does not restart or extend its original retention period.
 - Users can delete retained media earlier. Automatic expiry deletes media files but preserves credit-ledger entries, invoices, payment records, and non-media audit data required for billing integrity.
 
-All product-rule questions are resolved. This task still requires final user approval before its status can change to `approved`.
+On 2026-08-01, the user gave final approval to BGV-0006. All product rules, implementation boundaries, and acceptance criteria in this version are approved for execution through a Pull Request.
 
 ## Implementation prompt
 
 ```text
-FINAL DRAFT — DO NOT EXECUTE UNTIL THIS RECOMMENDATION HAS status: "approved".
+APPROVED IMPLEMENTATION PROMPT — execute only while this recommendation has status: "approved".
 
 Inspect the existing BGRemove pricing configuration, credit ledger, account UI, checkout flow, Lemon Squeezy integration, webhooks, metadata, FAQ, JSON-LD, locales, tests, and fixtures before changing code. Do not invent product IDs, Variant IDs, environment variables, migration rules, expiry rules, or entitlements.
 
-Confirmed proposed values:
+Confirmed values:
 - 1 credit = 1 second of processed source video.
 - New users receive 5 credits once; the free allowance never renews.
 - Registration credits and purchased one-time credits never expire; they remain available until used.

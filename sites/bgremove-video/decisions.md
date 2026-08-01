@@ -8,6 +8,7 @@ Only decisions explicitly confirmed by the user belong here.
 
 ## Credits
 
+- Confirmed and approved in BGV-0006 on 2026-08-01: 1 credit equals 1 second of processed source video.
 - Confirmed 2026-07-31: Purchased one-time credits never expire and remain available until used.
 - Confirmed 2026-07-31: The 5 credits granted once at registration never expire and remain available until used.
 - Confirmed 2026-08-01: Registration, subscription, and purchased credit balances can coexist, but their sources remain separately traceable.
@@ -19,6 +20,16 @@ Only decisions explicitly confirmed by the user belong here.
 - Confirmed 2026-08-01: Registration and purchased credits remain usable while subscription-derived credits are frozen.
 - Confirmed 2026-08-01: A failed renewal grants no new credits; existing balances remain usable only through the current paid-through timestamp.
 - Confirmed 2026-08-01: If payment is still unsuccessful at the paid-through timestamp, freeze unused subscription-derived credits. A later successful retry or new subscription unfreezes them without duplicating a period grant.
+
+## Pricing model
+
+- Confirmed and approved in BGV-0006 on 2026-08-01: New users receive 5 registration credits once; the free allowance never refreshes.
+- One-time Starter pack: $8 for 150 credits.
+- One-time Creator pack: $25 for 600 credits and marked Most popular.
+- One-time Pro pack: $59 for 1,800 credits.
+- Plus subscription: $9.99 monthly or $49.99 yearly, granting 350 credits each subscription month.
+- Pro subscription: $24.99 monthly or $124.99 yearly, granting 1,200 credits each subscription month.
+- Annual subscriptions grant credits monthly rather than issuing the full annual allowance upfront.
 
 ## Legacy pricing
 

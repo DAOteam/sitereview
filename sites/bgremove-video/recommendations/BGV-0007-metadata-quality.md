@@ -2,12 +2,12 @@
 task_id: "BGV-0007"
 site_id: "bgremove-video"
 title: "Improve core-page titles and metadata quality"
-status: "needs_decision"
+status: "blocked"
 priority: "P1"
 source: "user+ai"
 created_at: "2026-08-01"
 updated_at: "2026-08-01"
-prompt_version: 4
+prompt_version: 5
 ---
 
 # BGV-0007 — Improve core-page titles and metadata quality
@@ -76,7 +76,7 @@ Translate by meaning and search intent, not word for word. Each localized title 
 
 ## Open decisions
 
-- BGV-0006 must be approved before the homepage and pricing descriptions can publish the new free-credit and paid-feature rules.
+None. All metadata copy and delivery-scope decisions are resolved.
 
 ## Final decision
 
@@ -88,7 +88,7 @@ On 2026-08-01, the user decided that English, Spanish, Portuguese, German, and F
 
 Open Graph and Twitter title/description fields must not be independently rewritten. If the existing implementation automatically derives them from the same approved SEO title or description source, that automatic downstream change is acceptable; do not add or alter separate social-copy overrides.
 
-The task remains `needs_decision` until the BGV-0006 dependency is resolved. The decisions above do not yet authorize implementation.
+BGV-0006 was approved on 2026-08-01. BGV-0007 is now blocked only until BGV-0006 has been implemented, because the homepage and pricing descriptions must not publish the new commercial terms before the underlying product and pricing changes exist. After an implementation result is recorded for BGV-0006, review this dependency and change BGV-0007 to `approved`; do not execute BGV-0007 while it remains `blocked`.
 
 ## Implementation prompt
 
