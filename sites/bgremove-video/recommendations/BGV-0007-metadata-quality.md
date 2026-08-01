@@ -7,7 +7,7 @@ priority: "P1"
 source: "user+ai"
 created_at: "2026-08-01"
 updated_at: "2026-08-01"
-prompt_version: 3
+prompt_version: 4
 ---
 
 # BGV-0007 — Improve core-page titles and metadata quality
@@ -47,7 +47,7 @@ The following English titles are the approved source copy:
 
 | Page | Proposed English title |
 |---|---|
-| `/` | `Remove Video Background Online Free – No Watermark | BGRemove` |
+| `/` | `Remove Video Background Online Free - No Watermark` |
 | `/about/` | `About BGRemove | AI Video Background Remover` |
 | `/changelog/` | `BGRemove Changelog | Video Background Remover Updates` |
 | `/contact/` | `Contact BGRemove Support | Video Background Removal Help` |
@@ -82,6 +82,8 @@ Translate by meaning and search intent, not word for word. Each localized title 
 
 On 2026-08-01, the user approved the complete 15-page English title matrix in this document.
 
+Later on 2026-08-01, the user revised the English homepage title. The final approved homepage title is exactly `Remove Video Background Online Free - No Watermark`, using a standard hyphen and no brand name. This revision overrides the earlier branded homepage title; the other 14 approved English titles remain unchanged.
+
 On 2026-08-01, the user decided that English, Spanish, Portuguese, German, and French title and meta-description changes must be delivered together in one Pull Request. The Pull Request may change only SEO `<title>` and meta description values and the minimum shared logic required to render them correctly. H1s, body copy, buttons, labels, pricing-table copy, and all other page copy must remain unchanged.
 
 Open Graph and Twitter title/description fields must not be independently rewritten. If the existing implementation automatically derives them from the same approved SEO title or description source, that automatic downstream change is acceptable; do not add or alter separate social-copy overrides.
@@ -107,6 +109,7 @@ Before editing
 
 Required changes
 1. Apply the approved English title matrix from BGV-0007 to the corresponding routes.
+   - The English homepage title must be exactly `Remove Video Background Online Free - No Watermark`. Do not append `BGRemove`, a separator, integrations, tool names, or any other suffix.
 2. Create natural, intent-equivalent localized titles and meta descriptions for Spanish, Portuguese, German, and French. Do not mechanically translate or force an English word order. Preserve accurate, page-specific descriptions rather than rewriting them without a reason.
 3. Update the remove-background tool description in every applicable locale so it no longer advertises PNG sequence output and describes only confirmed transparent formats.
 4. Update the homepage and pricing descriptions only when the BGV-0006 dependency permits it. Remove old daily-free, Creator $19, Studio $49, and PNG sequence claims wherever they occur in scoped metadata once their replacement facts are approved.
@@ -140,7 +143,7 @@ Verification
 ## Acceptance criteria
 
 - All 15 core page patterns have unique, descriptive, intent-aligned titles in each of the five current locales.
-- The English homepage title is exactly the approved copy and contains no duplicated tool-name suffix.
+- The English homepage title is exactly `Remove Video Background Online Free - No Watermark`, with no brand, separator, integration names, tool names, or other suffix.
 - The core remove-background tool metadata no longer advertises PNG sequence output.
 - Homepage and pricing descriptions do not expose unapproved commercial terms and, after BGV-0006 implementation, contain no old daily-free or old-price claims.
 - Existing descriptions that are already accurate, unique, and page-specific are preserved unless the Pull Request documents a clear reason to change them.
