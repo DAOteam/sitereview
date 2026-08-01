@@ -7,7 +7,7 @@ priority: "P1"
 source: "user+ai"
 created_at: "2026-07-31"
 updated_at: "2026-08-01"
-prompt_version: 5
+prompt_version: 6
 ---
 
 # BGV-0006 — Replace pricing with free credits, subscriptions, and packs
@@ -38,6 +38,8 @@ The user confirmed on 2026-08-01 that there are no active paid Creator or Studio
 - Let subscription credits accumulate without expiry while the subscription remains active.
 - When a cancellation takes effect at the end of the paid period, freeze unused subscription credits instead of deleting them.
 - Reactivating any monthly or annual subscription plan unlocks all previously frozen subscription credits.
+- Registration credits support background removal only. Free-only users cannot use custom background replacement.
+- One-time pack and subscription customers can use both background removal and custom background replacement.
 
 ## AI recommendation
 
@@ -51,8 +53,7 @@ The user confirmed on 2026-08-01 that there are no active paid Creator or Studio
 
 ## Open decisions
 
-1. Do the free credits cover both background removal and background replacement across all supported output modes?
-2. How do resolution, retention, batch upload, ProRes, and API access map to Plus and Pro?
+1. How do resolution, retention, batch upload, ProRes, and API access map to Free, one-time packs, Plus, and Pro?
 
 ## Final decision
 
@@ -75,6 +76,10 @@ Confirmed on 2026-08-01:
 - If a renewal payment fails, do not issue a new period's credits. Existing credits remain usable only through the already-paid entitlement period.
 - At the paid-through timestamp, freeze unused subscription-derived credits if renewal has not succeeded. A later successful payment or new subscription unfreezes them without duplicating the period's credit grant.
 - There are no active paid Creator or Studio subscribers, so no legacy-plan migration or grandfathering is required. Preserve historical orders and billing records.
+- Registration credits can be used only for background removal. A free-only user cannot select or export a custom replacement background.
+- Processing with subscription or purchased one-time credits supports both background removal and custom background replacement.
+- Charge a video's duration only once for a completed background-processing job. Changing replacement images or re-exporting the retained result does not consume more credits.
+- If a video was originally processed with registration credits, background replacement remains locked while the account is free-only. After the user completes a paid pack or subscription purchase, unlock replacement for the retained result without repeating the background-removal charge.
 
 The remaining open decisions still require user confirmation. This task must not be executed yet.
 
@@ -96,6 +101,10 @@ Confirmed proposed values:
 - A scheduled cancellation leaves all credits usable through the final paid period. When that period ends, freeze only the remaining subscription-derived credits.
 - Frozen subscription credits are retained but unavailable. Starting any monthly or annual subscription plan immediately unfreezes the full frozen subscription balance.
 - Registration and one-time purchased credits remain usable even when subscription credits are frozen.
+- Registration credits are eligible for background removal only. Do not allow a free-only account to select or export a custom replacement background.
+- Subscription and purchased one-time credits are eligible for both background removal and custom background replacement.
+- Charge source-video duration once per completed background-processing job. Do not charge again for changing the replacement image or re-exporting the retained result.
+- A result originally processed with registration credits keeps background replacement locked while the account is free-only. After a successful pack or subscription purchase, unlock background replacement for that retained result without charging the removal duration again.
 - A failed renewal never grants new credits. Continue access only until the existing paid-through timestamp, then freeze unused subscription-derived credits if payment is still unsuccessful.
 - A later successful retry or new subscription unfreezes the frozen subscription balance and resumes grants without issuing the same period twice.
 - The user confirmed there are no active paid Creator or Studio subscribers. Replace the old purchase paths without building a legacy-plan migration flow, but preserve all historical orders, invoices, and audit records. If implementation evidence reveals an active legacy subscription, stop and report the conflict instead of changing it.
@@ -128,6 +137,8 @@ After implementation, report the old implementation locations, changed files, pl
 - Ending the final paid period freezes only subscription-derived credits; registration and purchased credits remain available.
 - Reactivating any subscription plan restores the full frozen subscription balance exactly once.
 - Failed renewals grant no new credits; freeze occurs at the existing paid-through timestamp, and later recovery must not duplicate grants.
+- Free registration credits cannot fund background replacement; paid pack and subscription usage can.
+- One completed processing job is charged once, and retained-result background changes or re-exports do not consume additional credits.
 - Public copy, metadata, structured data, billing UI, and backend use the same rules.
 - Webhook retries cannot duplicate credits and failed jobs do not permanently charge credits.
 - Old Creator and Studio purchase paths are removed or disabled without deleting historical billing records.

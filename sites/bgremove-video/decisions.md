@@ -25,6 +25,13 @@ Only decisions explicitly confirmed by the user belong here.
 - Confirmed 2026-08-01: There are no active paid Creator or Studio subscribers.
 - No legacy-plan migration or grandfathering is required when replacing the old pricing, but historical orders, invoices, and billing records must be preserved.
 
+## Background replacement entitlement
+
+- Confirmed 2026-08-01: Registration credits support background removal only; free-only users cannot use custom background replacement.
+- Confirmed 2026-08-01: One-time pack and subscription customers can use both background removal and custom background replacement.
+- Confirmed 2026-08-01: Charge video duration once for a completed background-processing job. Changing backgrounds or re-exporting a retained result does not consume more credits.
+- Confirmed 2026-08-01: After a free-only user completes a paid pack or subscription purchase, background replacement can be unlocked for a retained free-processed result without charging the removal duration again.
+
 ## Markets and languages
 
 - Current languages: English, Spanish, Portuguese, French, and German.
