@@ -41,6 +41,8 @@ Only decisions explicitly confirmed by the user belong here.
 
 - Confirmed 2026-08-01: Transparent-background output supports only these exact internal format identifiers: `webm_vp9`, `mov_proresks`, and `mkv_vp9`.
 - Other format values must not be offered for transparent-background output.
+- Confirmed 2026-08-01: Free users can select only `webm_vp9` for transparent-background output.
+- Confirmed 2026-08-01: Every paid user can select `webm_vp9`, `mov_proresks`, and `mkv_vp9`.
 
 ## Markets and languages
 
