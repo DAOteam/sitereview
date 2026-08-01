@@ -10,6 +10,13 @@ Only decisions explicitly confirmed by the user belong here.
 
 - Confirmed 2026-07-31: Purchased one-time credits never expire and remain available until used.
 - Confirmed 2026-07-31: The 5 credits granted once at registration never expire and remain available until used.
+- Confirmed 2026-08-01: Registration, subscription, and purchased credit balances can coexist, but their sources remain separately traceable.
+- Confirmed 2026-08-01: While a subscription is active, consume subscription credits first, registration credits second, and purchased credits last.
+- Confirmed 2026-08-01: Monthly and annual plans grant credits monthly; annual plans do not grant the full year upfront.
+- Confirmed 2026-08-01: Subscription credits roll over and accumulate without expiry or a cap while the subscription remains active.
+- Confirmed 2026-08-01: A cancellation takes effect only after the final paid period; then unused subscription-derived credits are frozen rather than deleted.
+- Confirmed 2026-08-01: Starting any monthly or annual subscription plan unfreezes all previously frozen subscription credits.
+- Confirmed 2026-08-01: Registration and purchased credits remain usable while subscription-derived credits are frozen.
 
 ## Markets and languages
 
