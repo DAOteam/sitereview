@@ -7,14 +7,14 @@ priority: "P1"
 source: "user+ai"
 created_at: "2026-08-01"
 updated_at: "2026-08-01"
-prompt_version: 2
+prompt_version: 3
 ---
 
 # BGV-0007 — Improve core-page titles and metadata quality
 
 ## Scope
 
-Audit and improve the SEO titles and meta descriptions for the 15 core page patterns in the five current locales: English, Spanish, Portuguese, German, and French. This task covers metadata sources and shared title-generation logic, not page-body rewrites.
+Audit and improve only the SEO `<title>` and meta description for the 15 core page patterns in the five current locales: English, Spanish, Portuguese, German, and French. This task covers metadata sources and shared title-generation logic, not page-body or interface-copy rewrites.
 
 The five English legal pages are excluded. Pricing metadata is documented here but remains an implementation dependency of BGV-0006 because it must not publish the new commercial terms before that task is approved and implemented.
 
@@ -76,14 +76,17 @@ Translate by meaning and search intent, not word for word. Each localized title 
 
 ## Open decisions
 
-- Choose whether the five current locales are delivered in one Pull Request or whether English is approved first and localized copy follows. The AI recommendation is to approve English as the source first, then include all five current locales in one implementation Pull Request after localized copy review.
 - BGV-0006 must be approved before the homepage and pricing descriptions can publish the new free-credit and paid-feature rules.
 
 ## Final decision
 
 On 2026-08-01, the user approved the complete 15-page English title matrix in this document.
 
-The task remains `needs_decision` until the localization delivery approach is confirmed and the BGV-0006 dependency is resolved. Approval of the English titles alone does not authorize implementation.
+On 2026-08-01, the user decided that English, Spanish, Portuguese, German, and French title and meta-description changes must be delivered together in one Pull Request. The Pull Request may change only SEO `<title>` and meta description values and the minimum shared logic required to render them correctly. H1s, body copy, buttons, labels, pricing-table copy, and all other page copy must remain unchanged.
+
+Open Graph and Twitter title/description fields must not be independently rewritten. If the existing implementation automatically derives them from the same approved SEO title or description source, that automatic downstream change is acceptable; do not add or alter separate social-copy overrides.
+
+The task remains `needs_decision` until the BGV-0006 dependency is resolved. The decisions above do not yet authorize implementation.
 
 ## Implementation prompt
 
@@ -94,7 +97,7 @@ Target repository: https://github.com/DAOteam/bgremove
 Delivery method: Pull Request. Never commit directly to the default branch and do not deploy.
 
 Goal
-Improve title and meta-description quality for the 15 approved core page patterns in English, Spanish, Portuguese, German, and French. Fix the malformed homepage title output while preserving the site's currently healthy canonical and hreflang implementation.
+Improve only SEO title and meta-description quality for the 15 approved core page patterns in English, Spanish, Portuguese, German, and French, delivering all five locales in one Pull Request. Fix the malformed homepage title output while preserving the site's currently healthy canonical and hreflang implementation and leaving all other page copy unchanged.
 
 Before editing
 1. Locate the actual metadata source for every scoped route and the shared title-generation or SEO component.
@@ -104,11 +107,11 @@ Before editing
 
 Required changes
 1. Apply the approved English title matrix from BGV-0007 to the corresponding routes.
-2. Create natural, intent-equivalent localized titles for Spanish, Portuguese, German, and French. Do not mechanically translate or force an English word order.
-3. Update the remove-background tool description so it no longer advertises PNG sequence output and describes only confirmed transparent formats.
+2. Create natural, intent-equivalent localized titles and meta descriptions for Spanish, Portuguese, German, and French. Do not mechanically translate or force an English word order. Preserve accurate, page-specific descriptions rather than rewriting them without a reason.
+3. Update the remove-background tool description in every applicable locale so it no longer advertises PNG sequence output and describes only confirmed transparent formats.
 4. Update the homepage and pricing descriptions only when the BGV-0006 dependency permits it. Remove old daily-free, Creator $19, Studio $49, and PNG sequence claims wherever they occur in scoped metadata once their replacement facts are approved.
 5. Preserve the other current descriptions by default. Change one only when it is inaccurate, duplicated by the metadata template, or unnatural in that locale, and explain the reason in the Pull Request.
-6. Keep title, meta description, Open Graph title/description, and Twitter title/description semantically consistent where those fields exist.
+6. Do not independently rewrite Open Graph or Twitter copy. An automatic downstream change is acceptable only when those values already derive from the approved SEO title or meta-description source.
 7. Keep legal-page metadata unchanged. Do not add Japanese or Korean.
 
 Writing constraints
@@ -119,7 +122,8 @@ Writing constraints
 - Preserve the current locale on every localized route.
 
 Do not change
-- H1s, body copy, page layout, pricing implementation, billing logic, structured data, canonical URLs, hreflang architecture, robots directives, sitemap routing, or deployment configuration unless a minimal metadata-source fix strictly requires it.
+- H1s, body copy, buttons, labels, pricing-table copy, page layout, pricing implementation, billing logic, structured data, canonical URLs, hreflang architecture, robots directives, sitemap routing, or deployment configuration unless a minimal metadata-source fix strictly requires it.
+- Do not add or alter separate Open Graph or Twitter copy overrides.
 - Do not expand scope to keyword-cannibalization decisions that require GSC evidence.
 
 Verification
@@ -140,7 +144,8 @@ Verification
 - The core remove-background tool metadata no longer advertises PNG sequence output.
 - Homepage and pricing descriptions do not expose unapproved commercial terms and, after BGV-0006 implementation, contain no old daily-free or old-price claims.
 - Existing descriptions that are already accurate, unique, and page-specific are preserved unless the Pull Request documents a clear reason to change them.
-- Open Graph and Twitter metadata remain semantically aligned with the normal title and description where implemented.
+- No H1, body, button, label, pricing-table, or other interface copy changes are included in the Pull Request.
+- Open Graph and Twitter copy is not independently rewritten; any change is solely an existing automatic derivation from the approved SEO source fields.
 - All 80 current sitemap URLs continue to return a title, meta description, H1, self-referencing canonical, and the existing hreflang set.
 - No new duplicate title or description is introduced within a locale.
 - Build and relevant checks pass, and the Pull Request contains a before/after metadata table.
