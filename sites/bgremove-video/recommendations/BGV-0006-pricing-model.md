@@ -7,7 +7,7 @@ priority: "P1"
 source: "user+ai"
 created_at: "2026-07-31"
 updated_at: "2026-08-01"
-prompt_version: 8
+prompt_version: 9
 ---
 
 # BGV-0006 — Replace pricing with free credits, subscriptions, and packs
@@ -43,6 +43,7 @@ The user confirmed on 2026-08-01 that there are no active paid Creator or Studio
 - Give every paid user the same product capabilities regardless of pack or subscription tier; paid tiers differ only by credits, price, and effective unit cost.
 - For transparent-background exports, allow only the exact format identifiers `webm_vp9`, `mov_proresks`, and `mkv_vp9`.
 - Free users can select only `webm_vp9`; every paid user can select all three transparent-output formats.
+- Retain free processing tasks for 24 hours and paid processing tasks for 7 days.
 
 ## AI recommendation
 
@@ -56,7 +57,7 @@ The user confirmed on 2026-08-01 that there are no active paid Creator or Studio
 
 ## Open decisions
 
-1. What are the unified file-retention periods for free users and paid users? AI recommends retaining the current 24-hour free period and using 90 days for every paid user.
+None. The complete prompt is awaiting final user approval.
 
 ## Final decision
 
@@ -86,13 +87,17 @@ Confirmed on 2026-08-01:
 - Every paid user receives the same capabilities, including 4K output, refined edge processing, batch upload, API/webhooks, priority processing, transparent output, and background replacement. Pack and subscription tiers differ only in price and credit allowance.
 - A transparent-background export must use exactly one of these internal format identifiers: `webm_vp9`, `mov_proresks`, or `mkv_vp9`. Do not offer any other format for transparent output.
 - Free users can export transparent background only as `webm_vp9`. Every paid pack and subscription customer can use `webm_vp9`, `mov_proresks`, and `mkv_vp9`.
+- Retain a task funded entirely by registration credits for 24 hours. Retain a task using any subscription or purchased one-time credits for 7 days.
+- Calculate retention from successful task completion. Apply the same expiry to the source upload, transparent result, replacement-background result, and related retained media.
+- Cancellation does not shorten an existing paid task's 7-day retention. Re-exporting, changing backgrounds, or paying after a free task does not restart or extend its original retention period.
+- Users can delete retained media earlier. Automatic expiry deletes media files but preserves credit-ledger entries, invoices, payment records, and non-media audit data required for billing integrity.
 
-The remaining open decisions still require user confirmation. This task must not be executed yet.
+All product-rule questions are resolved. This task still requires final user approval before its status can change to `approved`.
 
 ## Implementation prompt
 
 ```text
-DRAFT — DO NOT EXECUTE UNTIL THIS RECOMMENDATION HAS status: "approved".
+FINAL DRAFT — DO NOT EXECUTE UNTIL THIS RECOMMENDATION HAS status: "approved".
 
 Inspect the existing BGRemove pricing configuration, credit ledger, account UI, checkout flow, Lemon Squeezy integration, webhooks, metadata, FAQ, JSON-LD, locales, tests, and fixtures before changing code. Do not invent product IDs, Variant IDs, environment variables, migration rules, expiry rules, or entitlements.
 
@@ -117,6 +122,9 @@ Confirmed proposed values:
 - Give every paid pack and subscription customer the same capabilities. Remove plan-specific gates for 4K output, refined edge processing, batch upload, REST API/webhooks, priority processing, transparent output formats, and custom background replacement. Paid offers differ only by price, credit allowance, and effective unit cost. API and batch jobs still consume credits under the same duration rules.
 - For transparent-background output, the allowed internal format values are exactly: `webm_vp9`, `mov_proresks`, and `mkv_vp9`. Reject or hide every other transparent-output format. Preserve existing user-facing labels only if they map unambiguously to these exact values and retain an alpha channel.
 - Enforce format entitlements server-side as well as in the UI: free users may request only `webm_vp9`; every paid user may request all three allowed transparent formats. A free request for `mov_proresks` or `mkv_vp9` must return an explicit upgrade-required error and consume no credits.
+- Retain a task funded only by registration credits for 24 hours. If a task consumes any subscription or purchased one-time credits, retain it for 7 days. Set an immutable media-expiry timestamp when processing succeeds.
+- Apply that timestamp to the source upload and every retained derivative. Cancellation does not shorten paid retention; re-exporting, changing backgrounds, or purchasing later does not extend it. Show the expiry to the user, allow early deletion, and make cleanup idempotent.
+- On expiry, delete media objects and derivatives while preserving credit-ledger entries, invoices, payment records, and non-media audit history. Do not treat media deletion as a credit refund.
 - Starter pack: $8 / 150 credits / 2m30s / $3.20 per minute.
 - Creator pack: $25 / 600 credits / 10m / $2.50 per minute / Most popular.
 - Pro pack: $59 / 1,800 credits / 30m / $1.97 per minute.
@@ -129,7 +137,7 @@ Keep the current BGRemove visual system. Structure the pricing page as hero, fre
 
 Remove every contradictory reference to daily free clips, 24-hour free resets, Creator $19/month, Studio $49/month, and “No export credits to top up.” Synchronize visible copy, metadata, Open Graph/Twitter metadata, FAQPage JSON-LD, account and balance UI, checkout parameters, payment webhooks, API responses, tests, fixtures, and English, Spanish, Portuguese, French, and German. Do not add Japanese or Korean.
 
-Before implementation, replace every pending rule in this prompt with the final approved decision. If any pending rule remains, stop and report the blocker.
+If repository or payment-provider evidence conflicts with a confirmed fact in this prompt, stop and report the conflict instead of silently choosing a different rule.
 
 Make payment webhook handling idempotent. Failed processing must not permanently consume credits. Do not delete historical billing records. Do not deploy or create live payment products unless separately authorized.
 
@@ -151,6 +159,8 @@ After implementation, report the old implementation locations, changed files, pl
 - Every paid offer exposes the same processing and output capabilities; feature access does not vary by paid tier.
 - Transparent output accepts only `webm_vp9`, `mov_proresks`, and `mkv_vp9`, and each rendered result preserves transparency.
 - Free users can use only `webm_vp9`; paid users can use all three allowed formats, with server-side enforcement and no credit charge for rejected requests.
+- Free-only tasks expire after 24 hours and tasks using any paid-source credits expire after 7 days, measured from successful completion.
+- Re-export, background changes, cancellation, or later purchase do not alter the original expiry timestamp; early and automatic deletion preserve billing and credit records.
 - Public copy, metadata, structured data, billing UI, and backend use the same rules.
 - Webhook retries cannot duplicate credits and failed jobs do not permanently charge credits.
 - Old Creator and Studio purchase paths are removed or disabled without deleting historical billing records.

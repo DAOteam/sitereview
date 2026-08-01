@@ -44,6 +44,13 @@ Only decisions explicitly confirmed by the user belong here.
 - Confirmed 2026-08-01: Free users can select only `webm_vp9` for transparent-background output.
 - Confirmed 2026-08-01: Every paid user can select `webm_vp9`, `mov_proresks`, and `mkv_vp9`.
 
+## File retention
+
+- Confirmed 2026-08-01: A processing task funded only by registration credits is retained for 24 hours from successful completion.
+- Confirmed 2026-08-01: A task using any subscription or purchased one-time credits is retained for 7 days from successful completion.
+- Source uploads and retained derivatives share the same fixed expiry. Re-exporting, changing backgrounds, cancellation, or paying later does not extend it.
+- Media expiry or user deletion removes media files but preserves credit-ledger entries, invoices, payment records, and necessary non-media audit history.
+
 ## Markets and languages
 
 - Current languages: English, Spanish, Portuguese, French, and German.
