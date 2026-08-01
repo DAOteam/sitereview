@@ -7,7 +7,7 @@ priority: "P1"
 source: "user+ai"
 created_at: "2026-08-01"
 updated_at: "2026-08-01"
-prompt_version: 1
+prompt_version: 2
 ---
 
 # BGV-0007 — Improve core-page titles and metadata quality
@@ -43,7 +43,7 @@ Prioritize metadata that is malformed, inaccurate, stale, generic, or poorly ali
 
 Fix the shared title-generation source that appends repeated tool names to the homepage. Use one clear primary intent per title, keep the brand once, and avoid keyword stuffing or repeated boilerplate.
 
-Use the following English titles as the source copy for approval:
+The following English titles are the approved source copy:
 
 | Page | Proposed English title |
 |---|---|
@@ -76,13 +76,14 @@ Translate by meaning and search intent, not word for word. Each localized title 
 
 ## Open decisions
 
-- Approve or revise the proposed English title matrix.
 - Choose whether the five current locales are delivered in one Pull Request or whether English is approved first and localized copy follows. The AI recommendation is to approve English as the source first, then include all five current locales in one implementation Pull Request after localized copy review.
 - BGV-0006 must be approved before the homepage and pricing descriptions can publish the new free-credit and paid-feature rules.
 
 ## Final decision
 
-Pending user approval of the English source copy and localization delivery approach.
+On 2026-08-01, the user approved the complete 15-page English title matrix in this document.
+
+The task remains `needs_decision` until the localization delivery approach is confirmed and the BGV-0006 dependency is resolved. Approval of the English titles alone does not authorize implementation.
 
 ## Implementation prompt
 
