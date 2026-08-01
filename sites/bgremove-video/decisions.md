@@ -4,7 +4,7 @@ Only decisions explicitly confirmed by the user belong here.
 
 ## Product
 
-- The product removes video backgrounds, exports transparent WebM, and can replace the background with a custom image.
+- The product removes video backgrounds, exports transparent video, and can replace the background with a custom image.
 
 ## Credits
 
@@ -31,6 +31,16 @@ Only decisions explicitly confirmed by the user belong here.
 - Confirmed 2026-08-01: One-time pack and subscription customers can use both background removal and custom background replacement.
 - Confirmed 2026-08-01: Charge video duration once for a completed background-processing job. Changing backgrounds or re-exporting a retained result does not consume more credits.
 - Confirmed 2026-08-01: After a free-only user completes a paid pack or subscription purchase, background replacement can be unlocked for a retained free-processed result without charging the removal duration again.
+
+## Paid feature parity
+
+- Confirmed 2026-08-01: Every paid pack and subscription customer receives the same product capabilities; paid offers differ only by price, credit allowance, and effective unit cost.
+- Confirmed 2026-08-01: Features including 4K output, refined edge processing, batch upload, API/webhooks, priority processing, transparent output, and custom background replacement are available to every paid user.
+
+## Transparent output formats
+
+- Confirmed 2026-08-01: Transparent-background output supports only these exact internal format identifiers: `webm_vp9`, `mov_proresks`, and `mkv_vp9`.
+- Other format values must not be offered for transparent-background output.
 
 ## Markets and languages
 

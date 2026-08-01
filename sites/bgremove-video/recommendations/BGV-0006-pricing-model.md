@@ -7,7 +7,7 @@ priority: "P1"
 source: "user+ai"
 created_at: "2026-07-31"
 updated_at: "2026-08-01"
-prompt_version: 6
+prompt_version: 7
 ---
 
 # BGV-0006 — Replace pricing with free credits, subscriptions, and packs
@@ -40,6 +40,8 @@ The user confirmed on 2026-08-01 that there are no active paid Creator or Studio
 - Reactivating any monthly or annual subscription plan unlocks all previously frozen subscription credits.
 - Registration credits support background removal only. Free-only users cannot use custom background replacement.
 - One-time pack and subscription customers can use both background removal and custom background replacement.
+- Give every paid user the same product capabilities regardless of pack or subscription tier; paid tiers differ only by credits, price, and effective unit cost.
+- For transparent-background exports, allow only the exact format identifiers `webm_vp9`, `mov_proresks`, and `mkv_vp9`.
 
 ## AI recommendation
 
@@ -48,12 +50,13 @@ The user confirmed on 2026-08-01 that there are no active paid Creator or Studio
 - Store prices and credit allowances in one configuration source shared by all locales.
 - Remove contradictory old pricing from metadata, FAQ, JSON-LD, account UI, checkout, and other public pages.
 - Preserve failure refunds and enforce idempotent payment webhooks.
-- Keep legacy subscribers safe until a migration policy is confirmed.
+- Preserve historical billing records while replacing the unused legacy purchase paths.
 - Display available and frozen balances separately; keep credit-source ledgers distinct for refunds, cancellation, and auditability.
 
 ## Open decisions
 
-1. How do resolution, retention, batch upload, ProRes, and API access map to Free, one-time packs, Plus, and Pro?
+1. Can free users select all three transparent formats, or only `webm_vp9`?
+2. What are the unified file-retention periods for free users and paid users? AI recommends retaining the current 24-hour free period and using 90 days for every paid user.
 
 ## Final decision
 
@@ -80,6 +83,8 @@ Confirmed on 2026-08-01:
 - Processing with subscription or purchased one-time credits supports both background removal and custom background replacement.
 - Charge a video's duration only once for a completed background-processing job. Changing replacement images or re-exporting the retained result does not consume more credits.
 - If a video was originally processed with registration credits, background replacement remains locked while the account is free-only. After the user completes a paid pack or subscription purchase, unlock replacement for the retained result without repeating the background-removal charge.
+- Every paid user receives the same capabilities, including 4K output, refined edge processing, batch upload, API/webhooks, priority processing, transparent output, and background replacement. Pack and subscription tiers differ only in price and credit allowance.
+- A transparent-background export must use exactly one of these internal format identifiers: `webm_vp9`, `mov_proresks`, or `mkv_vp9`. Do not offer any other format for transparent output.
 
 The remaining open decisions still require user confirmation. This task must not be executed yet.
 
@@ -108,6 +113,8 @@ Confirmed proposed values:
 - A failed renewal never grants new credits. Continue access only until the existing paid-through timestamp, then freeze unused subscription-derived credits if payment is still unsuccessful.
 - A later successful retry or new subscription unfreezes the frozen subscription balance and resumes grants without issuing the same period twice.
 - The user confirmed there are no active paid Creator or Studio subscribers. Replace the old purchase paths without building a legacy-plan migration flow, but preserve all historical orders, invoices, and audit records. If implementation evidence reveals an active legacy subscription, stop and report the conflict instead of changing it.
+- Give every paid pack and subscription customer the same capabilities. Remove plan-specific gates for 4K output, refined edge processing, batch upload, REST API/webhooks, priority processing, transparent output formats, and custom background replacement. Paid offers differ only by price, credit allowance, and effective unit cost. API and batch jobs still consume credits under the same duration rules.
+- For transparent-background output, the allowed internal format values are exactly: `webm_vp9`, `mov_proresks`, and `mkv_vp9`. Reject or hide every other transparent-output format. Preserve existing user-facing labels only if they map unambiguously to these exact values and retain an alpha channel.
 - Starter pack: $8 / 150 credits / 2m30s / $3.20 per minute.
 - Creator pack: $25 / 600 credits / 10m / $2.50 per minute / Most popular.
 - Pro pack: $59 / 1,800 credits / 30m / $1.97 per minute.
@@ -139,6 +146,8 @@ After implementation, report the old implementation locations, changed files, pl
 - Failed renewals grant no new credits; freeze occurs at the existing paid-through timestamp, and later recovery must not duplicate grants.
 - Free registration credits cannot fund background replacement; paid pack and subscription usage can.
 - One completed processing job is charged once, and retained-result background changes or re-exports do not consume additional credits.
+- Every paid offer exposes the same processing and output capabilities; feature access does not vary by paid tier.
+- Transparent output accepts only `webm_vp9`, `mov_proresks`, and `mkv_vp9`, and each rendered result preserves transparency.
 - Public copy, metadata, structured data, billing UI, and backend use the same rules.
 - Webhook retries cannot duplicate credits and failed jobs do not permanently charge credits.
 - Old Creator and Studio purchase paths are removed or disabled without deleting historical billing records.
