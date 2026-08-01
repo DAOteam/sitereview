@@ -17,6 +17,8 @@ Only decisions explicitly confirmed by the user belong here.
 - Confirmed 2026-08-01: A cancellation takes effect only after the final paid period; then unused subscription-derived credits are frozen rather than deleted.
 - Confirmed 2026-08-01: Starting any monthly or annual subscription plan unfreezes all previously frozen subscription credits.
 - Confirmed 2026-08-01: Registration and purchased credits remain usable while subscription-derived credits are frozen.
+- Confirmed 2026-08-01: A failed renewal grants no new credits; existing balances remain usable only through the current paid-through timestamp.
+- Confirmed 2026-08-01: If payment is still unsuccessful at the paid-through timestamp, freeze unused subscription-derived credits. A later successful retry or new subscription unfreezes them without duplicating a period grant.
 
 ## Markets and languages
 

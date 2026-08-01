@@ -7,7 +7,7 @@ priority: "P1"
 source: "user+ai"
 created_at: "2026-07-31"
 updated_at: "2026-08-01"
-prompt_version: 3
+prompt_version: 4
 ---
 
 # BGV-0006 — Replace pricing with free credits, subscriptions, and packs
@@ -52,7 +52,6 @@ On 2026-07-31, the public pricing page still advertised recurring daily free usa
 1. Do legacy Creator/Studio subscribers keep their existing plan or migrate?
 2. Do the free credits cover both background removal and background replacement across all supported output modes?
 3. How do resolution, retention, batch upload, ProRes, and API access map to Plus and Pro?
-4. During a failed renewal or payment grace period, when exactly does the subscription become inactive and accumulated subscription credit freeze?
 
 ## Final decision
 
@@ -72,6 +71,8 @@ Confirmed on 2026-08-01:
 - Starting any monthly or annual subscription plan unfreezes all previously accumulated subscription credits.
 - Switching plans or billing cycles without an inactive gap does not freeze credits.
 - Registration and purchased one-time credits remain usable when subscription-derived credits are frozen.
+- If a renewal payment fails, do not issue a new period's credits. Existing credits remain usable only through the already-paid entitlement period.
+- At the paid-through timestamp, freeze unused subscription-derived credits if renewal has not succeeded. A later successful payment or new subscription unfreezes them without duplicating the period's credit grant.
 
 The remaining open decisions still require user confirmation. This task must not be executed yet.
 
@@ -93,6 +94,8 @@ Confirmed proposed values:
 - A scheduled cancellation leaves all credits usable through the final paid period. When that period ends, freeze only the remaining subscription-derived credits.
 - Frozen subscription credits are retained but unavailable. Starting any monthly or annual subscription plan immediately unfreezes the full frozen subscription balance.
 - Registration and one-time purchased credits remain usable even when subscription credits are frozen.
+- A failed renewal never grants new credits. Continue access only until the existing paid-through timestamp, then freeze unused subscription-derived credits if payment is still unsuccessful.
+- A later successful retry or new subscription unfreezes the frozen subscription balance and resumes grants without issuing the same period twice.
 - Starter pack: $8 / 150 credits / 2m30s / $3.20 per minute.
 - Creator pack: $25 / 600 credits / 10m / $2.50 per minute / Most popular.
 - Pro pack: $59 / 1,800 credits / 30m / $1.97 per minute.
@@ -105,7 +108,7 @@ Keep the current BGRemove visual system. Structure the pricing page as hero, fre
 
 Remove every contradictory reference to daily free clips, 24-hour free resets, Creator $19/month, Studio $49/month, and “No export credits to top up.” Synchronize visible copy, metadata, Open Graph/Twitter metadata, FAQPage JSON-LD, account and balance UI, checkout parameters, payment webhooks, API responses, tests, fixtures, and English, Spanish, Portuguese, French, and German. Do not add Japanese or Korean.
 
-Before implementation, replace every pending rule in this prompt with the final approved decision. In particular, the failed-payment and grace-period transition remains pending. If any pending rule remains, stop and report the blocker.
+Before implementation, replace every pending rule in this prompt with the final approved decision. If any pending rule remains, stop and report the blocker.
 
 Do not migrate or cancel legacy subscribers without an approved migration policy. Make payment webhook handling idempotent. Failed processing must not permanently consume credits. Do not deploy or create live payment products unless separately authorized.
 
@@ -121,6 +124,7 @@ After implementation, report the old implementation locations, changed files, pl
 - Subscription credits accrue monthly, roll over without a cap, and never expire while the subscription is active.
 - Ending the final paid period freezes only subscription-derived credits; registration and purchased credits remain available.
 - Reactivating any subscription plan restores the full frozen subscription balance exactly once.
+- Failed renewals grant no new credits; freeze occurs at the existing paid-through timestamp, and later recovery must not duplicate grants.
 - Public copy, metadata, structured data, billing UI, and backend use the same rules.
 - Webhook retries cannot duplicate credits and failed jobs do not permanently charge credits.
 - Existing customers keep access and balances until an approved migration handles them.
