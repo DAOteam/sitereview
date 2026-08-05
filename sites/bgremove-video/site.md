@@ -14,7 +14,10 @@ execution_owner: "code-execution-ai"
 
 ## Business context
 
-- Primary conversion: Register, process the first free video, then subscribe or buy credits.
+- Current strategy: BGRemove is temporarily a completely free product with no paid plans, subscriptions, credit packs, or paid upgrades.
+- Free allowance: Each account can process up to three videos per day.
+- Primary conversion: Sign in, complete a successful free video-background removal, and return for future daily usage.
+- Growth goal: Improve useful engagement, repeat visits, brand trust, and organic-search authority before introducing monetization later.
 - Audience: Video creators and editors.
 - Markets: United States, Canada, Europe, Australia and Oceania, Japan, Korea, and Singapore.
 - Current languages: English, Spanish, Portuguese, French, and German.

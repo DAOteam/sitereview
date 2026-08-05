@@ -12,6 +12,8 @@ prompt_version: 10
 
 # BGV-0006 — Replace pricing with free credits, subscriptions, and packs
 
+Historical only. Superseded on 2026-08-05 by the completely-free strategy recorded in BGV-0008. Do not execute any prompt in this file.
+
 ## Scope
 
 Pricing, free-credit copy, FAQ, account and billing UI, checkout, payment webhooks, credit ledger, metadata, structured data, and current locales.
