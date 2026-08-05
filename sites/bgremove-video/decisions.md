@@ -5,8 +5,8 @@ Only currently active decisions explicitly confirmed by the user belong above th
 ## Current free strategy
 
 - Confirmed 2026-08-05: BGRemove is temporarily positioned and operated as a completely free product.
-- Confirmed 2026-08-05: Each user receives three free video-processing uses per day.
-- Confirmed 2026-08-05: The three-use allowance is enforced over a rolling 24-hour window, not reset at a fixed calendar-day boundary.
+- Confirmed 2026-08-05: Sign-in is required to use the free allowance.
+- Confirmed 2026-08-05: The first successful processing job starts a 24-hour allowance window. Up to three successful jobs may complete within that window; failed jobs do not count. At the end of the window, the full allowance resets to three.
 - Confirmed 2026-08-05: There are no paid plans, subscriptions, one-time credit packs, paid upgrades, or other purchase options during this phase.
 - Confirmed 2026-08-05: The purpose of the free phase is to improve useful engagement, repeat visits, trust, and SEO authority before monetization is introduced later.
 - Because monetization may return later, public copy must describe the current state without promises such as “free forever,” “no card ever,” “we will never charge,” or “no plans to add.”
@@ -21,7 +21,24 @@ Only currently active decisions explicitly confirmed by the user belong above th
 ## Product
 
 - The product removes video backgrounds and exports transparent video for use in editing and compositing workflows.
-- Feature, format, resolution, duration, retention, batch, API, and background-replacement claims must be verified against the current implementation before publication.
+- Maximum input duration is 60 seconds.
+- There is no separate product-enforced file-size limit.
+- Accepted input formats are MP4, MOV, WebM, M4V, and GIF.
+- Output preserves the source video's dimensions.
+- Transparent output uses only `webm_vp9`, presented publicly as transparent WebM using VP9 with alpha.
+- Output has no watermark.
+- Source uploads and generated transparent outputs are retained for 24 hours.
+- Custom background replacement is not currently available.
+- Batch upload/processing, manual or second-pass edge refinement, API, and webhooks are not currently available.
+
+## Public content handling
+
+- Keep `/pricing/` and relabel its English purpose as `Free Access`.
+- Keep `/legal/refunds/` as a no-current-payments notice and remove its footer link.
+- Delete previous paid-product entries from the public changelog while preserving unrelated release history and non-public records.
+- Remove or hide public purchase, subscription, credit-pack, upgrade, and checkout entry points. Do not delete historical billing data or payment-provider records under BGV-0008.
+- English copy is approved for implementation. Spanish, Portuguese, French, and German must wait for separate user authorization.
+- English legal copy should be drafted from real code and data flows and marked for human legal review before merge.
 
 ## Markets and languages
 
