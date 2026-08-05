@@ -2,7 +2,7 @@
 task_id: "BGV-0002"
 site_id: "bgremove-video"
 title: "Validate homepage and tool-page cannibalization"
-status: "blocked"
+status: "superseded"
 priority: "P1"
 source: "ai"
 created_at: "2026-07-31"

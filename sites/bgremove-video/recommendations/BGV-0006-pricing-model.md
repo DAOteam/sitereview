@@ -2,7 +2,7 @@
 task_id: "BGV-0006"
 site_id: "bgremove-video"
 title: "Replace pricing with free credits, subscriptions, and packs"
-status: "approved"
+status: "superseded"
 priority: "P1"
 source: "user+ai"
 created_at: "2026-07-31"

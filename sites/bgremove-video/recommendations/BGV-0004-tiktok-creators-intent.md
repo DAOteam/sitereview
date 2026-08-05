@@ -2,7 +2,7 @@
 task_id: "BGV-0004"
 site_id: "bgremove-video"
 title: "Separate TikTok tool and creators use-case intent"
-status: "draft"
+status: "superseded"
 priority: "P2"
 source: "ai"
 created_at: "2026-07-31"

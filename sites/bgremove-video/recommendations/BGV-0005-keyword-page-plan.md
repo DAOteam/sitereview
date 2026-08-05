@@ -2,7 +2,7 @@
 task_id: "BGV-0005"
 site_id: "bgremove-video"
 title: "Keyword research and new-page plan"
-status: "draft"
+status: "superseded"
 priority: "P2"
 source: "ai"
 created_at: "2026-07-31"

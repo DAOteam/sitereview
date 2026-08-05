@@ -2,7 +2,7 @@
 task_id: "BGV-0007"
 site_id: "bgremove-video"
 title: "Improve core-page titles and metadata quality"
-status: "blocked"
+status: "superseded"
 priority: "P1"
 source: "user+ai"
 created_at: "2026-08-01"

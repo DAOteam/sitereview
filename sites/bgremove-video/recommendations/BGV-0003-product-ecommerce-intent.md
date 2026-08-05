@@ -2,7 +2,7 @@
 task_id: "BGV-0003"
 site_id: "bgremove-video"
 title: "Separate product tool and ecommerce use-case intent"
-status: "draft"
+status: "superseded"
 priority: "P2"
 source: "ai"
 created_at: "2026-07-31"
