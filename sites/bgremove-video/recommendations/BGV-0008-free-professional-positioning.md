@@ -42,7 +42,7 @@ This crawl verifies public copy, not authenticated workspace behavior. No GSC, a
 ## User proposal
 
 - Temporarily make and position BGRemove as completely free.
-- Give each user three free uses per day and offer no paid option.
+- Give each user up to three free uses in any rolling 24-hour period and offer no paid option.
 - Use the free phase to improve useful engagement, return visits, and SEO authority before introducing monetization later.
 - Remove copy that contradicts the free strategy or professional video-background-removal positioning.
 - Upgrade low-value language and remove narrow or absolute claims that restrict future development.
@@ -53,7 +53,7 @@ This crawl verifies public copy, not authenticated workspace behavior. No GSC, a
 
 Use one precise promise across the site:
 
-> BGRemove is currently free to use. Each account can remove the background from up to three videos per day, with no watermark, subscription, credit pack, or paid upgrade.
+> BGRemove is currently free to use. Each account can remove the background from up to three videos in any rolling 24-hour period, with no watermark, subscription, credit pack, or paid upgrade.
 
 Do not use `free forever`, `no card ever`, `we will never charge`, `no plans to grow`, or similar permanent promises. The business intends to monetize later, so describe the current state with words such as `currently`, `today`, and `right now` only where needed for accuracy.
 
@@ -85,7 +85,7 @@ The following English copy is the proposed source. Localize by meaning for Spani
 | `Pricing` | `Free Access` |
 | Footer link `Refunds` | Remove from the footer while no payment option exists. Keep the legal URL only if needed for an accurate no-payments notice. |
 | `Start free` | `Remove a Video Background` |
-| `Free clips every day. No watermark, no card.` | `3 free video background removals every day. No watermark, no card.` |
+| `Free clips every day. No watermark, no card.` | `3 free video background removals every 24 hours. No watermark, no card.` |
 | Generic secondary CTA `Pricing` | `See Free Access` |
 
 #### Homepage `/`
@@ -99,11 +99,11 @@ Replace:
 
 | Element/current copy | Proposed replacement |
 |---|---|
-| Meta description | `Remove video backgrounds online free with AI. Process up to 3 videos every day, export transparent video with no watermark, and pay nothing.` |
+| Meta description | `Remove video backgrounds online free with AI. Process up to 3 videos every 24 hours, export transparent video with no watermark, and pay nothing.` |
 | Hero supporting line | `AI video matting preserves motion and edge detail, then returns transparent video with a real alpha channel for your editing workflow.` |
-| `Free tier included` | `3 free videos every day` |
-| `Free clips every day, forever...` | `Process up to 3 videos every day at no cost. Download without a watermark and return when your daily allowance resets.` |
-| Free FAQ answer mentioning paid plans | `Yes. BGRemove currently has no paid plans, subscriptions, credit packs, or paid upgrades. Sign in to remove the background from up to 3 videos every day and download without a watermark.` |
+| `Free tier included` | `3 free videos every 24 hours` |
+| `Free clips every day, forever...` | `Process up to 3 videos in any rolling 24-hour period at no cost. Download without a watermark and return as your allowance becomes available again.` |
+| Free FAQ answer mentioning paid plans | `Yes. BGRemove currently has no paid plans, subscriptions, credit packs, or paid upgrades. Sign in to remove the background from up to 3 videos in any rolling 24-hour period and download without a watermark.` |
 | Format FAQ answer with paid tiers | `BGRemove returns transparent video with a real alpha channel instead of flattening your subject onto a color. Every download option currently available in the workspace is offered at no cost.` |
 | `This does one thing...` comparison answer | `Canva and Adobe are broad design suites. BGRemove is purpose-built for video background removal, using temporal context across frames to keep edges more stable through motion and returning reusable transparent video for the editor you already use.` |
 | Limitations paragraph ending `before you pay for anything` | `Hair, motion blur, and rim light are demanding edge cases that BGRemove is designed to handle. Glass, heavy overlap, and very dark footage remain challenging, so review those results carefully in your editing workflow.` |
@@ -119,11 +119,11 @@ Apply the same answers to visible FAQ and FAQPage JSON-LD.
 | Element/current copy | Proposed replacement |
 |---|---|
 | Title | `Free Video Background Remover – 3 Videos Daily | BGRemove` |
-| Meta description | `BGRemove is free to use. Remove backgrounds from up to 3 videos every day with no watermark, no card, and no paid plan or credit pack.` |
+| Meta description | `BGRemove is free to use. Remove backgrounds from up to 3 videos every 24 hours with no watermark, no card, and no paid plan or credit pack.` |
 | H1 `It is free. All of it.` | `Professional video background removal, free every day.` |
 | Opening paragraph | `Remove backgrounds from up to 3 videos per day with BGRemove’s transparent-video workflow. There is no watermark, subscription, credit pack, checkout, or paid upgrade.` |
 | `There is nothing to pay for.` | `Everything currently available in BGRemove is free to use within the daily allowance.` |
-| Paragraph mentioning designed but unopened paid plans | `The daily allowance keeps processing available to more people. It resets every day, so you can return with new footage and keep using BGRemove at no cost.` |
+| Paragraph mentioning designed but unopened paid plans | `The rolling allowance keeps processing available to more people. You can process up to 3 videos in any 24-hour period, then return as earlier uses leave that window.` |
 | `Unlimited days, no card ever` | `Use it again every day—no card required` |
 | `No per-export fee and no credits to top up` | `No subscriptions, credit packs, or checkout` |
 | H2 `This is not a demo.` | `Full-quality processing, not a restricted demo.` |
@@ -145,7 +145,7 @@ Only list features that the current free workspace actually exposes. Do not clai
 | `No controls that do not control anything` section | `Automation first, with room for refinement` |
 | Section body dismissing controls | `The current workflow automates the time-consuming first pass and returns editor-ready output. As refinement tools develop, they should solve real edge problems without adding empty controls.` |
 | `Say what it cannot do` | `Set clear expectations` |
-| `Priced against real cost` and paid-plan paragraph | `Free access with a practical daily allowance` / `BGRemove currently provides 3 free video background removals per day. The allowance keeps processing available while giving users enough room for recurring creative work.` |
+| `Priced against real cost` and paid-plan paragraph | `Free access with a practical rolling allowance` / `BGRemove currently provides up to 3 free video background removals in any rolling 24-hour period. The allowance keeps processing available while giving users room for recurring creative work.` |
 | `A small independent team` | `An independent team focused on video workflows` |
 | H2 `The claim is testable.` | `See the result in your own workflow.` |
 
@@ -162,11 +162,11 @@ Only list features that the current free workspace actually exposes. Do not clai
 | Retention answer with Creator/Studio | Replace with the single retention rule verified in the current implementation; do not mention plans or tiers. |
 | Stored-data answer mentioning plan, card, Lemon Squeezy | Describe only data the current free implementation actually stores. Remove payment-provider and billing claims if those data flows are inactive. |
 | H2 `Account and billing` | `Account and free access` |
-| Free-plan answer | `BGRemove currently gives each account 3 free video background removals per day. There is no watermark, card, subscription, credit pack, or paid upgrade.` |
+| Free-plan answer | `BGRemove currently gives each account up to 3 free video background removals in any rolling 24-hour period. There is no watermark, card, subscription, credit pack, or paid upgrade.` |
 | `How do I cancel?` | `Are there any paid plans?` |
 | Cancellation answer | `No. BGRemove currently has no paid plan or recurring subscription to cancel.` |
 | `Do you offer refunds?` | `Why is there a daily limit?` |
-| Refund answer | `Video processing uses metered infrastructure. The daily limit keeps free access available to more people and resets so you can return with new footage.` |
+| Refund answer | `Video processing uses metered infrastructure. The rolling limit keeps free access available to more people. Each use becomes available again after it leaves the 24-hour window.` |
 | `A day of free clips settles... the only question` | `Use the daily allowance on the footage you actually edit—social video, product shots, client work, or motion-heavy clips—and evaluate the result where it matters: in your workflow.` |
 
 Mirror every visible FAQ change in FAQPage JSON-LD.
@@ -209,7 +209,7 @@ Do not confuse `paid social`—a marketing channel—with a paid BGRemove plan. 
 
 Add above historical entries:
 
-> Current status: BGRemove is free to use, with 3 video background removals per account each day and no paid plans or purchase options. Older entries below describe previous product experiments and are kept as a transparent release history; they are not current offers.
+> Current status: BGRemove is free to use, with up to 3 video background removals per account in any rolling 24-hour period and no paid plans or purchase options. Older entries below describe previous product experiments and are kept as a transparent release history; they are not current offers.
 
 Do not delete or rewrite dated historical entries. Update the changelog structured data or page context only as needed to keep the current-status notice visible and indexable.
 
@@ -219,7 +219,7 @@ These are drafting directions, not legal advice, and require human legal review:
 
 - `/legal/privacy/`: remove current-payment and Lemon Squeezy collection claims only after code confirms those data flows are inactive. Describe the actual free-account and job data currently stored.
 - `/legal/refunds/`: replace the paid refund policy with a short current-status notice: `BGRemove currently does not sell subscriptions, credit packs, or paid upgrades, so there is no purchase to refund. If you believe you were charged in error, contact support@bgremove.video.` Remove the footer link unless legal review requires it.
-- `/legal/terms/`: replace `Plans, payment and quota` with `Free access and daily allowance`; describe three daily uses and remove purchase, billing-period, cancellation, paid-retention, Creator/Studio, and amount-paid liability language after legal review.
+- `/legal/terms/`: replace `Plans, payment and quota` with `Free access and rolling allowance`; describe up to three uses in any rolling 24-hour period and remove purchase, billing-period, cancellation, paid-retention, Creator/Studio, and amount-paid liability language after legal review.
 - `/legal/acceptable-use/`: replace `plan limits` with `daily usage limits`; remove `without refund` language where no payment exists.
 - Keep historical billing records or legally required disclosures out of public current-product copy unless counsel confirms they remain necessary.
 
@@ -233,23 +233,27 @@ These are drafting directions, not legal advice, and require human legal review:
 
 ## Open decisions
 
-1. Confirm whether the daily allowance resets on a rolling 24-hour window or by calendar day. Current public FAQ says rolling 24 hours; the new requirement says three uses per day.
-2. Confirm the current per-clip duration, resolution, download formats, file retention, background-replacement access, batch upload, refined-edge pass, and API availability for every free user. Public pages currently contradict one another.
-3. Confirm whether `/legal/refunds/` should remain as a no-payments notice or redirect to Terms after legal review.
-4. Obtain human legal approval for changes to Terms, Privacy, Acceptable Use, and refund-related copy.
+1. Confirm the current per-clip duration, resolution, download formats, file retention, background-replacement access, batch upload, refined-edge pass, and API availability for every free user. Public pages currently contradict one another.
+2. Confirm whether `/legal/refunds/` should remain as a no-payments notice or redirect to Terms after legal review.
+3. Obtain human legal approval for changes to Terms, Privacy, Acceptable Use, and refund-related copy.
+
+## Resolved implementation details
+
+- Confirmed by the user on 2026-08-05: Each account may process up to three videos in any rolling 24-hour period. The allowance does not reset at a fixed calendar-day boundary.
 
 ## Final decision
 
 Confirmed by the user on 2026-08-05:
 
 - BGRemove is temporarily completely free.
-- Each user receives three free uses per day.
+- Each user receives up to three free uses in any rolling 24-hour period.
+- The three-use allowance is calculated over a rolling 24-hour window rather than by calendar day.
 - There are no paid options during this phase.
 - The free strategy is intended to improve useful engagement, repeat visits, and SEO authority before later monetization.
 - Previous recommendations are superseded.
 - The audit must remove conflicting free/paid messaging, strengthen professional positioning, raise perceived value, and avoid narrow or permanent claims that restrict future development.
 
-The four implementation details listed under Open decisions remain pending. This task must not be executed until they are resolved and the status changes to `approved`.
+The three implementation details listed under Open decisions remain pending. This task must not be executed until they are resolved and the status changes to `approved`.
 
 ## Implementation prompt
 
@@ -260,7 +264,7 @@ Target repository: https://github.com/DAOteam/bgremove
 Delivery method: Pull Request. Do not deploy or merge.
 
 Goal
-Align every public BGRemove page in English, Spanish, Portuguese, German, and French with the approved current strategy: BGRemove is a professional video-background-removal tool, currently free, with three video-processing uses per user per day and no paid plans, subscriptions, credit packs, paid upgrades, or purchase path.
+Align every public BGRemove page in English, Spanish, Portuguese, German, and French with the approved current strategy: BGRemove is a professional video-background-removal tool, currently free, with up to three video-processing uses per account in any rolling 24-hour period and no paid plans, subscriptions, credit packs, paid upgrades, or purchase path.
 
 Scope boundary
 This task changes public copy, SEO metadata, derived social metadata, visible navigation/footer/CTA labels, and corresponding FAQPage/HowTo/WebApplication structured data. It does not authorize changes to processing entitlements, authentication, payment code, databases, infrastructure, or deployment. If product behavior conflicts with the final approved copy, stop and report the conflict instead of changing behavior or publishing inaccurate copy.
@@ -268,7 +272,7 @@ This task changes public copy, SEO metadata, derived social metadata, visible na
 Before editing
 1. Read BGV-0008 Final decision, the resolved Open decisions, site.md, and decisions.md.
 2. Inspect the current repository sources for every public route and shared localized component.
-3. Verify current free-user behavior for daily reset, per-clip duration, resolution, formats, retention, background replacement, batch, refinement, and API before using any feature claim.
+3. Verify current free-user behavior for the rolling allowance, per-clip duration, resolution, formats, retention, background replacement, batch, refinement, and API before using any feature claim.
 4. Build a before-change inventory for all 80 sitemap URLs, including title, meta description, visible paid/tier language, navigation/footer labels, and JSON-LD strings.
 5. If the code exposes any active purchase path or if authenticated behavior contradicts “no paid option,” stop and record a separate blocker; do not silently rewrite product logic in this copy task.
 
@@ -292,7 +296,7 @@ Verification
 4. Search active current-product pages for old terms and localized equivalents: paid plan, subscription, price, pricing, purchase, checkout, credit pack, Creator, Studio, Lemon Squeezy, cancellation, paid retention, and refund. Every remaining match must be justified as changelog history, legal necessity, paid-social context, or a clearly identified third-party comparison.
 5. Search for the prohibited low-value and permanent phrases listed above and their localized equivalents.
 6. Confirm the homepage title remains exactly `Remove Video Background Online Free - No Watermark`.
-7. Confirm public copy says three daily uses without claiming unlimited use or permanent free access.
+7. Confirm public copy accurately says up to three uses in any rolling 24-hour period, does not imply a fixed calendar-day reset, and does not claim unlimited use or permanent free access.
 8. Confirm no unverified feature, format, resolution, retention, batch, API, background replacement, or quality claim was introduced.
 9. Include a before/after table, remaining-search-match explanations, commands, and results in the Pull Request and execution result.
 
@@ -304,7 +308,7 @@ Do not deploy, publish, merge, add Japanese/Korean, change product logic, or exe
 - All 80 public sitemap URLs consistently describe the current free strategy in their own locale.
 - No active current-product page implies BGRemove has a paid plan, purchase path, subscription, credit pack, or paid upgrade.
 - Shared navigation and footer use `Free Access` or a natural localized equivalent instead of `Pricing`.
-- The homepage and free-access page clearly state three free video-background removals per day, no watermark, and no current paid option.
+- The homepage and free-access page clearly state up to three free video-background removals in any rolling 24-hour period, no watermark, and no current paid option.
 - The exact homepage title remains unchanged.
 - Visible FAQ, metadata, Open Graph/Twitter derivatives, and structured data do not contradict one another.
 - Old paid-plan changelog entries are clearly marked historical rather than deleted.

@@ -6,6 +6,7 @@ Only currently active decisions explicitly confirmed by the user belong above th
 
 - Confirmed 2026-08-05: BGRemove is temporarily positioned and operated as a completely free product.
 - Confirmed 2026-08-05: Each user receives three free video-processing uses per day.
+- Confirmed 2026-08-05: The three-use allowance is enforced over a rolling 24-hour window, not reset at a fixed calendar-day boundary.
 - Confirmed 2026-08-05: There are no paid plans, subscriptions, one-time credit packs, paid upgrades, or other purchase options during this phase.
 - Confirmed 2026-08-05: The purpose of the free phase is to improve useful engagement, repeat visits, trust, and SEO authority before monetization is introduced later.
 - Because monetization may return later, public copy must describe the current state without promises such as “free forever,” “no card ever,” “we will never charge,” or “no plans to add.”
