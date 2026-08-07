@@ -17,6 +17,10 @@ Only currently active decisions explicitly confirmed by the user belong above th
 - Its value should be expressed through concrete workflow benefits such as temporal consistency, stable edges, transparent output, reusable assets, and compatibility with editing and compositing workflows.
 - Public copy must not describe the product as small, boring, low-value, a demo, merely a test, or a tool with no intention to grow.
 - Public copy must not unnecessarily restrict future background, editing, refinement, output, workflow, or integration capabilities.
+- Confirmed 2026-08-07: English marketing copy should be confident, outcome-led, and desire-generating rather than restrained or overly rational.
+- Lead with the reusable transparent result and professional workflow value; present free access as the final risk-reversal rather than the product's only value.
+- Headlines may be bold, but body copy must substantiate them with confirmed capabilities and must not invent proof, performance, quality, or compatibility claims.
+- The homepage H1 is locked exactly as `Remove video background online. Free, no watermark.` All other English marketing copy may change within approved product facts and scope.
 
 ## Product
 

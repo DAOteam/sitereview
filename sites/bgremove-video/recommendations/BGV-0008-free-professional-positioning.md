@@ -6,8 +6,8 @@ status: "approved"
 priority: "P0"
 source: "user+ai"
 created_at: "2026-08-05"
-updated_at: "2026-08-05"
-prompt_version: 2
+updated_at: "2026-08-07"
+prompt_version: 3
 ---
 
 # BGV-0008 — Align the English public site with free professional positioning
@@ -38,6 +38,24 @@ Public crawl performed on 2026-08-05 after the user reported that part of the fr
 - No execution result exists for the former paid-model task BGV-0006. BGV-0001 through BGV-0007 were marked `superseded` before this audit continued.
 
 This crawl verifies public copy, not authenticated workspace behavior. No GSC, analytics, ranking, CTR, or engagement claim is made.
+
+Follow-up public crawl performed on 2026-08-07 after part of the prior copy direction appeared online:
+
+- The homepage title and H1 are now correct and must remain unchanged.
+- `/about/` still says `BGRemove is the boring middle`, `There is nothing clever about the product`, `The claim is testable`, and `Everything on this page is words`.
+- `/pricing/` still lists unavailable `Refined edge pass`, `Batch upload`, and `API access` features.
+- The shared Organization JSON-LD still says `WebM and ProRes 4444 out` across English pages.
+- `/tools/product-video-background-remover/` says batch upload can process forty SKUs, while its FAQ correctly says BGRemove processes one video at a time.
+- `/tools/tiktok-background-remover/` still describes dedicated matting as `Paid, and worth it`, conflicting with the current free position.
+- `/use-cases/`, `/use-cases/creators/`, and `/use-cases/ecommerce/` still reuse `Batch the clips` copy.
+- `/use-cases/agencies/` metadata still claims batch upload, API access, ProRes 4444, and priority queue access; its visible copy also overemphasizes `first pass` and `Finish by hand`.
+- `/use-cases/ecommerce/` metadata and body still claim ProRes 4444 output.
+- `/changelog/` still describes a seconds budget, 720p/1080p tiers, ProRes 4444, matte-only files, and PNG sequences, which do not describe the current product.
+- Shared CTAs still say `Free clips every day`, which obscures the confirmed anchored 24-hour allowance window.
+- `/how-it-works/` still uses dismissive copy such as `Cheap, and it looks it` and `a tool nobody finishes onboarding`.
+- `/tools/green-screen-alternative/` makes overly absolute claims including `Works wherever you filmed` and `Outside those, the cloth is legacy`.
+
+The user clarified on 2026-08-07 that the preferred tone is marketing-forward rather than restrained or overly rational. Copy should create desire by leading with the outcome and transformation, then substantiate it with real product capabilities. The user explicitly locked the homepage H1; all other English marketing copy may change within the confirmed facts and scope.
 
 ## User proposal
 
@@ -84,7 +102,7 @@ The user approved the following English copy direction on 2026-08-05. Do not loc
 |---|---|
 | `Pricing` | `Free Access` |
 | Footer link `Refunds` | Remove from the footer while no payment option exists. Keep the legal URL only if needed for an accurate no-payments notice. |
-| `Start free` | `Remove a Video Background` |
+| `Start free` | `Remove My Video Background` |
 | `Free clips every day. No watermark, no card.` | `3 free video background removals per 24-hour allowance window. No watermark, no card.` |
 | Generic secondary CTA `Pricing` | `See Free Access` |
 
@@ -100,7 +118,7 @@ Replace:
 | Element/current copy | Proposed replacement |
 |---|---|
 | Meta description | `Remove video backgrounds online free with AI. Process up to 3 videos per 24-hour allowance window and export transparent WebM video with no watermark.` |
-| Hero supporting line | `AI video matting preserves motion and edge detail, then returns transparent video with a real alpha channel for your editing workflow.` |
+| Hero supporting line | `Remove the background, keep the motion, and export a reusable transparent video with a real alpha channel—ready for your editing workflow.` |
 | `Free tier included` | `3 free videos per 24-hour window` |
 | `Free clips every day, forever...` | `Your first successful video starts a 24-hour allowance window. Process up to 3 videos during that window at no cost; when it ends, all 3 uses reset.` |
 | Free FAQ answer mentioning paid plans | `Yes. BGRemove currently has no paid plans, subscriptions, credit packs, or paid upgrades. Sign in to process up to 3 videos per 24-hour allowance window and download without a watermark.` |
@@ -109,8 +127,8 @@ Replace:
 | Limitations paragraph ending `before you pay for anything` | `Hair, motion blur, and rim light are demanding edge cases that BGRemove is designed to handle. Glass, heavy overlap, and very dark footage remain challenging, so review those results carefully in your editing workflow.` |
 | Sign-in answer with vague allowance | `An account keeps jobs associated with you, supports access across devices, and makes the 3-video allowance reliable. Your first successful video starts the 24-hour window; failed jobs do not count.` |
 | `There is deliberately no background library here...` | `The transparent result can be placed over colors, images, or footage in your editor and reused across multiple versions instead of baking one background into the file.` |
-| `Try it on your worst clip.` | `Test it on real footage.` |
-| `today’s free one costs you nothing` | `Use one of your 3 free videos on footage with real motion, hair, or a busy background and judge the transparent result in your own workflow.` |
+| `Try it on your worst clip.` | `Your next transparent video is one upload away.` |
+| `today’s free one costs you nothing` | `Turn real footage into a reusable transparent video with stable motion edges and a real alpha channel.` |
 
 Apply the same answers to visible FAQ and FAQPage JSON-LD.
 
@@ -120,7 +138,7 @@ Apply the same answers to visible FAQ and FAQPage JSON-LD.
 |---|---|
 | Title | `Free Video Background Remover – 3 Videos per 24 Hours | BGRemove` |
 | Meta description | `BGRemove is free to use. Remove backgrounds from up to 3 videos per 24-hour allowance window with no watermark, card, or paid plan.` |
-| H1 `It is free. All of it.` | `Professional video background removal, free to use.` |
+| H1 `It is free. All of it.` | `Professional video cutouts. Free to use.` |
 | Opening paragraph | `Sign in to remove backgrounds from up to 3 videos during a 24-hour allowance window. There is no watermark, subscription, credit pack, checkout, or paid upgrade.` |
 | `There is nothing to pay for.` | `Everything currently available in BGRemove is free to use within the 24-hour allowance.` |
 | Paragraph mentioning designed but unopened paid plans | `Your first successful video starts the 24-hour window. Complete up to 3 successful jobs before it ends; failed jobs do not count. When the window ends, the full allowance resets to 3.` |
@@ -136,7 +154,7 @@ Use the confirmed product facts in this recommendation. Do not claim batch uploa
 | Current | Proposed replacement |
 |---|---|
 | Meta description | `Meet BGRemove, a professional AI video background remover built for stable edges, transparent output, and real editing workflows.` |
-| H1 `A narrow tool, built on purpose.` | `Professional video background removal, built for real workflows.` |
+| H1 `A narrow tool, built on purpose.` | `Professional video matting, without the production overhead.` |
 | `does one job... no plans to grow any` | `BGRemove turns footage into reusable transparent video for creators, editors, ecommerce teams, and agencies. The current workflow stays focused and fast while the product continues to grow around real production needs.` |
 | `BGRemove is the boring middle... nothing clever about the product` | `BGRemove connects licensed temporal-matting technology to a production-ready workflow: secure upload, dependable processing, and transparent files that open in the tools professionals already use.` |
 | `Four positions we are not going to move on` | `Principles guiding the product today` |
@@ -147,7 +165,7 @@ Use the confirmed product facts in this recommendation. Do not claim batch uploa
 | `Say what it cannot do` | `Set clear expectations` |
 | `Priced against real cost` and paid-plan paragraph | `Free access with a practical allowance` / `BGRemove currently provides up to 3 successful video background removals per 24-hour allowance window. The full allowance resets when the window ends.` |
 | `A small independent team` | `An independent team focused on video workflows` |
-| H2 `The claim is testable.` | `See the result in your own workflow.` |
+| H2 `The claim is testable.` | `See what your footage can become.` |
 
 #### FAQ `/faq/`
 
@@ -167,7 +185,7 @@ Use the confirmed product facts in this recommendation. Do not claim batch uploa
 | Cancellation answer | `No. BGRemove currently has no paid plan or recurring subscription to cancel.` |
 | `Do you offer refunds?` | `How does the 24-hour allowance work?` |
 | Refund answer | `Video processing uses metered infrastructure. The 3-video allowance keeps free access available to more people. Your first successful video starts a 24-hour window, and the full allowance resets when that window ends.` |
-| `A day of free clips settles... the only question` | `Use the free allowance on the footage you actually edit—social video, product shots, client work, or motion-heavy clips—and evaluate the result where it matters: in your workflow.` |
+| `A day of free clips settles... the only question` | `Turn the footage you already edit—social video, product shots, client work, or motion-heavy clips—into a reusable transparent layer for the work that comes next.` |
 
 Mirror every visible FAQ change in FAQPage JSON-LD.
 
@@ -186,7 +204,7 @@ Mirror every visible FAQ change in FAQPage JSON-LD.
 | Format/tier cards | Show only `Transparent WebM (VP9 with alpha)` with no Creator, Studio, or tier labels. State that output preserves the source video's dimensions. |
 | `the only way those edges ever look right` | `Per-pixel alpha preserves partial transparency around hair, motion blur, and semi-transparent fabric instead of forcing every edge into a hard cutout.` |
 | `there is nothing for you to adjust... more controls would not have saved it` | `Upload your clip, follow the processing status, and download a transparent result. The current workflow prioritizes fast automatic matting and editor-ready output, with room for meaningful refinement tools as the product develops.` |
-| `Reading about a matte proves nothing.` | `See temporal video matting on your own footage.` |
+| `Reading about a matte proves nothing.` | `Keep the subject. Remove the setup.` |
 
 Synchronize the HowTo JSON-LD with the verified output-format copy.
 
@@ -204,6 +222,117 @@ Synchronize the HowTo JSON-LD with the verified output-format copy.
 | `/use-cases/agencies/`: Studio/batch/API claims | `Prepare transparent source files for client edits, campaign variants, and compositing handoffs.` Do not claim batch processing or API access. |
 
 Do not confuse `paid social`—a marketing channel—with a paid BGRemove plan. It may remain when the context is unambiguous.
+
+### Approved marketing-forward revision — 2026-08-07
+
+This section supersedes earlier replacement wording wherever the two overlap. The product facts, safety boundaries, English-only scope, and legal-review requirements remain unchanged.
+
+#### Voice and conversion hierarchy
+
+- Use a confident, marketing-forward, outcome-led voice rather than a restrained product-manual voice.
+- Lead with what the user creates: a reusable transparent video asset with stable motion edges and a real alpha channel.
+- Follow with the professional workflow value: reuse across edits, backgrounds, placements, campaigns, and client deliverables in the user's editor.
+- Use the free allowance last as the risk-reversal and action trigger, not as the product's main identity.
+- Headlines may be bold and memorable. Body copy must stay concrete and support the headline with confirmed capabilities.
+- Do not weaken desire with repeated `test it`, `check whether it works`, `decide with your eyes`, or demo-like framing. Use `create`, `turn`, `keep`, `reuse`, `build`, and `download` instead.
+- Do not invent speed, quality, compatibility, customer, or performance proof. Avoid `best`, `perfect`, `every time`, `works anywhere`, and unsupported competitor pricing claims.
+
+#### Locked homepage elements
+
+Do not change either value, including capitalization or punctuation:
+
+- SEO title: `Remove Video Background Online Free - No Watermark`
+- H1: `Remove video background online. Free, no watermark.`
+
+All other English homepage marketing copy may change within this recommendation.
+
+#### Shared conversion copy
+
+| Element | Approved copy |
+|---|---|
+| Primary CTA | `Remove My Video Background` |
+| Secondary product CTA | `See How It Works` |
+| Free-access CTA | `See Free Access` |
+| Compact allowance line | `3 free videos per 24-hour allowance window. No watermark. No card.` |
+| Final CTA heading | `Your next transparent video is one upload away.` |
+| Final CTA body | `Turn real footage into a reusable transparent video with stable motion edges and a real alpha channel.` |
+| Final CTA button | `Create My Transparent Video` |
+| Organization JSON-LD description | `BGRemove turns video into reusable transparent WebM with VP9 alpha for editing and compositing workflows.` |
+
+#### Homepage copy below the locked H1
+
+| Element/current issue | Approved replacement |
+|---|---|
+| Hero supporting line | `Remove the background, keep the motion, and export a reusable transparent video with a real alpha channel—ready for your editing workflow.` |
+| `Why BGRemove is the best free video background remover` | `Built for motion. Ready for the edit.` |
+| Value heading 1 | `Keep the motion. Lose the background.` |
+| Value body 1 | `Temporal video matting follows your subject across frames, helping hair, motion blur, and fine edges stay more consistent as the video moves.` |
+| Value heading 2 | `Real transparency, not a baked-in backdrop.` |
+| Value body 2 | `Export transparent WebM with VP9 alpha, then choose the background later in your editor instead of locking it into the file.` |
+| Value heading 3 | `One cutout. Every version you need.` |
+| Value body 3 | `Reuse the transparent result across social clips, product placements, campaign variants, screen recordings, and client edits without processing the source again.` |
+| Canva/Adobe subscription comparison | Remove the changing pricing claim. Replace with: `BGRemove is purpose-built for video matting. It carries context across frames and returns a reusable transparent layer instead of treating each frame like a separate image.` |
+| Background-replacement FAQ | `BGRemove does not currently replace backgrounds inside the app. It exports transparent WebM video that you can place over a color, image, or video in your editor and reuse across multiple versions.` |
+
+#### Free Access `/pricing/`
+
+| Element/current issue | Approved replacement |
+|---|---|
+| H1 | `Professional video cutouts. Free to use.` |
+| Opening | `Turn up to 3 videos per 24-hour allowance window into reusable transparent assets. No watermark, no subscription, no checkout, and no better version held behind a paywall.` |
+| Value heading | `The full result, not a teaser.` |
+| Value body | `Every successful job returns the same transparent WebM output with VP9 alpha and the source video's dimensions preserved. The allowance limits volume, not output quality.` |
+| Feature list | `Videos up to 60 seconds`; `Source dimensions preserved`; `Transparent WebM with VP9 alpha`; `No watermark`; `Files retained for 24 hours`; `3 successful jobs per 24-hour allowance window` |
+| False feature list | Delete `Refined edge pass`, `Batch upload`, and `API access`. |
+
+#### About `/about/`
+
+| Element/current issue | Approved replacement |
+|---|---|
+| H1 | `Professional video matting, without the production overhead.` |
+| Opening | `BGRemove turns advanced temporal matting into a workflow creators and editors can use immediately: upload the footage, let the model follow the subject through motion, and download a reusable transparent video ready for the edit.` |
+| `boring middle` / `nothing clever` paragraph | `BGRemove connects licensed temporal-matting technology with the workflow that makes it useful: secure upload, managed processing, clear job status, and transparent WebM output ready for editing and compositing.` |
+| Mission heading | `The fastest path from raw footage to a reusable transparent asset.` |
+| `The claim is testable` | `See what your footage can become.` |
+| `Everything on this page is words...` | `Start with the footage you already have and turn it into a transparent layer you can use across the work that comes next.` |
+
+#### How It Works `/how-it-works/`
+
+| Element/current issue | Approved replacement |
+|---|---|
+| H1 | `From raw footage to a reusable transparent layer.` |
+| Opening | `Four automated stages follow the subject through motion, preserve partial transparency at the edge, and encode the result into a format that keeps its alpha channel.` |
+| `a tool nobody finishes onboarding` | `Automatic subject detection removes the need to draw a first-frame mask before processing can begin.` |
+| `Cheap, and it looks it` | `Lower processing cost, but prone to visible frame-to-frame inconsistency.` |
+| Final heading | `Keep the subject. Remove the setup.` |
+| Final body | `Upload real footage and download a transparent result ready to become the next layer in your edit.` |
+
+#### Tool and use-case headlines
+
+| Page | Approved headline/direction |
+|---|---|
+| `/tools/green-screen-alternative/` | H1: `Skip the setup. Keep the transparent cutout.` Reframe green screen as valuable for controlled and live workflows; position BGRemove as the flexible alternative for existing, location, handheld, and creator footage. Remove `legacy`, `works wherever`, and other absolute claims. |
+| `/tools/product-video-background-remover/` | H1: `Cut the product out once. Use it across every placement.` Remove the forty-SKU batch claim. Emphasize reusable transparent product assets for listings, brand pages, seasonal campaigns, and paid social. |
+| `/tools/remove-background-from-video/` | Keep the existing H1 if it remains `Remove the background from a video, keep the alpha channel.` Strengthen the supporting copy around reversibility and reuse. |
+| `/tools/tiktok-background-remover/` | H1: `Keep the motion. Lose the room.` Replace `Paid, and worth it` with `Transparent output you can reuse across the editing workflow—currently available within the free allowance.` |
+| `/use-cases/` | H1: `One transparent video. More ways to use it.` Replace all batch and ten-second copy with the confirmed one-video-at-a-time, 60-second workflow. |
+| `/use-cases/agencies/` | H1: `Spend less time tracing frames. Put more time into the edit.` Position automated matting as a production accelerator, not a low-value rough pass. Remove batch/API/ProRes/priority claims. |
+| `/use-cases/creators/` | Keep `Put yourself over the thing you are talking about.` Remove reused agency batch copy and emphasize transparent overlays for screen recordings, reactions, tutorials, and short-form edits. |
+| `/use-cases/ecommerce/` | H1: `One shoot. Every placement.` Remove ProRes and batch claims. Emphasize one transparent product asset reused across listings, brand pages, seasonal creative, and advertising. |
+
+#### Contact and support tone
+
+| Current | Approved replacement |
+|---|---|
+| `Write to a person.` | `Talk to the team behind the tool.` |
+| `Without the footage there is nothing to diagnose` | `Include the job ID and, when you are comfortable sharing it, the source clip so the team can investigate the edge behavior in context.` |
+| `anything a lawyer wrote` | `Privacy, data-access, deletion, and other legal requests.` |
+
+#### Changelog trust repair
+
+- Add a latest current-product entry that states the confirmed 3-job anchored allowance window, 60-second input limit, source-dimension output, transparent `webm_vp9` only, no watermark, and 24-hour retention.
+- Mark older entries containing 720p, 1080p, seconds-budget, ProRes, matte-only, or PNG-sequence claims as `Historical configuration — no longer current`, or remove the obsolete capability bullets if the changelog is intentionally curated rather than exhaustive.
+- Change metadata promising `Every release` to `Selected product updates` because previous paid-product entries have been intentionally removed.
 
 #### Changelog `/changelog/`
 
@@ -265,8 +394,10 @@ Confirmed by the user on 2026-08-05:
 - English is approved for implementation now. Existing localized versions are deferred.
 - Previous paid-related public changelog entries should be deleted.
 - Public purchase and checkout entry points should be removed or hidden.
+- Confirmed 2026-08-07: English marketing copy should be confident, outcome-led, and desire-generating rather than restrained or overly rational. Lead with the reusable transparent result and professional workflow value; use free access as the final risk-reversal.
+- Confirmed 2026-08-07: The homepage H1 must remain exactly `Remove video background online. Free, no watermark.` All other English marketing copy may change within the confirmed facts and approved scope.
 
-All implementation decisions are resolved. The user approved the English copy direction and execution scope on 2026-08-05.
+All implementation decisions are resolved. The user approved the English execution scope on 2026-08-05 and the marketing-forward copy revision on 2026-08-07.
 
 ## Implementation prompt
 
@@ -275,7 +406,7 @@ Target repository: https://github.com/DAOteam/bgremove
 Delivery method: Pull Request. Do not deploy or merge.
 
 Goal
-Align every English public BGRemove page with the approved current strategy: BGRemove is a professional video-background-removal tool that is currently free. A signed-in account may complete up to three successful processing jobs in a 24-hour allowance window that starts with its first successful job. Failed jobs do not count, and the full allowance resets to three when the window ends. There are no paid plans, subscriptions, credit packs, paid upgrades, or public purchase paths.
+Align every English public BGRemove page with the approved current strategy and marketing voice: BGRemove is a professional video-background-removal tool that turns footage into reusable transparent assets for editing and compositing workflows, and is currently free. A signed-in account may complete up to three successful processing jobs in a 24-hour allowance window that starts with its first successful job. Failed jobs do not count, and the full allowance resets to three when the window ends. There are no paid plans, subscriptions, credit packs, paid upgrades, or public purchase paths.
 
 Scope boundary
 This task changes English public copy, SEO metadata, derived social metadata, visible navigation/footer/CTA labels, corresponding FAQPage/HowTo/WebApplication structured data, and public purchase/checkout entry points. It does not authorize changing allowance logic, processing entitlements, authentication, databases, infrastructure, payment-provider products, billing records, or deployment. If current behavior conflicts with the confirmed product facts below, stop and report the conflict instead of changing core behavior or publishing inaccurate copy.
@@ -301,7 +432,7 @@ Before editing
 5. Identify every publicly reachable purchase, subscription, credit-pack, upgrade, and checkout entry point. Remove or hide it so a user cannot reach a paid offer. Preserve dormant backend code, historical billing records, and payment-provider records unless a separate approved task authorizes changes.
 
 Required copy changes
-1. Apply the approved English replacement matrix in BGV-0008.
+1. Apply the `Approved marketing-forward revision — 2026-08-07` in BGV-0008. It takes precedence over earlier replacement wording wherever they overlap.
 2. Change English only. Do not modify Spanish, Portuguese, French, or German content, metadata, structured data, or labels, even when they share components.
 3. Change the English `Pricing` label to `Free Access`; keep the existing `/pricing/` URL.
 4. Remove current BGRemove plan, subscription, checkout, credit-pack, purchase, cancellation, refund, Creator, Studio, and paid-tier claims from active marketing pages, metadata, and structured data.
@@ -314,6 +445,10 @@ Required copy changes
 11. Use the confirmed facts exactly: 60 seconds, no separate product file-size cap, source dimensions preserved, the five accepted input formats, `webm_vp9` only, no watermark, 24-hour retention, login required, and no background replacement/batch/refinement/API/webhooks.
 12. Keep `/legal/refunds/`, replace it with the approved no-current-payments notice, and remove its footer link.
 13. Draft the other English legal changes from actual code and data flows. Mark them for human legal review before merge; do not invent data practices or remove factual disclosures without verification.
+14. Preserve the homepage SEO title exactly as `Remove Video Background Online Free - No Watermark` and the homepage H1 exactly as `Remove video background online. Free, no watermark.` Do not change capitalization or punctuation.
+15. Use a confident, marketing-forward conversion hierarchy: desired result first, professional workflow value second, concrete product proof third, and the free allowance as the final risk-reversal.
+16. Replace demo-like repetition (`test it`, `check whether it works`, `decide with your eyes`) with action and creation language where the meaning allows it. Do not remove accurate limitation and FAQ content; keep it subordinate to the primary value proposition.
+17. Remove the current live residuals documented in the 2026-08-07 crawl, including unavailable features on `/pricing/`, ProRes in Organization JSON-LD and ecommerce copy, batch/API/priority claims, `Paid, and worth it`, obsolete Changelog capabilities, and self-deprecating About/How-it-works copy.
 
 Verification
 1. Run relevant content, type, and build checks.
@@ -322,9 +457,11 @@ Verification
 4. Search active English current-product pages for: paid plan, subscription, price, pricing, purchase, checkout, credit pack, Creator, Studio, Lemon Squeezy, cancellation, paid retention, and refund. Every remaining match must be justified as legal necessity, paid-social context, or a clearly identified third-party comparison. Previous paid-product changelog matches are not allowed.
 5. Search for the prohibited low-value and permanent phrases listed above.
 6. Confirm the homepage title remains exactly `Remove Video Background Online Free - No Watermark`.
-7. Confirm copy accurately describes the anchored 24-hour allowance window and full reset; it must not imply calendar-day reset or per-use rolling restoration.
-8. Confirm the exact feature limits in Confirmed product facts and that no unsupported feature or quality claim was introduced.
-9. Include a before/after table, remaining-search-match explanations, commands, and results in the Pull Request and execution result.
+7. Confirm the homepage H1 remains exactly `Remove video background online. Free, no watermark.`
+8. Confirm copy accurately describes the anchored 24-hour allowance window and full reset; it must not imply calendar-day reset or per-use rolling restoration.
+9. Confirm the exact feature limits in Confirmed product facts and that no unsupported feature or quality claim was introduced.
+10. Confirm primary headings, supporting copy, and CTAs lead with the user outcome and reusable professional asset rather than presenting BGRemove mainly as a free test or demo.
+11. Include a before/after table, remaining-search-match explanations, commands, and results in the Pull Request and execution result.
 
 Do not deploy, publish, merge, localize non-English pages, add Japanese/Korean, change core product logic, delete billing/provider records, or execute any superseded recommendation.
 ```
@@ -336,12 +473,15 @@ Do not deploy, publish, merge, localize non-English pages, add Japanese/Korean, 
 - English navigation uses `Free Access` instead of `Pricing`; the `/pricing/` URL remains unchanged.
 - The homepage and free-access page clearly explain the 3-use anchored 24-hour allowance window, full reset, no watermark, and no current paid option.
 - The exact homepage title remains unchanged.
+- The homepage H1 remains exactly `Remove video background online. Free, no watermark.` with identical capitalization and punctuation.
 - Visible FAQ, metadata, Open Graph/Twitter derivatives, and structured data do not contradict one another.
 - Previous paid-product changelog entries are removed from the public changelog; unrelated release history remains.
 - `/legal/refunds/` remains available at its URL with the approved no-current-payments notice but is removed from the footer.
 - Draft legal copy accurately reflects current code and data flows and is clearly marked for human legal review before merge.
 - No active copy describes BGRemove as narrow, boring, low-value, merely a demo/test, permanently limited, or unwilling to grow.
 - Professional positioning is supported by concrete workflow value without invented proof or unsupported features.
+- English headlines and CTAs are marketing-forward, outcome-led, and action-oriented; free access supports conversion without becoming the product's only value proposition.
+- Copy does not repeatedly frame the product as something users merely test, check, or evaluate before doing real work.
 - No copy promises permanent free access or blocks future monetization.
 - MP4, MOV, WebM, M4V, and GIF inputs; 60-second duration; no separate file-size cap; source-dimension output; `webm_vp9`; no watermark; login requirement; and 24-hour retention are stated accurately where relevant.
 - No page claims custom background replacement, batch processing, manual/second-pass refinement, API access, or webhooks are currently available.
