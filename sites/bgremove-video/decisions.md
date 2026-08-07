@@ -53,6 +53,10 @@ Only currently active decisions explicitly confirmed by the user belong above th
 
 - The recommendation AI outputs prompts and does not modify the website.
 - The code execution AI may execute only recommendations with `status: "approved"`.
+- Confirmed 2026-08-07: The public production site at `https://bgremove.video/` is the only source of truth for website audits and implementation verification.
+- Do not inspect or use `DAOteam/bgremove` to infer current online copy, implementation status, or reasons that a public page has or has not changed.
+- Do not infer production status from recommendation files, result files, commits, branches, or Pull Requests. Verify the relevant public URL directly.
+- The user reports that code is maintained and published through a separate direct-to-production workflow; this establishes the audit evidence boundary but does not itself change the recommendation repository's execution gate or authorize this AI to publish.
 
 ## Superseded decisions
 

@@ -33,3 +33,10 @@ execution_owner: "code-execution-ai"
 - Code changes must be delivered through a Pull Request; direct commits to the default branch are not allowed.
 - The execution AI may act only on tasks with `status: "approved"`.
 - Deployment, billing-product creation, and production configuration require separate authorization.
+
+## Audit evidence boundary
+
+- The current public production site at `https://bgremove.video/` is the only source of truth for content audits and implementation verification.
+- Do not inspect or use `DAOteam/bgremove` to infer what is online, whether a recommendation has been implemented, or why a public page has not changed.
+- Do not infer production status from recommendation/result files, commits, branches, or Pull Requests; fetch and inspect the relevant public URL.
+- The user reports that code is maintained and published through a separate direct-to-production workflow. This establishes the audit evidence boundary but does not itself change the execution gate above or authorize the recommendation AI to publish.

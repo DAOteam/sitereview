@@ -7,7 +7,7 @@ priority: "P0"
 source: "user+ai"
 created_at: "2026-08-05"
 updated_at: "2026-08-07"
-prompt_version: 3
+prompt_version: 4
 ---
 
 # BGV-0008 — Align the English public site with free professional positioning
@@ -56,6 +56,40 @@ Follow-up public crawl performed on 2026-08-07 after part of the prior copy dire
 - `/tools/green-screen-alternative/` makes overly absolute claims including `Works wherever you filmed` and `Outside those, the cloth is legacy`.
 
 The user clarified on 2026-08-07 that the preferred tone is marketing-forward rather than restrained or overly rational. Copy should create desire by leading with the outcome and transformation, then substantiate it with real product capabilities. The user explicitly locked the homepage H1; all other English marketing copy may change within the confirmed facts and scope.
+
+### Online-only re-audit — 2026-08-07
+
+Evidence boundary confirmed by the user:
+
+- The current public production site at `https://bgremove.video/` is the only source of truth for website audits and implementation verification.
+- Do not inspect or use `DAOteam/bgremove` to decide what is currently online, whether a recommendation has been implemented, or why public content has or has not changed.
+- Do not infer online implementation status from recommendation files, result files, branches, commits, or Pull Requests.
+- Code is maintained and published through the user's separate direct-to-production workflow. This recommendation repository stores change advice; it is not evidence of current production content.
+
+The online-only crawl fetched 15 English marketing pages successfully and inspected their visible copy, title, meta description, and JSON-LD. It reconfirmed:
+
+- The homepage SEO title and H1 are correct and locked.
+- Shared Organization JSON-LD still claims `WebM and ProRes 4444 out`.
+- `/pricing/` still lists unavailable `Refined edge pass`, `Batch upload`, and `API access`.
+- `/about/` still contains `boring middle`, `nothing clever`, `The claim is testable`, and `Everything on this page is words`.
+- `/how-it-works/` still contains `a tool nobody finishes onboarding` and `Cheap, and it looks it`.
+- `/tools/product-video-background-remover/` contradicts itself by promoting batch upload for forty SKUs while its FAQ says one video at a time.
+- `/tools/tiktok-background-remover/` still says dedicated matting is `Paid, and worth it`.
+- `/use-cases/`, `/use-cases/creators/`, and `/use-cases/ecommerce/` still reuse unavailable batch-processing copy.
+- `/use-cases/agencies/` metadata still claims batch upload, API, ProRes 4444, and priority queue; visible copy still makes the result sound like a low-value rough pass.
+- `/use-cases/ecommerce/` metadata and visible copy still claim ProRes 4444.
+- `/faq/` calls the allowance `rolling`, which can imply per-use restoration. The confirmed behavior is one anchored 24-hour window started by the first successful job, followed by a full reset to three.
+- `/changelog/` still presents seconds-budget, 720p, 1080p, ProRes 4444, matte-only, PNG-sequence, and old ten-second configuration as public product history without a clear current-state correction.
+- Shared calls to action still say `Free clips every day`, obscuring the anchored 24-hour allowance and repeatedly framing BGRemove as something to test rather than a tool for real work.
+- The homepage still uses unsupported or overly broad wording including `best free`, changing Canva/Adobe subscription claims, and `Shoot against any wall`.
+- `/tools/green-screen-alternative/` still uses absolute claims including `Works wherever you filmed` and `Outside those, the cloth is legacy`.
+
+Strong current copy to preserve unless a surrounding edit requires a minimal grammatical adjustment:
+
+- Homepage H1: `Remove video background online. Free, no watermark.`
+- `/tools/remove-background-from-video/` H1: `Remove the background from a video, keep the alpha channel.`
+- `/use-cases/creators/` H1: `Put yourself over the thing you are talking about.`
+- `/tools/product-video-background-remover/` H1: `Cut the product out once, use it on every surface.`
 
 ## User proposal
 
@@ -312,7 +346,7 @@ All other English homepage marketing copy may change within this recommendation.
 | Page | Approved headline/direction |
 |---|---|
 | `/tools/green-screen-alternative/` | H1: `Skip the setup. Keep the transparent cutout.` Reframe green screen as valuable for controlled and live workflows; position BGRemove as the flexible alternative for existing, location, handheld, and creator footage. Remove `legacy`, `works wherever`, and other absolute claims. |
-| `/tools/product-video-background-remover/` | H1: `Cut the product out once. Use it across every placement.` Remove the forty-SKU batch claim. Emphasize reusable transparent product assets for listings, brand pages, seasonal campaigns, and paid social. |
+| `/tools/product-video-background-remover/` | Keep the current H1 exactly as `Cut the product out once, use it on every surface.` Remove the forty-SKU batch claim. Emphasize reusable transparent product assets for listings, brand pages, seasonal campaigns, and paid social. |
 | `/tools/remove-background-from-video/` | Keep the existing H1 if it remains `Remove the background from a video, keep the alpha channel.` Strengthen the supporting copy around reversibility and reuse. |
 | `/tools/tiktok-background-remover/` | H1: `Keep the motion. Lose the room.` Replace `Paid, and worth it` with `Transparent output you can reuse across the editing workflow—currently available within the free allowance.` |
 | `/use-cases/` | H1: `One transparent video. More ways to use it.` Replace all batch and ten-second copy with the confirmed one-video-at-a-time, 60-second workflow. |
@@ -330,7 +364,12 @@ All other English homepage marketing copy may change within this recommendation.
 
 #### Changelog trust repair
 
-- Add a latest current-product entry that states the confirmed 3-job anchored allowance window, 60-second input limit, source-dimension output, transparent `webm_vp9` only, no watermark, and 24-hour retention.
+- Add this latest current-product entry above older releases:
+
+  > Current free access
+  >
+  > Signed-in accounts can complete up to 3 successful video background removals per 24-hour allowance window. Each video can be up to 60 seconds long. Output preserves the source dimensions and is delivered as watermark-free transparent WebM using VP9 with alpha. Source files and generated results are retained for 24 hours.
+
 - Mark older entries containing 720p, 1080p, seconds-budget, ProRes, matte-only, or PNG-sequence claims as `Historical configuration — no longer current`, or remove the obsolete capability bullets if the changelog is intentionally curated rather than exhaustive.
 - Change metadata promising `Every release` to `Selected product updates` because previous paid-product entries have been intentionally removed.
 
@@ -411,6 +450,11 @@ Align every English public BGRemove page with the approved current strategy and 
 Scope boundary
 This task changes English public copy, SEO metadata, derived social metadata, visible navigation/footer/CTA labels, corresponding FAQPage/HowTo/WebApplication structured data, and public purchase/checkout entry points. It does not authorize changing allowance logic, processing entitlements, authentication, databases, infrastructure, payment-provider products, billing records, or deployment. If current behavior conflicts with the confirmed product facts below, stop and report the conflict instead of changing core behavior or publishing inaccurate copy.
 
+Production evidence boundary
+- Use the current public pages at https://bgremove.video/ as the only source of truth for what is online and what still needs correction.
+- Do not use DAOteam/bgremove, repository history, recommendation status, result files, commits, branches, or Pull Requests as evidence of deployed content or implementation status.
+- Before changing copy, fetch the relevant public English URL and record the exact current title, meta description, visible text, and JSON-LD.
+
 Confirmed product facts
 - Sign-in is required.
 - The first successful job starts the 24-hour allowance window.
@@ -432,7 +476,7 @@ Before editing
 5. Identify every publicly reachable purchase, subscription, credit-pack, upgrade, and checkout entry point. Remove or hide it so a user cannot reach a paid offer. Preserve dormant backend code, historical billing records, and payment-provider records unless a separate approved task authorizes changes.
 
 Required copy changes
-1. Apply the `Approved marketing-forward revision — 2026-08-07` in BGV-0008. It takes precedence over earlier replacement wording wherever they overlap.
+1. Apply the `Online-only re-audit — 2026-08-07` and `Approved marketing-forward revision — 2026-08-07` in BGV-0008. The online-only findings and later marketing wording take precedence over earlier replacement wording wherever they overlap.
 2. Change English only. Do not modify Spanish, Portuguese, French, or German content, metadata, structured data, or labels, even when they share components.
 3. Change the English `Pricing` label to `Free Access`; keep the existing `/pricing/` URL.
 4. Remove current BGRemove plan, subscription, checkout, credit-pack, purchase, cancellation, refund, Creator, Studio, and paid-tier claims from active marketing pages, metadata, and structured data.
@@ -449,6 +493,7 @@ Required copy changes
 15. Use a confident, marketing-forward conversion hierarchy: desired result first, professional workflow value second, concrete product proof third, and the free allowance as the final risk-reversal.
 16. Replace demo-like repetition (`test it`, `check whether it works`, `decide with your eyes`) with action and creation language where the meaning allows it. Do not remove accurate limitation and FAQ content; keep it subordinate to the primary value proposition.
 17. Remove the current live residuals documented in the 2026-08-07 crawl, including unavailable features on `/pricing/`, ProRes in Organization JSON-LD and ecommerce copy, batch/API/priority claims, `Paid, and worth it`, obsolete Changelog capabilities, and self-deprecating About/How-it-works copy.
+18. Preserve the four strong current headings listed in `Online-only re-audit — 2026-08-07`, including the locked homepage H1. Do not weaken them merely for stylistic consistency.
 
 Verification
 1. Run relevant content, type, and build checks.
@@ -462,6 +507,7 @@ Verification
 9. Confirm the exact feature limits in Confirmed product facts and that no unsupported feature or quality claim was introduced.
 10. Confirm primary headings, supporting copy, and CTAs lead with the user outcome and reusable professional asset rather than presenting BGRemove mainly as a free test or demo.
 11. Include a before/after table, remaining-search-match explanations, commands, and results in the Pull Request and execution result.
+12. After publication through the user's normal workflow, verify the public production URLs directly. Do not mark a finding resolved based only on local or repository content.
 
 Do not deploy, publish, merge, localize non-English pages, add Japanese/Korean, change core product logic, delete billing/provider records, or execute any superseded recommendation.
 ```
