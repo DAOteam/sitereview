@@ -3,9 +3,10 @@ site_id: "bgremove-video"
 task_prefix: "BGV"
 name: "BGRemove"
 production_url: "https://bgremove.video/"
-target_repository: "https://github.com/DAOteam/bgremove"
-default_branch: "main"
-delivery_method: "pull_request"
+target_repository: "not_applicable"
+default_branch: "not_applicable"
+delivery_method: "direct_publish"
+audit_source: "public_production"
 recommendation_owner: "website-growth-ai"
 execution_owner: "code-execution-ai"
 ---
@@ -29,14 +30,16 @@ execution_owner: "code-execution-ai"
 ## Execution boundary
 
 - Recommendations live in this repository.
-- Website source code repository: `https://github.com/DAOteam/bgremove`.
-- Code changes must be delivered through a Pull Request; direct commits to the default branch are not allowed.
+- The programming AI uses its own current production-connected code environment and publishes approved changes directly.
+- `DAOteam/bgremove` is not used for execution handoff, implementation-state checks, or production verification.
+- The programming AI does not create Pull Requests or write execution-result files to this recommendation repository for BGRemove.
 - The execution AI may act only on tasks with `status: "approved"`.
-- Deployment, billing-product creation, and production configuration require separate authorization.
+- Direct publication is authorized only for the exact scope of an approved recommendation whose implementation prompt allows publication. Billing-product creation and unrelated production configuration still require separate authorization.
 
 ## Audit evidence boundary
 
 - The current public production site at `https://bgremove.video/` is the only source of truth for content audits and implementation verification.
 - Do not inspect or use `DAOteam/bgremove` to infer what is online, whether a recommendation has been implemented, or why a public page has not changed.
 - Do not infer production status from recommendation/result files, commits, branches, or Pull Requests; fetch and inspect the relevant public URL.
-- The user reports that code is maintained and published through a separate direct-to-production workflow. This establishes the audit evidence boundary but does not itself change the execution gate above or authorize the recommendation AI to publish.
+- The user confirms that code is maintained and published through a separate direct-to-production workflow. The recommendation AI never publishes; it verifies the next public version directly.
+- At each audit, compare the latest approved recommendation item by item with current public pages. Omit verified items from the next scope, and carry unimplemented or partially implemented items into the next `prompt_version` under the same task ID.

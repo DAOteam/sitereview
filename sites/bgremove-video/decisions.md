@@ -42,7 +42,7 @@ Only currently active decisions explicitly confirmed by the user belong above th
 - Delete previous paid-product entries from the public changelog while preserving unrelated release history and non-public records.
 - Remove or hide public purchase, subscription, credit-pack, upgrade, and checkout entry points. Do not delete historical billing data or payment-provider records under BGV-0008.
 - English copy is approved for implementation. Spanish, Portuguese, French, and German must wait for separate user authorization.
-- English legal copy should be drafted from real code and data flows and marked for human legal review before merge.
+- English legal copy should be drafted from real code and data flows and receive human legal review before publication.
 
 ## Markets and languages
 
@@ -53,10 +53,13 @@ Only currently active decisions explicitly confirmed by the user belong above th
 
 - The recommendation AI outputs prompts and does not modify the website.
 - The code execution AI may execute only recommendations with `status: "approved"`.
+- Confirmed 2026-08-07: The programming AI publishes approved BGRemove changes directly through its existing production-connected environment and does not write a result file, Pull Request, Commit link, or other execution feedback to this repository.
 - Confirmed 2026-08-07: The public production site at `https://bgremove.video/` is the only source of truth for website audits and implementation verification.
 - Do not inspect or use `DAOteam/bgremove` to infer current online copy, implementation status, or reasons that a public page has or has not changed.
 - Do not infer production status from recommendation files, result files, commits, branches, or Pull Requests. Verify the relevant public URL directly.
-- The user reports that code is maintained and published through a separate direct-to-production workflow; this establishes the audit evidence boundary but does not itself change the recommendation repository's execution gate or authorize this AI to publish.
+- At every new audit, compare each item in the latest approved recommendation with the live site. Exclude verified items from the next execution scope; carry unimplemented items and the unresolved portion of partially implemented items into the next version.
+- Keep the same task ID for this continuing scope and increment `prompt_version` after each live re-audit. Mark it `verified` only after every acceptance criterion is confirmed on the public site.
+- The recommendation AI remains read-only toward the website and is not authorized to publish.
 
 ## Superseded decisions
 

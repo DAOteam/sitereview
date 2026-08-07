@@ -7,7 +7,7 @@ priority: "P0"
 source: "user+ai"
 created_at: "2026-08-05"
 updated_at: "2026-08-07"
-prompt_version: 4
+prompt_version: 5
 ---
 
 # BGV-0008 — Align the English public site with free professional positioning
@@ -16,7 +16,7 @@ prompt_version: 4
 
 The 20 English public URLs in the 2026-08-05 sitemap, plus English navigation, footer, calls to action, metadata, Open Graph/Twitter fields when derived from SEO metadata, FAQ/HowTo/WebApplication structured data, and the five English legal pages. Spanish, Portuguese, German, and French are explicitly deferred until the user approves a later localization task.
 
-This is primarily a public-copy alignment task. It also authorizes removing or hiding public purchase, subscription, credit-pack, upgrade, and checkout entry points so users cannot reach a paid offer. It does not authorize changing processing entitlements, deleting billing records, deleting payment-provider products, modifying databases, or deploying.
+This is primarily a public-copy alignment task. It also authorizes removing or hiding public purchase, subscription, credit-pack, upgrade, and checkout entry points so users cannot reach a paid offer. It authorizes the programming AI to publish only these approved English copy, metadata, structured-data, label, and public-entry-point changes through its existing production-connected workflow. It does not authorize changing processing entitlements, deleting billing records, deleting payment-provider products, modifying databases, or unrelated production configuration.
 
 ## Current facts and evidence
 
@@ -83,6 +83,14 @@ The online-only crawl fetched 15 English marketing pages successfully and inspec
 - Shared calls to action still say `Free clips every day`, obscuring the anchored 24-hour allowance and repeatedly framing BGRemove as something to test rather than a tool for real work.
 - The homepage still uses unsupported or overly broad wording including `best free`, changing Canva/Adobe subscription claims, and `Shoot against any wall`.
 - `/tools/green-screen-alternative/` still uses absolute claims including `Works wherever you filmed` and `Outside those, the cloth is legacy`.
+
+### Direct-publication verification loop — confirmed 2026-08-07
+
+- The programming AI publishes the approved scope directly through its own production-connected environment.
+- It does not write a result file, Pull Request, Commit link, or other execution feedback to this recommendation repository.
+- A later audit must request the public URLs again and compare every item in this prompt with current production.
+- Items verified online are removed from the next execution scope. Unimplemented items and only the unresolved remainder of partially implemented items are carried into the next version under task ID `BGV-0008`.
+- Each refreshed execution scope increments `prompt_version`. The task becomes `verified` only when all acceptance criteria are confirmed on the public site.
 
 Strong current copy to preserve unless a surrounding edit requires a minimal grammatical adjustment:
 
@@ -389,7 +397,7 @@ These are drafting directions, not legal advice, and require human legal review:
 
 ### Language rules
 
-- Change English only in this Pull Request.
+- Change English only in this direct publication.
 - Do not change Spanish, Portuguese, German, or French copy, metadata, structured data, navigation labels, or legal content. The user will authorize localization after the English implementation is complete.
 - Do not add Japanese or Korean.
 - Preserve `paid social` and third-party subscription comparisons when the subject is clearly not a BGRemove paid offer.
@@ -411,7 +419,7 @@ These are drafting directions, not legal advice, and require human legal review:
 - Delete previous paid-plan entries from the public changelog.
 - Remove or hide public purchase, subscription, credit-pack, upgrade, and checkout entry points. Do not delete historical billing data or provider records.
 - English copy is approved. Do not update Spanish, Portuguese, French, or German until separately authorized.
-- Draft English legal copy from the real code and data flows, and mark it for human legal review before merge.
+- Draft English legal copy from the real code and data flows, and mark it for human legal review before publication.
 - The approved positioning emphasizes professional temporal consistency, motion edges, alpha output, reusable transparent assets, and editing/compositing workflows.
 - Avoid permanent promises including `free forever`, `we will never charge`, and `no plans to grow`.
 
@@ -441,14 +449,14 @@ All implementation decisions are resolved. The user approved the English executi
 ## Implementation prompt
 
 ```text
-Target repository: https://github.com/DAOteam/bgremove
-Delivery method: Pull Request. Do not deploy or merge.
+Delivery method: direct_publish.
+Use the programming AI's existing production-connected code environment. Do not inspect or use DAOteam/bgremove for this task. After the required checks pass, publish only the approved scope directly. Do not create a Pull Request or write an execution-result file, Commit link, or other feedback into the recommendation repository.
 
 Goal
 Align every English public BGRemove page with the approved current strategy and marketing voice: BGRemove is a professional video-background-removal tool that turns footage into reusable transparent assets for editing and compositing workflows, and is currently free. A signed-in account may complete up to three successful processing jobs in a 24-hour allowance window that starts with its first successful job. Failed jobs do not count, and the full allowance resets to three when the window ends. There are no paid plans, subscriptions, credit packs, paid upgrades, or public purchase paths.
 
 Scope boundary
-This task changes English public copy, SEO metadata, derived social metadata, visible navigation/footer/CTA labels, corresponding FAQPage/HowTo/WebApplication structured data, and public purchase/checkout entry points. It does not authorize changing allowance logic, processing entitlements, authentication, databases, infrastructure, payment-provider products, billing records, or deployment. If current behavior conflicts with the confirmed product facts below, stop and report the conflict instead of changing core behavior or publishing inaccurate copy.
+This task changes and publishes English public copy, SEO metadata, derived social metadata, visible navigation/footer/CTA labels, corresponding FAQPage/HowTo/WebApplication structured data, and public purchase/checkout entry points. It does not authorize changing allowance logic, processing entitlements, authentication, databases, infrastructure, payment-provider products, billing records, or unrelated production configuration. If current behavior conflicts with the confirmed product facts below, stop and report the conflict instead of changing core behavior or publishing inaccurate copy.
 
 Production evidence boundary
 - Use the current public pages at https://bgremove.video/ as the only source of truth for what is online and what still needs correction.
@@ -470,7 +478,7 @@ Confirmed product facts
 
 Before editing
 1. Read BGV-0008 Final decision, Resolved implementation details, site.md, and decisions.md.
-2. Inspect the current repository sources for all 20 English public routes and any shared component an English change would touch.
+2. Inspect the current production-connected code workspace for all 20 English public routes and any shared component an English change would touch. Do not use `DAOteam/bgremove`.
 3. Verify the confirmed facts against code. If allowance, processing, retention, or authentication behavior conflicts, stop and record a blocker rather than changing product behavior in this task.
 4. Build a before-change inventory for the 20 English sitemap URLs, including title, meta description, visible paid/tier language, navigation/footer labels, and JSON-LD strings.
 5. Identify every publicly reachable purchase, subscription, credit-pack, upgrade, and checkout entry point. Remove or hide it so a user cannot reach a paid offer. Preserve dormant backend code, historical billing records, and payment-provider records unless a separate approved task authorizes changes.
@@ -488,7 +496,7 @@ Required copy changes
 10. Make visible FAQ and FAQPage JSON-LD answers identical in meaning. Synchronize HowTo and WebApplication JSON-LD with visible current copy.
 11. Use the confirmed facts exactly: 60 seconds, no separate product file-size cap, source dimensions preserved, the five accepted input formats, `webm_vp9` only, no watermark, 24-hour retention, login required, and no background replacement/batch/refinement/API/webhooks.
 12. Keep `/legal/refunds/`, replace it with the approved no-current-payments notice, and remove its footer link.
-13. Draft the other English legal changes from actual code and data flows. Mark them for human legal review before merge; do not invent data practices or remove factual disclosures without verification.
+13. Draft the other English legal changes from actual code and data flows. Mark them for human legal review before publication; do not invent data practices or remove factual disclosures without verification. If that review is not available, leave those legal changes unpublished and report them as a blocker without blocking unrelated approved marketing copy.
 14. Preserve the homepage SEO title exactly as `Remove Video Background Online Free - No Watermark` and the homepage H1 exactly as `Remove video background online. Free, no watermark.` Do not change capitalization or punctuation.
 15. Use a confident, marketing-forward conversion hierarchy: desired result first, professional workflow value second, concrete product proof third, and the free allowance as the final risk-reversal.
 16. Replace demo-like repetition (`test it`, `check whether it works`, `decide with your eyes`) with action and creation language where the meaning allows it. Do not remove accurate limitation and FAQ content; keep it subordinate to the primary value proposition.
@@ -498,7 +506,7 @@ Required copy changes
 Verification
 1. Run relevant content, type, and build checks.
 2. Render or crawl all 20 English sitemap URLs from a production-like build.
-3. Confirm English navigation, title/meta, visible copy, and structured data are aligned. Confirm non-English routes were not changed by this Pull Request.
+3. Confirm English navigation, title/meta, visible copy, and structured data are aligned. Confirm non-English routes were not changed by this publication.
 4. Search active English current-product pages for: paid plan, subscription, price, pricing, purchase, checkout, credit pack, Creator, Studio, Lemon Squeezy, cancellation, paid retention, and refund. Every remaining match must be justified as legal necessity, paid-social context, or a clearly identified third-party comparison. Previous paid-product changelog matches are not allowed.
 5. Search for the prohibited low-value and permanent phrases listed above.
 6. Confirm the homepage title remains exactly `Remove Video Background Online Free - No Watermark`.
@@ -506,10 +514,10 @@ Verification
 8. Confirm copy accurately describes the anchored 24-hour allowance window and full reset; it must not imply calendar-day reset or per-use rolling restoration.
 9. Confirm the exact feature limits in Confirmed product facts and that no unsupported feature or quality claim was introduced.
 10. Confirm primary headings, supporting copy, and CTAs lead with the user outcome and reusable professional asset rather than presenting BGRemove mainly as a free test or demo.
-11. Include a before/after table, remaining-search-match explanations, commands, and results in the Pull Request and execution result.
-12. After publication through the user's normal workflow, verify the public production URLs directly. Do not mark a finding resolved based only on local or repository content.
+11. Keep a before/after inventory and remaining-search-match explanations while working so the publication can be checked, but do not write them back to the recommendation repository.
+12. Publish the approved changes through the existing direct-to-production workflow after checks pass. Do not mark a finding resolved based only on local content; the recommendation AI will verify the public URLs during the next audit.
 
-Do not deploy, publish, merge, localize non-English pages, add Japanese/Korean, change core product logic, delete billing/provider records, or execute any superseded recommendation.
+Do not localize non-English pages, add Japanese/Korean, change core product logic, delete billing/provider records, alter unrelated production configuration, or execute any superseded recommendation. Direct publication is authorized only for the approved scope above.
 ```
 
 ## Acceptance criteria
@@ -523,7 +531,7 @@ Do not deploy, publish, merge, localize non-English pages, add Japanese/Korean, 
 - Visible FAQ, metadata, Open Graph/Twitter derivatives, and structured data do not contradict one another.
 - Previous paid-product changelog entries are removed from the public changelog; unrelated release history remains.
 - `/legal/refunds/` remains available at its URL with the approved no-current-payments notice but is removed from the footer.
-- Draft legal copy accurately reflects current code and data flows and is clearly marked for human legal review before merge.
+- Draft legal copy accurately reflects current code and data flows and receives human legal review before publication.
 - No active copy describes BGRemove as narrow, boring, low-value, merely a demo/test, permanently limited, or unwilling to grow.
 - Professional positioning is supported by concrete workflow value without invented proof or unsupported features.
 - English headlines and CTAs are marketing-forward, outcome-led, and action-oriented; free access supports conversion without becoming the product's only value proposition.
@@ -532,7 +540,8 @@ Do not deploy, publish, merge, localize non-English pages, add Japanese/Korean, 
 - MP4, MOV, WebM, M4V, and GIF inputs; 60-second duration; no separate file-size cap; source-dimension output; `webm_vp9`; no watermark; login requirement; and 24-hour retention are stated accurately where relevant.
 - No page claims custom background replacement, batch processing, manual/second-pass refinement, API access, or webhooks are currently available.
 - Spanish, Portuguese, French, and German are unchanged; Japanese and Korean are not added.
-- Relevant build and content checks pass, and the Pull Request contains a complete before/after inventory.
+- Relevant build and content checks pass before direct publication.
+- Final completion is determined only by a later live audit of the public URLs. Any unimplemented or partially implemented item is carried into the next `prompt_version` under `BGV-0008`.
 
 ## Out of scope
 
@@ -542,4 +551,4 @@ Do not deploy, publish, merge, localize non-English pages, add Japanese/Korean, 
 - New pages, URL migrations, redirects, keyword-expansion pages, or site redesign.
 - GSC/ranking conclusions without data.
 - Any non-English localization.
-- Deployment, publishing, or merging.
+- Unrelated deployment, infrastructure, or production-configuration changes outside the approved direct-publication scope.
