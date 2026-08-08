@@ -6,8 +6,8 @@ status: "approved"
 priority: "P0"
 source: "user+ai"
 created_at: "2026-08-05"
-updated_at: "2026-08-07"
-prompt_version: 5
+updated_at: "2026-08-08"
+prompt_version: 6
 ---
 
 # BGV-0008 — Align the English public site with free professional positioning
@@ -91,6 +91,34 @@ The online-only crawl fetched 15 English marketing pages successfully and inspec
 - A later audit must request the public URLs again and compare every item in this prompt with current production.
 - Items verified online are removed from the next execution scope. Unimplemented items and only the unresolved remainder of partially implemented items are carried into the next version under task ID `BGV-0008`.
 - Each refreshed execution scope increments `prompt_version`. The task becomes `verified` only when all acceptance criteria are confirmed on the public site.
+
+### Live verification — 2026-08-08
+
+The current public production site was re-crawled from the live Sitemap. All 20 English public URLs returned HTTP 200 after retrying one transient TLS failure. Titles, meta descriptions, canonical URLs, Open Graph fields, H1s, public links, and JSON-LD were checked from the live HTML. No source repository or execution result was used.
+
+Classification against prompt version 5:
+
+#### `verified_online`
+
+- `/`: locked SEO title and H1 remain exact; the positioning, allowance explanation, navigation, footer, FAQ meaning, and Organization JSON-LD are aligned.
+- `/about/`, `/contact/`, `/faq/`, `/how-it-works/`, `/pricing/`, `/legal/cookies/`, and `/legal/refunds/` match the approved current positioning closely enough to pass this task.
+- `/use-cases/`, `/use-cases/creators/`, and `/use-cases/ecommerce/` no longer contain the old batch, ProRes, paid-tier, or low-value positioning claims.
+- `/changelog/` now contains a dated `Current free access` entry with the correct allowance, duration, output, watermark, dimensions, and retention. Older incompatible configurations are explicitly marked `Historical configuration — no longer current`; previous paid-product entries are absent. This satisfies the approved changelog option and must not be reworked in version 6.
+- Shared English navigation uses `Free Access`; the global footer no longer links to Refunds; no public checkout, subscription, credit-pack, purchase, billing, or upgrade URL was found.
+- The old Organization JSON-LD ProRes claim, unavailable feature claims, self-deprecating About/How-It-Works copy, permanent-free promises, and Green Screen absolute claims were not found on current live pages.
+
+#### `still_open`
+
+- `/legal/privacy/` still publishes `Creator` 30-day and `Studio` 90-day upload/output retention tiers, contradicting the current single 24-hour retention rule.
+- `/legal/terms/` still says users should test the free tier `before purchasing`, refers to circumventing `plan limits`, retains Creator/Studio retention tiers, and bases part of the liability cap on `the amount you paid us`.
+- `/legal/acceptable-use/` still says there is `no refund`, refers to a `refund of unused allowance`, and implies a current `documented API` even though no API is currently available.
+- `/tools/green-screen-alternative/`, `/tools/product-video-background-remover/`, `/tools/remove-background-from-video/`, and `/tools/tiktok-background-remover/` still share the demo-like sentence `decide with your eyes instead of a comparison table someone else wrote`.
+
+#### `partially_applied`
+
+- `/use-cases/agencies/` has the approved H1, metadata, and professional framing, but the heading `Finish by hand` and its `fix the three shots ... instead of all forty` copy still place unnecessary emphasis on a rough first pass and use arbitrary numbers.
+
+No item was classified `no_longer_relevant`. Version 6 execution is limited to the unresolved items above. Already verified pages must not be rewritten for stylistic consistency.
 
 Strong current copy to preserve unless a surrounding edit requires a minimal grammatical adjustment:
 
@@ -447,6 +475,66 @@ Confirmed by the user on 2026-08-05:
 All implementation decisions are resolved. The user approved the English execution scope on 2026-08-05 and the marketing-forward copy revision on 2026-08-07.
 
 ## Implementation prompt
+
+```text
+Delivery method: direct_publish.
+This is BGV-0008 prompt version 6. Execute only the remaining live issues listed below. Do not repeat or reinterpret the archived version 5 scope, and do not modify pages classified `verified_online` except when one shared component must change to fix an explicitly listed URL.
+
+Use the programming AI's existing production-connected code environment. Do not inspect or use DAOteam/bgremove. After relevant checks and any required human legal review pass, publish only this residual scope. Do not create a Pull Request or write an execution result to the recommendation repository.
+
+Production evidence boundary
+- Before editing, fetch each listed public URL and confirm the quoted residual text still exists.
+- The live site is the only evidence of implementation. Skip an item that is already compliant at execution time.
+- Preserve the homepage title exactly as `Remove Video Background Online Free - No Watermark` and the homepage H1 exactly as `Remove video background online. Free, no watermark.`
+- Do not change Spanish, Portuguese, French, or German content, and do not add Japanese or Korean.
+
+Required residual changes
+
+1. Shared final CTA on these four tool pages only:
+   - `/tools/green-screen-alternative/`
+   - `/tools/product-video-background-remover/`
+   - `/tools/remove-background-from-video/`
+   - `/tools/tiktok-background-remover/`
+   Replace the demo-like `decide with your eyes instead of a comparison table someone else wrote` block with:
+   - Heading: `Your next transparent video is one upload away.`
+   - Body: `Turn real footage into a reusable transparent video with stable motion edges and a real alpha channel.`
+   - Allowance line: `3 free videos per 24-hour allowance window. No watermark. No card.`
+   Preserve the existing approved CTA buttons unless the shared component requires the already approved labels `Remove My Video Background` and `Free Access`.
+
+2. `/use-cases/agencies/`:
+   - Replace heading `Finish by hand` with `Refine only what needs it.`
+   - Replace the sentence using arbitrary `three shots` and `all forty` numbers with: `Move the transparent result into your compositing workflow, review complex occlusion and hero shots, and spend manual time only where the edge needs extra attention.`
+   - Preserve the current approved H1 and metadata.
+
+3. `/legal/privacy/` — draft from verified current data flows and obtain human legal review before publication:
+   - Remove the obsolete `Creator` 30-day and `Studio` 90-day upload/output retention rows.
+   - State one current rule: `Uploaded footage and generated transparent output — 24 hours.`
+   - Keep historical invoice/tax-record language only if those records are still actually retained and the disclosure remains legally necessary; do not present it as evidence of a current paid product.
+
+4. `/legal/terms/` — draft from verified current behavior and obtain human legal review before publication:
+   - Replace the instruction to test the free tier `before purchasing` with: `Results depend on the source footage. Review generated output before relying on it in a production workflow.`
+   - Replace `plan limits` with `24-hour usage limits`.
+   - Replace the plan-based retention section with: `Uploaded footage and generated transparent output are retained for 24 hours, then deleted. You may delete files sooner from your library. Retention is not backup; download anything you need to keep.`
+   - Replace the amount-paid liability sentence with this draft, subject to human legal approval: `To the maximum extent permitted by law, our total liability arising out of or relating to the service is limited to USD 100.`
+
+5. `/legal/acceptable-use/` — obtain human legal review before publication:
+   - Replace `Automated access outside the documented API, including scraping the interface.` with `Automated access to the service or scraping the interface without written authorization.`
+   - Remove `There is no appeal and no refund.` Use `There is no appeal.`
+   - Replace `Termination for a serious breach does not entitle you to a refund of unused allowance.` with `Termination for a serious breach immediately ends access to the service and any remaining allowance.`
+
+Verification before publication
+1. Run the relevant content, type, and build checks.
+2. Crawl all 20 English Sitemap URLs to ensure the shared change introduces no regression.
+3. Confirm the three legal pages no longer contain obsolete Creator/Studio retention, purchase, plan-limit, refund, or documented-API wording.
+4. Confirm the four tool pages no longer contain `decide with your eyes` and Agency no longer contains `Finish by hand` or the arbitrary three-versus-forty claim.
+5. Confirm all English pages still have valid title, meta description, canonical, H1, and JSON-LD; no public paid entry point appears.
+6. Confirm non-English pages are unchanged.
+7. Publish the approved residual scope directly. Do not mark the task verified; the recommendation AI will perform the next live audit.
+
+Do not change product logic, allowance behavior, authentication, databases, payment-provider records, infrastructure, non-English content, already verified marketing pages, or unrelated copy.
+```
+
+## Archived version 5 implementation prompt — do not execute
 
 ```text
 Delivery method: direct_publish.
