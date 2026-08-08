@@ -7,7 +7,7 @@ priority: "P0"
 source: "user+ai"
 created_at: "2026-08-05"
 updated_at: "2026-08-08"
-prompt_version: 6
+prompt_version: 7
 ---
 
 # BGV-0008 — Align the English public site with free professional positioning
@@ -151,7 +151,7 @@ Keep `/pricing/` temporarily to avoid an unnecessary URL migration, but relabel 
 
 Delete previous paid-plan launch entries from the public changelog, as explicitly directed by the user. Do not delete operational records, invoices, payment records, or source-control history.
 
-Treat legal pages as fact-sensitive. Draft replacements are included below, but any Terms, Privacy, Acceptable Use, or refund-related change requires a human legal review before publication.
+Treat legal pages as fact-sensitive. Draft replacements are included below. On 2026-08-08, the user explicitly removed the human-legal-review requirement; the programming AI may publish the approved English legal changes after verifying current code, data flows, retention behavior, and product rules. It must not invent legal obligations or data practices.
 
 ### Finding categories
 
@@ -415,13 +415,13 @@ Delete public changelog entries whose subject is a previous paid plan, subscript
 
 #### English legal pages
 
-These are drafting directions, not legal advice, and require human legal review:
+These are drafting directions, not legal advice. The user confirmed on 2026-08-08 that human legal review is not required before publication:
 
 - `/legal/privacy/`: remove current-payment and Lemon Squeezy collection claims only after code confirms those data flows are inactive. Describe the actual free-account and job data currently stored.
 - `/legal/refunds/`: retain the URL but replace the paid refund policy with: `BGRemove currently does not sell subscriptions, credit packs, or paid upgrades, so there is no purchase to refund. If you believe you were charged in error, contact support@bgremove.video.` Remove its footer link.
-- `/legal/terms/`: replace `Plans, payment and quota` with `Free access and 24-hour allowance`; describe the confirmed window and reset behavior and remove purchase, billing-period, cancellation, paid-retention, Creator/Studio, and amount-paid liability language after legal review.
+- `/legal/terms/`: replace `Plans, payment and quota` with `Free access and 24-hour allowance`; describe the confirmed window and reset behavior and remove purchase, billing-period, cancellation, paid-retention, Creator/Studio, and amount-paid liability language.
 - `/legal/acceptable-use/`: replace `plan limits` with `24-hour usage limits`; remove `without refund` language where no payment exists.
-- Keep historical billing records or legally required disclosures out of public current-product copy unless counsel confirms they remain necessary.
+- Keep historical billing records or legally required disclosures out of public current-product copy unless verified current retention and legal obligations require them.
 
 ### Language rules
 
@@ -447,7 +447,7 @@ These are drafting directions, not legal advice, and require human legal review:
 - Delete previous paid-plan entries from the public changelog.
 - Remove or hide public purchase, subscription, credit-pack, upgrade, and checkout entry points. Do not delete historical billing data or provider records.
 - English copy is approved. Do not update Spanish, Portuguese, French, or German until separately authorized.
-- Draft English legal copy from the real code and data flows, and mark it for human legal review before publication.
+- Draft and publish English legal copy from verified current code, data flows, retention behavior, and approved product rules. Human legal review is not required under the user's 2026-08-08 decision.
 - The approved positioning emphasizes professional temporal consistency, motion edges, alpha output, reusable transparent assets, and editing/compositing workflows.
 - Avoid permanent promises including `free forever`, `we will never charge`, and `no plans to grow`.
 
@@ -471,16 +471,17 @@ Confirmed by the user on 2026-08-05:
 - Public purchase and checkout entry points should be removed or hidden.
 - Confirmed 2026-08-07: English marketing copy should be confident, outcome-led, and desire-generating rather than restrained or overly rational. Lead with the reusable transparent result and professional workflow value; use free access as the final risk-reversal.
 - Confirmed 2026-08-07: The homepage H1 must remain exactly `Remove video background online. Free, no watermark.` All other English marketing copy may change within the confirmed facts and approved scope.
+- Confirmed 2026-08-08: The remaining English Privacy, Terms, and Acceptable Use changes do not require human legal review before direct publication. The programming AI must still verify factual data and product behavior and must not invent legal obligations.
 
-All implementation decisions are resolved. The user approved the English execution scope on 2026-08-05 and the marketing-forward copy revision on 2026-08-07.
+All implementation decisions are resolved. The user approved the English execution scope on 2026-08-05, the marketing-forward copy revision on 2026-08-07, and removal of the human-legal-review requirement for the remaining English legal pages on 2026-08-08.
 
 ## Implementation prompt
 
 ```text
 Delivery method: direct_publish.
-This is BGV-0008 prompt version 6. Execute only the remaining live issues listed below. Do not repeat or reinterpret the archived version 5 scope, and do not modify pages classified `verified_online` except when one shared component must change to fix an explicitly listed URL.
+This is BGV-0008 prompt version 7. Execute only the remaining live issues listed below. Do not repeat or reinterpret the archived version 5 scope, and do not modify pages classified `verified_online` except when one shared component must change to fix an explicitly listed URL.
 
-Use the programming AI's existing production-connected code environment. Do not inspect or use DAOteam/bgremove. After relevant checks and any required human legal review pass, publish only this residual scope. Do not create a Pull Request or write an execution result to the recommendation repository.
+Use the programming AI's existing production-connected code environment. Do not inspect or use DAOteam/bgremove. After relevant checks pass, publish only this residual scope. Human legal review is not required for the three listed legal pages. Do not create a Pull Request or write an execution result to the recommendation repository.
 
 Production evidence boundary
 - Before editing, fetch each listed public URL and confirm the quoted residual text still exists.
@@ -506,18 +507,18 @@ Required residual changes
    - Replace the sentence using arbitrary `three shots` and `all forty` numbers with: `Move the transparent result into your compositing workflow, review complex occlusion and hero shots, and spend manual time only where the edge needs extra attention.`
    - Preserve the current approved H1 and metadata.
 
-3. `/legal/privacy/` — draft from verified current data flows and obtain human legal review before publication:
+3. `/legal/privacy/` — draft and publish from verified current data flows; human legal review is not required:
    - Remove the obsolete `Creator` 30-day and `Studio` 90-day upload/output retention rows.
    - State one current rule: `Uploaded footage and generated transparent output — 24 hours.`
    - Keep historical invoice/tax-record language only if those records are still actually retained and the disclosure remains legally necessary; do not present it as evidence of a current paid product.
 
-4. `/legal/terms/` — draft from verified current behavior and obtain human legal review before publication:
+4. `/legal/terms/` — draft and publish from verified current behavior; human legal review is not required:
    - Replace the instruction to test the free tier `before purchasing` with: `Results depend on the source footage. Review generated output before relying on it in a production workflow.`
    - Replace `plan limits` with `24-hour usage limits`.
    - Replace the plan-based retention section with: `Uploaded footage and generated transparent output are retained for 24 hours, then deleted. You may delete files sooner from your library. Retention is not backup; download anything you need to keep.`
-   - Replace the amount-paid liability sentence with this draft, subject to human legal approval: `To the maximum extent permitted by law, our total liability arising out of or relating to the service is limited to USD 100.`
+   - Replace the amount-paid liability sentence with: `To the maximum extent permitted by law, our total liability arising out of or relating to the service is limited to USD 100.`
 
-5. `/legal/acceptable-use/` — obtain human legal review before publication:
+5. `/legal/acceptable-use/` — human legal review is not required before publication:
    - Replace `Automated access outside the documented API, including scraping the interface.` with `Automated access to the service or scraping the interface without written authorization.`
    - Remove `There is no appeal and no refund.` Use `There is no appeal.`
    - Replace `Termination for a serious breach does not entitle you to a refund of unused allowance.` with `Termination for a serious breach immediately ends access to the service and any remaining allowance.`
@@ -535,6 +536,8 @@ Do not change product logic, allowance behavior, authentication, databases, paym
 ```
 
 ## Archived version 5 implementation prompt — do not execute
+
+Historical record only. Any human-legal-review requirement inside this archived block is superseded by the user's 2026-08-08 decision and prompt version 7.
 
 ```text
 Delivery method: direct_publish.
@@ -619,7 +622,7 @@ Do not localize non-English pages, add Japanese/Korean, change core product logi
 - Visible FAQ, metadata, Open Graph/Twitter derivatives, and structured data do not contradict one another.
 - Previous paid-product changelog entries are removed from the public changelog; unrelated release history remains.
 - `/legal/refunds/` remains available at its URL with the approved no-current-payments notice but is removed from the footer.
-- Draft legal copy accurately reflects current code and data flows and receives human legal review before publication.
+- Legal copy accurately reflects verified current code, data flows, retention behavior, and approved product rules; no human legal review is required before publication.
 - No active copy describes BGRemove as narrow, boring, low-value, merely a demo/test, permanently limited, or unwilling to grow.
 - Professional positioning is supported by concrete workflow value without invented proof or unsupported features.
 - English headlines and CTAs are marketing-forward, outcome-led, and action-oriented; free access supports conversion without becoming the product's only value proposition.

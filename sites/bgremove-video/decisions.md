@@ -42,7 +42,7 @@ Only currently active decisions explicitly confirmed by the user belong above th
 - Delete previous paid-product entries from the public changelog while preserving unrelated release history and non-public records.
 - Remove or hide public purchase, subscription, credit-pack, upgrade, and checkout entry points. Do not delete historical billing data or payment-provider records under BGV-0008.
 - English copy is approved for implementation. Spanish, Portuguese, French, and German must wait for separate user authorization.
-- English legal copy should be drafted from real code and data flows and receive human legal review before publication.
+- Confirmed 2026-08-08: The three remaining English legal-page changes under BGV-0008 do not require human legal review. The programming AI may draft and directly publish them after verifying current code, data flows, retention behavior, and approved product rules. It must not invent legal obligations or data practices.
 
 ## Markets and languages
 
