@@ -50,6 +50,13 @@ Only currently active decisions explicitly confirmed by the user belong above th
 ## Authenticated account handling
 
 - Confirmed 2026-08-09: Remove paid-plan marketing and entry points from the English authenticated `/app/account/` page, including `See plans`, paid-plan availability messaging, Creator and Studio prices or plan cards, and `Get notified` controls. Preserve historical billing and legally required records; presentation details for the remaining free-allowance summary are governed by BGV-0011.
+- Confirmed 2026-08-09: The remaining account summary keeps `Free` and `No charge`, uses `Up to 3 videos per 24-hour period` with `Up to 60 seconds per video`, and has no replacement button after `See plans` is removed. Reset information must come from real allowance state and must not be fabricated before a window starts.
+
+## Interface behavior
+
+- Confirmed 2026-08-09: Add `Remove` immediately before `How it works` in the English desktop and mobile primary navigation, linking to `/`. Do not change other locales in this task.
+- Confirmed 2026-08-09: In the homepage completed-result state, remove `Open the full workspace ↗`. Use equal-width Download and Run another buttons in one row where space permits, with Download first and primary; stack them full-width on narrow mobile screens.
+- Confirmed 2026-08-09: On mobile, the main completed-result filename may use up to two lines, while recent-clip filenames use one-line ellipsis. Preserve full accessible and downloaded filenames and fix overflow at the component level rather than hiding page overflow globally.
 
 ## Markets and languages
 

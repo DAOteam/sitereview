@@ -2,12 +2,12 @@
 task_id: "BGV-0011"
 site_id: "bgremove-video"
 title: "Remove paid-plan content from the authenticated account page"
-status: "needs_decision"
+status: "approved"
 priority: "P1"
 source: "user+ai"
 created_at: "2026-08-09"
 updated_at: "2026-08-09"
-prompt_version: 1
+prompt_version: 2
 ---
 
 # BGV-0011 — Remove paid-plan content from the authenticated account page
@@ -61,36 +61,70 @@ Delete paid-related content from the signed-in `/app/account/` page.
 
 ## Open decisions
 
-1. Free summary wording. AI recommendation: replace `3m per period` with `Up to 3 videos per 24-hour period` and add `Up to 60 seconds per video` as secondary text.
-2. Remaining action on the free summary card. AI recommendation: remove `See plans` without adding another button; keep the account page focused on allowance status. If a CTA is desired later, use a separate approved navigation or tool-entry decision rather than silently repurposing the paid button.
-3. `No charge` label. AI recommendation: retain it if it fits the compact summary because it accurately describes the current state, but remove it if the redesigned card communicates free access clearly without it.
-
-Until these presentation decisions are confirmed, this recommendation is not executable.
+None. The user approved all three recommended options on 2026-08-09.
 
 ## Final decision
 
-The user has confirmed deletion of all paid-related content from the authenticated account page. The final free-summary wording, remaining action, and treatment of `No charge` are pending.
+Approved on 2026-08-09:
+
+1. Delete all paid-plan marketing and entry points from the authenticated English account page.
+2. Replace `3m per period` with `Up to 3 videos per 24-hour period` and add `Up to 60 seconds per video` as secondary text.
+3. Remove `See plans` without adding a replacement button.
+4. Retain `No charge` as an accurate current-state label, without any upgrade implication or permanent-free promise.
+5. Preserve real allowance data, unrelated account behavior, historical billing records, and dormant billing infrastructure.
 
 ## Implementation prompt
 
 ```text
-NOT EXECUTABLE. BGV-0011 has status needs_decision. Wait for the user to confirm the free-summary wording, whether the remaining card has any action, and whether `No charge` stays.
+Implement BGV-0011 in BGRemove's current production-connected environment and publish only this approved scope after checks pass. Do not modify this recommendation repository or create an execution-result file.
+
+Target the authenticated English account page at `/app/account/` only.
+
+1. Remove paid-plan content and controls
+- Remove the entire `See plans` button, including its route action, modal trigger, event handler, accessible label, focus stop, and reserved layout space. Do not add a replacement button.
+- Remove the message beginning `Paid plans are not open for sign-up yet`.
+- Remove the complete Creator and Studio paid-plan cards, including `$19`, `$49`, paid allowances, resolution promises, descriptions, `Get notified` buttons, and any notification form or modal reachable only from these controls.
+- Inspect the rest of the rendered English account page and remove any other current-product paid plan, price, subscription, upgrade, credit-pack, checkout, paid waitlist, or billing-marketing block.
+- Remove account-page links into current plan-selection or purchase flows. Do not create replacement paid CTAs.
+- Remove these elements from rendering and interaction; do not merely hide them with CSS or leave empty cards, columns, dividers, off-screen text, click targets, or keyboard focus stops.
+
+2. Keep an accurate free-allowance summary
+- Retain a compact summary identifying the current access as `Free` and retain the current-state label `No charge`.
+- Replace `3m per period` with the exact primary allowance text `Up to 3 videos per 24-hour period`.
+- Add the secondary text `Up to 60 seconds per video`.
+- Continue to render allowance state from the existing authoritative account/quota data. Do not implement a separate client-side allowance calculation.
+- When the 24-hour window is active, show the real next full-reset date and time in an understandable format.
+- When no window has started, do not fabricate a reset timestamp. Keep a truthful existing empty state or explain that the 24-hour window starts with the first successful video.
+- Do not add `Free forever`, `We will never charge`, or any other permanent monetization promise.
+- Tighten the page layout after removal so there are no large empty sections, empty borders, broken dividers, unnecessary scrolling, or mobile overflow.
+
+3. Preserve unrelated behavior and data
+- Do not change authentication, profile or security controls, sign-out, job history, downloads, allowance enforcement, successful-job counting, failed-job treatment, reset behavior, duration validation, retention, processing, or output behavior.
+- Do not delete historical transactions, invoices, payment-provider records, customer data, legally required records, or dormant billing infrastructure.
+- Do not change the public `/pricing/` page or Spanish, Portuguese, French, or German account-page content under this task.
+
+4. Checks and publication
+- Verify signed-in account states with no started allowance window, an active window, and an exhausted allowance where those states can be safely reproduced with existing test data. Confirm every value comes from real account state.
+- Check desktop and 320px, 360px, 390px, and 430px CSS viewport widths. Confirm no removed paid element remains in visible content, keyboard navigation, accessibility output, or reserved layout space.
+- Confirm unrelated account controls and navigation still work.
+- After the relevant checks pass, publish this exact scope through the existing direct-to-production workflow.
 ```
 
 ## Acceptance criteria
 
-- Provisional: `/app/account/` contains no `See plans` button, paid-plan availability message, Creator or Studio paid card, price, paid allowance, paid resolution promise, or `Get notified` control.
-- Provisional: no other current-product paid plan, subscription, upgrade, credit-pack, checkout, pricing, or paid waitlist marketing remains anywhere in the rendered English account page.
-- Provisional: removed content leaves no empty card, layout column, divider, click target, keyboard focus stop, accessible label, modal trigger, or off-screen text.
-- Provisional: the account page retains a clear, accurate free-allowance summary based on real existing allowance data.
-- Provisional: the summary does not describe the allowance as `3m per period`; it follows the final approved job-based wording and duration detail.
-- Provisional: an active reset date/time comes from the real allowance state, and an account with no started window is not shown a fabricated reset.
-- Provisional: the page makes no `free forever`, permanent-pricing, or other absolute promise that restricts future monetization.
-- Provisional: the account page has no broken spacing or horizontal overflow after removal at desktop and 320px, 360px, 390px, and 430px CSS viewport widths.
-- Provisional: authentication, profile/security controls, sign-out, job history, downloads, and other unrelated account behavior continue to work.
-- Provisional: the actual allowance, counting, reset, duration, and retention behavior are unchanged.
-- Provisional: historical transactions, invoices, provider records, legally required records, and dormant billing infrastructure are not deleted.
-- Provisional: verification is performed in the actual signed-in production account page after publication, not inferred from a source repository or implementation report.
+- `/app/account/` contains no `See plans` button, paid-plan availability message, Creator or Studio paid card, price, paid allowance, paid resolution promise, or `Get notified` control.
+- No other current-product paid plan, subscription, upgrade, credit-pack, checkout, pricing, or paid waitlist marketing remains anywhere in the rendered English account page.
+- Removed content leaves no empty card, layout column, divider, click target, keyboard focus stop, accessible label, modal trigger, or off-screen text.
+- The account page retains `Free`, `No charge`, the exact allowance text `Up to 3 videos per 24-hour period`, and the secondary text `Up to 60 seconds per video`.
+- The free-allowance summary is based on real existing allowance data and does not display `3m per period`.
+- An active reset date/time comes from the real allowance state, and an account with no started window is not shown a fabricated reset.
+- The page makes no `free forever`, permanent-pricing, or other absolute promise that restricts future monetization.
+- The account page has no broken spacing or horizontal overflow after removal at desktop and 320px, 360px, 390px, and 430px CSS viewport widths.
+- Authentication, profile/security controls, sign-out, job history, downloads, and other unrelated account behavior continue to work.
+- The actual allowance, counting, failed-job treatment, reset, duration, and retention behavior are unchanged.
+- Historical transactions, invoices, provider records, legally required records, and dormant billing infrastructure are not deleted.
+- Spanish, Portuguese, French, and German account-page content is unchanged.
+- Verification is performed in the actual signed-in production account page after publication, not inferred from a source repository or implementation report.
 
 ## Out of scope
 
