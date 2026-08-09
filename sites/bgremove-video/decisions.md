@@ -47,6 +47,10 @@ Only currently active decisions explicitly confirmed by the user belong above th
 - English copy is approved for implementation. Spanish, Portuguese, French, and German must wait for separate user authorization.
 - Confirmed 2026-08-08: The three remaining English legal-page changes under BGV-0008 do not require human legal review. The programming AI may draft and directly publish them after verifying current code, data flows, retention behavior, and approved product rules. It must not invent legal obligations or data practices.
 
+## Authenticated account handling
+
+- Confirmed 2026-08-09: Remove paid-plan marketing and entry points from the English authenticated `/app/account/` page, including `See plans`, paid-plan availability messaging, Creator and Studio prices or plan cards, and `Get notified` controls. Preserve historical billing and legally required records; presentation details for the remaining free-allowance summary are governed by BGV-0011.
+
 ## Markets and languages
 
 - Current languages: English, Spanish, Portuguese, French, and German.
