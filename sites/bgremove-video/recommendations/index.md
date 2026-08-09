@@ -11,4 +11,4 @@ BGV-0001 through BGV-0007 were superseded on 2026-08-05 after the product moved 
 | [BGV-0005](BGV-0005-keyword-page-plan.md) | P2 | AI | superseded | Keyword research and new-page plan |
 | [BGV-0006](BGV-0006-pricing-model.md) | P1 | User + AI | superseded | Replace pricing with free credits, subscriptions, and packs |
 | [BGV-0007](BGV-0007-metadata-quality.md) | P1 | User + AI | superseded | Improve core-page titles and metadata quality |
-| [BGV-0008](BGV-0008-free-professional-positioning.md) | P0 | User + AI | approved | Align the English public site with free professional positioning |
+| [BGV-0008](BGV-0008-free-professional-positioning.md) | P0 | User + AI | verified | Align the English public site with free professional positioning |

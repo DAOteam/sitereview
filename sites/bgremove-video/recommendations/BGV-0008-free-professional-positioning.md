@@ -2,11 +2,11 @@
 task_id: "BGV-0008"
 site_id: "bgremove-video"
 title: "Align the English public site with free professional positioning"
-status: "approved"
+status: "verified"
 priority: "P0"
 source: "user+ai"
 created_at: "2026-08-05"
-updated_at: "2026-08-08"
+updated_at: "2026-08-09"
 prompt_version: 7
 ---
 
@@ -119,6 +119,21 @@ Classification against prompt version 5:
 - `/use-cases/agencies/` has the approved H1, metadata, and professional framing, but the heading `Finish by hand` and its `fix the three shots ... instead of all forty` copy still place unnecessary emphasis on a rough first pass and use arbitrary numbers.
 
 No item was classified `no_longer_relevant`. Version 6 execution is limited to the unresolved items above. Already verified pages must not be rewritten for stylistic consistency.
+
+### Final live verification — 2026-08-09
+
+BGV-0008 prompt version 7 was verified against the current public production site and is complete:
+
+- All 20 English Sitemap URLs returned HTTP 200.
+- Every English page passed checks for title, meta description, self-referencing canonical, matching Open Graph title/description, H1 presence, valid JSON-LD, and absence of public paid-entry links.
+- The three remaining legal pages no longer contain obsolete Creator/Studio retention, `before purchasing`, `plan limits`, amount-paid liability, refund, or documented-API wording. Their approved replacement meanings are live.
+- All four tool pages now use the approved outcome-led final CTA and no longer contain `decide with your eyes`.
+- `/use-cases/agencies/` now uses `Refine only what needs it.` and the approved compositing-workflow copy; `Finish by hand` and the arbitrary three-versus-forty claim are gone.
+- The homepage title remains exactly `Remove Video Background Online Free - No Watermark` and its H1 remains exactly `Remove video background online. Free, no watermark.`
+- Shared navigation still uses `Free Access`, the global footer has no Refunds link, and no public checkout, subscription, credit-pack, purchase, billing, or upgrade URL was found.
+- A regression sample of 24 Spanish, Portuguese, German, and French pages returned HTTP 200 and contained none of the newly approved English shared CTA or Agency strings.
+
+No version 8 is required. The task is `verified`; its implementation prompt is retained only as completed history and must not be executed again.
 
 Strong current copy to preserve unless a surrounding edit requires a minimal grammatical adjustment:
 
