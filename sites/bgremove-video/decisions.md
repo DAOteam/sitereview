@@ -21,6 +21,9 @@ Only currently active decisions explicitly confirmed by the user belong above th
 - Lead with the reusable transparent result and professional workflow value; present free access as the final risk-reversal rather than the product's only value.
 - Headlines may be bold, but body copy must substantiate them with confirmed capabilities and must not invent proof, performance, quality, or compatibility claims.
 - The homepage H1 is locked exactly as `Remove video background online. Free, no watermark.` All other English marketing copy may change within approved product facts and scope.
+- Confirmed 2026-08-09: Apply the BGV-0009 readability pass across all 15 primary English marketing pages while preserving the locked homepage title/H1, current page H1s, approved CTAs, product facts, and marketing-forward voice.
+- Lead with plain-language results and benefits. Keep concise professional terminology as secondary detail and explain it at first meaningful use; `/how-it-works/` should retain short technical labels beneath plain-language explanations.
+- Keep historical Changelog dates, versions, titles, and historical status, but shorten obsolete entries in place to one plain-language summary and remove detailed old allowances, resolution tiers, output formats, and internal cost explanations. Do not add a collapse interaction.
 
 ## Product
 

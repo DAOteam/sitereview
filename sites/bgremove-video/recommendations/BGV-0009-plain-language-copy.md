@@ -2,12 +2,12 @@
 task_id: "BGV-0009"
 site_id: "bgremove-video"
 title: "Make English user-facing copy easier to understand"
-status: "needs_decision"
+status: "approved"
 priority: "P1"
 source: "user+ai"
 created_at: "2026-08-09"
 updated_at: "2026-08-09"
-prompt_version: 1
+prompt_version: 2
 ---
 
 # BGV-0009 — Make English user-facing copy easier to understand
@@ -130,27 +130,90 @@ Also remove the duplicate naming in `Works in CapCut, Premiere, Resolve, DaVinci
 
 ## Open decisions
 
-1. Approve one English-only readability pass across all 15 reviewed marketing pages, including the two mandatory factual fixes? AI recommendation: yes.
-2. On `/how-it-works/`, keep technical labels as secondary detail beneath plain-language explanations, or remove most research terminology entirely? AI recommendation: keep concise secondary labels for professional credibility.
-3. For historical Changelog entries, shorten obsolete detail in place or collapse older entries in the interface? AI recommendation: shorten them in place to avoid a UI change.
+Resolved on 2026-08-09. The user approved all three recommended options without modification.
 
 ## Final decision
 
-Pending user confirmation. This recommendation is not executable.
+Confirmed by the user on 2026-08-09:
+
+- Apply one English-only readability pass across all 15 reviewed marketing pages, including both mandatory factual corrections.
+- On `/how-it-works/`, use plain-language explanations as the primary copy and keep concise technical labels only as secondary detail for professional credibility.
+- Keep historical Changelog entries, but shorten obsolete details in place. Do not add a collapse interaction or redesign the page.
+- Apply every exact replacement and terminology direction under `AI recommendation` unless the quoted live sentence has already changed before execution.
+- Preserve all copy listed under `Copy that should remain unchanged`, including the locked homepage title and H1 and all currently approved page H1s.
+- Preserve the marketing-forward, confident voice while making body copy easier for ordinary creators and light-to-moderate editors to understand.
+- Change English only. Do not localize Spanish, Portuguese, French, or German and do not add Japanese or Korean.
 
 ## Implementation prompt
 
 ```text
-NOT EXECUTABLE. BGV-0009 has status needs_decision. Wait until the user confirms the scope, technical-detail treatment, and Changelog treatment, then replace this block with a complete versioned implementation prompt.
+Delivery method: direct_publish.
+This is the approved BGV-0009 prompt version 2. Use the programming AI's existing production-connected code environment. Do not inspect or use DAOteam/bgremove. Run the required checks and publish only the approved English visible-copy scope. Do not create a Pull Request or write an execution result to the recommendation repository.
+
+Goal
+Make the 15 primary English marketing pages easier to understand without flattening the confident brand voice or removing useful professional credibility. Lead with the user-visible result, explain technical terms in plain language at first use, and keep concise specialist labels only as secondary detail.
+
+Public evidence and scope
+1. Before editing, fetch the current public version of each page in BGV-0009 Scope. The public site is the only evidence of what still needs correction.
+2. Apply every approved replacement, terminology mapping, use-case instruction, Contact correction, Changelog instruction, and voice rule under BGV-0009 `AI recommendation`.
+3. If an exact quoted sentence has already been corrected online, skip it rather than rewriting the surrounding section.
+4. Change visible English copy only, plus the minimum shared content or visible-label logic required to render it correctly.
+5. When an edited FAQ answer also appears in FAQPage JSON-LD, keep the visible and structured versions identical in meaning.
+
+Mandatory factual corrections
+1. On `/use-cases/`, remove the obsolete one-free-ten-second-clip statement. Replace it with: `Not sure which workflow fits? Upload a real clip up to 60 seconds long and turn it into a reusable transparent video. Each signed-in account can complete up to 3 successful video background removals per 24-hour allowance window.`
+2. On `/contact/`, replace visible topic `Billing or refunds` with `Account and free access`.
+3. On `/contact/`, replace visible topic `API and integration` with `Product question`. Preserve internal form values or backend contracts if changing them would alter form behavior; this task authorizes the user-facing label change, not a backend integration change.
+
+Required readability treatment
+1. Apply every exact row in `Priority replacements`.
+2. Apply every mapping and instruction in `Tool-page terminology`, including removing the duplicate Resolve/DaVinci naming.
+3. Apply every instruction in `Use-case pages`.
+4. On `/how-it-works/`, put the plain-language benefit in the primary body copy. Keep terms such as temporal memory, per-frame propagation, continuous alpha, and VP9 only as concise secondary labels where the existing design already supports secondary detail. Do not add a new interaction or redesign.
+5. Define `alpha channel`, `video matting`, `WebM`, and `VP9` in plain language at first meaningful use. Later occurrences may use the short professional term.
+6. Remove database implementation language, unexplained production jargon, unclear pronouns, passive constructions, and clever phrases whose meaning is not immediate.
+7. Preserve vivid, concise lines whose meaning is already clear. Do not turn the site into generic SaaS copy.
+
+Changelog treatment
+1. Preserve the current top `Current free access` entry and its current facts.
+2. Preserve each older entry's date, version, title, and `Historical configuration — no longer current` status where applicable.
+3. Shorten each older entry in place to one plain-language summary sentence.
+4. Remove visible obsolete detail about old allowances, clip counts, seconds budgets, resolution tiers, output formats, and internal processing cost. Do not add accordions, collapse controls, or other UI changes.
+
+Locked content and boundaries
+- Preserve homepage SEO title exactly: `Remove Video Background Online Free - No Watermark`.
+- Preserve homepage H1 exactly: `Remove video background online. Free, no watermark.`
+- Preserve every H1 and CTA listed under `Copy that should remain unchanged` and all other current tool/use-case H1s.
+- Preserve current product facts: sign-in required; first successful job starts the 24-hour window; up to 3 successful jobs; failed jobs do not count; full reset when the window ends; 60-second maximum; no separate file-size cap; MP4/MOV/WebM/M4V/GIF input; source dimensions preserved; transparent WebM using VP9 with alpha; no watermark; 24-hour retention; no background replacement, batch processing, refinement, API, webhooks, or paid option.
+- Do not change product logic, account behavior, authentication, processing, retention, formats, form submission behavior, databases, infrastructure, legal pages, SEO metadata, URL structure, page layout, or navigation.
+- Do not change Spanish, Portuguese, French, or German pages and do not add Japanese or Korean.
+- Do not add unsupported speed, quality, compatibility, customer, cost, or performance claims.
+
+Verification before publication
+1. Run relevant content, type, and build checks.
+2. Render or crawl all 15 English pages from a production-like build.
+3. Search for every old phrase and specialist term listed in BGV-0009. Explain or remove each remaining match according to the approved rules.
+4. Confirm `/use-cases/` contains no current ten-second rule and accurately states the 60-second and 3-per-window rules.
+5. Confirm Contact no longer shows `Billing or refunds` or `API and integration`, and verify form submission behavior is unchanged.
+6. Confirm FAQ visible answers and FAQPage JSON-LD remain aligned.
+7. Confirm the locked homepage title, homepage H1, all approved page H1s, and primary/final CTA copy are unchanged.
+8. Confirm no product fact, paid option, unsupported feature, or permanent-free promise was introduced.
+9. Spot-check the corresponding Spanish, Portuguese, French, and German routes for English-copy leakage.
+10. After checks pass, publish directly through the existing production workflow. Do not mark this task verified; the recommendation AI will perform the next live audit.
 ```
 
 ## Acceptance criteria
 
-- Provisional: all approved visible-copy replacements are present on the live English pages.
-- Provisional: no visible page states a ten-second current limit, a paid support topic, or a current API support topic.
-- Provisional: specialist terms are either necessary for the page's intent or explained in plain language at first use.
-- Provisional: locked titles, H1s, factual product rules, structured data meaning, and non-English pages are unchanged unless explicitly approved.
-- Provisional: final completion is verified only from the public production site.
+- All exact replacements and terminology directions under `AI recommendation` are present in the live English pages where the old copy still existed at execution time.
+- No visible page states a ten-second current limit, a paid support topic, or a current API support topic.
+- `/use-cases/` accurately states the 60-second maximum and up to 3 successful video background removals per 24-hour allowance window.
+- Contact uses `Account and free access` and `Product question`, and form submission behavior remains unchanged.
+- Plain-language benefits precede technical labels on `/how-it-works/`; remaining specialist terms are necessary and explained at first meaningful use.
+- Historical Changelog entries retain their dates, versions, titles, and historical status but no longer expose obsolete detailed allowances, resolution tiers, output formats, or internal cost explanations.
+- The homepage SEO title, homepage H1, approved page H1s, primary CTA, final CTA heading, and confirmed product facts are unchanged.
+- FAQ visible answers and FAQPage JSON-LD remain aligned in meaning.
+- No unsupported claim, paid option, unsupported feature, permanent-free promise, or English-copy leakage into deferred locales is introduced.
+- Relevant checks pass, and final completion is verified only from the public production site.
 
 ## Out of scope
 
