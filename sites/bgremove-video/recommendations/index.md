@@ -13,4 +13,4 @@ BGV-0001 through BGV-0007 were superseded on 2026-08-05 after the product moved 
 | [BGV-0007](BGV-0007-metadata-quality.md) | P1 | User + AI | superseded | Improve core-page titles and metadata quality |
 | [BGV-0008](BGV-0008-free-professional-positioning.md) | P0 | User + AI | verified | Align the English public site with free professional positioning |
 | [BGV-0009](BGV-0009-plain-language-copy.md) | P1 | User + AI | approved | Make English user-facing copy easier to understand |
-| [BGV-0010](BGV-0010-home-completion-actions.md) | P1 | User + AI | needs_decision | Fix homepage result actions and mobile card overflow |
+| [BGV-0010](BGV-0010-home-completion-actions.md) | P1 | User + AI | needs_decision | Improve workspace navigation, result actions, and mobile layout |
