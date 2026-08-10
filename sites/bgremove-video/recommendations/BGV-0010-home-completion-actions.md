@@ -2,12 +2,12 @@
 task_id: "BGV-0010"
 site_id: "bgremove-video"
 title: "Improve tool navigation, result actions, and mobile layout"
-status: "approved"
+status: "verified"
 priority: "P1"
 source: "user+ai"
 created_at: "2026-08-09"
-updated_at: "2026-08-09"
-prompt_version: 5
+updated_at: "2026-08-11"
+prompt_version: 6
 ---
 
 # BGV-0010 — Improve tool navigation, result actions, and mobile layout
@@ -39,6 +39,19 @@ A second user-provided mobile screenshot dated 2026-08-09 shows:
 The user confirms that long uploaded filenames can make both the functional card and work-list cards overflow to the right on mobile.
 
 A third user-provided desktop screenshot dated 2026-08-09 shows that the primary navigation begins with `How it works` and has no explicit `Remove` item. The user requests a `Remove` item immediately before `How it works`, linking to the homepage.
+
+## Live verification — 2026-08-11
+
+Classification: `verified_online` for the approved task. The live production homepage was checked in a signed-in browser session with an existing completed job and recent clip.
+
+- English desktop navigation now contains `Remove` immediately before `How it works`, and its link target is `/`.
+- The mobile menu contains the same `Remove` item first, followed by `How it works`.
+- The completed-result state contains `Download` and `Run another` but no `Open the full workspace` text, link, focus target, or reserved action column.
+- At the desktop viewport, Download and Run another share one two-column grid, have equal widths and heights, and retain primary/secondary styling.
+- At 320px, 360px, 390px, and 430px CSS widths, both actions stack full-width with Download first. At every tested width, document scroll width equals viewport width.
+- The live generated filename uses a two-line clamp with safe anywhere wrapping and remains present in full in the DOM. The functional card and recent-clips card remain within the viewport at all four tested widths.
+- The current compact recent-clips design displays date and metadata rather than a visible filename; the proposed one-line filename ellipsis is therefore `no_longer_relevant`. The original user-reported recent-card overflow is resolved.
+- The locked homepage title and H1 remain unchanged.
 
 ## User proposal
 
@@ -100,39 +113,7 @@ Approved on 2026-08-09:
 ## Implementation prompt
 
 ```text
-Implement BGV-0010 in BGRemove's current production-connected environment and publish only this approved scope after checks pass. Do not modify this recommendation repository or create an execution-result file.
-
-Target the English homepage experience only.
-
-1. Primary navigation
-- Add a real anchor labeled `Remove` as the first primary navigation item, immediately before `How it works`.
-- Set its destination to the English homepage root `/`; do not create a new route or send it to a separate authenticated workspace route.
-- Add the same item in the same relative order to the English mobile navigation/menu.
-- Preserve the logo's existing homepage link, all existing navigation items, keyboard access, visible focus states, hover behavior, and the site's existing active-page convention. Use `aria-current="page"` on the homepage if the navigation already supports that convention.
-- Ensure the added item does not cause desktop navigation overflow, clipping, collision, or illegible compression.
-
-2. Homepage completed-result actions
-- In the successful completed-job state of the homepage hero tool, remove the entire `Open the full workspace ↗` interactive element, including its icon, link or handler, accessible label, focus stop, layout column, and reserved space.
-- Keep `Download` and `Run another`. At widths where both labels fit comfortably, place them in one horizontal row with equal flexible widths, equal heights, and a consistent gap: Download on the left, Run another on the right.
-- Keep Download visually primary and Run another visually secondary.
-- On narrow mobile widths where a two-column row would crowd or overflow, stack two full-width buttons vertically with Download first. Do not shrink labels or controls to force a horizontal layout.
-- Remove or reposition the current divider so it neither separates the two actions into different rows nor leaves an orphaned rule.
-- Preserve both actions' current behavior and accessible names, plus the completed filename, duration, resolution, state, and focus treatment.
-
-3. Mobile overflow and filename presentation
-- Fix intrinsic sizing in the homepage functional/result card and `Your recent clips` cards. Allow filename and metadata flex/grid children to shrink, keep cards and internal rows within their available container, and use responsive wrapping rather than content-sized minimum widths.
-- Do not use global page-level `overflow-x: hidden` as the primary fix and do not leave any control clipped off-screen.
-- On mobile, display the main completed-result filename on no more than two readable lines. Safely wrap hostile long strings where intended, then clamp or truncate. Preserve the full filename in its accessible name and a non-layout-dependent full-text affordance such as the existing detail behavior or a useful `title`.
-- In compact recent-clip rows, display the filename on one line with ellipsis. Keep the thumbnail fixed and non-shrinking while the text column can shrink.
-- Allow date, duration, resolution, expiry, and other secondary metadata to wrap or move to a responsive row/grid instead of forcing one unbreakable line.
-- Preserve the actual stored filename and download filename. Do not rename uploaded or generated files.
-
-4. Scope and checks
-- Do not change Spanish, Portuguese, French, or German navigation or copy.
-- Do not change processing, downloads, job state, allowance consumption, authentication, upload behavior, or authenticated workspace routing.
-- Verify ordinary and deliberately long filenames containing spaces, no spaces, underscores, hyphens, Unicode characters, and extensions.
-- Check the completed-result state, recent clips, and navigation on desktop and at 320px, 360px, 390px, and 430px CSS viewport widths. Confirm there is no document or card horizontal overflow and every interactive element remains visible and keyboard accessible.
-- After the relevant checks pass, publish this exact scope through the existing direct-to-production workflow.
+NO EXECUTION. BGV-0010 was verified on the live production site on 2026-08-11. Do not re-run this task unless a later audit documents a regression and creates a new approved prompt version.
 ```
 
 ## Acceptance criteria

@@ -6,8 +6,8 @@ status: "approved"
 priority: "P1"
 source: "user+ai"
 created_at: "2026-08-09"
-updated_at: "2026-08-09"
-prompt_version: 2
+updated_at: "2026-08-11"
+prompt_version: 3
 ---
 
 # BGV-0009 — Make English user-facing copy easier to understand
@@ -43,6 +43,24 @@ These two misses were not identified by the previous exact-phrase verification a
 - Current tool-page and use-case H1s.
 - Primary CTA: `Remove My Video Background`
 - Final CTA heading: `Your next transparent video is one upload away.`
+
+### Live re-audit — 2026-08-11
+
+Classification: `still_open`.
+
+The 15 in-scope English production pages were checked again from the live site in a signed-in browser session. BGV-0009 has not been implemented:
+
+- All four audited homepage old phrases remain, including `Three steps, one of which is yours.`, `a per-pixel matte is solved`, and `Exports open natively in the tools you already finish in`. None of the approved replacements appeared.
+- All three audited About-page old passages remain and none of their approved replacements appeared.
+- How It Works still contains the audited specialist or unclear phrases including `The first frame is segmented`, `temporal memory`, `muxed back into a container`, `Occlusion is survivable`, `Alpha channel baked in`, and `The queue is the whole interface`.
+- Free Access still contains `True of every clip you run` and `A real alpha channel, not a matte painted onto grey`.
+- Contact still displays `Billing or refunds` and `API and integration`; neither approved replacement is present.
+- The Use Cases hub still contains the obsolete ten-second statement, while the approved 60-second and three-per-window replacement is absent. Shared use-case pages still contain four instances of `The matte is the asset, not the finished frame`, and creator/ecommerce still contain two `Cut to alpha` steps.
+- Multiple approved tool-page terminology replacements remain undone, including `standoff so the light does not wrap`, `the key tears`, `cyclorama`, `Why the container matters`, `edge from swimming`, and the duplicate `Resolve, DaVinci` naming.
+- Changelog retains the current free-access entry and historical labels, but still exposes old seconds-budget, 720p/1080p, ProRes, matte-only, and PNG-sequence details.
+- The locked homepage SEO title and H1 remain correct and must continue to be preserved.
+
+The full approved v3 prompt below remains in scope; no item is removed as already completed.
 
 ## User proposal
 
@@ -148,7 +166,7 @@ Confirmed by the user on 2026-08-09:
 
 ```text
 Delivery method: direct_publish.
-This is the approved BGV-0009 prompt version 2. Use the programming AI's existing production-connected code environment. Do not inspect or use DAOteam/bgremove. Run the required checks and publish only the approved English visible-copy scope. Do not create a Pull Request or write an execution result to the recommendation repository.
+This is the approved BGV-0009 prompt version 3. A live re-audit on 2026-08-11 found the full task still open. Use the programming AI's existing production-connected code environment. Do not inspect or use DAOteam/bgremove. Run the required checks and publish only the approved English visible-copy scope. Do not create a Pull Request or write an execution result to the recommendation repository.
 
 Goal
 Make the 15 primary English marketing pages easier to understand without flattening the confident brand voice or removing useful professional credibility. Lead with the user-visible result, explain technical terms in plain language at first use, and keep concise specialist labels only as secondary detail.
