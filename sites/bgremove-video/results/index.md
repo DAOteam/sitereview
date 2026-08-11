@@ -1,8 +1,10 @@
-# BGRemove execution results
+# BGRemove execution attempts
 
-BGRemove uses `delivery_method: "direct_publish"`. The programming AI publishes through its own production-connected environment and does not write result files here.
+BGRemove uses `delivery_method: "direct_publish"`. Before changing production code, the programming AI creates a versioned attempt receipt named `<TASK-ID>-v<VERSION>-attempt-<NN>.md` from `templates/execution-result.md`.
 
-This directory remains available for repository compatibility but is intentionally empty. Implementation is verified by comparing each approved recommendation with the current public site. Unimplemented and partially implemented items are carried into the next prompt version.
+`<NN>` is the next unused two-digit attempt number for that task and prompt version. The programming AI adds the receipt to the table when claiming the attempt and updates the same row when the attempt finishes.
 
-| Task ID | Status | Code repository | Commit or PR | Updated |
-|---|---|---|---|---|
+Receipts record prompt-version handshake, stable item results, checks, publication, and production smoke tests. They are non-authoritative diagnostic evidence: implementation is still verified only by independently comparing each approved recommendation with the current production site.
+
+| Task ID | Prompt version | Attempt | Status | Receipt | Updated |
+|---|---:|---:|---|---|---|

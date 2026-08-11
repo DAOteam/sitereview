@@ -7,10 +7,33 @@ priority: "P1"
 source: "user+ai"
 created_at: "2026-08-09"
 updated_at: "2026-08-11"
-prompt_version: 4
+prompt_version: 6
+scope_fingerprint: "sha256:0891191bc333d3dbfaa3d598b7cacbf2af02b63fc0c914b1af13d2e352804240"
 ---
 
 # BGV-0011 — Remove paid-plan content from the authenticated account page
+
+## Active execution scope
+
+<!-- ACTIVE_SCOPE_START -->
+Prompt version: 6
+
+### BGV-0011-A — Remove stale billing introduction
+
+- Target: authenticated English `https://bgremove.video/app/account/`
+- Required present: `Account and data. Everything destructive on this page asks once and then does exactly what it says.`
+- Required absent: `Plan, billing and data.`
+- Verification: assert the rendered signed-in page contains the approved introduction and preserves the separate invoice-retention sentence before and after publication.
+
+### BGV-0011-B — Show authoritative reset date and time
+
+- Target: both reset summaries on authenticated English `https://bgremove.video/app/account/`
+- Required condition for an active window: both summaries show the same authoritative next full-reset date and time; semantic `<time>` elements expose the authoritative timestamp through `datetime`.
+- Required condition for no window: no reset timestamp is fabricated; verify this state through an existing safe fixture or automated test rather than mutating a real account.
+- Required preserved content: `Free`, `No charge`, `Up to 3 videos per 24-hour period`, `Up to 60 seconds per video`, and the invoice-retention sentence.
+- Required absent: paid plan cards, prices, `See plans`, `Get notified`, paid CTAs, or empty paid-plan containers.
+- Verification: record the automated no-window test separately from the signed-in active-window production smoke test. Either required state left `not_tested` makes the attempt `partial`, not complete.
+<!-- ACTIVE_SCOPE_END -->
 
 ## Scope
 
@@ -54,6 +77,21 @@ Classification: `still_open` with no change since prompt version 3.
 - Previously removed plan cards, prices, `See plans`, and `Get notified` controls remain absent; the approved Free, No charge, allowance, duration, and invoice-retention content remains intact.
 
 Prompt version 4 therefore retains the same two-item implementation scope and removes nothing further.
+
+## Third live re-audit — 2026-08-11
+
+Classification: `still_open` with no change since prompt version 4.
+
+- The authenticated English account page still renders `Plan, billing and data. Everything destructive on this page asks once and then does exactly what it says.`; the approved `Account and data` replacement is absent.
+- The active allowance window still renders `Resets 11 Aug 2026` in the main Free summary and `Resets 11 Aug` in the compact quota summary. Neither summary shows a visible time, and the page exposes no semantic `<time>` element carrying `datetime`, title, or accessible time text.
+- Previously removed paid-plan messages, prices, plan cards, `See plans`, and `Get notified` controls remain absent. `Free`, `No charge`, the approved allowance and duration text, and the legally relevant invoice-retention sentence remain present.
+- The current session has an active allowance window, so the no-window empty state could not be independently verified in this audit.
+
+Prompt version 5 therefore retains the same two-item implementation scope and removes nothing further.
+
+## Handoff protocol refresh — 2026-08-11
+
+Prompt version 6 keeps the same two substantive items as version 5. It adds stable item IDs, an active-scope fingerprint, separate automated and signed-in verification requirements, a required execution-attempt receipt, and post-publication production smoke checks. No previously removed paid interface is returned to scope.
 
 ## User proposal
 
@@ -104,15 +142,15 @@ Approved on 2026-08-09:
 
 ```text
 Delivery method: direct_publish.
-This is the approved BGV-0011 prompt version 4. A second live re-audit on 2026-08-11 found the same two items still open. Use the programming AI's current production-connected environment, run relevant checks, and publish only this remaining English account-page scope. Do not inspect DAOteam/bgremove, modify the recommendation repository, create a Pull Request, or write an execution-result file.
+This is the approved BGV-0011 prompt version 6. The substantive scope is unchanged from version 5; version 6 adopts the repository's active-scope handshake and receipt protocol. Validate the scope fingerprint, create a versioned execution-attempt receipt, use the programming AI's current production-connected environment, and publish only this remaining English account-page scope after every required item passes. Do not use DAOteam/bgremove as an execution handoff or production-status source, create a Pull Request, or modify recommendation files. Creating and updating the required non-authoritative receipt under this site's `results/` directory is allowed and required.
 
 Target `/app/account/` only.
 
-1. Remove stale billing language from the introduction
+1. BGV-0011-A — Remove stale billing language from the introduction
 - Replace `Plan, billing and data. Everything destructive on this page asks once and then does exactly what it says.` with `Account and data. Everything destructive on this page asks once and then does exactly what it says.`
 - Do not remove the separate legally relevant invoice-retention sentence from the data section.
 
-2. Show the real reset date and time
+2. BGV-0011-B — Show the real reset date and time
 - In both the main Free summary and the compact quota summary, show the real next full-reset date and time when an allowance window is active. Use the existing authoritative server/account quota timestamp; do not create a separate client-side allowance calculation.
 - Use a clear localized English display that includes both date and time. Where a semantic `<time>` element is used, set its `datetime` value to the authoritative timestamp.
 - When no allowance window has started, do not fabricate a reset date or time. Keep a truthful empty state or state that the 24-hour window starts with the first successful video.
@@ -132,9 +170,9 @@ Target `/app/account/` only.
 
 ## Acceptance criteria
 
-- The introduction no longer describes the current account page as containing `billing`; it uses the approved `Account and data` replacement.
-- When an allowance window is active, both visible summaries show the same real next full-reset date and time from authoritative account data.
-- A no-window state does not show a fabricated reset timestamp.
+- `BGV-0011-A`: The introduction no longer describes the current account page as containing `billing`; it uses the approved `Account and data` replacement.
+- `BGV-0011-B`: When an allowance window is active, both visible summaries show the same real next full-reset date and time from authoritative account data.
+- `BGV-0011-B`: A no-window state does not show a fabricated reset timestamp, verified through an existing safe fixture or automated test.
 - The legally relevant invoice-retention sentence remains.
 - `Free`, `No charge`, `Up to 3 videos per 24-hour period`, and `Up to 60 seconds per video` remain unchanged.
 - No removed paid-plan content, price, notification control, CTA, empty container, or focus target returns.

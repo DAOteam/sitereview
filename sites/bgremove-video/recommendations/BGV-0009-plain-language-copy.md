@@ -7,10 +7,38 @@ priority: "P1"
 source: "user+ai"
 created_at: "2026-08-09"
 updated_at: "2026-08-11"
-prompt_version: 4
+prompt_version: 6
+scope_fingerprint: "sha256:388761f5c11d039f1e6c96a47a02802db92e70310adf108dc5a01f7a2cf3e658"
 ---
 
 # BGV-0009 — Make English user-facing copy easier to understand
+
+## Active execution scope
+
+<!-- ACTIVE_SCOPE_START -->
+Prompt version: 6
+
+### BGV-0009-A — Homepage editing-tools sentence
+
+- Target: `https://bgremove.video/`
+- Required present: `Open the result directly in the editing tools you already use.`
+- Required absent: `Exports open natively in the tools you already finish in`
+- Verification: assert the rendered English homepage contains the required sentence, excludes the old phrase, and preserves the locked title and H1 before and after publication.
+
+### BGV-0009-B — FAQ email spacing
+
+- Target: `https://bgremove.video/faq/`
+- Required present: visible text `Still stuck? Write to support@bgremove.video.` and link target `mailto:support@bgremove.video`
+- Required absent: visible text `Write tosupport@bgremove.video`
+- Verification: assert both rendered text spacing and the working mail link before and after publication; keep matching structured content aligned in meaning.
+
+### BGV-0009-C — Plain-language transparency explanation
+
+- Target: `https://bgremove.video/tools/remove-background-from-video/`
+- Required present: `Each pixel can be fully visible, partly transparent, or invisible.` followed by the approved alpha-channel explanation in the Implementation prompt.
+- Required absent: `The tool computes a per-pixel transparency value and stores it as a fourth channel`
+- Verification: assert the rendered paragraph leads with the required plain-language sentence and excludes the old tool-centered opening before and after publication.
+<!-- ACTIVE_SCOPE_END -->
 
 ## Scope
 
@@ -80,6 +108,21 @@ Only these three items remain open for prompt version 4:
 1. Homepage still says `Exports open natively in the tools you already finish in, Adobe Premiere Pro and After Effects included.`
 2. FAQ still renders `Still stuck? Write tosupport@bgremove.video.` without a space before the email link.
 3. `/tools/remove-background-from-video/` still leads with `The tool computes a per-pixel transparency value and stores it as a fourth channel...` instead of first explaining in plain language that pixels can be fully visible, partly transparent, or invisible and naming the alpha channel second.
+
+### Third live re-audit — 2026-08-11
+
+Classification: `still_open` with no change since prompt version 4.
+
+- The homepage still renders `Exports open natively in the tools you already finish in, Adobe Premiere Pro and After Effects included.` and does not render the approved replacement.
+- FAQ still visibly renders `Still stuck? Write tosupport@bgremove.video.` without a space before the working email link.
+- `/tools/remove-background-from-video/` still begins the transparency explanation with `The tool computes a per-pixel transparency value and stores it as a fourth channel...`; the approved visible/partly transparent/invisible explanation is absent.
+- The locked homepage SEO title and H1 remain exact. The previously corrected Contact labels, Use Cases allowance statement, shortened Changelog entries, and other audited plain-language replacements show no detected regression across the 15 in-scope English pages.
+
+Prompt version 5 therefore retains the same three-item implementation scope and removes nothing further.
+
+### Handoff protocol refresh — 2026-08-11
+
+Prompt version 6 keeps the same three substantive items as version 5. It adds stable item IDs, an active-scope fingerprint, deterministic present/absent assertions, a required execution-attempt receipt, and post-publication production smoke checks. No previously completed copy is returned to scope.
 
 ## User proposal
 
@@ -185,16 +228,16 @@ Confirmed by the user on 2026-08-09:
 
 ```text
 Delivery method: direct_publish.
-This is the approved BGV-0009 prompt version 4. A second live re-audit on 2026-08-11 found only three copy items still open. Use the programming AI's current production-connected environment and publish only the remaining scope below after checks pass. Do not inspect or use DAOteam/bgremove, create a Pull Request, modify the recommendation repository, or write an execution-result file.
+This is the approved BGV-0009 prompt version 6. The substantive scope is unchanged from version 5; version 6 adopts the repository's active-scope handshake and receipt protocol. Validate the scope fingerprint, create a versioned execution-attempt receipt, use the programming AI's current production-connected environment, and publish only the remaining scope below after every required item passes. Do not use DAOteam/bgremove as an execution handoff or production-status source, create a Pull Request, or modify recommendation files. Creating and updating the required non-authoritative receipt under this site's `results/` directory is allowed and required.
 
-1. Homepage compatible-software sentence
+1. BGV-0009-A — Homepage compatible-software sentence
 - Replace `Exports open natively in the tools you already finish in, Adobe Premiere Pro and After Effects included.` with `Open the result directly in the editing tools you already use.`
 
-2. FAQ email spacing
+2. BGV-0009-B — FAQ email spacing
 - Fix the visible FAQ sentence so it renders exactly as `Still stuck? Write to support@bgremove.video.` with a space between `to` and the linked email address.
 - Keep the email address as a working mail link and keep any matching FAQPage JSON-LD aligned in meaning.
 
-3. Plain-language transparency explanation
+3. BGV-0009-C — Plain-language transparency explanation
 - On `/tools/remove-background-from-video/`, replace the paragraph beginning `The tool computes a per-pixel transparency value and stores it as a fourth channel...` with:
   `Each pixel can be fully visible, partly transparent, or invisible. That transparency is stored in an alpha channel alongside the file's red, green, and blue colour channels. Nothing is behind your subject. What goes there is decided later, in your editor, as many times as you like.`
 - Lead with the visible/partly transparent/invisible explanation exactly as written; keep `alpha channel` as the secondary professional term.
@@ -211,9 +254,9 @@ Boundaries and regression checks
 
 ## Acceptance criteria
 
-- Homepage displays `Open the result directly in the editing tools you already use.` and no longer contains `Exports open natively in the tools you already finish in`.
-- FAQ visibly renders `Still stuck? Write to support@bgremove.video.` with correct spacing and a working email link; matching structured content remains aligned in meaning.
-- `/tools/remove-background-from-video/` leads with the approved fully visible/partly transparent/invisible explanation before naming the alpha channel, and the old tool-centered sentence is absent.
+- `BGV-0009-A`: Homepage displays `Open the result directly in the editing tools you already use.` and no longer contains `Exports open natively in the tools you already finish in`.
+- `BGV-0009-B`: FAQ visibly renders `Still stuck? Write to support@bgremove.video.` with correct spacing and a working email link; matching structured content remains aligned in meaning.
+- `BGV-0009-C`: `/tools/remove-background-from-video/` leads with the approved fully visible/partly transparent/invisible explanation before naming the alpha channel, and the old tool-centered sentence is absent.
 - All previously verified BGV-0009 copy remains unchanged and no old ten-second, paid-support, API-support, detailed Changelog, or deferred-locale regression appears.
 - The homepage SEO title, homepage H1, approved page H1s, CTAs, confirmed product facts, layout, navigation, form behavior, and non-English pages remain unchanged.
 - No unsupported claim, paid option, unsupported feature, or permanent-free promise is introduced.

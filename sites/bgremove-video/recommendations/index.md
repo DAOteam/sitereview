@@ -2,6 +2,15 @@
 
 BGV-0001 through BGV-0007 were superseded on 2026-08-05 after the product moved to a temporary completely-free strategy.
 
+## Execution queue
+
+The programming AI executes the first approved entry whose current prompt version has no successful `published` receipt. It executes one task per run.
+
+<!-- EXECUTION_QUEUE_START -->
+1. `BGV-0009` — prompt version 6
+2. `BGV-0011` — prompt version 6
+<!-- EXECUTION_QUEUE_END -->
+
 | Task ID | Priority | Source | Status | Title |
 |---|---|---|---|---|
 | [BGV-0001](BGV-0001-home-title.md) | P1 | AI | superseded | Fix duplicated English homepage title |

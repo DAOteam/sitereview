@@ -15,13 +15,15 @@ https://github.com/DAOteam/sitereview
 1. 获取中央建议仓库默认分支的最新内容；禁止强制推送覆盖远端更新。
 2. 依次读取根目录 AGENTS.md、README.md、sites/index.md、目标站点 site.md、decisions.md、recommendations/index.md 和完整推荐文件。
 3. 索引只用于发现候选任务。最终必须打开推荐文件并核对 YAML frontmatter。
+4. 运行 `python3 scripts/validate_handoffs.py`。活动范围指纹不匹配时停止，不得执行或自行重算后静默继续。
 
 二、选择任务
 
-1. 用户指定 site_id 或 task_id 时，只考虑该范围；未指定时按 P0、P1、P2、P3，再按 created_at 和 task_id 选择一个任务。
+1. 用户指定 site_id 或 task_id 时，只考虑该范围；未指定时使用目标站点 `recommendations/index.md` 的执行队列。站点存在 approved 任务但没有有效队列时停止并报告，不自行决定顺序。
 2. 只有 `status: "approved"` 才允许执行。绝不执行 draft、needs_decision、blocked、deferred、rejected、superseded、implemented 或 verified。
-3. 每次只执行一个任务。没有合格任务时停止并报告，不要求用户重新复制提示词。
-4. Final decision、Implementation prompt 或 Acceptance criteria 不完整或存在关键冲突时停止，不猜测。
+3. 每次只执行一个任务。当前 prompt version 已有 `published` 回执且所有必需项均为 `pass` 时，不要重复发布：未指定 task_id 时继续检查队列下一项；用户明确指定该任务时停止并说明正在等待独立线上验收。
+4. 修改前必须输出版本握手：`task_id`、`prompt_version`、`scope_fingerprint`、`delivery_method` 和全部稳定 item ID。任何一项不一致都停止。
+5. Final decision、Active execution scope、Implementation prompt 或 Acceptance criteria 不完整或存在关键冲突时停止，不猜测。
 
 三、先确定交付方式
 
@@ -37,10 +39,12 @@ A. `pull_request`
 B. `direct_publish`
 
 1. 使用你已经拥有的、与当前生产环境连接的代码工作区实施任务；不要因为 site.md 的 target_repository 为 `not_applicable` 而阻塞。
-2. 不在建议仓库创建或更新执行结果文件，也不要求提供 Pull Request、Commit 链接或其他回执。
-3. 先检查现有实现并运行任务要求的最快相关验证；通过后，直接发布当前批准范围。
-4. 直接发布只授权当前任务的明确范围，不授权顺手改动其他功能、计费、数据、密钥、云资源或未批准内容。
-5. 发布后不修改推荐文件，也不把任务标记为 verified。建议 AI 会在下一次审计时直接检查线上公开版本。
+2. 修改生产代码前，选择下一个未使用的两位尝试号，从模板创建 `sites/<site-id>/results/<TASK-ID>-v<VERSION>-attempt-<NN>.md`，记录版本握手和 item ID，标记 `in_progress`，并在 `results/index.md` 登记该回执。同步中央仓库以形成领取记录；不得覆盖其他执行尝试。
+3. 先检查现有实现，为每个 item 建立 `pass/fail/not_tested` 清单并运行任务要求的最快相关验证。任何必需项未通过时不得声称完整完成。
+4. 检查通过后直接发布当前批准范围，再从真实生产 URL 做逐项冒烟检查。异步发布可在合理的有限时间内重试；仍未生效时记录 `partial`，不得伪报成功。
+5. 将回执更新为 `published`、`partial` 或 `blocked`，记录真实修改、检查、发布时间和线上冒烟结果。回执不得包含凭据、客户数据、登录身份、Cookie 或环境变量值。
+6. 回执只是诊断记录，不是上线验收。发布后不修改推荐文件，也不把任务标记为 implemented 或 verified；建议 AI仍会独立检查线上公开版本。
+7. 直接发布只授权当前任务的明确范围，不授权顺手改动其他功能、计费、数据、密钥、云资源或未批准内容。
 
 四、实施规则
 
@@ -50,23 +54,26 @@ B. `direct_publish`
 4. 不把 Token、密钥、环境变量值、客户数据或支付凭据写入代码、日志、回执或聊天。
 5. 需要秘密时，只说明环境变量名称和人工配置步骤。
 6. 如果真实实现与批准规则冲突，停止并报告具体证据；不要擅自改变核心行为来迁就文案。
-7. 对 public-production-only 站点，开始前可读取线上页面确认当前差异，但不得用旧代码仓库、Commit、PR 或建议文件推断什么已经上线。
+7. 对 public-production-only 站点，审查和最终验收不得用源码、Commit、PR 或回执推断什么已经上线。执行阶段仍应检查当前生产连接工作区中的真实实现；不得把工作区状态当作线上证明。
 8. 已经符合线上要求的项目无需重复改动；只实施仍未完成或部分完成的批准范围。
+9. `DAOteam/bgremove` 禁令针对执行交接来源和生产状态推断；它不替代执行 AI当前已获授权的生产连接代码工作区。若当前工作区身份或授权范围不清楚，停止并询问，不要猜测。
 
 五、检查与安全
 
-1. 运行与风险相称的测试、类型检查、lint、构建或内容验证，并执行差异检查。
+1. 运行与风险相称的测试、类型检查、lint、构建或内容验证，并执行差异检查。逐项记录每个稳定 item ID 的结果。
 2. 对业务规则、计费、权限、额度、支付回调或数据迁移的修改，按项目现有方式补充或更新测试。
 3. 不删除历史订单、发票、审计记录或客户数据。
 4. 不执行建议仓库以外的口头业务规则；新规则必须先写入并批准推荐文件。
-5. 发生关键阻塞时立即停止：pull_request 模式写 blocked 结果；direct_publish 模式只向用户报告，不创建回执。
+5. 发生关键阻塞时立即停止并记录：pull_request 模式写 blocked 结果；direct_publish 模式把尝试回执更新为 blocked。
+6. exact-copy 任务必须在构建产物或可运行页面中验证 required-present 与 required-absent；仅构建成功不算内容验收。
+7. 发布后必须完成任务定义的生产冒烟检查。无法安全验证的状态标记 `not_tested`，不得用推断代替。
 
 六、最终回复
 
-返回 site_id、task_id、delivery_method、实际修改摘要、真实检查结果以及人工事项。
+返回 site_id、task_id、prompt_version、scope_fingerprint、delivery_method、每个 item ID 的结果、实际修改摘要、真实检查结果、生产冒烟结果以及人工事项。
 
 - pull_request：附代码 PR 和结果文件，并明确未合并、未发布。
-- direct_publish：说明已按批准范围发布、不向建议仓库写回结果，并提醒最终完成状态将由下一次线上审计确认。
+- direct_publish：附执行尝试回执路径，说明其不构成上线验收，并提醒最终完成状态将由下一次独立线上审计确认。
 ```
 
 ## 日常使用
