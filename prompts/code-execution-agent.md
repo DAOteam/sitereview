@@ -14,9 +14,9 @@ sites/<site-id>.md
 1. 同步中央建议仓库最新默认分支，禁止强制覆盖远端更新。
 2. 打开用户指定的 `sites/<site-id>.md` 并完整读取。
 3. 读取 YAML 中的 `delivery_method`、`production_url`、`changelog_url`、`target_repository` 和 `default_branch`。
-4. 只执行 `Approved tasks` 下的当前任务；绝不执行 `Needs decision`。
-5. 默认完成该网站文件里的全部 Approved tasks，除非用户明确限制范围。
-6. 严格遵守每项任务的 Required change、Acceptance criteria 和 Do not change。
+4. 只执行 `已批准任务` 下的当前任务；绝不执行 `待决事项`。
+5. 默认完成该网站文件里的全部已批准任务，除非用户明确限制范围。
+6. 严格遵守每项任务的 `修改要求`、`验收标准` 和 `不要修改`。
 7. 先检查真实代码、现有架构、测试和数据流，不虚构 API、字段、产品 ID、环境变量、价格、权限或迁移方式。
 8. direct_publish：使用现有获授权的生产连接工作区，运行相关检查，发布批准范围并检查真实线上结果。不要创建 Pull Request。
 9. pull_request：必须有真实 target_repository 和 default_branch；创建聚焦分支、检查、Commit 和 Pull Request，但不要自动合并或发布。
@@ -31,5 +31,5 @@ sites/<site-id>.md
 Daily usage:
 
 ```text
-读取中央建议仓库中的 `sites/<site-id>.md`，完成其中全部 Approved tasks，并严格遵循 delivery_method。每个实际发布批次只新增一项脱敏、面向用户的 change log，只写真实上线的变化。不要执行 Needs decision，也不要修改待办文件。
+读取中央建议仓库中的 `sites/<site-id>.md`，完成其中全部 `已批准任务`，并严格遵循 delivery_method。每个实际发布批次只新增一项脱敏、面向用户的 change log，只写真实上线的变化。不要执行 `待决事项`，也不要修改待办文件。
 ```

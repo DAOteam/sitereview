@@ -25,6 +25,8 @@ sites/<site-id>.md
 
 The file is the complete current handoff for that website. Its YAML frontmatter contains only the operational metadata required to identify and deliver the work. Its body contains only current approved tasks and current items awaiting a user decision.
 
+All recommendation files under `sites/` must be written in Chinese. Keep YAML keys, URLs, identifiers, code symbols, product names, and exact source or replacement copy in their required original language.
+
 ## Recommendation and verification AI
 
 The recommendation/verification AI owns `sites/*.md`.
@@ -37,10 +39,10 @@ For every audit:
 4. Keep unresolved tasks, rewriting partially completed tasks to contain only the remaining work.
 5. Add newly discovered tasks that are within the user's requested audit scope.
 6. Rewrite the website file in place. Never append audit history, completion notes, verification logs, dates of past checks, versions, or receipts.
-7. Put directly authorized, implementation-ready work under `Approved tasks`.
-8. Put work that requires a business, legal, pricing, product, data, localization, migration, or publishing decision under `Needs decision`. Do not infer approval.
+7. Put directly authorized, implementation-ready work under `已批准任务`.
+8. Put work that requires a business, legal, pricing, product, data, localization, migration, or publishing decision under `待决事项`. Do not infer approval.
 9. When approved implementation work remains, include exactly one approved task to update the public changelog for that release batch. Keep that task until its entry is verified online, even if the other work is already complete; remove it only after verification.
-10. If nothing remains, keep the website file and write `No current tasks.`
+10. If nothing remains, keep the website file and write `当前没有待办事项。`
 
 Public production is the source of truth for live verification. Source code, commits, branches, Pull Requests, chats, and implementation claims cannot prove that a task is complete.
 
@@ -53,7 +55,7 @@ The code execution AI treats the selected `sites/<site-id>.md` as its complete t
 1. Sync the latest recommendation repository state.
 2. Read the selected website file completely.
 3. Read `delivery_method` before changing code.
-4. Execute only tasks under `Approved tasks`. Never execute `Needs decision`.
+4. Execute only tasks under `已批准任务`. Never execute `待决事项`.
 5. By default, complete all approved tasks in the selected website file unless the user limits the scope.
 6. Follow each task's required change, acceptance criteria, and do-not-change boundary exactly.
 7. After publishing the approved changes, add exactly one public changelog entry for the batch. Describe only changes that actually shipped; if nothing ships, do not add an entry.
@@ -71,16 +73,18 @@ Stop instead of guessing when delivery metadata is missing, instructions conflic
 
 Create new website files from `templates/site-todo.md`.
 
-Every website frontmatter must include `changelog_url`, using a real public URL or `not_established`. If the website has no established public changelog, put choosing or creating one and the otherwise-ready release scope under `Needs decision`; do not leave executable work under `Approved tasks` and never invent a location.
+Every website frontmatter must include `changelog_url`, using a real public URL or `not_established`. If the website has no established public changelog, put choosing or creating one and the otherwise-ready release scope under `待决事项`; do not leave executable work under `已批准任务` and never invent a location.
 
-Every current task must contain:
+Every current task in `sites/*.md` must use these Chinese field labels:
 
-- Priority
-- Page or surface
-- Current problem and live evidence
-- Required change
-- Acceptance criteria
-- Do not change
+- `优先级`
+- `页面或界面`
+- `当前问题与线上证据`
+- `修改要求`
+- `验收标准`
+- `不要修改`
+
+Decision tasks use `当前问题`, `需要决定`, and `选项与取舍`.
 
 Use concrete visible outcomes and exact replacement copy when wording matters. Do not fabricate metrics, rankings, product capabilities, customer evidence, or implementation details.
 

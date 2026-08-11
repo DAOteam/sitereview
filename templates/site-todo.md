@@ -9,34 +9,34 @@ default_branch: "{{not_applicable_OR_REAL_BRANCH}}"
 updated_at: "{{YYYY-MM-DD}}"
 ---
 
-# {{SITE_NAME}} current tasks
+# {{SITE_NAME}} 当前待办事项
 
-## Approved tasks
+## 已批准任务
 
 ### {{TASK_TITLE}}
 
-- Priority: `{{P0_TO_P3}}`
-- Page or surface: `{{URL_OR_UI_STATE}}`
-- Problem and live evidence: {{CURRENT_PROBLEM}}
-- Required change: {{IMPLEMENTATION_READY_CHANGE}}
-- Acceptance criteria: {{TESTABLE_OUTCOME}}
-- Do not change: {{EXPLICIT_BOUNDARY}}
+- 优先级：`{{P0_TO_P3}}`
+- 页面或界面：`{{URL_OR_UI_STATE}}`
+- 当前问题与线上证据：{{CURRENT_PROBLEM}}
+- 修改要求：{{IMPLEMENTATION_READY_CHANGE}}
+- 验收标准：{{TESTABLE_OUTCOME}}
+- 不要修改：{{EXPLICIT_BOUNDARY}}
 
-### Update the public changelog for this release
+### 更新本次发布的公开更新日志
 
-- Priority: `{{P0_TO_P3}}`
-- Page or surface: `{{CHANGELOG_URL_OR_not_established}}`
-- Problem and live evidence: The current approved release batch requires one public changelog entry after its user-visible changes are published.
-- Required change: After publishing the approved changes, add exactly one dated entry summarizing only the user-visible changes that actually shipped. If nothing ships, do not add an entry.
-- Acceptance criteria: Exactly one new entry represents this release batch, every claim matches the live product, and the wording is concise, user-facing, and free of internal or sensitive details.
-- Do not change: Historical entries or dates. Do not mention file or component names, code architecture, repositories, branches, commits, infrastructure or provider configuration, costs, secrets, security-sensitive implementation details, customer data, internal metrics, AI prompts, or internal workflows.
+- 优先级：`{{P0_TO_P3}}`
+- 页面或界面：`{{CHANGELOG_URL_OR_not_established}}`
+- 当前问题与线上证据：当前已批准的发布批次需要在用户可见的修改上线后增加一条公开更新日志。
+- 修改要求：发布已批准的修改后，只新增一条带日期的记录，仅概括本批次实际上线且用户可见的变化。如果没有任何修改成功上线，则不要新增记录。
+- 验收标准：本批次恰好新增一条记录；所有描述均与线上产品一致；文案简洁、面向用户且不包含内部或敏感信息。
+- 不要修改：历史记录及其日期。不得提及文件名、组件名、代码架构、仓库、分支、提交、基础设施或服务商配置、成本、密钥、安全敏感实现、客户数据、内部指标、AI 提示词或内部工作流程。
 
-## Needs decision
+## 待决事项
 
 ### {{DECISION_TITLE}}
 
-- Priority: `{{P0_TO_P3}}`
-- Page or surface: `{{URL_OR_UI_STATE}}`
-- Current issue: {{ISSUE}}
-- Decision required: {{QUESTION_FOR_OWNER}}
-- Options and tradeoff: {{CONCISE_OPTIONS}}
+- 优先级：`{{P0_TO_P3}}`
+- 页面或界面：`{{URL_OR_UI_STATE}}`
+- 当前问题：{{ISSUE}}
+- 需要决定：{{QUESTION_FOR_OWNER}}
+- 选项与取舍：{{CONCISE_OPTIONS}}
