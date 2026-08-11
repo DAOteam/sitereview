@@ -7,7 +7,7 @@ priority: "P1"
 source: "user+ai"
 created_at: "2026-08-09"
 updated_at: "2026-08-11"
-prompt_version: 3
+prompt_version: 4
 ---
 
 # BGV-0009 — Make English user-facing copy easier to understand
@@ -61,6 +61,25 @@ The 15 in-scope English production pages were checked again from the live site i
 - The locked homepage SEO title and H1 remain correct and must continue to be preserved.
 
 The full approved v3 prompt below remains in scope; no item is removed as already completed.
+
+### Second live re-audit — 2026-08-11
+
+Classification: `partially_applied`.
+
+The same 15 live English pages were checked again after a new publication. Most of BGV-0009 is now online:
+
+- About, How It Works, Free Access, Contact, the use-case pages, and almost all tool-page terminology now follow the approved clearer wording.
+- Contact now displays `Account and free access` and `Product question`.
+- The Use Cases hub now states the 60-second maximum and three successful removals per 24-hour allowance window; the obsolete ten-second statement is absent.
+- All four shared reusable-asset lines and both `Cut to alpha` steps were replaced as approved.
+- Changelog now uses short `Historical entry` summaries. Its remaining generic sentence mentioning that old entries may have contained a `seconds budget` is a current-state disclaimer, not obsolete detailed allowance information, so it is accepted.
+- The locked homepage SEO title and H1 remain unchanged.
+
+Only these three items remain open for prompt version 4:
+
+1. Homepage still says `Exports open natively in the tools you already finish in, Adobe Premiere Pro and After Effects included.`
+2. FAQ still renders `Still stuck? Write tosupport@bgremove.video.` without a space before the email link.
+3. `/tools/remove-background-from-video/` still leads with `The tool computes a per-pixel transparency value and stores it as a fourth channel...` instead of first explaining in plain language that pixels can be fully visible, partly transparent, or invisible and naming the alpha channel second.
 
 ## User proposal
 
@@ -166,72 +185,39 @@ Confirmed by the user on 2026-08-09:
 
 ```text
 Delivery method: direct_publish.
-This is the approved BGV-0009 prompt version 3. A live re-audit on 2026-08-11 found the full task still open. Use the programming AI's existing production-connected code environment. Do not inspect or use DAOteam/bgremove. Run the required checks and publish only the approved English visible-copy scope. Do not create a Pull Request or write an execution result to the recommendation repository.
+This is the approved BGV-0009 prompt version 4. A second live re-audit on 2026-08-11 found only three copy items still open. Use the programming AI's current production-connected environment and publish only the remaining scope below after checks pass. Do not inspect or use DAOteam/bgremove, create a Pull Request, modify the recommendation repository, or write an execution-result file.
 
-Goal
-Make the 15 primary English marketing pages easier to understand without flattening the confident brand voice or removing useful professional credibility. Lead with the user-visible result, explain technical terms in plain language at first use, and keep concise specialist labels only as secondary detail.
+1. Homepage compatible-software sentence
+- Replace `Exports open natively in the tools you already finish in, Adobe Premiere Pro and After Effects included.` with `Open the result directly in the editing tools you already use.`
 
-Public evidence and scope
-1. Before editing, fetch the current public version of each page in BGV-0009 Scope. The public site is the only evidence of what still needs correction.
-2. Apply every approved replacement, terminology mapping, use-case instruction, Contact correction, Changelog instruction, and voice rule under BGV-0009 `AI recommendation`.
-3. If an exact quoted sentence has already been corrected online, skip it rather than rewriting the surrounding section.
-4. Change visible English copy only, plus the minimum shared content or visible-label logic required to render it correctly.
-5. When an edited FAQ answer also appears in FAQPage JSON-LD, keep the visible and structured versions identical in meaning.
+2. FAQ email spacing
+- Fix the visible FAQ sentence so it renders exactly as `Still stuck? Write to support@bgremove.video.` with a space between `to` and the linked email address.
+- Keep the email address as a working mail link and keep any matching FAQPage JSON-LD aligned in meaning.
 
-Mandatory factual corrections
-1. On `/use-cases/`, remove the obsolete one-free-ten-second-clip statement. Replace it with: `Not sure which workflow fits? Upload a real clip up to 60 seconds long and turn it into a reusable transparent video. Each signed-in account can complete up to 3 successful video background removals per 24-hour allowance window.`
-2. On `/contact/`, replace visible topic `Billing or refunds` with `Account and free access`.
-3. On `/contact/`, replace visible topic `API and integration` with `Product question`. Preserve internal form values or backend contracts if changing them would alter form behavior; this task authorizes the user-facing label change, not a backend integration change.
+3. Plain-language transparency explanation
+- On `/tools/remove-background-from-video/`, replace the paragraph beginning `The tool computes a per-pixel transparency value and stores it as a fourth channel...` with:
+  `Each pixel can be fully visible, partly transparent, or invisible. That transparency is stored in an alpha channel alongside the file's red, green, and blue colour channels. Nothing is behind your subject. What goes there is decided later, in your editor, as many times as you like.`
+- Lead with the visible/partly transparent/invisible explanation exactly as written; keep `alpha channel` as the secondary professional term.
 
-Required readability treatment
-1. Apply every exact row in `Priority replacements`.
-2. Apply every mapping and instruction in `Tool-page terminology`, including removing the duplicate Resolve/DaVinci naming.
-3. Apply every instruction in `Use-case pages`.
-4. On `/how-it-works/`, put the plain-language benefit in the primary body copy. Keep terms such as temporal memory, per-frame propagation, continuous alpha, and VP9 only as concise secondary labels where the existing design already supports secondary detail. Do not add a new interaction or redesign.
-5. Define `alpha channel`, `video matting`, `WebM`, and `VP9` in plain language at first meaningful use. Later occurrences may use the short professional term.
-6. Remove database implementation language, unexplained production jargon, unclear pronouns, passive constructions, and clever phrases whose meaning is not immediate.
-7. Preserve vivid, concise lines whose meaning is already clear. Do not turn the site into generic SaaS copy.
-
-Changelog treatment
-1. Preserve the current top `Current free access` entry and its current facts.
-2. Preserve each older entry's date, version, title, and `Historical configuration — no longer current` status where applicable.
-3. Shorten each older entry in place to one plain-language summary sentence.
-4. Remove visible obsolete detail about old allowances, clip counts, seconds budgets, resolution tiers, output formats, and internal processing cost. Do not add accordions, collapse controls, or other UI changes.
-
-Locked content and boundaries
+Boundaries and regression checks
+- Preserve all other English copy already corrected under BGV-0009, including Contact labels, Use Cases allowance facts, shortened Changelog entries, How It Works explanations, About copy, Free Access copy, and other tool/use-case terminology.
 - Preserve homepage SEO title exactly: `Remove Video Background Online Free - No Watermark`.
 - Preserve homepage H1 exactly: `Remove video background online. Free, no watermark.`
-- Preserve every H1 and CTA listed under `Copy that should remain unchanged` and all other current tool/use-case H1s.
-- Preserve current product facts: sign-in required; first successful job starts the 24-hour window; up to 3 successful jobs; failed jobs do not count; full reset when the window ends; 60-second maximum; no separate file-size cap; MP4/MOV/WebM/M4V/GIF input; source dimensions preserved; transparent WebM using VP9 with alpha; no watermark; 24-hour retention; no background replacement, batch processing, refinement, API, webhooks, or paid option.
-- Do not change product logic, account behavior, authentication, processing, retention, formats, form submission behavior, databases, infrastructure, legal pages, SEO metadata, URL structure, page layout, or navigation.
-- Do not change Spanish, Portuguese, French, or German pages and do not add Japanese or Korean.
-- Do not add unsupported speed, quality, compatibility, customer, cost, or performance claims.
-
-Verification before publication
-1. Run relevant content, type, and build checks.
-2. Render or crawl all 15 English pages from a production-like build.
-3. Search for every old phrase and specialist term listed in BGV-0009. Explain or remove each remaining match according to the approved rules.
-4. Confirm `/use-cases/` contains no current ten-second rule and accurately states the 60-second and 3-per-window rules.
-5. Confirm Contact no longer shows `Billing or refunds` or `API and integration`, and verify form submission behavior is unchanged.
-6. Confirm FAQ visible answers and FAQPage JSON-LD remain aligned.
-7. Confirm the locked homepage title, homepage H1, all approved page H1s, and primary/final CTA copy are unchanged.
-8. Confirm no product fact, paid option, unsupported feature, or permanent-free promise was introduced.
-9. Spot-check the corresponding Spanish, Portuguese, French, and German routes for English-copy leakage.
-10. After checks pass, publish directly through the existing production workflow. Do not mark this task verified; the recommendation AI will perform the next live audit.
+- Preserve approved H1s and CTAs, product behavior and facts, URLs, layout, navigation, legal pages, form behavior, and all non-English pages.
+- Do not introduce unsupported claims, paid options, unsupported features, or permanent-free promises.
+- Run relevant content, type, and build checks; confirm the three old strings are absent and the three approved replacements render correctly.
+- After checks pass, publish this exact remaining scope through the existing direct-to-production workflow. Do not mark the task verified; the recommendation AI will verify the live site.
 ```
 
 ## Acceptance criteria
 
-- All exact replacements and terminology directions under `AI recommendation` are present in the live English pages where the old copy still existed at execution time.
-- No visible page states a ten-second current limit, a paid support topic, or a current API support topic.
-- `/use-cases/` accurately states the 60-second maximum and up to 3 successful video background removals per 24-hour allowance window.
-- Contact uses `Account and free access` and `Product question`, and form submission behavior remains unchanged.
-- Plain-language benefits precede technical labels on `/how-it-works/`; remaining specialist terms are necessary and explained at first meaningful use.
-- Historical Changelog entries retain their dates, versions, titles, and historical status but no longer expose obsolete detailed allowances, resolution tiers, output formats, or internal cost explanations.
-- The homepage SEO title, homepage H1, approved page H1s, primary CTA, final CTA heading, and confirmed product facts are unchanged.
-- FAQ visible answers and FAQPage JSON-LD remain aligned in meaning.
-- No unsupported claim, paid option, unsupported feature, permanent-free promise, or English-copy leakage into deferred locales is introduced.
-- Relevant checks pass, and final completion is verified only from the public production site.
+- Homepage displays `Open the result directly in the editing tools you already use.` and no longer contains `Exports open natively in the tools you already finish in`.
+- FAQ visibly renders `Still stuck? Write to support@bgremove.video.` with correct spacing and a working email link; matching structured content remains aligned in meaning.
+- `/tools/remove-background-from-video/` leads with the approved fully visible/partly transparent/invisible explanation before naming the alpha channel, and the old tool-centered sentence is absent.
+- All previously verified BGV-0009 copy remains unchanged and no old ten-second, paid-support, API-support, detailed Changelog, or deferred-locale regression appears.
+- The homepage SEO title, homepage H1, approved page H1s, CTAs, confirmed product facts, layout, navigation, form behavior, and non-English pages remain unchanged.
+- No unsupported claim, paid option, unsupported feature, or permanent-free promise is introduced.
+- Final completion is verified only from the public production site.
 
 ## Out of scope
 

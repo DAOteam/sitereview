@@ -7,7 +7,7 @@ priority: "P1"
 source: "user+ai"
 created_at: "2026-08-09"
 updated_at: "2026-08-11"
-prompt_version: 3
+prompt_version: 4
 ---
 
 # BGV-0011 — Remove paid-plan content from the authenticated account page
@@ -44,6 +44,16 @@ Still open and retained in prompt version 3:
 2. Both visible allowance summaries show only a reset date (`Resets 11 Aug 2026` and `Resets 11 Aug`) with no time, `datetime`, title, or accessible time label. This does not satisfy the approved requirement to show the real next full-reset date and time for an active window.
 
 The separate sentence explaining that invoices are retained where tax law requires is allowed historical/legal context and is not classified as paid-product marketing.
+
+## Second live re-audit — 2026-08-11
+
+Classification: `still_open` with no change since prompt version 3.
+
+- The introduction still renders `Plan, billing and data. Everything destructive on this page asks once and then does exactly what it says.`
+- The two allowance summaries still render only `Resets 11 Aug 2026` and `Resets 11 Aug`, with no visible time or semantic `datetime`, title, or accessible time label.
+- Previously removed plan cards, prices, `See plans`, and `Get notified` controls remain absent; the approved Free, No charge, allowance, duration, and invoice-retention content remains intact.
+
+Prompt version 4 therefore retains the same two-item implementation scope and removes nothing further.
 
 ## User proposal
 
@@ -94,7 +104,7 @@ Approved on 2026-08-09:
 
 ```text
 Delivery method: direct_publish.
-This is the approved BGV-0011 prompt version 3. A live re-audit on 2026-08-11 found only the two items below still open. Use the programming AI's current production-connected environment, run relevant checks, and publish only this remaining English account-page scope. Do not inspect DAOteam/bgremove, modify the recommendation repository, create a Pull Request, or write an execution-result file.
+This is the approved BGV-0011 prompt version 4. A second live re-audit on 2026-08-11 found the same two items still open. Use the programming AI's current production-connected environment, run relevant checks, and publish only this remaining English account-page scope. Do not inspect DAOteam/bgremove, modify the recommendation repository, create a Pull Request, or write an execution-result file.
 
 Target `/app/account/` only.
 
