@@ -1,76 +1,88 @@
-# Recommendation repository agent rules
+# Global rules for Codex
 
-This repository is the source of truth for website recommendations and execution handoffs. It does not contain website source code.
+## Operating principles
 
-## Roles
+- Prefer small, reviewable diffs unless the user explicitly requests a larger refactor.
+- Before editing, identify the files to change and state the plan in 3–6 bullets.
+- Never invent APIs, configurations, repository URLs, or file paths.
+- Preserve existing style and architecture unless the approved task requires a change.
 
-- The recommendation AI creates and updates files under `sites/*/recommendations/`.
-- The code execution AI reads approved recommendations and follows the site's `delivery_method`.
-- For `pull_request`, the code execution AI modifies the separate target code repository and writes a result under `sites/*/results/`.
-- For `direct_publish`, the code execution AI publishes through its existing production-connected environment and writes a non-authoritative execution-attempt receipt under `sites/*/results/`.
-- The recommendation or verification AI checks the public production site and updates recommendation status or the next prompt version.
+## Safety and secrets
 
-## Execution gate
+- Never store secrets, tokens, private keys, environment values, credentials, cookies, signed-in identities, or customer data in this repository.
+- Ask for secrets only through environment variables when implementation genuinely requires them.
+- Do not add analytics, telemetry, or unrelated network calls.
 
-Only execute a recommendation when all conditions are true:
+## Repository purpose
 
-1. Its YAML frontmatter contains exactly `status: "approved"`.
-2. The matching `site.md` contains a supported `delivery_method`. A real `target_repository` and `default_branch` are required only for `pull_request`.
-3. `Final decision`, `Implementation prompt`, and `Acceptance criteria` are complete.
-4. No result or receipt already claims the same task, prompt version, and attempt as `in_progress`.
-5. The execution method matches `delivery_method`; never substitute one delivery mode for another.
-6. The active-scope fingerprint validates, and the task's stable item IDs match the current prompt version.
+This repository contains only current website work. It does not store website source code, audit history, completed tasks, execution receipts, prompt versions, result logs, or archives.
 
-Never execute `draft`, `needs_decision`, `deferred`, `blocked`, `rejected`, or `superseded` tasks.
+Each website has exactly one file:
 
-## Execution protocol
+```text
+sites/<site-id>.md
+```
 
-1. Read the site's `delivery_method` before changing anything.
-2. For `pull_request`:
-   - Create `sites/<site-id>/results/<TASK-ID>-result.md`.
-   - Work only in the named target repository, open a Pull Request, and record implementation evidence in the result file.
-   - Never merge or publish unless separately authorized.
-3. For `direct_publish`:
-   - Create `sites/<site-id>/results/<TASK-ID>-v<VERSION>-attempt-<NN>.md` from the template before modifying production code.
-   - Use the next unused two-digit attempt number, record the task/version/fingerprint handshake, mark the receipt `in_progress`, and add or update its row in `results/index.md`.
-   - Use the execution AI's existing production-connected code environment, run every item-level check, publish only the approved scope, perform the required production smoke test, and update the receipt to `published`, `partial`, or `blocked`.
-   - Treat the receipt as diagnostic evidence only. It must never set the recommendation to `implemented` or `verified`, and it must never be used as proof that production satisfies the task.
-4. Do not deploy, publish, change billing products, or expose secrets unless the task and selected delivery method explicitly authorize that action.
-5. Do not edit the approved recommendation or mark it verified.
+The file is the complete current handoff for that website. Its YAML frontmatter contains only the operational metadata required to identify and deliver the work. Its body contains only current approved tasks and current items awaiting a user decision.
 
-## Live verification protocol
+## Recommendation and verification AI
 
-1. Treat each site's public production URL as the source of truth when its `site.md` says `audit_source: "public_production"` or establishes the same rule in prose.
-2. At every later audit, compare every item in the latest approved recommendation with the current public page and classify it as `verified_online`, `still_open`, `partially_applied`, or `no_longer_relevant`.
-3. Remove `verified_online` and `no_longer_relevant` items from the next execution scope. Carry `still_open` items and only the unresolved remainder of `partially_applied` items into the next prompt version under the same task ID, preserving stable item IDs where the requirement is unchanged.
-4. Increment `prompt_version` whenever the executable scope is refreshed after a live audit.
-5. Never infer production status from source repositories, execution receipts, result files, branches, commits, or Pull Requests. Receipts may diagnose whether a version was claimed, checked, published, or blocked, but only current public-production evidence may verify an item.
-6. For BGRemove, never inspect or use `DAOteam/bgremove` to determine implementation or production state.
+The recommendation/verification AI owns `sites/*.md`.
 
-## Safety
+For every audit:
 
-- Never store credentials, payment secrets, environment variable values, or customer data here.
-- Never invent repository URLs, product IDs, API contracts, analytics, rankings, or business decisions.
-- For `pull_request`, stop with a blocked result when required information is missing. For `direct_publish`, stop, update the current attempt receipt to `blocked`, and report the blocker without publishing.
-- For `direct_publish`, never record credentials, customer data, signed-in account identifiers, cookies, or environment values in an execution receipt.
+1. Read the selected website file and the current public production site.
+2. Check every existing task against the live site.
+3. Delete completed or no-longer-relevant tasks completely.
+4. Keep unresolved tasks, rewriting partially completed tasks to contain only the remaining work.
+5. Add newly discovered tasks that are within the user's requested audit scope.
+6. Rewrite the website file in place. Never append audit history, completion notes, verification logs, dates of past checks, versions, receipts, or changelogs.
+7. Put directly authorized, implementation-ready work under `Approved tasks`.
+8. Put work that requires a business, legal, pricing, product, data, localization, migration, or publishing decision under `Needs decision`. Do not infer approval.
+9. If nothing remains, keep the website file and write `No current tasks.`
 
-## Active-scope protocol
+Public production is the source of truth for live verification. Source code, commits, branches, Pull Requests, chats, and implementation claims cannot prove that a task is complete.
 
-1. Approved recommendations must place `Active execution scope` immediately after the title and before historical evidence.
-2. The active scope must be bounded by `ACTIVE_SCOPE_START` and `ACTIVE_SCOPE_END`, contain stable item IDs, and match the YAML `scope_fingerprint`.
-3. Before editing, the execution AI must echo `task_id`, `prompt_version`, `scope_fingerprint`, delivery method, and item IDs, then run `python3 scripts/validate_handoffs.py`.
-4. Every item must finish as `pass`, `fail`, or `not_tested`. `fail` or required `not_tested` means the attempt is `partial` or `blocked`, never fully complete.
-5. Exact-copy tasks should define URL-level required-present and required-absent assertions. Stateful tasks should separate safe automated checks, signed-in production checks, and states that require fixtures.
-6. A successful receipt for the current prompt version prevents duplicate execution while independent verification is pending. A later prompt version is a new executable scope.
-7. Every site with one or more approved recommendations must list each approved task exactly once in its recommendation index execution queue, with a matching prompt version.
+For BGRemove, never inspect or use `DAOteam/bgremove` to determine audit findings or production status.
 
-## Daily operations protocol
+## Code execution AI
 
-1. Follow `DAILY_OPERATIONS.md` for the reusable cross-site operating cycle.
-2. Start each daily cycle by syncing the recommendation repository, running `python3 scripts/validate_handoffs.py`, and then running `python3 scripts/daily_queue.py`.
-3. Recommendation/verification and code execution run independently. Each fetches the latest repository state at the start and pushes its own state transition at the end; the repository is the only inter-agent handoff channel.
-4. A site's first queued task is a gate. An `in_progress`, `published`, `partial`, or `blocked` receipt for its current prompt version prevents the code execution AI from advancing to a later task for that site until the recommendation/verification AI reconciles it.
-5. Across sites that are ready for execution, choose one queue head by P0, P1, P2, P3, then `created_at`, then `task_id`. Execute at most one task per daily code run.
-6. A daily audit performs lightweight change detection and deep-checks only changed, failed, expired, or explicitly requested pages. It creates at most one main growth task and never auto-approves unresolved business decisions.
-7. The recommendation/verification AI consumes `verify_online`, `review_partial`, `resolve_blocker`, and invalid-receipt states. The code execution AI consumes only `execute` and never bypasses another queue-head state.
-8. Neither AI sends task instructions, execution summaries, or completion claims to the other through a person. Each push is a complete asynchronous handoff.
+The code execution AI treats the selected `sites/<site-id>.md` as its complete task brief.
+
+1. Sync the latest recommendation repository state.
+2. Read the selected website file completely.
+3. Read `delivery_method` before changing code.
+4. Execute only tasks under `Approved tasks`. Never execute `Needs decision`.
+5. By default, complete all approved tasks in the selected website file unless the user limits the scope.
+6. Follow each task's required change, acceptance criteria, and do-not-change boundary exactly.
+7. Do not edit or delete the website task file. The recommendation/verification AI removes completed work after checking production.
+8. Do not create result files, receipts, histories, or status updates in this repository.
+
+Delivery methods:
+
+- `direct_publish`: use the existing authorized production-connected workspace, run relevant checks, publish the approved scope, and smoke-test production. Do not create a Pull Request unless the website file explicitly changes the delivery method.
+- `pull_request`: require a real `target_repository` and `default_branch`, create a focused branch and Pull Request, and do not merge or publish without separate authorization.
+
+Stop instead of guessing when delivery metadata is missing, instructions conflict, required secrets are unavailable, or the requested work would expand beyond the approved task.
+
+## File format
+
+Create new website files from `templates/site-todo.md`.
+
+Every current task must contain:
+
+- Priority
+- Page or surface
+- Current problem and live evidence
+- Required change
+- Acceptance criteria
+- Do not change
+
+Use concrete visible outcomes and exact replacement copy when wording matters. Do not fabricate metrics, rankings, product capabilities, customer evidence, or implementation details.
+
+## Git
+
+- Fetch before editing and never force-push over remote work.
+- Keep one logical update per commit.
+- Recommendation updates may rewrite a website file completely because it intentionally represents only the current state.
+- Commit and push only when the user has authorized repository synchronization.

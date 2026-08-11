@@ -1,31 +1,38 @@
-# Website Growth Recommendations
+# Current website tasks
 
-Private multi-site repository for website audit recommendations, approved implementation prompts, and execution-attempt receipts. A receipt records what an execution AI attempted; it never proves that production is correct.
+This repository is a deliberately minimal handoff between a website recommendation AI and a code execution AI.
 
 ## Structure
 
 ```text
-sites/index.md
-sites/<site-id>/site.md
-sites/<site-id>/decisions.md
-sites/<site-id>/recommendations/index.md
-sites/<site-id>/recommendations/<TASK-ID>-<slug>.md
-sites/<site-id>/results/index.md
-sites/<site-id>/results/<TASK-ID>-result.md  # pull_request result
-sites/<site-id>/results/<TASK-ID>-v<VERSION>-attempt-<NN>.md  # direct_publish receipt
-templates/
+AGENTS.md
+README.md
+templates/site-todo.md
 prompts/code-execution-agent.md
-prompts/recommendation-verification-agent.md
+sites/<site-id>.md
 ```
 
-Only recommendations with `status: "approved"` may be executed.
+Each website has exactly one Markdown file. That file contains only work that is currently open:
 
-For the reusable morning-review, one-task execution, and post-publication verification cycle, follow [DAILY_OPERATIONS.md](DAILY_OPERATIONS.md). Run `python3 scripts/daily_queue.py` for the current cross-site action dashboard.
+- `Approved tasks`: implementation-ready work the code execution AI may execute.
+- `Needs decision`: current work that requires the website owner's decision and must not be executed.
 
-## Permanent execution-agent prompt
+Completed and no-longer-relevant work is deleted during the next live audit. Partially completed work is shortened to its unresolved remainder. The repository intentionally keeps no audit history, task history, prompt versions, execution receipts, result files, or archives.
 
-Configure the two independent agents once with [prompts/recommendation-verification-agent.md](prompts/recommendation-verification-agent.md) and [prompts/code-execution-agent.md](prompts/code-execution-agent.md). After that, both agents communicate asynchronously through repository commits; humans do not relay task bodies or execution summaries between them.
+## Audit workflow
 
-For a `direct_publish` site, the code execution AI verifies the task/version/scope fingerprint, creates a non-authoritative attempt receipt, publishes the approved scope through its existing production-connected environment, and records item-level checks plus a production smoke test. The receipt is diagnostic evidence only. The next independent audit still verifies the public site, removes completed items, and carries unresolved or partially applied items into the next `prompt_version` of the same recommendation.
+1. Select `sites/<site-id>.md`.
+2. Audit the live production website within the user's requested scope.
+3. Recheck every existing task against production.
+4. Rewrite the file with only unresolved and newly discovered work.
+5. Commit and push when repository synchronization is authorized.
 
-Each recommendation index with approved tasks must define an explicit execution queue. The execution AI takes the first approved queued task that has no successful receipt for its current prompt version. Active instructions belong near the top of each recommendation; historical audits remain below them.
+## Code workflow
+
+1. Select the website to modify.
+2. Read its single file under `sites/`.
+3. Execute only `Approved tasks` using the file's `delivery_method`.
+4. Do not edit the task file or write results into this repository.
+5. The next live audit removes work that is actually online.
+
+Create a new website from [templates/site-todo.md](templates/site-todo.md). Use a stable lowercase `site_id` for the filename.
