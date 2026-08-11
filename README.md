@@ -19,6 +19,8 @@ prompts/code-execution-agent.md
 
 Only recommendations with `status: "approved"` may be executed.
 
+For the reusable morning-review, one-task execution, and post-publication verification cycle, follow [DAILY_OPERATIONS.md](DAILY_OPERATIONS.md). Run `python3 scripts/daily_queue.py` for the current cross-site action dashboard.
+
 ## Permanent execution-agent prompt
 
 Configure the code execution AI once with [prompts/code-execution-agent.md](prompts/code-execution-agent.md). After that, the AI discovers approved tasks and follows each site's delivery method without needing a new task-specific handoff prompt.

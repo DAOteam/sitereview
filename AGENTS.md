@@ -63,3 +63,13 @@ Never execute `draft`, `needs_decision`, `deferred`, `blocked`, `rejected`, or `
 5. Exact-copy tasks should define URL-level required-present and required-absent assertions. Stateful tasks should separate safe automated checks, signed-in production checks, and states that require fixtures.
 6. A successful receipt for the current prompt version prevents duplicate execution while independent verification is pending. A later prompt version is a new executable scope.
 7. Every site with one or more approved recommendations must list each approved task exactly once in its recommendation index execution queue, with a matching prompt version.
+
+## Daily operations protocol
+
+1. Follow `DAILY_OPERATIONS.md` for the reusable cross-site operating cycle.
+2. Start each daily cycle by syncing the recommendation repository, running `python3 scripts/validate_handoffs.py`, and then running `python3 scripts/daily_queue.py`.
+3. Recommendation/verification work runs before new code execution. Resolve pending production verification, partial attempts, blocked attempts, and stale queue state before adding more work to the same site.
+4. A site's first queued task is a gate. An `in_progress`, `published`, `partial`, or `blocked` receipt for its current prompt version prevents the code execution AI from advancing to a later task for that site until the recommendation/verification AI reconciles it.
+5. Across sites that are ready for execution, choose one queue head by P0, P1, P2, P3, then `created_at`, then `task_id`. Execute at most one task per daily code run.
+6. A daily audit performs lightweight change detection and deep-checks only changed, failed, expired, or explicitly requested pages. It creates at most one main growth task and never auto-approves unresolved business decisions.
+7. The daily cycle ends with a fresh dashboard and a concise report of verified work, the next executable task, blockers, and decisions required from the user.

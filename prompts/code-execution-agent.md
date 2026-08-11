@@ -10,18 +10,21 @@ https://github.com/DAOteam/sitereview
 
 中央建议仓库是任务状态、业务决定、实施提示词和验收标准的唯一事实来源。不要依赖历史聊天、记忆或用户临时转述补全规则。当用户说“开始”“继续”或“执行下一个已批准任务”时，自动执行以下流程。
 
+当用户说“执行今日代码任务”时，进入通用每日模式：同步中央仓库，运行交接校验与每日队列看板，在所有可执行站点的队首任务中按 P0、P1、P2、P3、created_at、task_id 选择一个任务，并且本次只执行这一个任务。
+
 一、每次运行先同步规则
 
 1. 获取中央建议仓库默认分支的最新内容；禁止强制推送覆盖远端更新。
 2. 依次读取根目录 AGENTS.md、README.md、sites/index.md、目标站点 site.md、decisions.md、recommendations/index.md 和完整推荐文件。
 3. 索引只用于发现候选任务。最终必须打开推荐文件并核对 YAML frontmatter。
 4. 运行 `python3 scripts/validate_handoffs.py`。活动范围指纹不匹配时停止，不得执行或自行重算后静默继续。
+5. 运行 `python3 scripts/daily_queue.py`。先处理看板暴露的等待验收、部分完成、阻塞或正在执行状态；不得绕过站点队首去执行该站后续任务。
 
 二、选择任务
 
-1. 用户指定 site_id 或 task_id 时，只考虑该范围；未指定时使用目标站点 `recommendations/index.md` 的执行队列。站点存在 approved 任务但没有有效队列时停止并报告，不自行决定顺序。
+1. 用户指定 site_id 或 task_id 时，只考虑该范围；未指定站点时使用每日看板给出的全局执行候选。站点存在 approved 任务但没有有效队列时停止并报告，不自行决定顺序。
 2. 只有 `status: "approved"` 才允许执行。绝不执行 draft、needs_decision、blocked、deferred、rejected、superseded、implemented 或 verified。
-3. 每次只执行一个任务。当前 prompt version 已有 `published` 回执且所有必需项均为 `pass` 时，不要重复发布：未指定 task_id 时继续检查队列下一项；用户明确指定该任务时停止并说明正在等待独立线上验收。
+3. 每次只执行一个任务。同一站点的队首任务只要存在当前版本的 `in_progress`、`published`、`partial` 或 `blocked` 回执，就不得执行该站后续任务。`published` 且必需项全部通过时停止并说明正在等待独立线上验收；不要重复发布或跳过它。
 4. 修改前必须输出版本握手：`task_id`、`prompt_version`、`scope_fingerprint`、`delivery_method` 和全部稳定 item ID。任何一项不一致都停止。
 5. Final decision、Active execution scope、Implementation prompt 或 Acceptance criteria 不完整或存在关键冲突时停止，不猜测。
 
@@ -74,6 +77,7 @@ B. `direct_publish`
 
 - pull_request：附代码 PR 和结果文件，并明确未合并、未发布。
 - direct_publish：附执行尝试回执路径，说明其不构成上线验收，并提醒最终完成状态将由下一次独立线上审计确认。
+- 每日模式：最后重新运行 `python3 scripts/daily_queue.py`，报告当天执行结果、所有等待验收/阻塞站点，以及下一次运行的候选任务。
 ```
 
 ## 日常使用
@@ -88,4 +92,10 @@ B. `direct_publish`
 
 ```text
 执行 BGV-0008；仍须按中央建议仓库的执行门槛和站点 delivery_method 工作。
+```
+
+日常执行入口：
+
+```text
+执行今日代码任务。按中央建议仓库的每日看板选择一个全局最高优先级任务；不要跳过任何站点的待验收、部分完成、阻塞或正在执行队首任务。
 ```
