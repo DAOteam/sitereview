@@ -68,8 +68,9 @@ Never execute `draft`, `needs_decision`, `deferred`, `blocked`, `rejected`, or `
 
 1. Follow `DAILY_OPERATIONS.md` for the reusable cross-site operating cycle.
 2. Start each daily cycle by syncing the recommendation repository, running `python3 scripts/validate_handoffs.py`, and then running `python3 scripts/daily_queue.py`.
-3. Recommendation/verification work runs before new code execution. Resolve pending production verification, partial attempts, blocked attempts, and stale queue state before adding more work to the same site.
+3. Recommendation/verification and code execution run independently. Each fetches the latest repository state at the start and pushes its own state transition at the end; the repository is the only inter-agent handoff channel.
 4. A site's first queued task is a gate. An `in_progress`, `published`, `partial`, or `blocked` receipt for its current prompt version prevents the code execution AI from advancing to a later task for that site until the recommendation/verification AI reconciles it.
 5. Across sites that are ready for execution, choose one queue head by P0, P1, P2, P3, then `created_at`, then `task_id`. Execute at most one task per daily code run.
 6. A daily audit performs lightweight change detection and deep-checks only changed, failed, expired, or explicitly requested pages. It creates at most one main growth task and never auto-approves unresolved business decisions.
-7. The daily cycle ends with a fresh dashboard and a concise report of verified work, the next executable task, blockers, and decisions required from the user.
+7. The recommendation/verification AI consumes `verify_online`, `review_partial`, `resolve_blocker`, and invalid-receipt states. The code execution AI consumes only `execute` and never bypasses another queue-head state.
+8. Neither AI sends task instructions, execution summaries, or completion claims to the other through a person. Each push is a complete asynchronous handoff.

@@ -146,6 +146,7 @@ def main() -> int:
         )
 
     executable = [item for item in heads if item.state == "execute"]
+    candidate: QueueItem | None = None
     if executable:
         candidate = min(
             executable,
@@ -167,6 +168,21 @@ def main() -> int:
         print("Attention before execution:")
         for item in attention:
             print(f"- {item.site_id}: {item.task_id} {item.state}")
+        first = attention[0]
+        print(
+            f"Recommendation AI next action: reconcile {first.site_id} "
+            f"{first.task_id} ({first.state})"
+        )
+    else:
+        print("Recommendation AI next action: lightweight_monitoring")
+
+    if candidate is None:
+        print("Code execution AI next action: no_executable_task")
+    else:
+        print(
+            f"Code execution AI next action: execute {candidate.site_id} "
+            f"{candidate.task_id} v{candidate.version}"
+        )
     return 0
 
 

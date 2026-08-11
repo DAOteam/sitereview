@@ -15,6 +15,7 @@ sites/<site-id>/results/<TASK-ID>-result.md  # pull_request result
 sites/<site-id>/results/<TASK-ID>-v<VERSION>-attempt-<NN>.md  # direct_publish receipt
 templates/
 prompts/code-execution-agent.md
+prompts/recommendation-verification-agent.md
 ```
 
 Only recommendations with `status: "approved"` may be executed.
@@ -23,7 +24,7 @@ For the reusable morning-review, one-task execution, and post-publication verifi
 
 ## Permanent execution-agent prompt
 
-Configure the code execution AI once with [prompts/code-execution-agent.md](prompts/code-execution-agent.md). After that, the AI discovers approved tasks and follows each site's delivery method without needing a new task-specific handoff prompt.
+Configure the two independent agents once with [prompts/recommendation-verification-agent.md](prompts/recommendation-verification-agent.md) and [prompts/code-execution-agent.md](prompts/code-execution-agent.md). After that, both agents communicate asynchronously through repository commits; humans do not relay task bodies or execution summaries between them.
 
 For a `direct_publish` site, the code execution AI verifies the task/version/scope fingerprint, creates a non-authoritative attempt receipt, publishes the approved scope through its existing production-connected environment, and records item-level checks plus a production smoke test. The receipt is diagnostic evidence only. The next independent audit still verifies the public site, removes completed items, and carries unresolved or partially applied items into the next `prompt_version` of the same recommendation.
 
