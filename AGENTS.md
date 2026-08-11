@@ -36,10 +36,11 @@ For every audit:
 3. Delete completed or no-longer-relevant tasks completely.
 4. Keep unresolved tasks, rewriting partially completed tasks to contain only the remaining work.
 5. Add newly discovered tasks that are within the user's requested audit scope.
-6. Rewrite the website file in place. Never append audit history, completion notes, verification logs, dates of past checks, versions, receipts, or changelogs.
+6. Rewrite the website file in place. Never append audit history, completion notes, verification logs, dates of past checks, versions, or receipts.
 7. Put directly authorized, implementation-ready work under `Approved tasks`.
 8. Put work that requires a business, legal, pricing, product, data, localization, migration, or publishing decision under `Needs decision`. Do not infer approval.
-9. If nothing remains, keep the website file and write `No current tasks.`
+9. When approved implementation work remains, include exactly one approved task to update the public changelog for that release batch. Keep that task until its entry is verified online, even if the other work is already complete; remove it only after verification.
+10. If nothing remains, keep the website file and write `No current tasks.`
 
 Public production is the source of truth for live verification. Source code, commits, branches, Pull Requests, chats, and implementation claims cannot prove that a task is complete.
 
@@ -55,8 +56,9 @@ The code execution AI treats the selected `sites/<site-id>.md` as its complete t
 4. Execute only tasks under `Approved tasks`. Never execute `Needs decision`.
 5. By default, complete all approved tasks in the selected website file unless the user limits the scope.
 6. Follow each task's required change, acceptance criteria, and do-not-change boundary exactly.
-7. Do not edit or delete the website task file. The recommendation/verification AI removes completed work after checking production.
-8. Do not create result files, receipts, histories, or status updates in this repository.
+7. After publishing the approved changes, add exactly one public changelog entry for the batch. Describe only changes that actually shipped; if nothing ships, do not add an entry.
+8. Do not edit or delete the website task file. The recommendation/verification AI removes completed work after checking production.
+9. Do not create result files, receipts, histories, or status updates in this repository.
 
 Delivery methods:
 
@@ -69,6 +71,8 @@ Stop instead of guessing when delivery metadata is missing, instructions conflic
 
 Create new website files from `templates/site-todo.md`.
 
+Every website frontmatter must include `changelog_url`, using a real public URL or `not_established`. If the website has no established public changelog, put choosing or creating one and the otherwise-ready release scope under `Needs decision`; do not leave executable work under `Approved tasks` and never invent a location.
+
 Every current task must contain:
 
 - Priority
@@ -79,6 +83,8 @@ Every current task must contain:
 - Do not change
 
 Use concrete visible outcomes and exact replacement copy when wording matters. Do not fabricate metrics, rankings, product capabilities, customer evidence, or implementation details.
+
+The release changelog is public-facing. It may mention only truthful user-visible features, fixes, usability improvements, and supported product behavior. Never include file or component names, architecture, repositories, branches, commits, infrastructure or provider configuration, costs, secrets, security-sensitive implementation details, customer data, internal metrics, AI prompts, or internal workflows.
 
 ## Git
 

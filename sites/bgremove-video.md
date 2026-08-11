@@ -2,6 +2,7 @@
 site_id: "bgremove-video"
 name: "BGRemove"
 production_url: "https://bgremove.video/"
+changelog_url: "https://bgremove.video/changelog/"
 delivery_method: "direct_publish"
 target_repository: "not_applicable"
 default_branch: "not_applicable"
@@ -56,3 +57,12 @@ updated_at: "2026-08-11"
 - Required change: When a window is active, show the same authoritative next full-reset date and time in both summaries using existing server/account quota data. Use semantic `<time>` elements with the authoritative `datetime`. When no window has started, do not fabricate a timestamp; use an existing truthful state or explain that the window starts with the first successful video.
 - Acceptance criteria: An active window shows the same real date and time in both summaries. A safe existing fixture or automated test verifies the no-window state. `Free`, `No charge`, `Up to 3 videos per 24-hour period`, `Up to 60 seconds per video`, and the invoice-retention sentence remain. No paid cards, prices, `See plans`, `Get notified`, paid CTA, or empty paid-plan container appears.
 - Do not change: Allowance calculation, successful-job counting, failed-job treatment, authentication, processing, retention, downloads, historical records, the public pricing page, or non-English pages.
+
+### Update the public changelog for this release
+
+- Priority: `P1`
+- Page or surface: `https://bgremove.video/changelog/`
+- Problem and live evidence: The current approved release batch requires one public changelog entry after its user-visible changes are published.
+- Required change: After publishing the approved changes, add exactly one dated entry summarizing only the user-visible improvements that actually shipped. Use a concise title such as `Clearer guidance and account details`. If nothing ships, do not add an entry.
+- Acceptance criteria: Exactly one new entry represents this release batch, every claim matches the live product, and the wording is concise, user-facing, and free of internal or sensitive details.
+- Do not change: Historical entries or dates. Do not mention file or component names, code architecture, repositories, branches, commits, infrastructure or provider configuration, costs, secrets, security-sensitive implementation details, customer data, internal metrics, AI prompts, or internal workflows.
