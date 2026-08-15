@@ -6,44 +6,71 @@ changelog_url: "https://bgremove.video/changelog/"
 delivery_method: "direct_publish"
 target_repository: "not_applicable"
 default_branch: "not_applicable"
-updated_at: "2026-08-14"
+updated_at: "2026-08-15"
 ---
 
 # BGRemove 当前待办事项
 
 ## 已批准任务
 
-### 将现有说明移入 FAQ，并新增三个独立图文模块
+### 用浅显英文重写首页三个图文模块
 
 - 优先级：`P1`
-- 页面或界面：英文首页 `https://bgremove.video/`
-- 当前问题与线上证据：首页已新增关于 AI 去背景、适用素材、透明 WebM、后续用途和格式限制的说明，但 `<main>` 当前约有 `1127` 个可见英文单词，仍低于 `1200–1400` 个单词、目标约 `1300` 个的要求。新增说明集中在同一个约 `645` 个单词的区块内，连续使用 `What is...`、`What footage...`、`Why does...`、`What can...`、`Transparent output...` 和 `Formats...` 六个问答式 H2，区块内没有任何图片、图解或视频；下方现有 FAQ 仍是另外 6 个问题，也没有收纳“本地播放透明 WebM 仍看到原背景”的核心问题。信息已经上线，但阅读体验仍像一整段扩展问答，没有形成用户要求的图文叙事。
-- 修改要求：删除当前由 6 个连续问答式 H2 组成的长文字区块，不得给这批旧文字配图后继续作为正文。将其中已经核实的内容全部迁入现有 FAQ：新增 `What is an AI video background remover?`、`What footage gives the best result?` 和 `Why does my transparent WebM still look like it has the original background?`；把 `What can you do with a transparent video?` 与 `Transparent output, or a replaced background?` 的信息合并进现有 `Can I replace the background after removing it?`；把 `Formats, limits, and what happens after you upload` 合并进现有 `What video formats are supported?`。迁移时保留透明 WebM 的事实边界、验证方法、格式、60 秒、2 GB、每 24 小时 3 个成功视频、无水印、24 小时保留规则以及相关官方兼容性来源，不得创建语义重复的 FAQ。同步更新可见 FAQ 和 `FAQPage` JSON-LD，使问题与答案逐项一致。
+- 页面或界面：英文首页 `https://bgremove.video/` 中的 `One transparent master, many finished scenes`、`One cutout, every aspect ratio` 和 `A cleaner handoff from creator to editor` 三个图文模块
+- 当前问题与线上证据：三个主题、真实感案例图和对应 FAQ 已经上线，但正文使用了大量新手难以理解的抽象表达和编辑术语，例如 `a stack of layers stays editable`、`baked in`、`lower third`、`grading`、`flattened`、`opaque`、`downstream` 和 `the split falls in the same place every time`。句子较长，一个句子经常同时解释多个概念，用户需要先理解专业剪辑流程才能看懂产品价值。三个模块的主题不需要改变，只需要把正文改成常用词、短句、明确步骤和具体例子。
+- 修改要求：保留三个现有标题、案例图、图片说明、HTML 结构和排列顺序，只替换三个模块的正文。以下英文文案已经批准，必须逐段使用；可以按现有组件拆成 `<p>`，但不得重新润色、增加专业术语、改写产品能力或恢复原文中的抽象比喻。
 
-  在原长文字区块的位置新增以下三个全新的图文模块。三个模块合计提供约 `720–820` 个可见英文单词，每个模块约 `230–280` 个单词；这些文字必须是新内容，不得复制、拆句或近义改写迁入 FAQ 的旧段落：
+  `One transparent master, many finished scenes` 正文：
 
-  1. `One transparent master, many finished scenes`：解释非破坏式合成工作流。以同一段已去背景主体为核心，说明透明母版如何分别叠加品牌色、产品场景、演示画面和另一段视频，从而在不重新拍摄、不重新去背景的情况下制作不同成片；说明背景、主体和文字仍是独立图层，因此后期可以分别调整位置、裁切和视觉层级。正文使用描述性链接指向 `/use-cases/` 及三个现有用途详情页。案例图使用同一位虚构创作者或同一件无品牌产品作为主体，完整展示一张透明主体案例和至少 3 张不同真实场景的最终合成效果，例如自然室内工作室、产品展示环境和演示屏幕背景；每张都必须保持主体的脸部或产品外观、服装、姿态、光线方向和边缘一致，只更换背景及构图。可以使用 AI 生成整组真实感素材，但成图必须具有真实视频帧或商业摄影质感，不能用箭头、方框或卡通图标组成的简图代替。
-  2. `One cutout, every aspect ratio`：解释透明主体如何适配横版 `16:9`、方形 `1:1` 和竖版 `9:16` 版式。内容应说明透明图层可以在不同画布中重新定位和缩放，为标题、字幕、产品特写或屏幕录制留出空间；重点是同一表演或产品镜头如何适配产品页、教程、演示和社交短视频，而不是声称平台会自动完成排版。案例图使用同一位虚构人物的同一帧真实感素材，分别制作横版教程场景、方形产品讲解场景和竖版社交视频场景；三个画幅都要使用真实背景、自然光影和实际构图，为标题或内容预留不同空间，同时保持人物身份、面部、服装、姿势和抠像边缘完全一致。画幅名称由网页 HTML 标注，不要让生成模型把文字画进图片。可以用 AI 生成真实感人物和场景，但不能只是把同一张图机械裁成三份，也不能用线框、安全区示意框或色块简图替代真实案例。
-  3. `A cleaner handoff from creator to editor`：解释透明视频作为可复用交付资产的协作价值。内容应覆盖创作者交付透明主体、编辑者选择背景和版式、审阅者只要求替换背景或调整位置、最终再输出面向不同渠道的普通成片；说明把透明母版与背景和最终导出分开保存，可以让后续改版继续复用同一主体，但不得虚构 BGRemove 自带团队协作、版本管理或云端审阅功能。配图制作成同一真实案例的多画面摄影式组合：原始拍摄帧、透明主体预览、编辑者在真实工作环境中进行合成，以及成片在笔记本电脑和手机上的最终展示；全部画面必须出现同一位虚构主体并保持身份、服装和素材连续性，编辑界面使用无品牌、非仿制第三方软件的通用画面。可以使用 AI 生成这组真实感案例，但不能用流程箭头、文件图标、节点连线、抽象工作流图或纯界面线框代替人物、设备和成片都可见的真实场景。
+  > A transparent master is a video of your subject with the background removed. Think of it as a reusable top layer. You can place a color, photo, product scene, slide, or another video underneath it. The person or product stays the same while the scene changes.
+  >
+  > This is useful when you need more than one version of a video. Start with a clean room for your website. Use the same subject over a product display for an ad. Place the subject beside a presentation screen for a tutorial. You do not need to upload the clip again or remove the background again. Add the transparent video to your editor, choose a new background, and export the next version.
+  >
+  > Keeping the subject and background separate also makes small edits easier. Move the subject left to make space for a headline. Crop the scene without changing the subject. Replace a photo, update a background color, or change the text while keeping the same performance. This also helps you test different scenes before you decide which version to publish.
+  >
+  > Save the transparent WebM as your master file. When you need a new campaign, language, or layout, start with that file instead of the original recording. You will still need an editor to add the background and export the finished video, but the difficult step of separating the subject is already done.
+  >
+  > See how this works for [product videos](/use-cases/ecommerce/), [creator content](/use-cases/creators/), and [agency projects](/use-cases/agencies/), or compare all common workflows in [the use-case overview](/use-cases/).
 
-  三个模块的视觉必须是有真实人物、产品、环境、设备或最终成片的案例图，允许并优先使用 AI 生成的真实感案例素材。图片必须达到可信的真实视频帧或商业摄影质感，人物结构、手部、设备、透视、阴影、反射、景深和主体边缘自然；同一组案例中的主体身份和外观必须一致。不得使用流程简图、信息图、插画、线框图、抽象 3D 图形、装饰性图标、纯色块、抽象渐变或版权来源不明的库存素材代替案例图。AI 生成案例只能被表述为演示性合成案例，不得宣称是真实客户素材、真实客户成果或未经修饰的 BGRemove 实际输出。图片内不生成品牌标识、平台名称、可读界面文案或大段文字，标题、画幅名称和说明统一使用可访问的 HTML 文本。桌面端使用图文交错布局，移动端按“标题与正文 → 对应案例图”的顺序单列显示。重构后英文首页 `<main>` 的可见正文保持在 `1200–1400` 个英文单词，目标约 `1300` 个；不得依赖默认折叠的 FAQ 答案、结构化数据或图片中的文字凑词数。
-- 验收标准：首页只有一个 H1；当前 6 个问答式 H2 长区块已完全删除，其已核实信息均能在 FAQ 对应答案中找到；新增图文正文与 FAQ 没有重复段落或同义复述。页面准确出现 `One transparent master, many finished scenes`、`One cutout, every aspect ratio` 和 `A cleaner handoff from creator to editor` 三个非问句标题；每个模块包含 `230–280` 个新的可见英文单词和至少 1 组符合指定场景的真实感案例图；三个案例组分别清楚展示“同一主体用于多个真实背景”“同一主体适配三种真实画幅成片”“同一主体从原始拍摄到编辑交付和终端展示”的完整关系，不能使用简图、插画、线框或装饰图代替，也不能互相复用同一组图片充当三个案例。人工检查 AI 生成图片不存在明显的人体、手部、设备、文字、透视、光影、透明边缘或主体一致性错误；图片文案没有暗示其为真实客户案例或未经修饰的产品实测结果。新增视觉具有准确、简洁的替代文本，明确宽高或宽高比以避免加载跳动，首屏之外可延迟加载；桌面与移动端阅读顺序正确，无横向溢出。页面 `<main>` 可见英文正文为 `1200–1400` 个单词，目标约 `1300` 个；FAQ 不存在重复问题，可见 FAQ 与 `FAQPage` JSON-LD 逐项一致；透明 WebM 的兼容性边界和官方来源仍被保留；所有站内链接可访问且锚文本能说明目标内容；人工通读没有关键词堆砌、空泛套话或明显 AI 模板化措辞。
-- 不要修改：SEO 标题 `Remove Video Background Online Free - No Watermark`、H1 `Remove video background online. Free, no watermark.`、当前 meta description、canonical、hreflang、首屏上传与 CTA、三步流程、现有产品能力、格式支持、额度、保留规则、认证或处理流程、非英文首页。不要删除已经上线的透明 WebM 事实边界或官方来源，不要声称所有浏览器、系统播放器或编辑软件都支持 WebM alpha，不要通过隐藏文字、默认折叠内容、关键词列表或重复 FAQ 凑字数，也不要引入虚构客户案例、指标、评价、速度、质量或兼容性声明。
+  `One cutout, every aspect ratio` 正文：
 
-### 完善可核实的品牌实体结构化信息
+  > One recording may need to fit several screen shapes. A video on a website is often wide. A square post uses a 1:1 frame. A short video for a phone usually uses a tall 9:16 frame. If the background is already part of the video, a quick crop can cut off the subject or leave no space for text.
+  >
+  > A transparent video gives you more control. In a 16:9 layout, place the subject on one side and use the open space for a product, slide, or screen recording. In a 1:1 layout, make the subject larger so the frame does not feel empty. In a 9:16 layout, move the subject lower or to one side so captions can stay clear of the face.
+  >
+  > This is not the same as stretching one finished video into three shapes. Create a separate canvas for each size in your editor. Add the same transparent WebM to each canvas, then choose its size and position. Add a background that fits the new frame and check that important details are not covered by text or interface buttons. You can also use the open space differently for each channel and message.
+  >
+  > BGRemove removes the background and gives you the transparent file. It does not build the final layouts automatically. You make those layouts in your editor. The benefit is that you can use the same recording for a product page, a tutorial, a presentation, a square post, and a vertical social video without filming the subject again.
+
+  `A cleaner handoff from creator to editor` 正文：
+
+  > A transparent master makes it easier for one person to record a video and another person to finish it. The creator can focus on the performance. The editor can choose the background, text, and layout later.
+  >
+  > The handoff is simple. First, the creator records the clip and uses BGRemove to create a transparent WebM. Next, the editor imports that file into an editing tool and places a color, photo, slide, or video underneath it. The editor can then move or resize the subject without changing the original performance.
+  >
+  > If someone asks for a different background, more space for a logo, or a vertical version, the editor can update the layout instead of asking the creator to record the clip again. The subject stays the same. Only the parts around it change.
+  >
+  > When the work is approved, the editor exports a normal finished video for each website, presentation, or social channel. Keep three things: the original clip, the transparent WebM, and the final exports. The transparent file is the useful middle step because it can be reused when another version is needed.
+  >
+  > BGRemove only creates the transparent video. It does not host team projects, manage versions, collect comments, or export every channel layout for you. Those steps happen in the editing tools your team already uses. The value is a clean, reusable subject that gives the editor more choices and reduces the need to film the same take again.
+
+- 验收标准：三个标题和主题保持不变；线上正文与上述批准文案逐段一致；第一段共约 `249` 个英文单词，第二段约 `245` 个，第三段约 `238` 个；使用普通用户能理解的 `background`、`subject`、`video`、`editor`、`layout`、`file` 和 `export` 等常用词；不再出现 `baked in`、`lower third`、`grading`、`flattened`、`opaque`、`downstream`、`plate`、`layer stack` 或其他没有立即解释的剪辑术语；句子以单一信息为主，没有连续多个破折号或需要回读的长句；四个用途链接保持为可点击的描述性链接；桌面端和移动端的现有图文布局、图片、替代文本和图片说明不变；页面仍只有一个 H1，FAQ 可见内容与 `FAQPage` JSON-LD 保持一致。
+- 不要修改：三个模块的标题、主题、案例图、图片文件、图片顺序、替代文本、图片说明、模块布局、FAQ、SEO 标题、H1、meta description、canonical、hreflang、首屏、三步流程、产品能力、格式、额度、保留规则、认证、处理流程或非英文页面。不得加入未经证实的节省时间、成本、转化率、效果保证、客户评价或第三方软件兼容性声明。
+
+### 补充 Organization 的公开法定名称
 
 - 优先级：`P2`
-- 页面或界面：英文首页 `https://bgremove.video/` 的 `Organization` 结构化数据，并保持各语言共享实体引用一致
-- 当前问题与线上证据：首页当前 `Organization` 只有 `name`、`url`、`description` 和支持邮箱，仍没有把 About 页面公开显示的法定名称 `BGRemove d.o.o.` 表达为 `legalName`，也没有 `contactPoint` 或合格的 `logo`。现有公开事实足以补全法定名称和客户支持联系方式，但不能据此虚构其他实体属性。
-- 修改要求：继续使用唯一稳定的 `@id` `https://bgremove.video/#organization`。增加 `legalName: "BGRemove d.o.o."`；使用现有公开支持邮箱增加 `contactPoint`，其中 `@type` 为 `ContactPoint`、`contactType` 为 `customer support`、`email` 为 `support@bgremove.video`，并只声明网站实际提供的语言；如站点已有满足 Google 图片要求、可公开抓取且至少 112×112 的代表性品牌 logo，则增加其绝对 URL，否则本批次不新增 `logo`，不得临时把空白图标或不合格 favicon 当作 logo。只在首页或单一组织说明页维护完整实体对象，其他页面继续通过同一 `@id` 引用。
-- 验收标准：首页 `Organization` JSON-LD 可解析，`name`、`legalName`、`url`、`email`、`contactPoint` 和 `address` 与 About、Contact 页面可见信息一致；全站没有多个相互冲突的 Organization 实体；若加入 logo，其 URL 返回 200、可索引、尺寸至少 112×112 且白色背景下可识别；Schema.org 验证没有关键错误。
-- 不要修改：公司名称、地址、邮箱或任何法定信息的可见内容。不要虚构电话、成立日期、税号、VAT、LEI、员工数、社交账号、评价、奖项或外部实体链接；不要仅为了字段完整度添加无法公开核实的数据。
+- 页面或界面：英文首页 `https://bgremove.video/` 的 `Organization` 结构化数据
+- 当前问题与线上证据：首页 `Organization` 已经包含支持邮箱和 `contactPoint`，但仍没有把 About 页面公开显示的法定名称 `BGRemove d.o.o.` 表达为 `legalName`。
+- 修改要求：继续使用 `https://bgremove.video/#organization` 作为唯一稳定的组织 `@id`，只增加 `legalName: "BGRemove d.o.o."`。其他页面继续通过同一 `@id` 引用该实体。
+- 验收标准：首页 `Organization` JSON-LD 可解析，`legalName` 与 About 页面公开名称完全一致；全站不存在名称或 `@id` 冲突；Schema.org 验证没有关键错误。
+- 不要修改：可见公司名称、地址、邮箱、现有 `contactPoint` 或其他法定信息。不要虚构电话、注册标识、税号、社交账号、评价、奖项或外部实体链接。
 
 ### 更新本次发布的公开更新日志
 
 - 优先级：`P1`
 - 页面或界面：`https://bgremove.video/changelog/`
-- 当前问题与线上证据：`2026-08-13` 的 `Transparent video, explained properly` 已经如实记录上一批上线内容；本轮要求的首页图文重构尚未上线，因此还没有对应的新记录。
-- 修改要求：完成并发布本批次实际上线的首页改进后，只新增一条带日期的公开记录。文案面向用户概括首页现在通过图文展示一份透明母版如何生成多种场景、适配不同画幅并交接给编辑者，同时把常见直接问题集中到 FAQ 等实际上线变化；如果首页没有成功发布任何用户可见修改，则不要新增记录。纯结构化数据补充不必单独向用户描述。
-- 验收标准：本批次恰好新增一条记录；只描述实际上线且用户可见的内容改进；文案简洁、脱敏并与线上页面一致；`2026-08-13` 及更早的历史记录和日期保持不变。
-- 不要修改：历史记录及其日期。不得提及文件名、组件名、代码架构、仓库、分支、提交、基础设施或服务商配置、成本、密钥、安全敏感实现、客户数据、内部指标、AI 提示词或内部工作流程。
+- 当前问题与线上证据：`2026-08-14` 的 `Seeing what a transparent master is for` 已经记录三个图文模块和 FAQ 上线；本轮浅显文案尚未发布，因此没有对应的新记录。
+- 修改要求：浅显文案成功上线后，只新增一条带日期的公开记录。文案只需说明首页三个案例说明现在使用更直接、容易理解的语言，并帮助新手理解如何复用透明视频、适配不同画幅及交给编辑者继续处理。如果文案没有成功上线，则不要新增记录。纯结构化数据补充不必单独描述。
+- 验收标准：本批次恰好新增一条记录；只描述实际上线且用户可见的文案改进；内容简洁、脱敏并与线上页面一致；`2026-08-14` 及更早的历史记录和日期保持不变。
+- 不要修改：历史记录及其日期。不得提及文件名、组件名、代码架构、仓库、分支、提交、基础设施、服务商配置、成本、密钥、安全敏感实现、客户数据、内部指标、AI 提示词或内部工作流程。
