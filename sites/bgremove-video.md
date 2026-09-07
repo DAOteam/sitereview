@@ -6,45 +6,36 @@ changelog_url: "https://bgremove.video/changelog/"
 delivery_method: "direct_publish"
 target_repository: "not_applicable"
 default_branch: "not_applicable"
-updated_at: "2026-09-07"
+updated_at: "2026-09-08"
 ---
 
 # BGRemove 当前待办事项
 
 ## 已批准任务
 
-### 修正竖屏视频在换背景工作区被旋转的问题
+### 修正竖屏视频在换背景工作区仍被旋转的问题
 
 - 优先级：`P1`
 - 页面或界面：`https://bgremove.video/change-background/` 的视频预览与 MP4 导出
-- 当前问题与线上证据：用户于 2026-09-07 在生产环境验证发现，竖屏视频进入换背景功能区域后会被旋转 90 度，并以横屏方向播放。公开页面同时说明输出会保留源视频尺寸（包括竖屏和方形），当前实际行为与此不一致。
-- 修改要求：读取并正确处理源视频的方向元数据、显示矩阵和固有宽高，在预览、背景合成与 MP4 导出流程中只进行一次方向归一化。不得仅通过互换宽高修正方向，也不得让浏览器已应用的方向信息再次触发旋转。手机拍摄且带方向元数据的 MP4/MOV，以及已经归一化方向的竖屏 WebM，都必须按源视频的正确方向显示和导出。
+- 当前问题与线上证据：用户于 2026-09-08 使用真实账号和竖屏素材在线上生产环境复测，确认视频进入换背景功能区域后仍会被旋转 90 度，以横屏方向播放。线上 `Sep 6, 2026 · Fix · 2.0` 更新日志声称竖屏方向已经修复，但该声明与实际行为不一致。用户同时确认 `Colour`、`Blur` 的选择顺序和处理状态提示等其他换背景问题已经解决。
+- 修改要求：正确识别进入换背景工作区的透明成品视频的实际显示方向、方向元数据、显示矩阵和固有宽高，在读取、预览、背景合成与 MP4 导出流程中只执行一次必要的方向归一化。浏览器或解码器已经应用方向信息时不得再次旋转；不得用固定旋转角度或盲目互换宽高处理全部竖屏素材。至少覆盖手机拍摄且携带方向元数据的 MP4/MOV 经过去背景后生成的透明作品，以及已经按像素方向归一化的竖屏 WebM。
 - 验收标准：使用真实竖屏、横屏和方形视频逐一验证 `None`、`Colour`、`Blur`、`Image`、`Video` 五种背景状态；竖屏视频始终保持竖屏且没有 90、180 或 270 度误旋转，横屏与方形视频方向不变；预览与导出的 MP4 方向、画面比例和宽高关系一致；手机和桌面端结果一致。
-- 不要修改：主体的原始宽高比、主体在画布中的既定缩放与位置、视频时长、帧率、音频、透明边缘质量及现有背景类型。
+- 不要修改：已经解决的 `Colour`、`Blur` 选择流程和处理状态反馈；主体的原始宽高比、主体在画布中的既定缩放与位置、视频时长、帧率、音频、透明边缘质量及现有背景类型。
 
-### 先显示 Colour 或 Blur 控件，再按用户选择处理预览
+### 重新生成 Agencies 卡片中人物变形的案例图
 
-- 优先级：`P1`
-- 页面或界面：`https://bgremove.video/change-background/` 的 `Colour` 与 `Blur` 背景按钮
-- 当前问题与线上证据：用户于 2026-09-07 在生产环境验证发现，点击 `Colour` 或 `Blur` 后页面会立即进入处理中的 loading 状态，用户还没有机会选择颜色或调整模糊程度。
-- 修改要求：首次点击 `Colour` 时只打开颜色选择控件，首次点击 `Blur` 时只打开带当前数值的模糊滑块，不得在打开控件时启动预览处理或显示 loading。用户实际选定颜色或改变模糊数值后，才开始更新预览。切换背景类型时关闭另一个控件；再次打开时保留当前选择。颜色选择控件与模糊滑块必须支持键盘操作，并提供清晰的名称、当前值和关闭方式。
-- 验收标准：点击 `Colour` 或 `Blur` 的第一步只显示对应控件，预览和页面不会进入处理状态；选择颜色或调整滑块后才开始处理并更新预览；两个控件不会同时叠加；反复打开、关闭和切换背景类型时，已选颜色、模糊值及当前激活状态保持一致；鼠标、触屏和键盘均可完成操作。
-- 不要修改：现有背景类型、默认颜色、模糊强度范围、换背景完全免费且不限次数的规则，以及背景素材保留在浏览器本地的隐私行为。
+- 优先级：`P2`
+- 页面或界面：`https://bgremove.video/change-background/` 的 `Make More Versions From One Cutout` 模块、`Agencies` 卡片配图
+- 当前问题与线上证据：用户于 2026-09-08 提供的线上截图显示，笔记本屏幕中的人物肩颈和身体比例明显变形，而且笔记本里是背对镜头的人物，手机里却是正面人物，无法表达文案所说的“同一段素材生成多个交付版本”。异常人物会降低页面的真实感和可信度。截图中的红色箭头是用户标注，不是页面内容。
+- 修改要求：用图片生成 AI 重新生成一张真实摄影风格的 `16:9` 案例图，不得使用简图、插画或抽象占位图。使用以下英文提示词：`Photorealistic commercial lifestyle photograph, 16:9. A clean modern creative-agency desk in soft daylight. An open laptop on the left and an upright smartphone on the right. Both screens display the exact same waist-up female presenter from the exact same source frame: front-facing, natural proportions, symmetrical shoulders, dark emerald blouse, blonde hair tied in a low ponytail, calm neutral expression. The laptop version has a warm mustard studio background; the phone version has a cool light-grey studio background, demonstrating one cutout used for two deliverables. The presenter’s identity, face, pose, clothing, body shape, scale and orientation must be identical on both screens. Realistic screen perspective and reflections, anatomically correct human, crisp screen content, no distortion, no duplicated body parts, no reversed head, no warped shoulders or torso, no text, no logos, no watermark, no arrows, no UI overlays. Leave comfortable margins around both devices; premium SaaS landing-page photography.` 生成后人工检查并选择无畸形版本，替换当前图片，同时把图片 alt 设置为 `The same presenter shown on a laptop and phone against two different backgrounds`。响应式显示必须保持图片原始比例，不能通过拉伸填满容器。
+- 验收标准：笔记本和手机中是同一个可辨认的人物、同一正面姿势、同一服装和同一源画面，只改变背景；人物面部、肩颈、躯干和身体比例自然，没有扭曲、断裂、重复肢体或错误朝向；设备透视合理，图片中没有文字、品牌、水印、箭头或界面叠层；桌面端和 `390px`、`768px` 宽度下图片不被拉伸，人物与两台设备的关键信息没有被裁掉；alt 与实际画面一致。
+- 不要修改：`Agencies` 标题、正文、链接、卡片顺序、模块布局，以及同模块的 `Ecommerce`、`Creators` 配图和文案。不得把示例描述成真实客户、客户案例或已取得的业务成果。
 
-### 让实际处理中的状态更明显且不遮断操作上下文
-
-- 优先级：`P1`
-- 页面或界面：`https://bgremove.video/change-background/` 的预览处理状态
-- 当前问题与线上证据：用户于 2026-09-07 在生产环境验证发现，换背景处理中状态不够明显，难以判断预览是否正在更新。该状态还会在仅打开 `Colour` 或 `Blur` 控件时被错误触发。
-- 修改要求：只在用户完成背景选择、预览确实开始生成后显示处理状态。在视频预览区域中央显示高对比度的半透明遮罩、清晰的加载动画和英文提示 `Updating preview…`，保留当前预览作为上下文且不得引起页面布局跳动。状态需要通过 `role="status"` 和 `aria-live="polite"` 向辅助技术播报；处理完成后自动消失，处理失败时保留上一次可用预览并显示可重试的错误提示。没有真实进度数据时不得显示虚假的百分比。
-- 验收标准：实际处理开始后，桌面端和手机端都能立即看清预览正在更新；仅打开颜色选择器或模糊滑块时不显示处理状态；处理成功后提示消失并自动播放更新后的预览；处理失败时不会无限 loading，用户能看到错误并重试；加载提示对键盘和屏幕阅读器用户可感知。
-- 不要修改：换背景算法、导出格式、页面整体布局、导航与营销文案；不得新增无法由真实处理进度支持的预计时间或百分比。
-
-### 更新本次发布的公开更新日志
+### 纠正 Sep 6 的错误竖屏声明并记录实际修复
 
 - 优先级：`P1`
 - 页面或界面：`https://bgremove.video/changelog/`
-- 当前问题与线上证据：当前已批准的发布批次包含竖屏方向、背景选项交互和处理反馈修复，需要在这些修改上线后增加一条面向用户的公开更新日志。
-- 修改要求：发布并验证本批次修改后，只新增一条带日期的公开记录，仅概括实际上线的用户可见变化：竖屏视频保持正确方向，选择颜色或模糊效果后才更新预览，以及处理状态更清晰。没有上线的内容必须从记录中省略；如果本批次没有任何修改成功上线，则不要新增记录。
-- 验收标准：本批次恰好新增一条记录；内容与生产环境实际行为一致，简洁、脱敏且面向用户；没有把未上线或未验证的修复写成已完成。
-- 不要修改：历史记录及其日期。不得提及文件名、组件名、代码架构、仓库、分支、提交、基础设施或服务商配置、成本、密钥、安全敏感实现、客户数据、内部指标、AI 提示词或内部工作流程。
+- 当前问题与线上证据：线上 `Sep 6, 2026 · Fix · 2.0` 条目当前声称竖屏视频会在预览、所有背景和导出文件中保持正确方向，但用户于 2026-09-08 的生产复测确认竖屏预览仍会横向播放。该条目同时包含方向元数据、高帧率和“其他副作用”等实现诊断，既不真实也不符合简洁、脱敏的用户向更新日志要求；其中 `Colour`、`Blur` 选择流程和更清晰的处理反馈已由用户确认上线。
+- 修改要求：立即把 `Sep 6, 2026` 条目的标题改为 `Background controls now wait for your choice`，正文完整替换为：`Colour and Blur controls now wait for your choice before updating, with clearer progress and retry feedback while the preview is being prepared.` 保留该条目的日期、版本和类型。本批次竖屏方向修复和 Agencies 案例图实际发布并经过生产验证后，再新增恰好一条带真实发布日期的记录，只概括实际上线的用户可见变化。竖屏方向可使用：`Vertical videos now keep the correct orientation in previews and exported MP4 files.`；案例图可概括为：`The agency example now shows one consistent presenter across both finished versions.` 未上线或未验证的内容必须省略；如果两项都没有成功上线，则不要新增记录。
+- 验收标准：`Sep 6, 2026` 条目不再声称竖屏方向已经修复，不再出现方向元数据、高帧率、副作用或其他实现诊断，只描述已经确认上线的控件和处理反馈。本批次恰好新增一条真实日期的简洁记录，且只包含生产环境已经验证的竖屏修复和/或案例图改进。
+- 不要修改：`Sep 6, 2026` 条目的原日期、版本和类型，以及其他历史记录及其日期。不得提及文件名、组件名、代码架构、仓库、分支、提交、基础设施或服务商配置、成本、密钥、安全敏感实现、客户数据、内部指标、AI 提示词或内部工作流程。
