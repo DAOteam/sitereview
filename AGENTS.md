@@ -41,7 +41,7 @@ For every audit:
 6. Rewrite the website file in place. Never append audit history, completion notes, verification logs, dates of past checks, versions, or receipts.
 7. Put directly authorized, implementation-ready work under `已批准任务`.
 8. Put work that requires a business, legal, pricing, product, data, localization, migration, or publishing decision under `待决事项`. Do not infer approval.
-9. When approved implementation work remains, include exactly one approved task to update the public changelog for that release batch. Keep that task until its entry is verified online, even if the other work is already complete; remove it only after verification.
+9. When approved implementation work includes a significant user-facing update, include exactly one approved task to update the public changelog for that release batch. Do not create a changelog task for routine image replacements, copy or typo corrections, metadata-only SEO changes, minor visual adjustments, internal refactors, or ordinary maintenance. Keep an applicable changelog task until its entry is verified online, even if the other work is already complete; remove it only after verification.
 10. If nothing remains, keep the website file and write `当前没有待办事项。`
 
 Public production is the source of truth for live verification. Source code, commits, branches, Pull Requests, chats, and implementation claims cannot prove that a task is complete.
@@ -58,7 +58,7 @@ The code execution AI treats the selected `sites/<site-id>.md` as its complete t
 4. Execute only tasks under `已批准任务`. Never execute `待决事项`.
 5. By default, complete all approved tasks in the selected website file unless the user limits the scope.
 6. Follow each task's required change, acceptance criteria, and do-not-change boundary exactly.
-7. After publishing the approved changes, add exactly one public changelog entry for the batch. Describe only changes that actually shipped; if nothing ships, do not add an entry.
+7. After publishing approved changes, add a public changelog entry only when the selected website task file contains an approved changelog task. Describe only significant changes that actually shipped; if nothing significant ships, do not add an entry.
 8. Do not edit or delete the website task file. The recommendation/verification AI removes completed work after checking production.
 9. Do not create result files, receipts, histories, or status updates in this repository.
 
@@ -73,7 +73,7 @@ Stop instead of guessing when delivery metadata is missing, instructions conflic
 
 Create new website files from `templates/site-todo.md`.
 
-Every website frontmatter must include `changelog_url`, using a real public URL or `not_established`. If the website has no established public changelog, put choosing or creating one and the otherwise-ready release scope under `待决事项`; do not leave executable work under `已批准任务` and never invent a location.
+Every website frontmatter must include `changelog_url`, using a real public URL or `not_established`. If significant approved work requires a changelog and the website has no established public changelog, put choosing or creating one and that release scope under `待决事项`; never invent a location. Minor work that does not require a changelog may remain under `已批准任务`.
 
 Every current task in `sites/*.md` must use these Chinese field labels:
 
@@ -88,7 +88,7 @@ Decision tasks use `当前问题`, `需要决定`, and `选项与取舍`.
 
 Use concrete visible outcomes and exact replacement copy when wording matters. Do not fabricate metrics, rankings, product capabilities, customer evidence, or implementation details.
 
-The release changelog is public-facing. It may mention only truthful user-visible features, fixes, usability improvements, and supported product behavior. Never include file or component names, architecture, repositories, branches, commits, infrastructure or provider configuration, costs, secrets, security-sensitive implementation details, customer data, internal metrics, AI prompts, or internal workflows.
+The release changelog is public-facing and reserved for significant updates users would reasonably want to discover: new user-facing features or pages, material workflow or navigation redesigns, important compatibility improvements, and fixes for serious user-visible failures. Do not record routine image replacements, copy or typo corrections, metadata-only SEO changes, minor spacing or styling adjustments, internal refactors, or ordinary maintenance unless the user explicitly requests it. When a batch mixes significant and minor work, mention only the significant changes. Entries may mention only truthful user-visible features, fixes, usability improvements, and supported product behavior. Never include file or component names, architecture, repositories, branches, commits, infrastructure or provider configuration, costs, secrets, security-sensitive implementation details, customer data, internal metrics, AI prompts, or internal workflows.
 
 ## Git
 

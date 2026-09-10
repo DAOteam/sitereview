@@ -17,7 +17,7 @@ Each website has exactly one Markdown file, written in Chinese. YAML keys, URLs,
 - `已批准任务`: implementation-ready work the code execution AI may execute.
 - `待决事项`: current work that requires the website owner's decision and must not be executed.
 
-Whenever approved implementation work exists, the file also contains exactly one approved public-changelog task for that release batch. The entry must describe only user-visible changes that actually ship and must omit internal or sensitive details. If nothing ships, no entry is published. The task stays open until the public entry is verified online.
+When approved work includes a significant user-facing update, the file also contains exactly one approved public-changelog task for that release batch. Significant updates include new features or pages, material workflow or navigation redesigns, important compatibility improvements, and serious user-visible fixes. Routine image replacements, copy or typo corrections, metadata-only SEO changes, minor visual adjustments, internal refactors, and ordinary maintenance do not require a changelog. When a batch mixes both kinds of work, the entry mentions only the significant changes. The task stays open until the public entry is verified online.
 
 Completed and no-longer-relevant work is deleted during the next live audit. Partially completed work is shortened to its unresolved remainder. The repository intentionally keeps no audit history, task history, prompt versions, execution receipts, result files, or archives.
 
@@ -34,8 +34,8 @@ Completed and no-longer-relevant work is deleted during the next live audit. Par
 1. Select the website to modify.
 2. Read its single file under `sites/`.
 3. Execute only `已批准任务` using the file's `delivery_method`.
-4. After successful delivery, publish exactly one sanitized changelog entry summarizing only the changes actually online.
+4. If the website task file contains an approved changelog task, publish exactly one sanitized entry summarizing only the significant changes actually online.
 5. Do not edit the task file or write results into this repository.
-6. The next live audit removes work that is actually online, including the completed changelog task.
+6. The next live audit removes work that is actually online, including any completed changelog task.
 
 Create a new website from [templates/site-todo.md](templates/site-todo.md). Use a stable lowercase `site_id` for the filename.

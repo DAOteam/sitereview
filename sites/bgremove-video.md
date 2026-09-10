@@ -6,334 +6,165 @@ changelog_url: "https://bgremove.video/changelog/"
 delivery_method: "direct_publish"
 target_repository: "not_applicable"
 default_branch: "not_applicable"
-updated_at: "2026-09-09"
+updated_at: "2026-09-10"
 ---
 
 # BGRemove 当前待办事项
 
 ## 已批准任务
 
-### 修正竖屏视频在换背景工作区仍被旋转的问题
+### 让 Remove Green Screen 首屏与首页使用同一套工作区布局
 
 - 优先级：`P1`
-- 页面或界面：`https://bgremove.video/change-background/` 的视频预览与 MP4 导出
-- 当前问题与线上证据：用户于 2026-09-08 使用真实账号和竖屏素材在线上生产环境复测，确认视频进入换背景功能区域后仍会被旋转 90 度，以横屏方向播放。线上 `Sep 6, 2026 · Fix · 2.0` 更新日志声称竖屏方向已经修复，但该声明与实际行为不一致。用户同时确认 `Colour`、`Blur` 的选择顺序和处理状态提示等其他换背景问题已经解决。
-- 修改要求：正确识别进入换背景工作区的透明成品视频的实际显示方向、方向元数据、显示矩阵和固有宽高，在读取、预览、背景合成与 MP4 导出流程中只执行一次必要的方向归一化。浏览器或解码器已经应用方向信息时不得再次旋转；不得用固定旋转角度或盲目互换宽高处理全部竖屏素材。至少覆盖手机拍摄且携带方向元数据的 MP4/MOV 经过去背景后生成的透明作品，以及已经按像素方向归一化的竖屏 WebM。
-- 验收标准：使用真实竖屏、横屏和方形视频逐一验证 `None`、`Colour`、`Blur`、`Image`、`Video` 五种背景状态；竖屏视频始终保持竖屏且没有 90、180 或 270 度误旋转，横屏与方形视频方向不变；预览与导出的 MP4 方向、画面比例和宽高关系一致；手机和桌面端结果一致。
-- 不要修改：已经解决的 `Colour`、`Blur` 选择流程和处理状态反馈；主体的原始宽高比、主体在画布中的既定缩放与位置、视频时长、帧率、音频、透明边缘质量及现有背景类型。
+- 页面或界面：`https://bgremove.video/green-screen-remover/` 的首屏标题区与功能工作区
+- 当前问题与线上证据：2026-09-10 线上桌面端对比显示，首页 `https://bgremove.video/` 的首屏在标题和简介下方使用接近页面内容宽度的双栏工作区：左侧为上传、处理或结果卡片，右侧为 `Your recent clips`；去绿幕页目前把 `Upload a Green Screen Video`、格式说明和功能卡片放在居中的窄幅单列区域，右侧留有大片空白，功能模块的宽度、层级、间距和信息组织均与首页不一致。用户已明确要求去绿幕页首屏，尤其是功能模块，与首页保持一致。
+- 修改要求：让去绿幕页首屏复用首页现有首屏工作区的布局体系和视觉样式：标题与简介之后直接进入同宽的工作区；桌面端采用与首页一致的双栏结构、列宽比例、卡片高度、边框、圆角、内边距和栏间距，左侧显示去绿幕上传、处理或结果状态，右侧显示与首页相同的 `Your recent clips` 列表；小屏断点、堆叠顺序和横向留白也与首页一致。保留去绿幕页现有 H1、介绍文案、`Upload a Green Screen Video`、格式限制及免费额度信息，但把这些内容放入与首页对应的信息层级中，不在工作区上方另设一套窄幅模块。优先复用首页同一工作区组件或布局规则，避免复制出两套后续会继续分叉的样式。
+- 验收标准：在相同桌面视口下，首页与去绿幕页的标题区最大宽度、工作区起始位置、整体宽度、双栏比例、卡片样式和垂直节奏视觉一致；去绿幕页左侧功能卡片和右侧 `Your recent clips` 完整可见，不再以居中窄单列形式展示；登录前、上传中、处理中、完成、失败和额度用尽状态均不导致工作区跳出既定宽度或明显改变布局；移动端按首页现有顺序自然堆叠，无横向滚动、裁切或按钮溢出；绿幕专属文案和页面其余内容保持原样。
+- 不要修改：`https://bgremove.video/change-background/` 的任何页面、功能或文案；首页现有布局和功能；去绿幕页的顶部菜单、页脚、登录规则、每日免费任务规则、处理能力和输出格式。除本文件单独批准的 SEO 内容与三阶段案例图修改外，不修改其他正文、元数据、结构化数据或配图；不得在本任务中增加或删除产品功能。
 
-### 新增 Remove Green Screen SEO 功能页并改造顶部 Remove 菜单
+### 重新制作三阶段案例图并确保主体完全一致
 
 - 优先级：`P1`
-- 页面或界面：新增 `https://bgremove.video/green-screen-remover/`；全站桌面端和移动端顶部导航的 `Remove` 菜单
-- 当前问题与线上证据：用户于 2026-09-09 已批准新增 `Remove Green Screen` 专营页，并确认 URL、内链和全部产品规则。当前线上顶部导航的 `Remove` 仍是直接指向首页的单一链接，尚无 `/green-screen-remover/` 页面。搜索结果调研显示，同类排名页普遍采用工具首屏、差异化优势、三步流程、原理说明和 FAQ；部分页面存在关键词堆砌、绝对效果承诺或未经核实的编辑器兼容性声明，因此新页面需要以低权重新站能够可信支撑的窄主题和真实产品边界切入。
-- 修改要求：按下方两段定稿新增英文页面并复用站内现有 AI 视频上传处理组件，不得另造处理引擎或参数。把全站顶部 `Remove` 改成可访问的下拉菜单，菜单内只有两个视觉上呈按钮式的语义链接：`Remove Video Background` 指向 `/`，`Remove Green Screen` 指向 `/green-screen-remover/`；支持键盘、触屏、鼠标、焦点管理、展开状态和菜单外关闭。新页必须可索引、自引用 canonical、加入 XML sitemap，并使用一个 H1、清晰的 H2/H3、可解析 FAQ 与同步的 `FAQPage` JSON-LD。生成并人工检查两张真实摄影风格配图，替换 HTML 中的图片路径变量；不得把 AI 图描述为真实客户素材。
-- 验收标准：`/green-screen-remover/` 返回 `200`，没有 `noindex`，canonical 为自身且出现在 sitemap；Title 为 `Remove Green Screen from Video Online Free`（42 字符），meta description 为下方 152 字符定稿，页面只有一个 H1 且包含核心关键词。顶部菜单在桌面端和移动端均可操作，两个链接目标正确且无 404，当前页状态明确。既有上传组件完成登录、上传、处理、透明 WebM 下载和转到换背景流程；页面文案、可见 FAQ 与 JSON-LD 使用下方相同事实；两张图片无人物或设备畸形、无文字水印并具备准确 alt；`390px`、`768px` 和常见桌面宽度无横向滚动或内容裁切。
-- 不要修改：首页现有 H1 与定位、AI 处理能力、额度计算、认证、数据保留、现有 `/tools/green-screen-alternative/` 内容、换背景功能、页脚 Product 列或其他顶部菜单项。不要新增手动 chroma key 控件、本地处理、实时预览、速度、成功率、客户评价、付费套餐、商业使用授权、编辑器兼容保证或其他未确认能力；本次不创建多语言版本。
+- 页面或界面：`https://bgremove.video/green-screen-remover/` 的三阶段操作说明案例图
+- 当前问题与线上证据：用户于 2026-09-10 提供的线上截图显示，绿幕原片、透明背景和办公室成品三个画面中的男性在脸型、五官、发型、胡须、衬衫颜色、姿势、身体比例和画面裁切上均不一致，看起来像三名相似但不同的人。这无法正确表达“同一段素材只替换背景”的产品流程，也会削弱案例可信度。
+- 修改要求：重新制作整张三阶段案例图。先生成或选定一张唯一的源人物画面，再从该源画面提取同一个人物主体图层，并将这一个完全相同的主体图层分别用于三个面板：左侧保留绿幕原片，中间把背景替换为透明棋盘格，右侧把背景替换为真实办公室场景。三个面板不得分别生成不同人物；人物前景像素、脸、发型、胡须、服装、姿势、表情、身体比例、大小、方向和裁切位置必须一致，只允许背景发生变化。推荐制作提示词：`Create one photorealistic source frame of a seated adult male presenter in an olive button-up shirt against a wrinkled green screen. Use that exact same source frame and exact same foreground cutout in all three panels of one 16:9 triptych: left shows the original green-screen frame, center shows the identical cutout over a neutral transparency checkerboard, and right shows the identical cutout over a realistic home-office background. Preserve identical face, hair, beard, clothing color and folds, pose, expression, anatomy, scale, orientation, lighting on the subject, and crop in every panel. Only the background may change. No text, labels, logos, watermarks, extra limbs, facial drift, wardrobe changes, or independently regenerated subjects.` 实际制作时必须采用同一源图抠图后合成三个背景，不得仅依赖提示词生成三个人像。
+- 验收标准：将三个面板并排对比时，人物轮廓和所有前景细节能够逐像素对齐；三处人物可明确判断为同一个源帧，而不只是外貌相近；左侧仅有绿幕背景，中间仅有透明棋盘格，右侧仅有办公室背景；没有人物变形、多余肢体、面部漂移、衣服变化、文字、标志或水印；图片在桌面端与移动端无拉伸、裁切错误或失真；保留准确的英文 alt：`The same presenter shown on a green screen, transparent background, and finished scene`。
+- 不要修改：除本文件单独批准的 SEO 标题和内链调整外，该模块的三步文案、CTA、alt 含义及其他页面配图保持不变；不得把生成图描述为真实客户素材或未经处理的真实产品截图。
 
-#### 第一段：完整英文文案稿
+### 提升 Remove Green Screen 页的 SEO 内容可引用性和主题区分
+
+- 优先级：`P1`
+- 页面或界面：`https://bgremove.video/green-screen-remover/` 的正文、FAQ、内部链接和社交分享元数据；`https://bgremove.video/tools/green-screen-alternative/` 的一条上下文内链
+- 当前问题与线上证据：2026-09-10 线上检查确认目标页返回 `200`，`lang="en"`、Title、Meta description、自引用 canonical、Open Graph、Twitter Card、XML sitemap、单一 H1、可见 FAQ 与 `FAQPage` JSON-LD 均已配置；Title 为 `Remove Green Screen from Video Online Free`，核心词位于 H1 和首屏，现有页面连导航与页脚约 1320 个英文词，主要关键词没有明显堆砌。当前不足不是字数，而是内容仍缺少便于用户和答案引擎直接提取的 AI 与传统 chroma key 决策对比、提高源素材成功率的实用检查清单，以及让游戏、社交视频、产品视频和教学素材用户快速判断适用方式的场景说明；现有正文只在长段落中罗列这些用途，缺少可扫描的具体建议。FAQ 中 `How is this different from a manual chroma key remover?` 与 `When should I use manual chroma key software instead?` 信息重复，却没有回答蓝幕或其他纯色背景能否处理，也缺少“透明 WebM 单独播放仍显示绿色”的关键解释。三步区标题使用 `How to Remove a Green Background From Video`，没有自然覆盖已批准的变体 `remove green background from video`；指向 `/tools/green-screen-alternative/` 的锚文本 `Learn how BGRemove works` 与目标页的真实主题不一致。目标页与 Green Screen Alternative 页意图接近，但目前缺少一条明确说明分工并回链到专营工具页的上下文链接。搜索结果抽查显示，当前竞争页普遍把操作工具、方式对比、源素材建议、导出说明、使用场景和具体 FAQ 作为核心信息架构；部分竞品依赖未经证实的速度、客户数字和绝对效果承诺，BGRemove 应以真实产品边界、明确格式限制和可操作建议形成差异化。
+- 修改要求：保留现有 URL、Title、Meta description、H1、canonical 和已正确的主体文案，不为增加长度而重复关键词。按下方英文定稿完成这些修改：
+  1. 将三步区 H2 从 `How to Remove a Green Background From Video` 改为 `Remove Green Background From Video in 3 Steps`，以简洁自然的标题覆盖已批准的关键词变体。三个步骤分别在现有 H3 标题上方显示可见标签 `Step 1`、`Step 2`、`Step 3`，标签与对应标题组成同一张步骤卡片；保留现有三个 H3 和正文，不用单独的 `1`、`2`、`3` 或仅靠 CSS 计数器代替文字标签。辅助技术读取每个 `Step` 标签一次，不产生重复朗读。
+  2. 在现有差异化卖点区之后、`No Green Screen?` 转折模块之前新增 `AI Green Screen Remover vs. Chroma Key` 对比模块，使用语义化 `<section>`、一个 H2、简介和带表头的 `<table>`；移动端不得截断表格信息，可转为逐项对比卡片，但阅读和 DOM 顺序必须保持一致。
+  3. 在三步操作区之后新增 `How to Get a Cleaner Green Screen Cutout` 实用建议模块，使用一个 H2、直接回答式引言和四个 H3，不新增产品没有的调节工具或效果保证。
+  4. 在实用建议模块之后、现有 `What Is Green Screen Removal (Chroma Key)?` 说明正文之前，新增 `Remove Green Screen for the Videos You Already Make` 使用场景模块。使用一个 H2、直接引言和四张文本卡片；不增加配图、轮播、虚构案例或效果保证。可在创作者卡片中自然链接 `/use-cases/creators/`，在产品卡片中自然链接 `/use-cases/ecommerce/`，每张卡片最多一个上下文链接。
+  5. 删除现有重复 FAQ `When should I use manual chroma key software instead?`，保留前面的 `How is this different from a manual chroma key remover?`；新增下方“蓝幕或其他纯色背景”和“透明 WebM 单独播放仍显示绿色”两问两答。把两条新增问答和删除同步到 `FAQPage` JSON-LD，可见文字与结构化数据必须逐字一致，完成后页面 FAQ 总数为 10。
+  6. 将 `/tools/green-screen-alternative/` 的现有锚文本从 `Learn how BGRemove works` 改为 `Compare AI removal with chroma key`；在同一附近增加 `See how AI video matting works` 指向 `/how-it-works/`。在 `/tools/green-screen-alternative/` 首段之后增加下方回链句，其中仅锚文本 `remove green screen from video` 指向 `/green-screen-remover/`。不要把 Alternative 页的 Title 或 H1 改成专营页核心词。
+  7. 将目标页通用的 `/og/default.png` 替换为该页面专属的 `1200 × 630` 社交分享图，可从已通过人工检查的绿幕拍摄案例图制作安全裁切；同步用于 `og:image` 与 `twitter:image`，增加 `og:image:alt` 和 `twitter:image:alt`，值为 `A presenter filming in front of an imperfect green screen`。图片不得包含文字、标志、水印、畸形人物或未经验证的产品结果。
+  8. 在 FAQ 之后、页脚之前增加最终 CTA 模块。使用与现有暗色页面一致但视觉上可区分的宽幅卡片，内容居中，只有一个主按钮和一行辅助说明，不增加配图、第二按钮、注册弹窗或新处理流程。为首屏工具工作区设置稳定锚点 `green-screen-tool`，CTA 按钮指向 `#green-screen-tool`，点击后回到当前页面的上传或任务状态区域。
+
+#### AI 与 chroma key 对比模块英文定稿
 
 ```text
-=== 1. TOP TOOL AREA ===
+H2: AI Green Screen Remover vs. Chroma Key
 
-Eyebrow: AI Green Screen Remover
+Intro: An AI green screen remover identifies the subject across the frame. A chroma key remover removes pixels close to a selected color. AI avoids manual key-color setup when the screen has folds, shadows, or mild spill. Chroma key gives an editor more manual control when the screen is evenly lit.
 
-H1: Remove Green Screen from Video Online Free
+Table caption for screen readers: Comparison of AI green screen removal and manual chroma key
 
-Intro: Upload footage shot against green. BGRemove finds the subject with AI instead of asking you to pick a key color or tune tolerance sliders. It can work through folds, shadows, uneven light, and mild green spill, then give you a transparent result or let you add a different background.
+Row 1
+Criteria: What it detects
+AI green screen removal: The person or product in the scene
+Manual chroma key: Pixels close to a selected screen color
 
-Tool heading: Upload a Green Screen Video
+Row 2
+Criteria: What you adjust
+AI green screen removal: No key color or tolerance controls
+Manual chroma key: Key color, tolerance, edge softness, and spill suppression
 
-Tool helper: MP4, MOV, WebM, M4V, and GIF · Up to 60 seconds · Maximum 2 GB
+Row 3
+Criteria: Imperfect screens
+AI green screen removal: Can work through folds, shadows, uneven light, and mild spill; review difficult edges
+Manual chroma key: Often needs more cleanup when the screen contains several shades of green
 
-Primary action: Remove Green Screen
+Row 4
+Criteria: Best fit
+AI green screen removal: A quick automatic cutout in your browser
+Manual chroma key: Controlled footage that needs precise, frame-level adjustment in an editor
 
-Processing state: Removing the green screen…
+Row 5
+Criteria: Output here
+AI green screen removal: Transparent VP9 WebM, or an MP4 after you add a background
+Manual chroma key: Depends on the editor and export settings you choose
 
-Complete state: Your subject is ready. Download the transparent video or choose a new background.
+Closing: Use BGRemove when you want the subject separated automatically. Use a full editor when you need to adjust the matte frame by frame.
 
-Allowance line: 3 free background removals per 24-hour window, shared with Remove Video Background · No watermark
-
-=== 2. CORE DIFFERENTIATORS ===
-
-H2: A Green Screen Remover That Does Not Need a Perfect Screen
-
-Intro: A clean screen still helps, but it should not have to be a studio-perfect wall. BGRemove uses AI subject detection rather than a single color threshold, so common shooting flaws do not force you into a long manual keying session.
-
-Card 1
-H3: Skip the chroma key controls
-Body: You do not need to sample a shade of green, balance tolerance, or chase the edge frame by frame. Upload the clip and let AI identify the person or product.
-
-Card 2
-H3: Work with wrinkles, shadows, and light spill
-Body: A folded cloth, a darker patch, or a little reflected green can confuse a color-only key. AI looks for the subject, not one exact background color. Review difficult edges before you publish, especially around fast motion, loose hair, glass, or reflective objects.
-
-Card 3
-H3: Use it in your browser
-Body: There is no software to install and no timeline to configure. The green screen remover video workflow stays focused: upload, review the cutout, then download it or choose another background.
-
-Card 4
-H3: Try your footage before changing your workflow
-Body: Each signed-in account gets up to 3 successful background removals per 24-hour window, shared with Remove Video Background. There are no paid plans. Test a representative clip first so you can judge the edges on the footage you actually shoot.
-
-AI image prompt: Photorealistic 16:9 commercial video-production still. A real adult creator standing several feet in front of an imperfect green fabric backdrop in a small home studio. The green cloth has visible soft folds, one natural shadow, and slight green spill along one shoulder, while the subject remains sharply lit and anatomically correct. Show honest practical conditions, not a perfect soundstage. Natural skin, realistic hair and hands, restrained lighting, no text, no logos, no watermark, no UI, no split-screen labels, no distorted body parts. Leave clear negative space on the right for webpage copy.
-
-Image alt: A creator filming in front of a wrinkled green screen with a soft shadow
-
-=== 3. NO GREEN SCREEN TRANSITION ===
-
-H2: No Green Screen? Remove Any Background With AI.
-
-Body: Your footage does not need a colored backdrop. Use BGRemove to remove video background from a room, street, store, classroom, or wherever you recorded.
-
-CTA: Remove Video Background
-Link: /
-
-=== 4. HOW IT WORKS ===
-
-H2: How to Remove a Green Background From Video
-
-Step 1
-H3: Upload your green screen footage
-Body: Choose the clip you want to cut out. Use clear footage where the subject stays visible, and start with a short representative section if the full video contains difficult motion.
-
-Step 2
-H3: Let AI separate the subject
-Body: BGRemove follows the subject across the video and removes the green background without asking you to choose a key color or adjust chroma key sliders.
-
-Step 3
-H3: Download transparency or add a new scene
-Body: Review the edges, download a transparent WebM using VP9 with alpha, or use the background tool to place a color, blur, image, or video behind the subject and export an MP4.
-
-Primary CTA: Remove Green Screen
-
-Secondary link: Learn how BGRemove works
-Link: /tools/green-screen-alternative/
-
-AI image prompt: Photorealistic wide 16:9 three-stage production workflow in one coherent image, with the exact same adult presenter repeated from the exact same source frame in all three stages. Left: presenter in front of a wrinkled green cloth. Center: identical presenter with the background removed over a neutral transparency checkerboard. Right: identical presenter placed in a realistic home-office scene. Preserve the same face, pose, clothing, hair, body proportions, scale, and orientation in every stage. Accurate anatomy and edges, no text, no numbers, no arrows, no logos, no watermark, no interface chrome, no mismatched identity, no warped shoulders or hands.
-
-Image alt: The same presenter shown on a green screen, transparent background, and finished scene
-
-=== 5. GREEN SCREEN REMOVAL EXPLAINED ===
-
-H2: What Is Green Screen Removal—and How Does AI Make It Easier?
-
-Green screen removal, also called chroma keying, separates a filmed subject from a colored backdrop so the background can become transparent or be replaced. A traditional chroma key remover looks for a selected shade of green. You choose the color, adjust tolerance and edge controls, then suppress green reflected onto skin, hair, or clothing. That works well in a controlled studio, but a wrinkled cloth, a hard shadow, or uneven lighting can create several shades of green and leave holes or halos.
-
-BGRemove takes a different route. Its AI looks for the subject rather than relying on one background color. Green footage is still useful because it creates strong visual separation, but the screen does not have to be perfectly flat or evenly lit. The model can treat folds, shadows, and mild spill as background while keeping the person or product in view across the clip. That makes it a practical green screen remover for gaming clips, lessons, product demos, social videos, and school projects when you do not want to tune chroma key controls by hand.
-
-AI does not make every shot perfect. Fast motion, heavy blur, flyaway hair, transparent objects, reflective surfaces, or green clothing close to the backdrop can still produce difficult edges. If you need frame-by-frame matte control for professional compositing, use a full editor. For a straightforward green screen video remover workflow, upload the clip, review the result, and either keep the transparent output or choose a new background.
-
-=== 6. FAQ ===
-
-H2: Green Screen Remover FAQ
-
-Q: Can BGRemove handle a wrinkled or shadowy green screen?
-A: Yes, AI subject detection can handle folds, uneven shades, shadows, and mild green spill because it is not removing one exact color. A cleaner recording can still produce a better edge. Review hair, motion blur, transparent objects, and reflective surfaces before you publish.
-
-Q: How is this different from a manual chroma key remover?
-A: A manual chroma key removes a selected color and usually gives you controls for tolerance, edge softness, and spill suppression. BGRemove identifies the subject with AI instead, so you do not have to pick the green shade or tune those controls. Use a professional editor when you need frame-by-frame matte adjustments.
-
-Q: What video formats and limits are supported?
-A: BGRemove accepts MP4, MOV, WebM, M4V, and GIF. Each file can be up to 2 GB and 60 seconds long. The transparent output is WebM using VP9 with alpha.
-
-Q: Can I use the transparent video in CapCut or Premiere Pro?
-A: BGRemove exports transparent WebM using VP9 with alpha. Whether transparency imports correctly depends on the editor, version, platform, and codec support. Check the current CapCut or Premiere Pro documentation before you start. If your editor does not accept WebM alpha, use BGRemove to add the final background and export an MP4. Renaming a file extension does not change its codec.
-
-Q: Can I remove green screen from video for free?
-A: Yes. Each signed-in account can complete up to 3 successful background removals per 24-hour window. The allowance is shared with Remove Video Background. There are no paid plans.
-
-Q: Do I need to sign in?
-A: Yes. You must sign in before processing a video.
-
-Q: Will the downloaded video have a watermark?
-A: No. Downloads do not include a watermark.
-
-Q: Can I replace the green screen with my own background?
-A: Yes. After the green background is removed, you can keep the result transparent or place a color, blur, image, or video behind the subject. The finished background-replaced video is exported as an MP4.
-
-Q: When should I use manual chroma key software instead?
-A: Use a full editor when the shot needs frame-by-frame masks, precise spill correction, detailed work around transparent or reflective objects, or exact control over hair and heavy motion blur. BGRemove is intended for automatic subject separation without manual key settings.
-
-=== SEO METADATA ===
-
-Title: Remove Green Screen from Video Online Free
-Character count: 42
-
-Meta description: Remove green screen from video with AI, even with wrinkles, shadows, or spill. Try it online, then download a transparent video or add a new background.
-Character count: 152
+CTA: Remove Green Screen
+CTA target: #green-screen-title
 ```
 
-#### 第二段：语义化 HTML 页面骨架
+#### 实用建议模块英文定稿
 
-```html
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Remove Green Screen from Video Online Free</title>
-  <meta name="description" content="Remove green screen from video with AI, even with wrinkles, shadows, or spill. Try it online, then download a transparent video or add a new background.">
-  <link rel="canonical" href="https://bgremove.video/green-screen-remover/">
+```text
+H2: How to Get a Cleaner Green Screen Cutout
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Can BGRemove handle a wrinkled or shadowy green screen?",
-        "acceptedAnswer": {"@type": "Answer", "text": "Yes, AI subject detection can handle folds, uneven shades, shadows, and mild green spill because it is not removing one exact color. A cleaner recording can still produce a better edge. Review hair, motion blur, transparent objects, and reflective surfaces before you publish."}
-      },
-      {
-        "@type": "Question",
-        "name": "How is this different from a manual chroma key remover?",
-        "acceptedAnswer": {"@type": "Answer", "text": "A manual chroma key removes a selected color and usually gives you controls for tolerance, edge softness, and spill suppression. BGRemove identifies the subject with AI instead, so you do not have to pick the green shade or tune those controls. Use a professional editor when you need frame-by-frame matte adjustments."}
-      },
-      {
-        "@type": "Question",
-        "name": "What video formats and limits are supported?",
-        "acceptedAnswer": {"@type": "Answer", "text": "BGRemove accepts MP4, MOV, WebM, M4V, and GIF. Each file can be up to 2 GB and 60 seconds long. The transparent output is WebM using VP9 with alpha."}
-      },
-      {
-        "@type": "Question",
-        "name": "Can I use the transparent video in CapCut or Premiere Pro?",
-        "acceptedAnswer": {"@type": "Answer", "text": "BGRemove exports transparent WebM using VP9 with alpha. Whether transparency imports correctly depends on the editor, version, platform, and codec support. Check the current CapCut or Premiere Pro documentation before you start. If your editor does not accept WebM alpha, use BGRemove to add the final background and export an MP4. Renaming a file extension does not change its codec."}
-      },
-      {
-        "@type": "Question",
-        "name": "Can I remove green screen from video for free?",
-        "acceptedAnswer": {"@type": "Answer", "text": "Yes. Each signed-in account can complete up to 3 successful background removals per 24-hour window. The allowance is shared with Remove Video Background. There are no paid plans."}
-      },
-      {
-        "@type": "Question",
-        "name": "Do I need to sign in?",
-        "acceptedAnswer": {"@type": "Answer", "text": "Yes. You must sign in before processing a video."}
-      },
-      {
-        "@type": "Question",
-        "name": "Will the downloaded video have a watermark?",
-        "acceptedAnswer": {"@type": "Answer", "text": "No. Downloads do not include a watermark."}
-      },
-      {
-        "@type": "Question",
-        "name": "Can I replace the green screen with my own background?",
-        "acceptedAnswer": {"@type": "Answer", "text": "Yes. After the green background is removed, you can keep the result transparent or place a color, blur, image, or video behind the subject. The finished background-replaced video is exported as an MP4."}
-      },
-      {
-        "@type": "Question",
-        "name": "When should I use manual chroma key software instead?",
-        "acceptedAnswer": {"@type": "Answer", "text": "Use a full editor when the shot needs frame-by-frame masks, precise spill correction, detailed work around transparent or reflective objects, or exact control over hair and heavy motion blur. BGRemove is intended for automatic subject separation without manual key settings."}
-      }
-    ]
-  }
-  </script>
-</head>
-<body>
-  <header class="site-header">
-    <a class="site-logo" href="/" aria-label="BGRemove home">BGRemove</a>
-    <nav class="primary-navigation" aria-label="Primary navigation">
-      <details class="navigation-dropdown">
-        <summary>Remove</summary>
-        <ul class="navigation-dropdown__menu">
-          <li><a href="/">Remove Video Background</a></li>
-          <li><a href="/green-screen-remover/" aria-current="page">Remove Green Screen</a></li>
-        </ul>
-      </details>
-      <a href="/change-background/">Change background</a>
-      <a href="/how-it-works/">How it works</a>
-      <a href="/use-cases/">Use cases</a>
-      <a href="/pricing/">Free Access</a>
-      <a href="/faq/">FAQ</a>
-    </nav>
-  </header>
+Intro: AI can work with an imperfect screen, but clear source footage still makes the subject easier to separate. Check these four things before you upload.
 
-  <main id="main-content">
-    <section class="green-screen-hero" aria-labelledby="green-screen-title">
-      <p class="eyebrow">AI Green Screen Remover</p>
-      <h1 id="green-screen-title">Remove Green Screen from Video Online Free</h1>
-      <p>Upload footage shot against green. BGRemove finds the subject with AI instead of asking you to pick a key color or tune tolerance sliders. It can work through folds, shadows, uneven light, and mild green spill, then give you a transparent result or let you add a different background.</p>
-      <p class="tool-heading">Upload a Green Screen Video</p>
-      <p class="tool-helper">MP4, MOV, WebM, M4V, and GIF · Up to 60 seconds · Maximum 2 GB</p>
-      <!-- 此处嵌入站内现有 AI 视频上传处理组件 -->
-      <!-- 使用现有组件状态映射以下文案：Remove Green Screen；Removing the green screen…；Your subject is ready. Download the transparent video or choose a new background. -->
-      <p class="allowance-line">3 free background removals per 24-hour window, shared with Remove Video Background · No watermark</p>
-    </section>
+H3: Keep the full subject inside the frame
+Body: Leave room around moving hands, hair, clothing, and props. Anything cut off by the camera cannot be restored during background removal.
 
-    <section class="green-screen-features" aria-labelledby="features-title">
-      <div class="section-copy">
-        <h2 id="features-title">A Green Screen Remover That Does Not Need a Perfect Screen</h2>
-        <p>A clean screen still helps, but it should not have to be a studio-perfect wall. BGRemove uses AI subject detection rather than a single color threshold, so common shooting flaws do not force you into a long manual keying session.</p>
-      </div>
-      <div class="feature-grid">
-        <article><h3>Skip the chroma key controls</h3><p>You do not need to sample a shade of green, balance tolerance, or chase the edge frame by frame. Upload the clip and let AI identify the person or product.</p></article>
-        <article><h3>Work with wrinkles, shadows, and light spill</h3><p>A folded cloth, a darker patch, or a little reflected green can confuse a color-only key. AI looks for the subject, not one exact background color. Review difficult edges before you publish, especially around fast motion, loose hair, glass, or reflective objects.</p></article>
-        <article><h3>Use it in your browser</h3><p>There is no software to install and no timeline to configure. The green screen remover video workflow stays focused: upload, review the cutout, then download it or choose another background.</p></article>
-        <article><h3>Try your footage before changing your workflow</h3><p>Each signed-in account gets up to 3 successful background removals per 24-hour window, shared with Remove Video Background. There are no paid plans. Test a representative clip first so you can judge the edges on the footage you actually shoot.</p></article>
-      </div>
-      <!-- AI IMAGE PROMPT: Photorealistic 16:9 commercial video-production still. A real adult creator standing several feet in front of an imperfect green fabric backdrop in a small home studio. The green cloth has visible soft folds, one natural shadow, and slight green spill along one shoulder, while the subject remains sharply lit and anatomically correct. Show honest practical conditions, not a perfect soundstage. Natural skin, realistic hair and hands, restrained lighting, no text, no logos, no watermark, no UI, no split-screen labels, no distorted body parts. Leave clear negative space on the right for webpage copy. -->
-      <img src="{{imperfect-green-screen-image-src}}" alt="A creator filming in front of a wrinkled green screen with a soft shadow" width="1600" height="900" loading="lazy">
-    </section>
+H3: Leave space between the subject and the screen
+Body: More distance can reduce hard shadows and reflected green around the subject. You do not need a perfect studio, but avoid pressing the subject directly against the backdrop when you can.
 
-    <section class="any-background-cta" aria-labelledby="any-background-title">
-      <h2 id="any-background-title">No Green Screen? Remove Any Background With AI.</h2>
-      <p>Your footage does not need a colored backdrop. Use BGRemove to remove video background from a room, street, store, classroom, or wherever you recorded.</p>
-      <a class="button" href="/">Remove Video Background</a>
-    </section>
+H3: Test the hardest section first
+Body: Choose a short section that includes fast motion, loose hair, or the most uneven part of the screen. A representative test tells you more than an easy frame from the start of the clip.
 
-    <section class="green-screen-steps" aria-labelledby="steps-title">
-      <h2 id="steps-title">How to Remove a Green Background From Video</h2>
-      <ol class="step-list">
-        <li><article><h3>Upload your green screen footage</h3><p>Choose the clip you want to cut out. Use clear footage where the subject stays visible, and start with a short representative section if the full video contains difficult motion.</p></article></li>
-        <li><article><h3>Let AI separate the subject</h3><p>BGRemove follows the subject across the video and removes the green background without asking you to choose a key color or adjust chroma key sliders.</p></article></li>
-        <li><article><h3>Download transparency or add a new scene</h3><p>Review the edges, download a transparent WebM using VP9 with alpha, or use the background tool to place a color, blur, image, or video behind the subject and export an MP4.</p></article></li>
-      </ol>
-      <!-- AI IMAGE PROMPT: Photorealistic wide 16:9 three-stage production workflow in one coherent image, with the exact same adult presenter repeated from the exact same source frame in all three stages. Left: presenter in front of a wrinkled green cloth. Center: identical presenter with the background removed over a neutral transparency checkerboard. Right: identical presenter placed in a realistic home-office scene. Preserve the same face, pose, clothing, hair, body proportions, scale, and orientation in every stage. Accurate anatomy and edges, no text, no numbers, no arrows, no logos, no watermark, no interface chrome, no mismatched identity, no warped shoulders or hands. -->
-      <img src="{{three-stage-workflow-image-src}}" alt="The same presenter shown on a green screen, transparent background, and finished scene" width="1600" height="900" loading="lazy">
-      <a class="button" href="#green-screen-title">Remove Green Screen</a>
-      <a href="/tools/green-screen-alternative/">Learn how BGRemove works</a>
-    </section>
-
-    <section class="green-screen-explainer" aria-labelledby="explainer-title">
-      <h2 id="explainer-title">What Is Green Screen Removal—and How Does AI Make It Easier?</h2>
-      <p>Green screen removal, also called chroma keying, separates a filmed subject from a colored backdrop so the background can become transparent or be replaced. A traditional chroma key remover looks for a selected shade of green. You choose the color, adjust tolerance and edge controls, then suppress green reflected onto skin, hair, or clothing. That works well in a controlled studio, but a wrinkled cloth, a hard shadow, or uneven lighting can create several shades of green and leave holes or halos.</p>
-      <p>BGRemove takes a different route. Its AI looks for the subject rather than relying on one background color. Green footage is still useful because it creates strong visual separation, but the screen does not have to be perfectly flat or evenly lit. The model can treat folds, shadows, and mild spill as background while keeping the person or product in view across the clip. That makes it a practical green screen remover for gaming clips, lessons, product demos, social videos, and school projects when you do not want to tune chroma key controls by hand.</p>
-      <p>AI does not make every shot perfect. Fast motion, heavy blur, flyaway hair, transparent objects, reflective surfaces, or green clothing close to the backdrop can still produce difficult edges. If you need frame-by-frame matte control for professional compositing, use a full editor. For a straightforward green screen video remover workflow, upload the clip, review the result, and either keep the transparent output or choose a new background.</p>
-    </section>
-
-    <section class="green-screen-faq" aria-labelledby="faq-title">
-      <h2 id="faq-title">Green Screen Remover FAQ</h2>
-      <details><summary>Can BGRemove handle a wrinkled or shadowy green screen?</summary><p>Yes, AI subject detection can handle folds, uneven shades, shadows, and mild green spill because it is not removing one exact color. A cleaner recording can still produce a better edge. Review hair, motion blur, transparent objects, and reflective surfaces before you publish.</p></details>
-      <details><summary>How is this different from a manual chroma key remover?</summary><p>A manual chroma key removes a selected color and usually gives you controls for tolerance, edge softness, and spill suppression. BGRemove identifies the subject with AI instead, so you do not have to pick the green shade or tune those controls. Use a professional editor when you need frame-by-frame matte adjustments.</p></details>
-      <details><summary>What video formats and limits are supported?</summary><p>BGRemove accepts MP4, MOV, WebM, M4V, and GIF. Each file can be up to 2 GB and 60 seconds long. The transparent output is WebM using VP9 with alpha.</p></details>
-      <details><summary>Can I use the transparent video in CapCut or Premiere Pro?</summary><p>BGRemove exports transparent WebM using VP9 with alpha. Whether transparency imports correctly depends on the editor, version, platform, and codec support. Check the current CapCut or Premiere Pro documentation before you start. If your editor does not accept WebM alpha, use BGRemove to add the final background and export an MP4. Renaming a file extension does not change its codec.</p></details>
-      <details><summary>Can I remove green screen from video for free?</summary><p>Yes. Each signed-in account can complete up to 3 successful background removals per 24-hour window. The allowance is shared with Remove Video Background. There are no paid plans.</p></details>
-      <details><summary>Do I need to sign in?</summary><p>Yes. You must sign in before processing a video.</p></details>
-      <details><summary>Will the downloaded video have a watermark?</summary><p>No. Downloads do not include a watermark.</p></details>
-      <details><summary>Can I replace the green screen with my own background?</summary><p>Yes. After the green background is removed, you can keep the result transparent or place a color, blur, image, or video behind the subject. The finished background-replaced video is exported as an MP4.</p></details>
-      <details><summary>When should I use manual chroma key software instead?</summary><p>Use a full editor when the shot needs frame-by-frame masks, precise spill correction, detailed work around transparent or reflective objects, or exact control over hair and heavy motion blur. BGRemove is intended for automatic subject separation without manual key settings.</p></details>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <!-- 复用现有全站页脚；Product 列继续只显示 Remove Video Background 与 Change Video Background。 -->
-  </footer>
-
-  <!--
-    GENERATED ASSET PATHS TO REPLACE DURING IMPLEMENTATION:
-    {{imperfect-green-screen-image-src}}
-    {{three-stage-workflow-image-src}}
-  -->
-</body>
-</html>
+H3: Review the edge before you download
+Body: Check hair, motion blur, glass, reflective objects, and green clothing against the intended background. Use a full editor when the shot needs frame-by-frame matte control.
 ```
 
-### 纠正 Sep 6 的错误竖屏声明并更新本次公开 Changelog
+#### 使用场景模块英文定稿
+
+```text
+H2: Remove Green Screen for the Videos You Already Make
+
+Intro: Start with the clip you already recorded. BGRemove removes the green backdrop automatically, then gives you a transparent file or a finished scene with a new background.
+
+H3: Gaming Clips and Streams
+Body: Separate a player, host, or reaction shot from the green screen, then place the transparent WebM over gameplay in an editor that supports VP9 alpha. Review fast hand movement, hair, and motion blur before publishing.
+
+H3: YouTube and TikTok Videos
+Body: Use one cutout with different backgrounds for tutorials, reactions, short videos, and channel updates. Add the final background in BGRemove for an MP4, or keep the transparent WebM when the edit still needs captions and layout work.
+
+H3: Product Videos
+Body: Remove a green backdrop behind a product or presenter, then place the subject over a product page image, campaign scene, or brand color. Check glass, reflective surfaces, and transparent packaging carefully.
+
+H3: Lessons and School Projects
+Body: Replace a classroom green screen without learning key-color and tolerance controls. Use a slide, image, or recorded scene as the new background, then export an MP4 for a presentation or assignment.
+```
+
+#### 新增 FAQ 英文定稿
+
+```text
+Q: Can I use BGRemove with a blue screen or another solid-color background?
+
+A: Yes. BGRemove identifies the subject instead of removing one selected key color, so the source background does not have to be green. It can process blue screens, other solid-color backdrops, and ordinary scenes. If the footage was not shot against green, use Remove Video Background for the general workflow.
+
+Q: Why does my transparent WebM still look green when I play it by itself?
+
+A: That can be normal. Some local players and browser tabs do not composite the VP9 alpha channel, so transparent pixels may show the source green even though the alpha data is present. Test the file above a solid color, image, or video in an editor that supports VP9 WebM alpha. If the lower layer appears around the subject, transparency is working. Renaming `.webm` to `.mp4` does not convert the codec or preserve transparency.
+```
+
+#### Alternative 页回链英文定稿
+
+```text
+Already have footage shot against green? Use our remove green screen from video tool for the dedicated upload workflow.
+```
+
+#### 页面底部 CTA 英文定稿
+
+```text
+H2: Ready to Remove Your Green Screen?
+
+Body: Upload your clip and let AI separate the subject without key-color or tolerance controls. Download a transparent WebM with no watermark, or add a background and export an MP4.
+
+Primary CTA: Remove My Green Screen
+CTA target: #green-screen-tool
+
+Supporting line: 3 free background removals per 24-hour window, shared with Remove Video Background.
+```
+
+- 验收标准：目标页继续返回 `200` 且保持可索引，自引用 canonical、Title、Meta description 和唯一 H1 不变；三步区依次清楚显示 `Step 1`、`Step 2`、`Step 3`，每个标签与对应的 H3 和正文匹配，桌面端与移动端均无错序、重叠、遗漏或重复编号；新增比较、实用建议和使用场景三个正文模块位于指定位置，桌面端和移动端清晰可读，比较表的行列关系不会在窄屏丢失，四张场景卡片的标题和正文与定稿一致；删除指定重复 FAQ 后新增两条 FAQ，页面与 `FAQPage` JSON-LD 均恰好保留 10 条问答，可见内容和结构化数据逐字一致且可解析；`Remove Video Background` 在蓝幕 FAQ 中自然链接到 `/`；页面出现指向 `/tools/green-screen-alternative/`、`/how-it-works/` 和 `/` 的自然上下文链接，所有目标返回 `200`；Alternative 页增加一条指向 `/green-screen-remover/` 的上下文回链且不改变其 Title、H1 和核心比较意图；页面源代码中自然覆盖 `remove green screen from video`、`green screen remover`、`green screen remover video`、`remove green background from video`、`chroma key remover`、`green screen video remover` 和 `remove green screen from video online free`，不得用隐藏文本、重复标题或机械重复句子补词；专属社交图返回 `200`、尺寸为 `1200 × 630`，Open Graph 与 Twitter 标签引用相同绝对 HTTPS URL，并包含准确 alt；底部 CTA 位于 FAQ 和页脚之间，文案与定稿一致，按钮是模块内唯一主操作，点击后 URL 更新为 `#green-screen-tool` 并将首屏工具区带入视口，键盘操作、固定导航偏移和移动端滚动位置正常；不得新增无法证实的速度、成功率、客户数量、评价、商业授权、编辑器兼容保证或绝对效果承诺。
+- 不要修改：首页的 H1、正文、工具定位或索引信号；`/tools/green-screen-alternative/` 除指定回链外的内容与关键词定位；目标页现有产品事实、价格与免费额度、登录要求、格式和限制、无水印声明、数据规则、处理能力、除明确删除与新增外的其他 FAQ 答案、配图说明及已正确的结构化数据实体。不要新增 `HowTo`、评分、评价、VideoObject 或 SoftwareApplication 结构化数据，除非页面同时出现符合相应规范且可公开验证的真实内容。
+
+### 更新本次公开 Changelog
 
 - 优先级：`P1`
 - 页面或界面：`https://bgremove.video/changelog/`
-- 当前问题与线上证据：线上 `Sep 6, 2026 · Fix · 2.0` 条目当前声称竖屏视频会在预览、所有背景和导出文件中保持正确方向，但用户于 2026-09-08 的生产复测确认竖屏预览仍会横向播放。该条目同时包含方向元数据、高帧率和“其他副作用”等实现诊断，既不真实也不符合简洁、脱敏的用户向更新日志要求；其中 `Colour`、`Blur` 选择流程和更清晰的处理反馈已由用户确认上线。
-- 修改要求：立即把 `Sep 6, 2026` 条目的标题改为 `Background controls now wait for your choice`，正文完整替换为：`Colour and Blur controls now wait for your choice before updating, with clearer progress and retry feedback while the preview is being prepared.` 保留该条目的日期、版本和类型。本批次竖屏方向修复和 `Remove Green Screen` 页面实际发布并经过生产验证后，再新增恰好一条带真实发布日期的记录，只概括实际上线的用户可见变化。竖屏方向可使用：`Vertical videos now keep the correct orientation in previews and exported MP4 files.`；新页面可概括为：`A new Remove Green Screen page helps you process imperfect green-screen footage with AI, without manual chroma key controls.` 未上线或未验证的内容必须省略；如果没有任何修改成功上线，则不要新增记录。
-- 验收标准：`Sep 6, 2026` 条目不再声称竖屏方向已经修复，不再出现方向元数据、高帧率、副作用或其他实现诊断，只描述已经确认上线的控件和处理反馈。本批次恰好新增一条真实日期的简洁记录，且只包含生产环境已经验证的竖屏修复和/或 `Remove Green Screen` 新页面。
-- 不要修改：`Sep 6, 2026` 条目的原日期、版本和类型，以及其他历史记录及其日期。不得提及文件名、组件名、代码架构、仓库、分支、提交、基础设施或服务商配置、成本、密钥、安全敏感实现、客户数据、内部指标、AI 提示词或内部工作流程。
+- 当前问题与线上证据：2026-09-10 线上页面的最新记录仍为 `Sep 5, 2026`，尚未记录 Remove Green Screen 专营页及其重要的首屏工作区更新。三阶段案例图更换、SEO 内容补充和底部 CTA 属于普通页面优化，不需要写入 Changelog。
+- 修改要求：上述首屏布局上线并通过生产复测后，在 Changelog 顶部新增且只新增一条按实际发布日期记录的用户可见更新。正文使用：`Remove Green Screen now has a dedicated page with the same upload and recent-clips workspace as Remove Video Background.` 不得提及三阶段案例图、SEO 文案或底部 CTA，也不得写入尚未发布或与本批次无关的功能。
+- 验收标准：线上 Changelog 顶部出现一条日期正确、可公开阅读的新记录；内容只描述实际发布的用户可见能力，不出现仓库、文件、组件、提交、供应商、成本、内部指标、提示词或实现细节；不恢复已删除的错误 `Sep 6, 2026` 条目；本批次不新增第二条记录。
+- 不要修改：`Sep 5, 2026` 及更早的真实历史记录；其他页面文案、产品规则和功能行为；不得加入换背景页面的修复或验证内容。
