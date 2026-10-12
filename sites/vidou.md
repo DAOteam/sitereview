@@ -6,207 +6,258 @@ changelog_url: "not_established"
 delivery_method: "not_established"
 target_repository: "not_established"
 default_branch: "not_established"
-updated_at: "2026-10-07"
+updated_at: "2026-10-12"
 ---
 
 # Vidou 当前待办事项
 
 ## 已批准任务
 
-### 将工具页导航中的 Credits 改为 Pricing
-
-- 优先级：`P2`
-- 页面或界面：`https://vidou.ai/image-to-video/`、`https://vidou.ai/text-to-video/`、`https://vidou.ai/text-to-image/`、`https://vidou.ai/image-edit/` 的桌面左侧导航和移动端导航
-- 当前问题与线上证据：2026-10-05 使用禁止缓存请求复核，四个工具页的导航均把指向 `https://vidou.ai/pricing/` 的入口显示为 `Credits`。目标页面实际是完整 Pricing 页面，包含 credits 套餐与购买信息，因此导航名称使用 `Pricing` 更准确，也与 Blog 页脚和工具页新 Footer 中的 `Pricing` 保持一致。
-- 修改要求：将四个工具页桌面左侧导航和移动端导航中指向 `https://vidou.ai/pricing/` 的可见名称从 `Credits` 精确替换为 `Pricing`。若桌面和移动端复用同一导航配置，只修改共享配置一次；同时把该链接的 `aria-label`、title、屏幕阅读器专用文本或其他可访问名称中的 `Credits` 同步改为 `Pricing`。保持现有图标、位置、样式、链接目标、点击行为和激活状态不变。
-- 验收标准：四个工具页的桌面左侧导航和移动端导航都只显示 `Pricing`，不再出现作为菜单名称的 `Credits`；对应链接仍为 `https://vidou.ai/pricing/`，可通过鼠标、触摸和键盘正常打开；可访问名称与可见名称均为 `Pricing`；页面 Footer 中现有 `Pricing` 链接继续正常。桌面与 390px 移动端无文字截断、换行、重叠或导航宽度异常。
-- 不要修改：不要修改 Pricing 页面内容、credits 数量、套餐、价格、支付流程、URL、图标、菜单顺序、其他导航名称、工具表单、API、账户逻辑、Title、Meta、canonical、正文、CTA、Footer 或结构化数据；不要把正文和产品界面中表示计费单位的普通名词 `credits` 改为 `pricing`；不要给可见功能名称增加连字符。
-
-### 发布博客文章 How to Turn Product Photos Into Videos With AI
+### 发布博客文章 50 Image to Video Prompt Examples for Realistic Motion
 
 - 优先级：`P1`
-- 页面或界面：新文章 `https://vidou.ai/blog/turn-product-photos-into-videos-with-ai/`、Blog 列表页 `https://vidou.ai/blog/`、旧文章 `https://vidou.ai/blog/how-to-animate-a-photo-with-ai/`、XML Sitemap
-- 当前问题与线上证据：2026-10-07 使用禁止缓存请求复核，目标文章 URL 当前显示 Vidou 的 404 页面，Blog 列表页尚无这篇计划中的第三篇文章。线上已有入门流程文 `How to Animate a Photo With AI` 和提示词文章 `Image to Video Prompt Guide`，但缺少面向产品照片、覆盖素材准备、保真运动、输出选择和成片检查的商业场景文章。高级工具页 `https://vidou.ai/image-to-video/` 当前公开提供 9:16、4:3、3:4、1:1、16:9 比例，480p、720p、1080p 分辨率，5 秒时长、可选音频、credits 提示和登录后保存创作记录，适合作为本文唯一工具目的地。
+- 页面或界面：新文章 `https://vidou.ai/blog/image-to-video-prompt-examples/`、Blog 列表页 `https://vidou.ai/blog/`、旧文章 `https://vidou.ai/blog/image-to-video-prompt-guide/` 与 `https://vidou.ai/blog/how-to-animate-a-photo-with-ai/`、XML Sitemap
+- 当前问题与线上证据：2026-10-12 使用禁止缓存请求复核，目标 URL 当前显示 Vidou 的 404 页面，Blog 列表页尚无博客计划 Week 2 的第一篇文章。线上已有 Prompt Guide 解释提示词结构与逐项修改方法，但尚无覆盖人像、产品、风景、生活方式、建筑、插画和镜头运动的可直接改写示例库。首页 `https://vidou.ai/#image-to-video` 当前公开主打免费、无需登录的 Image to Video 快速试用，适合作为本文唯一转化目的地；高级工具页保持其登录后可选设置意图，不在本文增加链接。
 - 修改要求：
   1. 新建并发布下方已定稿的英文文章，不得让发布执行方改写、缩写、扩写或另行生成正文。文章 URL、SEO 字段和页面信息精确使用：
-     - URL：`https://vidou.ai/blog/turn-product-photos-into-videos-with-ai/`
-     - Slug：`turn-product-photos-into-videos-with-ai`
-     - SEO Title：`How to Turn Product Photos Into Videos With AI | Vidou`
-     - Meta Description：`Learn how to turn product photos into short AI videos with controlled motion, clear prompts, suitable formats, and a practical review checklist.`
-     - H1：`How to Turn Product Photos Into Videos With AI`
-     - Category：`Guide`
+     - URL：`https://vidou.ai/blog/image-to-video-prompt-examples/`
+     - Slug：`image-to-video-prompt-examples`
+     - SEO Title：`50 Image to Video Prompt Examples for Realistic Motion | Vidou`
+     - Meta Description：`Explore 50 Image to Video prompt examples for realistic portraits, products, landscapes, food, illustrations, and cinematic camera motion.`
+     - H1：`50 Image to Video Prompt Examples for Realistic Motion`
+     - Category：`Prompts`
      - Author：可见署名为 `Vidou`，链接到 `https://vidou.ai/about/`
-     - Publish date：`October 7, 2026`；机器可读值为 `2026-10-07`
-     - Reading time：`9 min read`
-     - Canonical：`https://vidou.ai/blog/turn-product-photos-into-videos-with-ai/`
-     - Open Graph：`og:type=article`；`og:title` 与 H1 一致；`og:description` 与 Meta Description 一致；`og:url` 与 canonical 一致；`og:image=https://vidou.ai/images/blog/turn-product-photos-into-videos-with-ai-hero.jpg`；图片尺寸为 1536×864。
-  2. 文章顶部使用主图，正文在 `Start With a Product Photo That Leaves Room for Motion` 小节两段正文之后使用第二张图。把仓库内已生成的最终图片集成到站点静态资源体系，并生成现有图片组件所需的 768px 宽响应式版本；不得重新生成或用占位图替换：
-     - 本地源文件：`assets/vidou-blog/turn-product-photos-into-videos-with-ai/turn-product-photos-into-videos-with-ai-hero.jpg`；发布 URL：`https://vidou.ai/images/blog/turn-product-photos-into-videos-with-ai-hero.jpg`；尺寸：1536×864；Alt：`Olive running shoe with subtle motion trails illustrating a product photo becoming a video`；作为文章 Hero、Open Graph 图和 Blog 列表卡片图。
-     - 本地源文件：`assets/vidou-blog/turn-product-photos-into-videos-with-ai/product-photo-motion-planning.jpg`；发布 URL：`https://vidou.ai/images/blog/product-photo-motion-planning.jpg`；尺寸：1536×864；Alt：`Unbranded amber bottle photographed with clear edges and space for AI video motion`；Caption：`A clean silhouette, stable reflections, and space around the subject give the motion model fewer details to reinterpret.`
-     - 两张图片均由 OpenAI ImageGen 于 2026-10-07 为本文生成。不得宣称它们是 Vidou 的真实生成结果、客户素材或产品测试结果。文章末尾保留正文中的 Editorial note 披露。
-  3. 正文中的工具链接必须严格只有两个，且都指向同一 URL `https://vidou.ai/image-to-video/`：第一处是正文唯一锚文本 `advanced Image to Video workspace`，第二处是末尾按钮 `Turn Your Product Photo Into a Video`。不要给图片、标题、其他关键词或中段过渡 CTA 添加工具链接。正文内 `Image to Video` 等可见功能名称不得添加连字符；URL slug 中的技术连字符保持不变。
+     - Publish date：`October 12, 2026`；机器可读值为 `2026-10-12`
+     - Reading time：`11 min read`
+     - Canonical：`https://vidou.ai/blog/image-to-video-prompt-examples/`
+     - Open Graph：`og:type=article`；`og:title` 与 H1 一致；`og:description` 与 Meta Description 一致；`og:url` 与 canonical 一致；`og:image=https://vidou.ai/images/blog/image-to-video-prompt-examples-realistic-motion-hero.jpg`；图片尺寸为 1536×864。
+     - Twitter：使用 `summary_large_image`；title、description 和 image 分别与 Open Graph 对应字段一致。
+  2. 文章顶部使用主图，正文在 `How to Adapt These Prompt Examples` 小节的三个步骤之后使用第二张图。把仓库内已生成的最终图片集成到站点静态资源体系，并生成现有图片组件所需的 768px 宽响应式版本；不得重新生成或用占位图替换：
+     - 本地源文件：`assets/vidou-blog/image-to-video-prompt-examples-realistic-motion/image-to-video-prompt-examples-realistic-motion-hero.jpg`；发布 URL：`https://vidou.ai/images/blog/image-to-video-prompt-examples-realistic-motion-hero.jpg`；尺寸：1536×864；Alt：`Five visual scenes connected by motion trails for an Image to Video prompt example library`；作为文章 Hero、Open Graph 图和 Blog 列表卡片图。
+     - 本地源文件：`assets/vidou-blog/image-to-video-prompt-examples-realistic-motion/realistic-motion-prompt-layers.jpg`；发布 URL：`https://vidou.ai/images/blog/realistic-motion-prompt-layers.jpg`；尺寸：1536×864；Alt：`Portrait beside a sunlit window with subtle hair curtain and atmosphere motion`；Caption：`Realistic motion usually comes from one restrained subject action, one supporting environmental movement, and a stable composition.`
+     - 两张图片均由 OpenAI ImageGen 于 2026-10-12 为本文生成。不得宣称它们是 Vidou 的真实生成结果、客户素材、测试输出或前后对比证据。文章末尾保留定稿中的 Editorial note 披露。
+  3. 正文中的转化链接必须严格只有两个，且都指向同一 URL `https://vidou.ai/#image-to-video`：第一处是正文唯一工具锚文本 `free Image to Video generator`，第二处是末尾按钮 `Try an Image to Video Prompt`。不要给图片、标题、其他关键词或中段过渡 CTA 添加工具链接，不要链接到任何其他工具页。正文内 `Image to Video` 等可见功能名称不得添加连字符；URL、slug 和图片文件名中的技术连字符保持不变。
   4. 按照现有 Blog 文章视觉与组件样式发布以下定稿正文：
 
 ```markdown
-# How to Turn Product Photos Into Videos With AI
+# 50 Image to Video Prompt Examples for Realistic Motion
 
-One strong product photo can become a short video without a full reshoot. The practical method is to begin with a clean source image, choose one believable motion idea, describe what should move and what must remain unchanged, then review the result for product accuracy before using it in a campaign.
+A useful Image to Video prompt describes what moves, whether the camera moves, how fast the action feels, and which details stay consistent. Below are 50 prompts to adapt for portraits, products, landscapes, food, architecture, illustrations, and camera movements.
 
-This workflow is useful for product pages, social posts, launch teasers, marketplace creative, and concept testing. It does not replace careful product photography, and an AI video should not be treated as an exact simulation of how a product works. Its value is speed: a still asset can gain camera movement, light, atmosphere, or subtle environmental motion while the product remains the visual anchor.
+These are starting points, not guaranteed recipes. Match the prompt to the source, keep motion plausible, and review the full clip for changes in faces, hands, text, product shape, or background geometry.
 
-If you are new to the format, start with the broader [guide to AI image to video generation](https://vidou.ai/blog/ai-image-to-video-guide/). The steps below focus specifically on product imagery, where shape, color, packaging, and readable details matter more than dramatic motion.
+For the reasoning behind motion, camera direction, pace, and constraints, read the [Image to Video prompt guide](https://vidou.ai/blog/image-to-video-prompt-guide/). For the complete workflow, start with [how to animate a photo with AI](https://vidou.ai/blog/how-to-animate-a-photo-with-ai/).
 
-## Decide Where the Video Will Be Used
+## How to Adapt These Prompt Examples
 
-Choose the placement before you animate the image. A vertical social story, a square marketplace post, and a wide website banner need different framing. Making that decision first helps you choose a source photo with enough space around the product and prevents an important detail from being cropped later.
+Adapt each example in three passes:
 
-Write down three constraints before you begin:
+1. **Match the subject.** Replace the subject, environment, colors, and details with what appears in your image.
+2. **Choose one priority.** Keep the subject, camera, or environmental motion dominant. Remove secondary action if it feels busy.
+3. **Protect important details.** Name the face, hands, product shape, label, clothing, architecture, or background that must remain stable.
 
-- **Placement:** product page, paid social concept, organic post, email, or presentation.
-- **Frame:** vertical, square, portrait, or landscape.
-- **Single purpose:** reveal the product, show its material, create atmosphere, or draw attention to one feature.
+![Portrait beside a sunlit window with subtle hair curtain and atmosphere motion](https://vidou.ai/images/blog/realistic-motion-prompt-layers.jpg)
 
-Keep the first version simple. A five second clip with one clear visual purpose is easier to control than a scene that tries to rotate the product, change the background, add particles, move the camera, and reveal text at the same time.
+*Realistic motion usually comes from one restrained subject action, one supporting environmental movement, and a stable composition.*
 
-## Start With a Product Photo That Leaves Room for Motion
+Paste one adapted example into Vidou's [free Image to Video generator](https://vidou.ai/#image-to-video), review the full result, and change one instruction per revision. This reveals which variable caused the difference.
 
-The source image determines how much the model must invent. Use a sharp image in which the complete product is visible, the silhouette is easy to separate from the background, and important details are not hidden by props. The product should occupy enough of the frame to remain recognizable without touching every edge.
+## Portrait Prompts
 
-Leave breathing room in the direction of the intended movement. A slow push in needs space around the subject for reframing. A lateral camera move benefits from background detail on both sides. For a vertical output, begin with a composition that can survive a tall crop rather than forcing a wide hero image into a narrow frame.
+Use restrained movement. Large turns can require features that are not visible in the portrait.
 
-![Unbranded amber bottle photographed with clear edges and space for AI video motion](https://vidou.ai/images/blog/product-photo-motion-planning.jpg)
+1. **Natural blink and gaze**
+   > The subject blinks naturally and shifts their gaze slightly toward the camera. Keep the face, hairstyle, clothing, skin tone, and background consistent. Static camera and calm movement.
 
-*A clean silhouette, stable reflections, and space around the subject give the motion model fewer details to reinterpret.*
+2. **Hair in a light breeze**
+   > A few strands of hair move gently in a light breeze while the subject remains relaxed. Slow camera push in. Preserve facial identity, body position, clothing, and lighting.
 
-Packaging deserves extra care. Small type, logos, repeating patterns, transparent materials, and mirror-like surfaces are easy to reinterpret. Verify critical label or legal copy against the original still. If text must remain exact, composite it after generation instead of asking the model to recreate it through motion.
+3. **Subtle smile**
+   > The subject forms a slight natural smile and breathes gently. Keep the eyes, facial proportions, hair, shoulders, clothing, and background unchanged. Camera remains steady.
 
-## Choose One Product Safe Motion Idea
+4. **Small profile turn**
+   > The subject turns their head a few degrees toward the window and pauses. Use slow, controlled motion. Preserve facial features, hairstyle, jewelry, clothing, and the original composition.
 
-The most dependable concepts let the product stay structurally stable while the camera, light, or environment provides movement. Start with one of these approaches:
+5. **Reading by a window**
+   > The reader lowers their gaze toward the open book as the curtain moves softly. Static camera, quiet pace. Keep the face, hands, book shape, room, and daylight consistent.
 
-| Motion idea | What moves | Best suited to |
-| --- | --- | --- |
-| Slow push in | The camera moves gently toward the product | Packaging, footwear, accessories, hero shots |
-| Subtle orbit | The camera shifts slightly around a stable subject | Products with a clear three dimensional form |
-| Light sweep | Highlights travel across the surface | Metal, glass, watches, cosmetics |
-| Background drift | Shadows, fabric, steam, or particles move behind the product | Lifestyle and atmospheric creative |
-| Focus transition | Attention shifts from a foreground detail to the product | Detail led reveals and premium compositions |
+6. **Musician at rest**
+   > The musician takes a calm breath and adjusts their gaze toward the instrument. A soft highlight shifts across the scene. Preserve the face, hands, instrument, clothing, and background.
 
-Avoid asking for a complete spin when the source photo shows only one side. The unseen back and side must be invented, so packaging geometry, soles, clasps, ports, and labels may change. If a full rotation is essential, use real multiview product assets or a controlled 3D workflow.
+7. **Athlete before movement**
+   > The athlete breathes steadily while loose fabric moves slightly in the air. Gentle camera push in. Keep facial identity, body proportions, pose, uniform, and setting stable.
 
-Natural motion is usually restrained. Ask for a slow camera move rather than a fast sweep. Let reflections slide across a bottle rather than changing the bottle itself. The product should remain the fixed reference point.
+8. **Warm side light**
+   > The subject remains still as warm window light moves subtly across the face. Minimal hair movement, static camera, natural pace. Preserve identity, skin texture, clothing, and room layout.
 
-## Write a Prompt That Protects Product Identity
+## Product Prompts
 
-A useful product prompt separates four things: the subject, the motion, the camera, and the constraints. Put the product first, describe one primary action, state the pace and framing, then say what must stay consistent.
+Keep product geometry and visible details stable. Avoid a full rotation when only one side is visible. For the full workflow, see [how to turn product photos into videos with AI](https://vidou.ai/blog/turn-product-photos-into-videos-with-ai/).
 
-Use this reusable pattern:
+9. **Sneaker light sweep**
+   > A soft studio highlight travels slowly across the sneaker while the camera pushes in slightly. Preserve the exact shape, sole, laces, materials, colors, logo area, and background.
 
-> Keep the [product, color, material, and position] unchanged. [One camera or environmental motion] happens slowly. [Lighting and atmosphere]. Maintain the original shape, proportions, colors, label placement, and background style. No new objects, no deformation, no text changes, and no sudden camera movement.
+10. **Skincare bottle shadows**
+   > The bottle remains upright as warm window shadows drift across the background. Static camera and gentle movement. Keep the bottle geometry, cap, label placement, glass color, and reflections consistent.
 
-Here are two examples you can adapt.
+11. **Watch detail reveal**
+   > A narrow light moves slowly across the watch case and dial. Gentle camera push in. Preserve the hands, markings, case shape, strap texture, colors, and original position.
 
-### Running shoe
+12. **Headphones on a pedestal**
+   > The camera makes a small, smooth arc around the headphones without revealing the back. Keep the headband, ear cups, controls, materials, proportions, and studio background unchanged.
 
-> Keep the olive running shoe centered on the pedestal. The camera makes a slow push in while a soft highlight travels across the mesh and sole. Maintain the exact silhouette, laces, material texture, colors, and proportions. No foot, no new branding, no rotation, and no shape changes.
+13. **Handbag material focus**
+   > Soft light glides across the handbag texture while the camera remains steady. Preserve the silhouette, handles, stitching, hardware, color, logo area, and surface beneath the product.
 
-### Skincare bottle
+14. **Coffee package atmosphere**
+   > A faint ribbon of steam rises behind the coffee package as the camera slowly pushes in. Keep the package shape, printed design, label placement, colors, edges, and tabletop stable.
 
-> Keep the amber glass bottle upright and unchanged. Warm window shadows drift slowly across the background while the camera remains steady. Preserve the bottle geometry, cap, label position, glass color, reflections, and surface. No added text, no liquid movement, and no new props.
+15. **Ceramic object reveal**
+   > The camera moves gently from left to right while a soft reflection changes across the ceramic surface. Preserve the object shape, glaze texture, color, base, and background composition.
 
-Notice that each prompt says more about restraint than spectacle. Product video prompts work best when they reduce ambiguity. If you want a deeper explanation of subject, motion, camera, environment, and constraints, use the [Image to Video prompt guide](https://vidou.ai/blog/image-to-video-prompt-guide/).
+16. **Furniture in natural light**
+   > Sunlight and leaf shadows shift slowly across the chair while the camera stays fixed. Keep the chair geometry, fabric, legs, room perspective, floor, and surrounding objects unchanged.
 
-## Generate a Controlled First Version
+## Landscape and Nature Prompts
 
-Upload the chosen still to Vidou's [advanced Image to Video workspace](https://vidou.ai/image-to-video/). Choose the aspect ratio that matches the planned placement, select an available resolution, decide whether the clip needs audio, and paste the prompt. The workspace currently offers 9:16, 4:3, 3:4, 1:1, and 16:9 formats, 480p, 720p, and 1080p output options, and a five second duration. It also shows the credit requirement before generation and keeps creations available in a signed in account.
+Let the environment move while landforms and the horizon stay stable.
 
-Treat the first result as a controlled draft. Change only one variable per revision. If the product bends, strengthen the identity constraints. If the scene feels static, add one subtle camera or lighting action. If motion becomes chaotic, remove secondary effects rather than stacking more instructions onto the prompt.
+17. **Mountain lake**
+   > Clouds drift slowly above the mountains while small ripples move across the lake. Static camera and calm pace. Keep the shoreline, peaks, trees, reflections, and horizon consistent.
 
-## Review the Entire Clip, Not Just the First Frame
+18. **Ocean at sunrise**
+   > Gentle waves roll toward the shore as the sunrise brightens gradually. Slow camera push in. Preserve the coastline, rock shapes, horizon, sky colors, and overall composition.
 
-Watch the video several times and pause at the beginning, middle, and end. A result can look convincing at first and still drift near the final frames. Review it against the original product photo, not from memory.
+19. **Forest morning**
+   > Leaves move lightly in the breeze while thin mist drifts between the trees. Camera remains steady. Keep trunks, paths, plants, depth, and the direction of the morning light stable.
 
-Check the following:
+20. **Waterfall detail**
+   > Water flows steadily over the rocks as fine spray moves through the air. Use a subtle push in. Preserve rock geometry, surrounding plants, pool shape, colors, and framing.
 
-- **Silhouette:** Does the outer shape remain stable throughout the clip?
-- **Color and material:** Do the finish, transparency, texture, and reflections stay believable?
-- **Packaging:** Do the cap, seams, edges, logo area, and label placement remain consistent?
-- **Text:** Has any visible copy changed, blurred, or turned into different characters?
-- **Motion:** Does the camera move smoothly without sudden speed or direction changes?
-- **Background:** Do shadows and props remain coherent without appearing or disappearing?
-- **Crop:** Is the full product visible in the final placement, including interface safe areas?
-- **Claims:** Could the motion imply a feature, effect, ingredient behavior, or performance the product does not actually have?
+21. **Desert wind**
+   > A thin layer of sand moves gently along the dune surface while distant heat haze shifts. Static camera. Keep dune contours, footprints, horizon, shadows, and sky unchanged.
 
-Reject a clip if it misrepresents a material detail or product function, even when the overall motion looks attractive. For commercial use, accuracy is part of creative quality. Keep the original still available wherever a customer needs to inspect precise details.
+22. **Snowy cabin**
+   > Light snow falls slowly as a small amount of chimney smoke rises. Keep the camera fixed and the mood quiet. Preserve cabin structure, windows, trees, snowbanks, and landscape.
 
-## Fix Common Product Video Problems
+23. **Meadow in a breeze**
+   > Tall grass and wildflowers sway gently from left to right while clouds move slowly overhead. Preserve the path, tree line, horizon, flower colors, and natural daylight.
 
-### The packaging changes shape
+24. **Canyon light change**
+   > Soft sunlight moves gradually across the canyon wall while a small amount of dust drifts near the ground. Static camera. Preserve rock formations, scale, shadows, and sky.
 
-Reduce camera movement and explicitly preserve the product's geometry, proportions, cap, edges, and label position. A slow push in is usually safer than an orbit when the packaging has strong straight lines.
+## Food and Everyday Scene Prompts
 
-### The label becomes unreadable
+Use small movements such as steam, flame, condensation, fabric, or shifting light. Keep object shapes unchanged.
 
-Use a cleaner source with a larger label area and ask the model to keep the label placement unchanged. Do not rely on generated frames for mandatory copy. Add exact typography in post production when perfect readability is required.
+25. **Fresh coffee**
+   > Steam rises slowly from the coffee while morning light shifts across the table. Gentle camera push in. Preserve the cup shape, handle, liquid level, saucer, and background objects.
 
-### Reflections flicker on glass or metal
+26. **Birthday cake candles**
+   > Candle flames flicker softly above the cake while the camera remains steady. Keep the frosting, decorations, candle positions, plate, table, colors, and background consistent.
 
-Simplify the lighting instruction. Request one soft, controlled light sweep and a stable camera. Multiple moving lights create competing changes and can make the surface appear to reshape.
+27. **Pasta on a table**
+   > A small amount of steam rises from the pasta as light moves subtly across the sauce. Static camera. Preserve the food arrangement, plate shape, garnish, cutlery, and table setting.
 
-## Build Variations Without Losing Consistency
+28. **Cold drink**
+   > Condensation moves slowly down the glass while ice shifts only slightly. Use a gentle push in. Keep the glass, garnish, liquid color, reflections, tabletop, and background stable.
 
-Once one version passes review, create variations by changing a single production choice: aspect ratio, camera direction, lighting mood, or background motion. Keep the source photo and identity constraints constant. This produces a coherent family of assets while making differences easy to evaluate.
+29. **Open book and curtain**
+   > The curtain moves softly in the breeze and one page lifts slightly before settling. Keep the camera fixed. Preserve the book position, visible page layout, furniture, and room light.
 
-For example, a wide version might use a slow lateral move for a website banner, while a vertical version uses a gentle push in with more space above and below the product. Both can share the same color, material, label, and geometry constraints. Do not assume one crop will work everywhere; review each format in its actual placement.
+30. **Vinyl listening scene**
+   > The record rotates steadily while a warm lamp flickers almost imperceptibly. Slow camera move toward the turntable. Keep the tonearm, controls, furniture, and room layout consistent.
 
-## A Practical Product Photo to Video Checklist
+31. **Candle on a shelf**
+   > The candle flame moves gently and creates subtle shifting shadows on the wall. Static camera and calm pace. Preserve the candle shape, shelf, nearby objects, and composition.
 
-Before generation:
+32. **Flowers in a vase**
+   > A few flower stems sway slightly while sunlight moves across the table. Gentle camera push in. Keep the petals, vase shape, water level, arrangement, colors, and background unchanged.
 
-1. Confirm the placement and aspect ratio.
-2. Choose a sharp source with a clear, complete product.
-3. Leave room around the subject for the planned movement.
-4. Pick one product safe motion idea.
-5. Write explicit identity and text constraints.
+## Architecture and Travel Prompts
 
-Before publishing:
+Protect straight lines, signs, and horizon placement. Avoid camera moves that demand large unseen areas.
 
-1. Compare the beginning, middle, and end with the source photo.
-2. Verify shape, color, material, label placement, and visible text.
-3. Check the crop inside the real destination layout.
-4. Remove any motion that suggests an unsupported product claim.
-5. Keep the original still and approved generation details with the asset.
+33. **Quiet old street**
+   > Morning light shifts slowly along the building facades while a few tree leaves move. Gentle forward camera movement. Preserve windows, doors, signs, pavement lines, and street perspective.
 
-## Frequently Asked Questions
+34. **Modern tower**
+   > Clouds move behind the tower as reflections change subtly across the glass. Camera remains fixed. Keep every building edge, floor line, neighboring structure, and the vertical perspective stable.
 
-### What product photos work best for AI video?
+35. **Sunlit interior**
+   > Sheer curtains move gently while sunlight and shadows shift across the floor. Static camera. Preserve walls, windows, furniture geometry, decor placement, and room perspective.
 
-Use a sharp, well lit photo with a complete product, a clean silhouette, and space around the subject. Simple backgrounds and stable lighting give the model fewer details to reinterpret. Highly reflective surfaces, tiny text, and overlapping props require closer review.
+36. **Train platform**
+   > A light breeze moves clothing and a distant train approaches slowly without changing the platform. Keep the camera steady. Preserve faces, signs, tracks, architecture, and perspective.
 
-### Can AI keep a product label perfectly readable?
+37. **Bridge over water**
+   > Water and reflected light move beneath the bridge while clouds drift slowly. Gentle lateral camera movement. Preserve the bridge structure, cables, skyline, shoreline, and horizon.
 
-It may preserve the general label area, but small text can change between frames. If wording must be exact, add it during post production or use the original still for close inspection. Always review generated frames against the source image.
+38. **Temple courtyard**
+   > Tree branches and hanging fabric move slightly in a breeze as sunlight changes softly. Static camera. Preserve columns, roof lines, stonework, steps, ornaments, and courtyard layout.
 
-### Which motion is safest for a single product photo?
+39. **Coastal town**
+   > The sea moves gently beyond the buildings while laundry shifts in the breeze. Slow camera push in. Keep building shapes, balconies, streets, colors, coastline, and horizon stable.
 
-A slow push in, restrained light sweep, or gentle background movement is usually safer than a full rotation. These choices create motion without requiring the model to invent unseen sides of the product.
+40. **Night market atmosphere**
+   > Steam rises from one food stall while hanging lights sway slightly. Camera moves forward slowly. Preserve faces, hands, stall structures, signs, objects, and the street layout.
 
-### Can I use the result in an advertisement?
+## Illustration and AI Art Prompts
 
-You can evaluate it for your campaign, but approval depends on your rights to the source image, brand rules, advertising requirements, and the accuracy of the generated result. Review every frame and do not publish a clip that changes the product or implies unsupported performance.
+Name the medium and protect its line work, palette, character design, and composition.
 
-## Turn One Strong Product Photo Into a Focused Video
+41. **Watercolor animal**
+   > The fox blinks once while nearby grass and fabric move gently. Static camera. Preserve the watercolor texture, line work, character proportions, colors, paper grain, and composition.
 
-The most effective workflow is controlled rather than complicated: choose the destination, prepare a clean source, use one believable motion, protect product identity in the prompt, and inspect the full clip before publishing. Once that foundation works, create channel specific variations one change at a time.
+42. **Anime portrait**
+   > The character blinks naturally as a few strands of hair move in a soft breeze. Gentle push in. Keep facial design, eye shape, outfit, color palette, line art, and background stable.
 
-[Turn Your Product Photo Into a Video](https://vidou.ai/image-to-video/)
+43. **Fantasy castle painting**
+   > Thin clouds drift around the castle towers while flags move slowly. Camera remains steady. Preserve the painted architecture, mountain shapes, lighting, brush texture, palette, and composition.
 
-*Editorial note: The illustrative images in this article were created with AI for editorial explanation. They are not customer assets, product test results, or examples generated by Vidou.*
+44. **Science fiction scene**
+   > Small navigation lights pulse gently as mist moves beneath the spacecraft. Slow camera push in. Keep the ship design, panels, landing gear, environment, scale, and art style consistent.
+
+45. **Paper cut forest**
+   > Layered leaves sway slightly and soft shadows shift between the paper layers. Static camera. Preserve every cut edge, character shape, color layer, texture, and depth arrangement.
+
+46. **Clay character**
+   > The clay character blinks and tilts its head slightly while the background remains still. Preserve facial features, fingerprints, body proportions, clothing, colors, lighting, and handcrafted texture.
+
+## Reusable Camera Movement Prompts
+
+These templates make the camera primary. Replace the brackets and keep subject movement minimal.
+
+47. **Slow push in**
+   > Slow camera push in toward [main subject]. Keep the subject almost still while [one subtle environmental detail] moves gently. Preserve [identity or shape details], background geometry, lighting, and composition.
+
+48. **Gentle pull back**
+   > The camera pulls back slowly to reveal more of [visible surrounding area]. Keep [main subject] stable and centered. Preserve proportions, edges, background objects, perspective, and the original visual style.
+
+49. **Short lateral pan**
+   > Gentle camera pan from left to right across [scene]. [One visible detail] moves subtly. Keep the movement slow and preserve the subject, horizon, architecture, object positions, and lighting.
+
+50. **Controlled tracking move**
+   > The camera tracks smoothly beside [moving subject] at a matching pace. Keep the subject's face or shape consistent. Preserve clothing or materials, background direction, scale, and natural motion.
+
+## How to Fix a Prompt That Looks Unrealistic
+
+If a face or object bends, reduce subject motion and strengthen the preservation sentence. If the background changes, replace an orbit or large pan with a static camera or short push in. If everything moves, remove one environmental action. If the clip feels still, replace `dynamic` with a visible verb such as `blinks`, `sways`, `drifts`, or `ripples`. Keep the source image unchanged, adjust one variable, and compare the beginning, middle, and end.
+
+## Start With One Clear Motion
+
+Choose the example closest to your image, replace the visible details, and remove any action the source cannot support. Generate a controlled first version, review the whole clip, and revise one variable at a time.
+
+[Try an Image to Video Prompt](https://vidou.ai/#image-to-video)
+
+*Editorial note: The prompts in this article are instructional starting points and are not presented as benchmarked Vidou outputs. The two editorial images were created with generative AI and reviewed for relevance; they do not depict actual Vidou results.*
 ```
 
-  5. 在 Blog 列表页添加该文章卡片，使用主图、Category `Guide`、标题、Meta Description 的首句摘要、日期 `October 7, 2026`，点击卡片进入 canonical URL；保持现有列表顺序规则，并将本文作为最新文章显示。
-  6. 在旧文章 `https://vidou.ai/blog/how-to-animate-a-photo-with-ai/` 的 FAQ 问题 `Can I animate a product photo?` 现有回答末尾追加一句：`For a product focused workflow, read [how to turn product photos into videos with AI](https://vidou.ai/blog/turn-product-photos-into-videos-with-ai/).` 链接文字保持全小写；不要改写该 FAQ 的其他句子。
-  7. 加入与现有文章一致的面包屑和结构化数据。使用 `BlogPosting`，字段至少包括：`headline` 为 H1；`description` 为 Meta Description；`image` 为主图绝对 URL；`datePublished` 和 `dateModified` 均为 `2026-10-07`；`mainEntityOfPage` 与 canonical 一致；`author` 与 `publisher` 均为 `Organization`、名称 `Vidou`、URL `https://vidou.ai/about/`。保留站点现有 `WebSite`、`Organization` 或 `BreadcrumbList` 数据，避免重复冲突。
-  8. 将 canonical URL 加入线上 XML Sitemap，`lastmod` 使用实际发布日期 `2026-10-07`。确保页面可索引，不添加 `noindex`，并保持正确的 200 状态。
-- 验收标准：目标 URL 返回 200 且不是软 404；SEO Title、Meta Description、H1、canonical、Open Graph、作者、发布日期、阅读时长、分类和 `BlogPosting` 数据与要求一致；可见英文正文为上述定稿且正文词数在 1,300–2,000 词范围内；Hero 和正文图在桌面及 390px 移动端清晰显示、比例稳定、无拉伸、无布局偏移，并输出 768px 响应式候选；两图 Alt 和 Caption 精确；正文到 `https://vidou.ai/image-to-video/` 恰好两个链接，其中一个为指定关键词锚文本、一个为末尾 CTA 按钮，不存在第三个工具页或首页转化链接；可见文案中的 `Image to Video` 不含连字符；三条 Blog 内链可点击且无 404；旧文章新增反向链接；Blog 列表有最新文章卡片；Sitemap 包含 canonical；结构化数据通过解析且字段与页面可见信息一致；页面键盘可操作、焦点清晰，图片不会遮挡正文或 CTA。
-- 不要修改：不要改写定稿文章、SEO 字段、指定锚文本、CTA、Alt、Caption 或披露；不要把 `Image to Video`、`Text to Video`、`Text to Image`、`Image Edit` 等可见功能名称写成带连字符形式；不要增加第二个正文工具锚文本、首页链接、第三个工具转化链接、外部竞品链接、效果承诺、虚构测试数据、客户案例、品牌或法律结论；不要把生成图描述成 Vidou 输出；不要改动高级工具的功能、选项、credits、登录逻辑、账户数据、API、价格、现有文章正文（除指定的一句反向链接）、其他 Blog 卡片、全站导航、Footer 或无关页面；不要新增 Changelog 条目。
+  5. 在 Blog 列表页添加该文章卡片，使用主图、Category `Prompts`、标题、Meta Description 的首句摘要、日期 `October 12, 2026`，点击卡片进入 canonical URL；保持现有列表顺序规则，并将本文作为最新文章显示。
+  6. 为旧文添加反向内链，精确执行以下两处，不改写其他句子：
+     - 在 `https://vidou.ai/blog/image-to-video-prompt-guide/` 的 `A Reusable Motion Prompt Template` 小节、详细示例后的解释段末尾追加：`For more starting points across different subjects, browse [50 Image to Video prompt examples for realistic motion](https://vidou.ai/blog/image-to-video-prompt-examples/).`
+     - 在 `https://vidou.ai/blog/how-to-animate-a-photo-with-ai/` 的 `Step 4: Write a Clear Motion Prompt` 小节、现有 Portrait、Product、Landscape 三个示例之后追加：`For more starting points, browse [50 Image to Video prompt examples for realistic motion](https://vidou.ai/blog/image-to-video-prompt-examples/).`
+  7. 加入与现有文章一致的面包屑和结构化数据。使用 `BlogPosting`，字段至少包括：`headline` 为 H1；`description` 为 Meta Description；`image` 为主图绝对 URL；`datePublished` 和 `dateModified` 均为 `2026-10-12`；`mainEntityOfPage` 与 canonical 一致；`author` 与 `publisher` 均为 `Organization`、名称 `Vidou`、URL `https://vidou.ai/about/`。保留站点现有 `WebSite`、`Organization` 或 `BreadcrumbList` 数据，避免重复冲突。
+  8. 将 canonical URL 加入线上 XML Sitemap，`lastmod` 使用实际发布日期 `2026-10-12`。确保页面可索引，不添加 `noindex`，并保持正确的 200 状态。
+- 验收标准：目标 URL 返回 200 且不是软 404；SEO Title、Meta Description、H1、canonical、Open Graph、Twitter、作者、发布日期、阅读时长、分类和 `BlogPosting` 数据与要求一致；可见英文正文为上述定稿，包含连续编号且不重不漏的 50 条提示词，正文词数在 1,500–2,200 词范围内；Hero 和正文图在桌面及 390px 移动端清晰显示、比例稳定、无拉伸、无布局偏移，并输出 768px 响应式候选；两图 Alt 和 Caption 精确；正文到 `https://vidou.ai/#image-to-video` 恰好两个链接，其中一个为指定关键词锚文本、一个为末尾 CTA 按钮，不存在第三个首页工具链接或其他工具页链接；可见文案中的 `Image to Video` 不含连字符；三条 Blog 内链可点击且无 404；两篇旧文章均有指定反向链接；Blog 列表有最新文章卡片；Sitemap 包含 canonical；结构化数据可解析且字段与页面可见信息一致；页面键盘可操作、焦点清晰，50 条提示词层级可扫描，移动端无横向滚动。
+- 不要修改：不要改写定稿文章、SEO 字段、50 条提示词、指定锚文本、CTA、Alt、Caption 或披露；不要把 `Image to Video`、`Text to Video`、`Text to Image`、`Image Editor` 等可见功能名称写成带连字符形式；不要增加第二个正文工具锚文本、第三个工具转化链接、其他工具页链接、外部竞品链接、效果承诺、虚构测试数据、客户案例或未经验证的技术结论；不要把生成图描述成 Vidou 输出；不要改动首页工具功能、高级工具、credits、登录逻辑、账户数据、API、价格、旧文章正文（除指定的两句反向链接）、其他 Blog 卡片、全站导航、Footer 或无关页面；不要新增 Changelog 条目。
