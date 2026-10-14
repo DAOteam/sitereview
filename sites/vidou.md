@@ -6,258 +6,184 @@ changelog_url: "not_established"
 delivery_method: "not_established"
 target_repository: "not_established"
 default_branch: "not_established"
-updated_at: "2026-10-12"
+updated_at: "2026-10-14"
 ---
 
 # Vidou 当前待办事项
 
 ## 已批准任务
 
-### 发布博客文章 50 Image to Video Prompt Examples for Realistic Motion
+### 发布博客文章 Image to Video Problems: 9 Common Failures and Fixes
 
 - 优先级：`P1`
-- 页面或界面：新文章 `https://vidou.ai/blog/image-to-video-prompt-examples/`、Blog 列表页 `https://vidou.ai/blog/`、旧文章 `https://vidou.ai/blog/image-to-video-prompt-guide/` 与 `https://vidou.ai/blog/how-to-animate-a-photo-with-ai/`、XML Sitemap
-- 当前问题与线上证据：2026-10-12 使用禁止缓存请求复核，目标 URL 当前显示 Vidou 的 404 页面，Blog 列表页尚无博客计划 Week 2 的第一篇文章。线上已有 Prompt Guide 解释提示词结构与逐项修改方法，但尚无覆盖人像、产品、风景、生活方式、建筑、插画和镜头运动的可直接改写示例库。首页 `https://vidou.ai/#image-to-video` 当前公开主打免费、无需登录的 Image to Video 快速试用，适合作为本文唯一转化目的地；高级工具页保持其登录后可选设置意图，不在本文增加链接。
+- 页面或界面：新文章 `https://vidou.ai/blog/image-to-video-problems-fixes/`、Blog 列表页 `https://vidou.ai/blog/`、旧文章 `https://vidou.ai/blog/image-to-video-prompt-guide/` 与 `https://vidou.ai/blog/how-to-animate-a-photo-with-ai/`、XML Sitemap
+- 当前问题与线上证据：2026-10-14 使用禁止缓存请求复核，目标 URL 当前返回 200，但页面标题为 `404 - Page Not Found | Vidou | Vidou`，canonical 错误指向首页，属于软 404；Blog 列表尚无博客计划 Week 2 的第二篇故障排查文章。线上已有完整入门 Guide、Prompt Guide 和 50 条 Prompt Examples，但尚无让读者按症状快速判断九类常见失败并执行第一步修复的独立故障排查总览。首页 `https://vidou.ai/#image-to-video` 承担免费、无需登录的快速试用意图，作为本文唯一转化目的地。
 - 修改要求：
-  1. 新建并发布下方已定稿的英文文章，不得让发布执行方改写、缩写、扩写或另行生成正文。文章 URL、SEO 字段和页面信息精确使用：
-     - URL：`https://vidou.ai/blog/image-to-video-prompt-examples/`
-     - Slug：`image-to-video-prompt-examples`
-     - SEO Title：`50 Image to Video Prompt Examples for Realistic Motion | Vidou`
-     - Meta Description：`Explore 50 Image to Video prompt examples for realistic portraits, products, landscapes, food, illustrations, and cinematic camera motion.`
-     - H1：`50 Image to Video Prompt Examples for Realistic Motion`
-     - Category：`Prompts`
+  1. 新建并发布下方已定稿英文文章，不得让发布执行方改写、缩写、扩写或另行生成正文。精确使用以下字段：
+     - URL：`https://vidou.ai/blog/image-to-video-problems-fixes/`
+     - Slug：`image-to-video-problems-fixes`
+     - SEO Title：`Image to Video Problems: 9 Failures and Fixes | Vidou`
+     - Meta Description：`Diagnose nine common Image to Video problems, including flicker, distorted faces, changing backgrounds, weak motion, and ignored prompts.`
+     - H1：`Image to Video Problems: 9 Common Failures and Fixes`
+     - Category：`Troubleshooting`
      - Author：可见署名为 `Vidou`，链接到 `https://vidou.ai/about/`
-     - Publish date：`October 12, 2026`；机器可读值为 `2026-10-12`
-     - Reading time：`11 min read`
-     - Canonical：`https://vidou.ai/blog/image-to-video-prompt-examples/`
-     - Open Graph：`og:type=article`；`og:title` 与 H1 一致；`og:description` 与 Meta Description 一致；`og:url` 与 canonical 一致；`og:image=https://vidou.ai/images/blog/image-to-video-prompt-examples-realistic-motion-hero.jpg`；图片尺寸为 1536×864。
-     - Twitter：使用 `summary_large_image`；title、description 和 image 分别与 Open Graph 对应字段一致。
-  2. 文章顶部使用主图，正文在 `How to Adapt These Prompt Examples` 小节的三个步骤之后使用第二张图。把仓库内已生成的最终图片集成到站点静态资源体系，并生成现有图片组件所需的 768px 宽响应式版本；不得重新生成或用占位图替换：
-     - 本地源文件：`assets/vidou-blog/image-to-video-prompt-examples-realistic-motion/image-to-video-prompt-examples-realistic-motion-hero.jpg`；发布 URL：`https://vidou.ai/images/blog/image-to-video-prompt-examples-realistic-motion-hero.jpg`；尺寸：1536×864；Alt：`Five visual scenes connected by motion trails for an Image to Video prompt example library`；作为文章 Hero、Open Graph 图和 Blog 列表卡片图。
-     - 本地源文件：`assets/vidou-blog/image-to-video-prompt-examples-realistic-motion/realistic-motion-prompt-layers.jpg`；发布 URL：`https://vidou.ai/images/blog/realistic-motion-prompt-layers.jpg`；尺寸：1536×864；Alt：`Portrait beside a sunlit window with subtle hair curtain and atmosphere motion`；Caption：`Realistic motion usually comes from one restrained subject action, one supporting environmental movement, and a stable composition.`
-     - 两张图片均由 OpenAI ImageGen 于 2026-10-12 为本文生成。不得宣称它们是 Vidou 的真实生成结果、客户素材、测试输出或前后对比证据。文章末尾保留定稿中的 Editorial note 披露。
-  3. 正文中的转化链接必须严格只有两个，且都指向同一 URL `https://vidou.ai/#image-to-video`：第一处是正文唯一工具锚文本 `free Image to Video generator`，第二处是末尾按钮 `Try an Image to Video Prompt`。不要给图片、标题、其他关键词或中段过渡 CTA 添加工具链接，不要链接到任何其他工具页。正文内 `Image to Video` 等可见功能名称不得添加连字符；URL、slug 和图片文件名中的技术连字符保持不变。
-  4. 按照现有 Blog 文章视觉与组件样式发布以下定稿正文：
+     - Publish date：`October 14, 2026`；机器可读值为 `2026-10-14`
+     - Reading time：`9 min read`
+     - Canonical：`https://vidou.ai/blog/image-to-video-problems-fixes/`
+     - Open Graph：`og:type=article`；`og:title` 与 H1 一致；`og:description` 与 Meta Description 一致；`og:url` 与 canonical 一致；`og:image=https://vidou.ai/images/blog/image-to-video-problems-fixes-hero.jpg`；图片尺寸 1536×864。
+     - Twitter：使用 `summary_large_image`；title、description、image 与 Open Graph 对应字段一致。
+  2. 文章顶部使用主图，在故障速查表之后使用第二张图。集成仓库内已生成的最终图片，并生成现有图片组件所需的 768px 宽响应式版本；不得重新生成或用占位图替换：
+     - 本地源文件：`assets/vidou-blog/image-to-video-problems-fixes/image-to-video-problems-fixes-hero.jpg`；发布 URL：`https://vidou.ai/images/blog/image-to-video-problems-fixes-hero.jpg`；尺寸：1536×864；Alt：`Film frames showing common Image to Video consistency problems around a stable central scene`；作为 Hero、Open Graph 图和 Blog 卡片图。
+     - 本地源文件：`assets/vidou-blog/image-to-video-problems-fixes/image-to-video-troubleshooting-check.jpg`；发布 URL：`https://vidou.ai/images/blog/image-to-video-troubleshooting-check.jpg`；尺寸：1536×864；Alt：`Product frame sequence used to check shape background and motion consistency`；Caption：`Compare the same subject at the beginning, middle, and end; small drift is easier to spot across frames than during normal playback.`
+     - 两张图片均由 OpenAI ImageGen 于 2026-10-14 为本文生成。Hero 提示词：`Create a premium editorial hero image for an English troubleshooting article titled conceptually “Image to Video Problems: 9 Common Failures and Fixes.” Wide cinematic 16:9 composition. A dark charcoal studio desk with a refined sequence of translucent film frames floating horizontally. The center frame is crisp and coherent: a simple ivory ceramic vase with one green branch on a stone pedestal. Neighboring frames show subtle, tasteful visual failure cues—slight silhouette drift, gentle frame misalignment, faint double edge, inconsistent background light, and motion smear—without becoming grotesque or chaotic. A small optical inspection lens and precise registration marks suggest diagnosis and repair. Sophisticated emerald green and warm amber accents, soft volumetric light, high-end technology editorial photography, clean negative space, realistic materials, polished but not glossy. No people, no hands, no faces, no text, no letters, no numbers, no logos, no watermarks, no app interface, no charts.` 正文图提示词：`Create a premium editorial illustration for an English Image to Video troubleshooting guide. Wide 16:9 composition. Five elegant film frames of the same unbranded ivory ceramic vase on a neutral stone pedestal arranged left to right, viewed in a refined dark studio. The first and last frames align clearly while the middle frames show restrained diagnostic cues: slight outline drift, background brightness change, tiny camera crop shift, and a faint motion ghost. Add subtle translucent alignment guides and a magnifying lens, but absolutely no words, labels, letters, numbers, logos, watermarks, or software UI. The overall result should feel clean, educational, credible, photographic, and visually attractive, with charcoal, off-white, emerald, and muted amber palette. Avoid split before-and-after styling, avoid ugly glitches, avoid surreal deformation.` 不得宣称图片是 Vidou 的真实生成结果、客户素材、测试输出或前后对比证据；保留正文末尾披露。
+  3. 正文转化链接严格只有两个，且都指向 `https://vidou.ai/#image-to-video`：第一处是正文唯一工具锚文本 `free Image to Video generator`，第二处是末尾按钮 `Try the Fix With Your Image`。不要给图片、标题、其他关键词或中段 CTA 增加工具链接，不要链接任何其他工具页。可见功能名称 `Image to Video` 不得添加连字符；URL、slug 和图片文件名中的技术连字符保持不变。
+  4. 按现有 Blog 文章视觉与组件样式发布以下定稿正文：
 
 ```markdown
-# 50 Image to Video Prompt Examples for Realistic Motion
+# Image to Video Problems: 9 Common Failures and Fixes
 
-A useful Image to Video prompt describes what moves, whether the camera moves, how fast the action feels, and which details stay consistent. Below are 50 prompts to adapt for portraits, products, landscapes, food, architecture, illustrations, and camera movements.
+Most Image to Video problems become easier to fix when you identify the largest visible failure first. A clip that changes a face needs a different correction from one that barely moves, and trying to solve both at once can hide which change helped.
 
-These are starting points, not guaranteed recipes. Match the prompt to the source, keep motion plausible, and review the full clip for changes in faces, hands, text, product shape, or background geometry.
+This guide covers nine common failures, their likely causes, and the first adjustment to try. It is a diagnostic overview rather than a promise that one prompt will repair every source. For the full workflow, read the [complete Image to Video guide](https://vidou.ai/blog/ai-image-to-video-guide/). If the main issue is wording, use the [Image to Video prompt guide](https://vidou.ai/blog/image-to-video-prompt-guide/) or adapt one of the [50 realistic motion prompt examples](https://vidou.ai/blog/image-to-video-prompt-examples/).
 
-For the reasoning behind motion, camera direction, pace, and constraints, read the [Image to Video prompt guide](https://vidou.ai/blog/image-to-video-prompt-guide/). For the complete workflow, start with [how to animate a photo with AI](https://vidou.ai/blog/how-to-animate-a-photo-with-ai/).
+## Diagnose the Largest Problem First
 
-## How to Adapt These Prompt Examples
+Watch the whole clip once without pausing. Then compare the opening, middle, and final frames. Decide which failure most reduces the clip's usefulness, and make one correction before generating again.
 
-Adapt each example in three passes:
+| What you see | Likely first fix |
+| --- | --- |
+| The subject changes shape | Reduce motion and protect the subject's defining details |
+| A face becomes a different person | Limit head movement and preserve facial identity |
+| Hands or fingers bend | Reduce hand action or choose a source with clearer hands |
+| The background changes | Use a static camera or short push in |
+| The clip flickers or jitters | Simplify motion and remove competing actions |
+| The result barely moves | Replace vague adjectives with one visible action |
+| The motion is chaotic | Keep one primary motion and lower the pace |
+| The prompt seems ignored | Remove instructions that conflict with the source |
+| The crop reveals invented areas | Choose a camera move supported by the visible frame |
 
-1. **Match the subject.** Replace the subject, environment, colors, and details with what appears in your image.
-2. **Choose one priority.** Keep the subject, camera, or environmental motion dominant. Remove secondary action if it feels busy.
-3. **Protect important details.** Name the face, hands, product shape, label, clothing, architecture, or background that must remain stable.
+![Product frame sequence used to check shape background and motion consistency](https://vidou.ai/images/blog/image-to-video-troubleshooting-check.jpg)
 
-![Portrait beside a sunlit window with subtle hair curtain and atmosphere motion](https://vidou.ai/images/blog/realistic-motion-prompt-layers.jpg)
+*Compare the same subject at the beginning, middle, and end; small drift is easier to spot across frames than during normal playback.*
 
-*Realistic motion usually comes from one restrained subject action, one supporting environmental movement, and a stable composition.*
+After choosing one fix, rerun the same source in Vidou's [free Image to Video generator](https://vidou.ai/#image-to-video) and compare the full clip from start to finish. Keep the source image unchanged so you can tell whether the revision helped.
 
-Paste one adapted example into Vidou's [free Image to Video generator](https://vidou.ai/#image-to-video), review the full result, and change one instruction per revision. This reveals which variable caused the difference.
+## 1. The Subject Changes Shape
 
-## Portrait Prompts
+**Symptom:** A product widens, clothing changes, an animal gains different markings, or an object no longer matches the source by the end.
 
-Use restrained movement. Large turns can require features that are not visible in the portrait.
+**Likely cause:** The prompt asks for motion that requires the model to invent unseen surfaces, or it gives action without saying which features must remain stable. Large rotations are especially risky when the source shows only one side.
 
-1. **Natural blink and gaze**
-   > The subject blinks naturally and shifts their gaze slightly toward the camera. Keep the face, hairstyle, clothing, skin tone, and background consistent. Static camera and calm movement.
+**First fix:** Reduce the movement and name the geometry, materials, colors, and visible details that should not change. Prefer a short push in, a light sweep, or subtle environmental motion over a full turn.
 
-2. **Hair in a light breeze**
-   > A few strands of hair move gently in a light breeze while the subject remains relaxed. Slow camera push in. Preserve facial identity, body position, clothing, and lighting.
+Try: `A soft highlight moves across the bottle. Static camera. Preserve the exact bottle shape, cap, label placement, colors, and reflections.`
 
-3. **Subtle smile**
-   > The subject forms a slight natural smile and breathes gently. Keep the eyes, facial proportions, hair, shoulders, clothing, and background unchanged. Camera remains steady.
+## 2. The Face Loses Its Identity
 
-4. **Small profile turn**
-   > The subject turns their head a few degrees toward the window and pauses. Use slow, controlled motion. Preserve facial features, hairstyle, jewelry, clothing, and the original composition.
+**Symptom:** The person looks different between frames, facial proportions shift, or a smile changes the eyes and jaw too much.
 
-5. **Reading by a window**
-   > The reader lowers their gaze toward the open book as the curtain moves softly. Static camera, quiet pace. Keep the face, hands, book shape, room, and daylight consistent.
+**Likely cause:** The requested head turn, expression, or camera movement demands facial information that is not clear in the source. Low-resolution, heavily filtered, or partly covered faces provide fewer stable details.
 
-6. **Musician at rest**
-   > The musician takes a calm breath and adjusts their gaze toward the instrument. A soft highlight shifts across the scene. Preserve the face, hands, instrument, clothing, and background.
+**First fix:** Keep the head near its original angle, request one small expression, and explicitly preserve identity, facial proportions, hairstyle, and skin tone. A clear, front-facing source generally gives the motion less to invent.
 
-7. **Athlete before movement**
-   > The athlete breathes steadily while loose fabric moves slightly in the air. Gentle camera push in. Keep facial identity, body proportions, pose, uniform, and setting stable.
+Try: `The subject blinks once and forms a slight natural smile. Keep facial identity, proportions, hairstyle, skin tone, clothing, and background consistent. Static camera.`
 
-8. **Warm side light**
-   > The subject remains still as warm window light moves subtly across the face. Minimal hair movement, static camera, natural pace. Preserve identity, skin texture, clothing, and room layout.
+## 3. Hands or Fingers Distort
 
-## Product Prompts
+**Symptom:** Fingers merge, the number of fingers changes, or a hand no longer connects naturally to the wrist or object it holds.
 
-Keep product geometry and visible details stable. Avoid a full rotation when only one side is visible. For the full workflow, see [how to turn product photos into videos with AI](https://vidou.ai/blog/turn-product-photos-into-videos-with-ai/).
+**Likely cause:** Hands contain many small overlapping shapes. Fast gestures, hidden fingers, crossed hands, or interaction with an object increase uncertain detail across frames.
 
-9. **Sneaker light sweep**
-   > A soft studio highlight travels slowly across the sneaker while the camera pushes in slightly. Preserve the exact shape, sole, laces, materials, colors, logo area, and background.
+**First fix:** Make the hand nearly still, reduce the gesture, or crop the composition so hands are not the focus. When a hand must remain visible, begin with a source where its outline and every visible finger are clear.
 
-10. **Skincare bottle shadows**
-   > The bottle remains upright as warm window shadows drift across the background. Static camera and gentle movement. Keep the bottle geometry, cap, label placement, glass color, and reflections consistent.
+Try: `The subject breathes gently while both hands remain still on the table. Preserve the hands, fingers, wrist position, face, clothing, and tabletop.`
 
-11. **Watch detail reveal**
-   > A narrow light moves slowly across the watch case and dial. Gentle camera push in. Preserve the hands, markings, case shape, strap texture, colors, and original position.
+## 4. The Background Keeps Changing
 
-12. **Headphones on a pedestal**
-   > The camera makes a small, smooth arc around the headphones without revealing the back. Keep the headband, ear cups, controls, materials, proportions, and studio background unchanged.
+**Symptom:** Walls bend, furniture moves, signs change, or new scenery appears as the camera travels.
 
-13. **Handbag material focus**
-   > Soft light glides across the handbag texture while the camera remains steady. Preserve the silhouette, handles, stitching, hardware, color, logo area, and surface beneath the product.
+**Likely cause:** A wide pan, orbit, or pull back asks the model to create areas beyond the original frame. Busy backgrounds with repeated lines, text, reflections, or small objects can also drift.
 
-14. **Coffee package atmosphere**
-   > A faint ribbon of steam rises behind the coffee package as the camera slowly pushes in. Keep the package shape, printed design, label placement, colors, edges, and tabletop stable.
+**First fix:** Replace the large camera move with a static camera or a short push in. State which structural details must remain fixed, such as windows, shelves, horizon lines, furniture, or architecture.
 
-15. **Ceramic object reveal**
-   > The camera moves gently from left to right while a soft reflection changes across the ceramic surface. Preserve the object shape, glaze texture, color, base, and background composition.
+Try: `Slow camera push in toward the subject. Preserve the windows, shelves, wall lines, furniture positions, lighting, and original room perspective.`
 
-16. **Furniture in natural light**
-   > Sunlight and leaf shadows shift slowly across the chair while the camera stays fixed. Keep the chair geometry, fabric, legs, room perspective, floor, and surrounding objects unchanged.
+## 5. The Video Flickers or Jitters
 
-## Landscape and Nature Prompts
+**Symptom:** Brightness pulses, edges vibrate, textures crawl, or the camera seems to jump instead of moving smoothly.
 
-Let the environment move while landforms and the horizon stay stable.
+**Likely cause:** Too many elements change at once, the prompt combines incompatible camera directions, or fine patterns and strong reflections create unstable frame-to-frame detail.
 
-17. **Mountain lake**
-   > Clouds drift slowly above the mountains while small ripples move across the lake. Static camera and calm pace. Keep the shoreline, peaks, trees, reflections, and horizon consistent.
+**First fix:** Simplify the scene to one subject action and one restrained supporting movement. Choose one camera instruction only. If the source has dense texture, keep that area still rather than asking it to ripple, rotate, and change light simultaneously.
 
-18. **Ocean at sunrise**
-   > Gentle waves roll toward the shore as the sunrise brightens gradually. Slow camera push in. Preserve the coastline, rock shapes, horizon, sky colors, and overall composition.
+Try: `The curtain moves gently in a light breeze. The subject remains still. Static camera, steady daylight, smooth natural motion, and consistent background details.`
 
-19. **Forest morning**
-   > Leaves move lightly in the breeze while thin mist drifts between the trees. Camera remains steady. Keep trunks, paths, plants, depth, and the direction of the morning light stable.
+## 6. The Motion Is Too Weak
 
-20. **Waterfall detail**
-   > Water flows steadily over the rocks as fine spray moves through the air. Use a subtle push in. Preserve rock geometry, surrounding plants, pool shape, colors, and framing.
+**Symptom:** The output feels like a still image with only a tiny zoom, even though the prompt asks for movement.
 
-21. **Desert wind**
-   > A thin layer of sand moves gently along the dune surface while distant heat haze shifts. Static camera. Keep dune contours, footprints, horizon, shadows, and sky unchanged.
+**Likely cause:** Words such as `dynamic`, `cinematic`, or `come alive` describe a mood but not an observable action. The instruction may also contain so many preservation constraints that the intended motion is unclear.
 
-22. **Snowy cabin**
-   > Light snow falls slowly as a small amount of chimney smoke rises. Keep the camera fixed and the mood quiet. Preserve cabin structure, windows, trees, snowbanks, and landscape.
+**First fix:** Use one visible verb and identify what moves, in which direction, and at what pace. Keep preservation language for the details that matter instead of freezing the entire frame.
 
-23. **Meadow in a breeze**
-   > Tall grass and wildflowers sway gently from left to right while clouds move slowly overhead. Preserve the path, tree line, horizon, flower colors, and natural daylight.
+Try: `Steam rises slowly from the coffee and drifts to the right. The camera pushes in gently. Preserve the cup, handle, liquid level, and table setting.`
 
-24. **Canyon light change**
-   > Soft sunlight moves gradually across the canyon wall while a small amount of dust drifts near the ground. Static camera. Preserve rock formations, scale, shadows, and sky.
+## 7. The Motion Is Too Strong or Chaotic
 
-## Food and Everyday Scene Prompts
+**Symptom:** Hair, clothing, camera, background, and lighting all move at once, making the result feel unstable or artificial.
 
-Use small movements such as steam, flame, condensation, fabric, or shifting light. Keep object shapes unchanged.
+**Likely cause:** The prompt stacks several actions or uses intensity words that encourage exaggerated movement. Multiple camera commands can also pull the composition in different directions.
 
-25. **Fresh coffee**
-   > Steam rises slowly from the coffee while morning light shifts across the table. Gentle camera push in. Preserve the cup shape, handle, liquid level, saucer, and background objects.
+**First fix:** Choose one primary motion. Keep supporting motion subtle, remove extra camera directions, and use pace words such as `slow`, `gentle`, or `controlled` when they match the scene.
 
-26. **Birthday cake candles**
-   > Candle flames flicker softly above the cake while the camera remains steady. Keep the frosting, decorations, candle positions, plate, table, colors, and background consistent.
+Try: `A few strands of hair move gently in a light breeze. The subject remains relaxed and the camera stays fixed. Preserve the face, clothing, lighting, and background.`
 
-27. **Pasta on a table**
-   > A small amount of steam rises from the pasta as light moves subtly across the sauce. Static camera. Preserve the food arrangement, plate shape, garnish, cutlery, and table setting.
+## 8. The Prompt Appears to Be Ignored
 
-28. **Cold drink**
-   > Condensation moves slowly down the glass while ice shifts only slightly. Use a gentle push in. Keep the glass, garnish, liquid color, reflections, tabletop, and background stable.
+**Symptom:** The expected action does not happen, the camera moves instead, or the output follows the image but not the written direction.
 
-29. **Open book and curtain**
-   > The curtain moves softly in the breeze and one page lifts slightly before settling. Keep the camera fixed. Preserve the book position, visible page layout, furniture, and room light.
+**Likely cause:** The prompt conflicts with the source, contains too many priorities, or asks for an action that is not visually supported. A tightly cropped portrait cannot reliably reveal a wide environment.
 
-30. **Vinyl listening scene**
-   > The record rotates steadily while a warm lamp flickers almost imperceptibly. Slow camera move toward the turntable. Keep the tonearm, controls, furniture, and room layout consistent.
+**First fix:** Rewrite the request around what is already visible. Put the main action first, remove decorative language, and keep one camera direction. If two instructions compete, decide which one matters more.
 
-31. **Candle on a shelf**
-   > The candle flame moves gently and creates subtle shifting shadows on the wall. Static camera and calm pace. Preserve the candle shape, shelf, nearby objects, and composition.
+Try: `The bicycle wheels rotate slowly as the rider moves forward. The camera tracks beside the rider at a steady pace. Preserve the rider, bicycle frame, road, and direction of travel.`
 
-32. **Flowers in a vase**
-   > A few flower stems sway slightly while sunlight moves across the table. Gentle camera push in. Keep the petals, vase shape, water level, arrangement, colors, and background unchanged.
+## 9. The Framing or Camera Move Breaks the Scene
 
-## Architecture and Travel Prompts
+**Symptom:** The subject is cropped unexpectedly, drifts out of frame, changes scale, or the camera exposes invented objects beyond the source image.
 
-Protect straight lines, signs, and horizon placement. Avoid camera moves that demand large unseen areas.
+**Likely cause:** The requested movement needs information outside the source boundaries. Orbits, wide pans, and long pull backs are difficult when the image offers little surrounding space.
 
-33. **Quiet old street**
-   > Morning light shifts slowly along the building facades while a few tree leaves move. Gentle forward camera movement. Preserve windows, doors, signs, pavement lines, and street perspective.
+**First fix:** Match camera movement to the available composition. Use a short push in for tight crops, a small lateral move when the scene has space on both sides, and a pull back only when the source already includes a believable environment.
 
-34. **Modern tower**
-   > Clouds move behind the tower as reflections change subtly across the glass. Camera remains fixed. Keep every building edge, floor line, neighboring structure, and the vertical perspective stable.
+Try: `Short, smooth camera push in toward the centered product. Keep the product fully inside the frame and preserve its scale, edges, pedestal, background, and lighting.`
 
-35. **Sunlit interior**
-   > Sheer curtains move gently while sunlight and shadows shift across the floor. Static camera. Preserve walls, windows, furniture geometry, decor placement, and room perspective.
+## Use a Controlled Retry Workflow
 
-36. **Train platform**
-   > A light breeze moves clothing and a distant train approaches slowly without changing the platform. Keep the camera steady. Preserve faces, signs, tracks, architecture, and perspective.
+Do not rewrite everything after one imperfect result. Use this sequence:
 
-37. **Bridge over water**
-   > Water and reflected light move beneath the bridge while clouds drift slowly. Gentle lateral camera movement. Preserve the bridge structure, cables, skyline, shoreline, and horizon.
+1. **Name the dominant failure.** Choose shape, identity, hands, background, flicker, weak motion, chaotic motion, prompt conflict, or framing.
+2. **Change one variable.** Reduce the subject action, simplify the camera, strengthen one preservation sentence, or choose a clearer source.
+3. **Keep a comparison point.** Use the same source and review the opening, middle, and final frames.
+4. **Check the entire frame.** Look beyond the main subject at text, logos, architecture, reflections, shadows, and small background objects.
+5. **Stop when the clip supports its purpose.** More movement is not automatically better; a stable, readable result is often more useful.
 
-38. **Temple courtyard**
-   > Tree branches and hanging fabric move slightly in a breeze as sunlight changes softly. Static camera. Preserve columns, roof lines, stonework, steps, ornaments, and courtyard layout.
+If the first correction does not help, return to the source image. A clearer subject outline, more visible background space, simpler pose, or cleaner lighting may solve a problem that extra prompt detail cannot.
 
-39. **Coastal town**
-   > The sea moves gently beyond the buildings while laundry shifts in the breeze. Slow camera push in. Keep building shapes, balconies, streets, colors, coastline, and horizon stable.
+## Fix One Failure, Then Compare
 
-40. **Night market atmosphere**
-   > Steam rises from one food stall while hanging lights sway slightly. Camera moves forward slowly. Preserve faces, hands, stall structures, signs, objects, and the street layout.
+Start with the problem viewers will notice first. Apply the smallest relevant correction, keep the source unchanged, and compare the whole clip. Once the largest failure is controlled, decide whether a second revision is worth making.
 
-## Illustration and AI Art Prompts
+[Try the Fix With Your Image](https://vidou.ai/#image-to-video)
 
-Name the medium and protect its line work, palette, character design, and composition.
-
-41. **Watercolor animal**
-   > The fox blinks once while nearby grass and fabric move gently. Static camera. Preserve the watercolor texture, line work, character proportions, colors, paper grain, and composition.
-
-42. **Anime portrait**
-   > The character blinks naturally as a few strands of hair move in a soft breeze. Gentle push in. Keep facial design, eye shape, outfit, color palette, line art, and background stable.
-
-43. **Fantasy castle painting**
-   > Thin clouds drift around the castle towers while flags move slowly. Camera remains steady. Preserve the painted architecture, mountain shapes, lighting, brush texture, palette, and composition.
-
-44. **Science fiction scene**
-   > Small navigation lights pulse gently as mist moves beneath the spacecraft. Slow camera push in. Keep the ship design, panels, landing gear, environment, scale, and art style consistent.
-
-45. **Paper cut forest**
-   > Layered leaves sway slightly and soft shadows shift between the paper layers. Static camera. Preserve every cut edge, character shape, color layer, texture, and depth arrangement.
-
-46. **Clay character**
-   > The clay character blinks and tilts its head slightly while the background remains still. Preserve facial features, fingerprints, body proportions, clothing, colors, lighting, and handcrafted texture.
-
-## Reusable Camera Movement Prompts
-
-These templates make the camera primary. Replace the brackets and keep subject movement minimal.
-
-47. **Slow push in**
-   > Slow camera push in toward [main subject]. Keep the subject almost still while [one subtle environmental detail] moves gently. Preserve [identity or shape details], background geometry, lighting, and composition.
-
-48. **Gentle pull back**
-   > The camera pulls back slowly to reveal more of [visible surrounding area]. Keep [main subject] stable and centered. Preserve proportions, edges, background objects, perspective, and the original visual style.
-
-49. **Short lateral pan**
-   > Gentle camera pan from left to right across [scene]. [One visible detail] moves subtly. Keep the movement slow and preserve the subject, horizon, architecture, object positions, and lighting.
-
-50. **Controlled tracking move**
-   > The camera tracks smoothly beside [moving subject] at a matching pace. Keep the subject's face or shape consistent. Preserve clothing or materials, background direction, scale, and natural motion.
-
-## How to Fix a Prompt That Looks Unrealistic
-
-If a face or object bends, reduce subject motion and strengthen the preservation sentence. If the background changes, replace an orbit or large pan with a static camera or short push in. If everything moves, remove one environmental action. If the clip feels still, replace `dynamic` with a visible verb such as `blinks`, `sways`, `drifts`, or `ripples`. Keep the source image unchanged, adjust one variable, and compare the beginning, middle, and end.
-
-## Start With One Clear Motion
-
-Choose the example closest to your image, replace the visible details, and remove any action the source cannot support. Generate a controlled first version, review the whole clip, and revise one variable at a time.
-
-[Try an Image to Video Prompt](https://vidou.ai/#image-to-video)
-
-*Editorial note: The prompts in this article are instructional starting points and are not presented as benchmarked Vidou outputs. The two editorial images were created with generative AI and reviewed for relevance; they do not depict actual Vidou results.*
+*Editorial note: This article provides general troubleshooting guidance rather than guaranteed fixes. The two editorial images were created with generative AI and reviewed for relevance; they do not depict actual Vidou results or benchmark tests.*
 ```
 
-  5. 在 Blog 列表页添加该文章卡片，使用主图、Category `Prompts`、标题、Meta Description 的首句摘要、日期 `October 12, 2026`，点击卡片进入 canonical URL；保持现有列表顺序规则，并将本文作为最新文章显示。
-  6. 为旧文添加反向内链，精确执行以下两处，不改写其他句子：
-     - 在 `https://vidou.ai/blog/image-to-video-prompt-guide/` 的 `A Reusable Motion Prompt Template` 小节、详细示例后的解释段末尾追加：`For more starting points across different subjects, browse [50 Image to Video prompt examples for realistic motion](https://vidou.ai/blog/image-to-video-prompt-examples/).`
-     - 在 `https://vidou.ai/blog/how-to-animate-a-photo-with-ai/` 的 `Step 4: Write a Clear Motion Prompt` 小节、现有 Portrait、Product、Landscape 三个示例之后追加：`For more starting points, browse [50 Image to Video prompt examples for realistic motion](https://vidou.ai/blog/image-to-video-prompt-examples/).`
-  7. 加入与现有文章一致的面包屑和结构化数据。使用 `BlogPosting`，字段至少包括：`headline` 为 H1；`description` 为 Meta Description；`image` 为主图绝对 URL；`datePublished` 和 `dateModified` 均为 `2026-10-12`；`mainEntityOfPage` 与 canonical 一致；`author` 与 `publisher` 均为 `Organization`、名称 `Vidou`、URL `https://vidou.ai/about/`。保留站点现有 `WebSite`、`Organization` 或 `BreadcrumbList` 数据，避免重复冲突。
-  8. 将 canonical URL 加入线上 XML Sitemap，`lastmod` 使用实际发布日期 `2026-10-12`。确保页面可索引，不添加 `noindex`，并保持正确的 200 状态。
-- 验收标准：目标 URL 返回 200 且不是软 404；SEO Title、Meta Description、H1、canonical、Open Graph、Twitter、作者、发布日期、阅读时长、分类和 `BlogPosting` 数据与要求一致；可见英文正文为上述定稿，包含连续编号且不重不漏的 50 条提示词，正文词数在 1,500–2,200 词范围内；Hero 和正文图在桌面及 390px 移动端清晰显示、比例稳定、无拉伸、无布局偏移，并输出 768px 响应式候选；两图 Alt 和 Caption 精确；正文到 `https://vidou.ai/#image-to-video` 恰好两个链接，其中一个为指定关键词锚文本、一个为末尾 CTA 按钮，不存在第三个首页工具链接或其他工具页链接；可见文案中的 `Image to Video` 不含连字符；三条 Blog 内链可点击且无 404；两篇旧文章均有指定反向链接；Blog 列表有最新文章卡片；Sitemap 包含 canonical；结构化数据可解析且字段与页面可见信息一致；页面键盘可操作、焦点清晰，50 条提示词层级可扫描，移动端无横向滚动。
-- 不要修改：不要改写定稿文章、SEO 字段、50 条提示词、指定锚文本、CTA、Alt、Caption 或披露；不要把 `Image to Video`、`Text to Video`、`Text to Image`、`Image Editor` 等可见功能名称写成带连字符形式；不要增加第二个正文工具锚文本、第三个工具转化链接、其他工具页链接、外部竞品链接、效果承诺、虚构测试数据、客户案例或未经验证的技术结论；不要把生成图描述成 Vidou 输出；不要改动首页工具功能、高级工具、credits、登录逻辑、账户数据、API、价格、旧文章正文（除指定的两句反向链接）、其他 Blog 卡片、全站导航、Footer 或无关页面；不要新增 Changelog 条目。
+  5. 在 Blog 列表页添加文章卡片，使用主图、Category `Troubleshooting`、标题、摘要 `Diagnose nine common Image to Video problems and find the first correction to try.`、日期 `October 14, 2026`；卡片进入 canonical URL，遵循现有排序并作为最新文章显示。
+  6. 为旧文添加反向内链，只执行以下两处，不改写其他句子：
+     - 在 `https://vidou.ai/blog/image-to-video-prompt-guide/` 的 `Motion Prompt Checklist` 清单后追加：`If the result still changes a face, background, object shape, or camera framing, use this guide to diagnose [nine common Image to Video problems and fixes](https://vidou.ai/blog/image-to-video-problems-fixes/).`
+     - 在 `https://vidou.ai/blog/how-to-animate-a-photo-with-ai/` 的 `Common Problems and How to Fix Them` 标题后的首段之前追加：`For a symptom-by-symptom diagnosis, see [nine common Image to Video problems and fixes](https://vidou.ai/blog/image-to-video-problems-fixes/).`
+  7. 加入与现有文章一致的面包屑和 `BlogPosting` 结构化数据。至少包含：`headline` 为 H1；`description` 为 Meta Description；`image` 为主图绝对 URL；`datePublished` 与 `dateModified` 均为 `2026-10-14`；`mainEntityOfPage` 与 canonical 一致；`author` 与 `publisher` 均为 `Organization`、名称 `Vidou`、URL `https://vidou.ai/about/`。保留现有 `WebSite`、`Organization` 或 `BreadcrumbList` 数据，避免重复冲突。
+  8. 将 canonical URL 加入线上 XML Sitemap，`lastmod` 为 `2026-10-14`。页面必须可索引、不含 `noindex`，并返回正确 200 状态。
+- 验收标准：目标 URL 返回 200 且不再是软 404；SEO Title、Meta Description、H1、canonical、Open Graph、Twitter、作者、日期、阅读时长、分类和 `BlogPosting` 数据与要求一致；可见英文正文为上述定稿，正文词数在 1,200–1,800 词范围内，速查表和九个编号章节完整；Hero 与正文图在桌面及 390px 移动端清晰、比例稳定、无拉伸或布局偏移，并输出 768px 响应式候选；Alt 与 Caption 精确；正文到 `https://vidou.ai/#image-to-video` 恰好两个链接，其中一个为指定关键词锚文本、一个为末尾 CTA，不存在第三个首页工具链接或其他工具页链接；正文恰好三条既有 Vidou Blog 上下文内链；可见文案中的 `Image to Video` 不含连字符；两篇旧文均有指定反向链接；Blog 列表有最新卡片；Sitemap 包含 canonical；结构化数据可解析且与可见信息一致；键盘可操作、焦点清晰，表格和九个章节在移动端可扫描且无横向滚动。
+- 不要修改：不要改写定稿文章、SEO 字段、九类问题、指定锚文本、CTA、Alt、Caption 或披露；不要把 `Image to Video`、`Text to Video`、`Text to Image`、`Image Editor` 等可见功能名称写成带连字符形式；不要增加第二个正文工具锚文本、第三个工具转化链接、其他工具页链接、外部竞品链接、效果承诺、虚构测试数据、客户案例或未经验证的技术结论；不要把生成图描述成 Vidou 输出；不要把本篇扩写成闪烁、背景漂移、人物身份或其他单一问题的完整专题；不要改动首页工具功能、高级工具、pricing、登录逻辑、账户数据、API、价格、旧文章正文（除指定的两句反向链接）、其他 Blog 卡片、全站导航、Footer 或无关页面；不要新增 Changelog 条目。
